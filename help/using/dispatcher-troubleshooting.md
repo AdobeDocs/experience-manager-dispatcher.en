@@ -102,7 +102,7 @@ Add the following headers to the `/clientheaders` section of your `dispatcher.an
 
 This describes how the dispatcher interacts with `mod_dir` inside the Apache webserver, as this can lead to various, potentially unexpected effects:
 
-#### Apache 1.3 {#apache}
+### Apache 1.3 {#apache}
 
 In Apache 1.3 `mod_dir` handles every request where the URL maps to a directory in the file system.
 
@@ -113,7 +113,7 @@ It will either:
 
 When the dispatcher is enabled, it processes such requests by registering itself as a handler for the content type `httpd/unix-directory`.
 
-#### Apache 2.x {#apache-x}
+### Apache 2.x {#apache-x}
 
 In Apache 2.x things are different. A module can handle different stages of the request, such as URL fixup. `mod_dir` handles this stage by redirecting a request (when the URL maps to a directory) to the URL with a `/` appended.
 
@@ -124,4 +124,3 @@ If this happens you must either:
 * disable `mod_dir` for the `Directory` or `Location` subtree handled by the dispatcher  
 
 * use `DirectorySlash Off` to configure `mod_dir` not to append `/`
-

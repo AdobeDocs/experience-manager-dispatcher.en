@@ -77,7 +77,7 @@ The Dispatcher contains mechanisms to generate, and update, static HTML based on
 
 This section illustrates the principles behind this.
 
-#### Static Web Server {#static-web-server}
+### Static Web Server {#static-web-server}
 
 ![](assets/chlimage_1-3.png)
 
@@ -85,7 +85,7 @@ A static web server, such as Apache or IIS, serves static HTML files to visitors
 
 This process is very simple, and thus extremely efficient. If a visitor requests a file (e.g. a HTML page), the file is usually taken directly from memory, at worst it is read from the local drive. Static web servers have been available for quite some time, so there is a wide range of tools for administration and security management, and they are very well integrated with network infrastructures.
 
-#### Content Management Servers {#content-management-servers}
+### Content Management Servers {#content-management-servers}
 
 ![](assets/chlimage_1-4.png)
 
@@ -111,14 +111,14 @@ This allows you to create richer, dynamic content, which increases the flexibili
 >
 >There can be OS-level limitations for length of file name; i.e. if you have an URL with a lot of selectors.
 
-**Methods for Caching**
+### Methods for Caching
 
 The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
 
 * **Content Updates** remove the pages that have changed, as well as files that are directly associated with them.
 * **Auto-Invalidation** automatically invalidates those parts of the cache that may be out of date after an update. i.e. it effectively flags relevant pages as being out of date, without deleting anything.
 
-**Content Updates**
+### Content Updates
 
 In a content update, one or more AEM documents change. AEM sends a syndication request to the Dispatcher, which updates the cache accordingly:
 
@@ -133,7 +133,7 @@ The following points should be noted:
 * Typically, automatically generated pictures that incorporate text from a page are stored in picture files starting with the same handle - thus ensuring that the association exists for deletion. For example, you may store the title text of the page mypage.html as the picture mypage.titlePicture.gif in the same folder. This way the picture is automatically deleted from the cache each time the page is updated, so you can be sure that the picture always reflects the current version of the page.
 * You may have several statfiles, for example one per language folder. If a page is updated, AEM looks for the next parent folder containing a statfile, and *touches* that file.
 
-**Auto-invalidation**
+### Auto-invalidation
 
 Auto-invalidation automatically invalidates parts of the cache - without physically deleting any files. At every content update, the so-called statfile is touched, so its timestamp reflects the last content update.
 
@@ -151,7 +151,7 @@ Again, certain points should be noted:
 
 ![](assets/chlimage_1-6.png)
 
-**Determining whether a document is subject to caching**
+### Determining whether a document is subject to caching
 
 You can [define which documents the Dispatcher caches in the configuration file](../using/dispatcher-configuration.md#main-pars_146_44_0010). The Dispatcher checks the request against the list of cacheable documents. If the document is not in this list, the Dispatcher requests the document from the AEM instance.
 
@@ -165,14 +165,14 @@ The Dispatcher *always* requests the document directly from the AEM instance in 
 >
 >The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](../using/dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
 
-**Determining if a document is cached**
+### Determining if a document is cached
 
 The Dispatcher stores the cached files on the web server as if they were part of a static website. If a user requests a cacheable document the Dispatcher checks whether that document exists in the web server's file system:
 
 * if the document is cached, Dispatcher returns the file.
 * if it is not cached, the Dispatcher requests the document from the AEM instance.
 
-**Determining if a document is up-to-date**
+### Determining if a document is up-to-date
 
 To find out if a document is up to date, the Dispatcher performs two steps:
 
@@ -207,9 +207,9 @@ You gain:
 >
 >While a single Dispatcher will usually be able to saturate the capacity of the available Publish instances, for some rare applications it can make sense to additionally balance the load between two Dispatcher instances. Configurations with multiple Dispatchers need to be considered carefully, since an additional Dispatcher will increase the load on the available Publish instances and can easily decrease performance in most applications.
 
-#### How the Dispatcher performs Load Balancing {#how-the-dispatcher-performs-load-balancing}
+## How the Dispatcher performs Load Balancing {#how-the-dispatcher-performs-load-balancing}
 
-**Performance Statistics**
+### Performance Statistics
 
 The Dispatcher keeps internal statistics about how fast each instance of AEM processes documents. Based on this data, the Dispatcher estimates which instance will provide the quickest response time when answering a request, and so it reserves the necessary computation time on that instance.
 
@@ -217,7 +217,7 @@ Different types of requests may have differing average completion times, so the 
 
 If you use an elaborate search function, you may create a new category for search queries. This helps the Dispatcher send search queries to the instance that responds fastest. This prevents a slower instance from stalling when it receives several "expensive" search queries, while the others get the "cheaper" requests.
 
-**Personalized content (Sticky Connections)**
+### Personalized content (Sticky Connections)
 
 Sticky connections ensure that documents for one user are all composed on the same instance of AEM. This is important if you use personalized pages and session data. The data is stored on the instance, so subsequent requests from the same user must return to that instance or the data is lost.
 
@@ -258,7 +258,7 @@ The "next closest server" depends on your specific setup. For example, in an Aka
 
 In most cases, Dispatcher is the next server that might serve the document from a cache and influence the response headers returned to the CDN server.
 
-#### Controlling a CDN cache {#controlling-a-cdn-cache}
+### Controlling a CDN cache {#controlling-a-cdn-cache}
 
 There are a numer of ways to control for how long a CDN will cache a resource before it re-fetches is from Dispatcher.
 
