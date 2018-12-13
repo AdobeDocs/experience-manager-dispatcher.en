@@ -62,7 +62,7 @@ Adobe strongly recommends using the latest version of AEM Dispatcher to avail th
 
 ## Installation instructions {#installation-instructions}
 
-For detailed instructions, see [Installing Dispatcher](using/dispatcher-install.md).
+For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ## Release History {#release-history}
 
@@ -119,7 +119,7 @@ For detailed instructions, see [Installing Dispatcher](using/dispatcher-install.
 
 ## Helpful resources {#helpful-resources}
 
-* [AEM Dispatcher Overview](using/dispatcher.md)
+* [AEM Dispatcher Overview](dispatcher.md)
 
 ## Downloads {#downloads}
 
