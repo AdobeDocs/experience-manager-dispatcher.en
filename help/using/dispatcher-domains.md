@@ -66,8 +66,8 @@ To use Dispatcher with multiple domains, you need to configure AEM, Dispatcher, 
 
 To enable domain URLs and content paths to resolve to cached files, at some point in the process a file path or page URL must be translated. Descriptions of the following common strategies are provided, where path or URL translations occur at different points in the process:
 
-* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. (See [AEM Rewrites Incoming URLs](dispatcher-domains.md#main-pars_title_2).)
-* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. (See [The Web Server Rewrites Incoming URLs](dispatcher-domains.md#main-pars_title_1).)
+* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. (See [AEM Rewrites Incoming URLs](dispatcher-domains.md#main-pars-title-2).)
+* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. (See [The Web Server Rewrites Incoming URLs](dispatcher-domains.md#main-pars-title-1).)
 
 It is generally desirable to use short URLs for web pages. Typically, page URLs mirror the structure of the repository folders that contain the web content. However, the URLs do not reveal the topmost repository nodes, such as `/content`. The client is not necessarily aware of the structure of the AEM repository.
 
@@ -129,12 +129,12 @@ Define virtual hosts on the web server so that a different document root can be 
 * For each domain, confgure the document root to coincide with the folder in the repository that contains the domain's web content.
 * Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
 
-The following example httpd.conf file configures two virtual domains for an Apache web server:
+The following example `httpd.conf` file configures two virtual domains for an Apache web server:
 
 * The server names (which coincide with the domain names) are branda.com (line 16) and brandb.com (line 30).
 * The document root of each virtual domain is the directory in the Dispatcher cache that contains the site's pages. (lines 17 and 31)
 
-With this configuration, the web server performes the following actions when it recieves a request for `http://branda.com/en/products.html`:
+With this configuration, the web server performs the following actions when it recieves a request for `http://branda.com/en/products.html`:
 
 * Associates the URL with the virtual host that has a `ServerName` of `branda.com.`
 
@@ -188,7 +188,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-Note that virtual hosts inherit the [DispatcherConfig](dispatcher-install.md#main-pars_67_table_7) property value that is configured in the main server section. Virtual hosts can include their own DispatcherConfig property to override the main server configuration.
+Note that virtual hosts inherit the [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) property value that is configured in the main server section. Virtual hosts can include their own DispatcherConfig property to override the main server configuration.
 
 ### Configure Dispatcher to Handle Multiple Domains {#configure-dispatcher-to-handle-multiple-domains}
 
@@ -293,46 +293,19 @@ After you create the mapping for the content page, to discover additional requir
 
 >[!NOTE]
 >
->The linkchecker transformer of the default Apache Sling rewriter automatically modifies hyperlinks in the page to prevent broken links. However, link rewriting is performed only when the link target is an HTML or HTM file. To update links to other file types, create a transformer component and add it to an HTML rewriter pipeline. (See [Rewriting Links to Non-HTML Files](#RewritingLinkstoNonHTMLFiles).)
+>The linkchecker transformer of the default Apache Sling rewriter automatically modifies hyperlinks in the page to prevent broken links. However, link rewriting is performed only when the link target is an HTML or HTM file. To update links to other file types, create a transformer component and add it to an HTML rewriter pipeline.
 
 **Example resource mapping nodes**
 
 The following table lists the nodes that implement resource mapping for the branda.com domain. Similar nodes are created for the brandb.com domain, such as /etc/map/http/brandb.com. In all cases, mappings are required when references in the page HTML to not resolve correctly in the context of Sling.
 
-<table border="1" cellpadding="1" cellspacing="0" width="100%"> 
- <tbody> 
-  <tr> 
-   <th>Node path</th> 
-   <th>Type</th> 
-   <th>Property</th> 
-  </tr> 
-  <tr> 
-   <td>/etc/map/http/branda.com</td> 
-   <td>sling:Mapping</td> 
-   <td>Name: sling:internalRedirect<br /> Type: String<br /> Value: /content/sitea</td> 
-  </tr> 
-  <tr> 
-   <td>/etc/map/http/branda.com/libs</td> 
-   <td>sling:Mapping</td> 
-   <td>Name: sling:internalRedirect<br /> Type: String<br /> Value: /libs</td> 
-  </tr> 
-  <tr> 
-   <td>/etc/map/http/branda.com/etc</td> 
-   <td>sling:Mapping</td> 
-   <td> </td> 
-  </tr> 
-  <tr> 
-   <td>/etc/map/http/branda.com/etc/designs</td> 
-   <td>sling:Mapping</td> 
-   <td>Name: sling:internalRedirect<br /> Type: String<br /> Value: /etc/designs</td> 
-  </tr> 
-  <tr> 
-   <td>/etc/map/http/branda.com/etc/clientlibs</td> 
-   <td>sling:Mapping</td> 
-   <td>Name: sling:internalRedirect<br /> Type: String<br /> Value: /etc/clientlibs</td> 
-  </tr> 
- </tbody> 
-</table>
+|Node path|Type|Property|
+|--- |--- |--- |
+|`/etc/map/http/branda.com`|sling:Mapping|Name: sling:internalRedirect Type: String Value: /content/sitea|
+|`/etc/map/http/branda.com/libs`|sling:Mapping|Name: sling:internalRedirect <br/>Type: String <br/>Value: /libs|
+|`/etc/map/http/branda.com/etc`|sling:Mapping||
+|`/etc/map/http/branda.com/etc/designs`|sling:Mapping|Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs|
+|`/etc/map/http/branda.com/etc/clientlibs`|sling:Mapping|Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs|
 
 ### Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
 
@@ -523,7 +496,7 @@ As usual, the document root of the cache is the same as the document root of the
 
 To rewrite references to files that have extensions other than .html or .htm, create a Sling rewriter transformer component and add it to the default rewriter pipeline.
 
-Rewrite references when resource paths do not resolve correctly in the web server context. For example, a transformer is required when image-generating components create links such as /content/sitea/en/products.navimage.png. The topnav component of the [How to Create a Fully Featured Internet Website](/content/help/en/experience-manager/6-3/sites/developing/using/the-basics) creates such links.
+Rewrite references when resource paths do not resolve correctly in the web server context. For example, a transformer is required when image-generating components create links such as /content/sitea/en/products.navimage.png. The topnav component of the [How to Create a Fully Featured Internet Website](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/the-basics.html) creates such links.
 
 The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) is a module that post-processes Sling output. SAX pipeline implementations of the rewriter consist of a generator, one or more transformers, and a serializer:
 
@@ -561,7 +534,7 @@ Perform the following tasks to create a transformer component and use it in a pi
 
 >[!NOTE]
 >
->Use the [multimodule](/content/help/en/experience-manager/aem-previous-versions) archetype of the Content Package Maven Plugin to create your Maven project. The POMs automatically create and install a content package.
+>Use the [multimodule](https://helpx.adobe.com/experience-manager/aem-previous-versions.html) archetype of the Content Package Maven Plugin to create your Maven project. The POMs automatically create and install a content package.
 
 The following examples implement a transformer that rewrites references to image files.
 
