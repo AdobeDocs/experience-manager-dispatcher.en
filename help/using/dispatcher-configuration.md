@@ -272,7 +272,7 @@ Each farm property can contain the following child properties:
 >
 >The `/homepage`parameter (IIS only) no longer works. Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->If you are using Apache, you should use the `mod_rewrite` module. See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag ** ['passthrough|PT' (pass through to next handler)](http://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>If you are using Apache, you should use the `mod_rewrite` module. See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag ** ['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
 
 <!-- 
 
@@ -380,8 +380,8 @@ The `/virtualhosts` property defines a list of all hostname/URI combinations tha
 [scheme]host[uri][*]
 ```
 
-* `scheme`: (Optional) Either `http://` or `https://.`
-* `host`: The name or IP address of the host computer and the port number if necessary. (See [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
+* `scheme`: (Optional) Either `https://` or `https://.`
+* `host`: The name or IP address of the host computer and the port number if necessary. (See [https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
 * `uri`: (Optional) The path to the resources.
 
 The following example configuration handles requests for the .com and .ch domains of myCompany, and all domains of mySubDivision:
@@ -457,8 +457,8 @@ Using this example, the following table shows the virtual hosts that are resolve
 
 | Request URL |Resolved virtual host |
 |---|---|
-| http://www.mycompany.com/products/gloves.html |www.mycompany.com/products/&#42; |
-| http://www.mycompany.com/about.html |www.mycompany.com |
+| https://www.mycompany.com/products/gloves.html |www.mycompany.com/products/&#42; |
+| https://www.mycompany.com/about.html |www.mycompany.com |
 
 ## Enabling Secure Sessions - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
 
@@ -638,7 +638,7 @@ For information about /glob properties, see [Designing Patterns for glob Propert
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
 
-HTTP/1.1 defines the [request-line](http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
+HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
 
 *Method Request-URI HTTP-Version*&lt;CRLF&gt;
 
@@ -931,11 +931,11 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 
 Issue the following command in a terminal or command prompt to determine whether anonymous write access is enabled. You should not be able to write data to the node.
 
-`curl -X POST "http://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
+`curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
 Issue the following command in a terminal or command prompt to attempt to invalidate the Dispatcher cache, and ensure that you recieve a code 404 response:
 
-`curl -H "CQ-Handle: /content" -H "CQ-Path: /content" http://yourhostname/dispatcher/invalidate.cache`
+`curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
 ## Enabling Access to Vanity URLs {#enabling-access-to-vanity-urls-vanity-urls}
 
@@ -1740,7 +1740,7 @@ This will automatically rotate:
 * the dispatcher log file; with a timestamp in the extension (logs/dispatcher.log%Y%m%d).  
 * on a weekly basis (60 x 60 x 24 x 7 = 604800 seconds).
 
-Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.2](http://httpd.apache.org/docs/2.2/logs.html).
+Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.2](https://httpd.apache.org/docs/2.2/logs.html).
 
 >[!NOTE]
 >
@@ -1798,8 +1798,8 @@ To confirm basic operation and interaction of the web server, Dispatcher and AEM
 
 1. Surf the website via the web server. Confirm that content is being shown as required.  
    For example, on a local installation where AEM runs on port `4502` and the web server on `80` access the Websites console using both:  
-   ` http://localhost:4502/libs/wcm/core/content/siteadmin.html  
-   http://localhost:80/libs/wcm/core/content/siteadmin.html  
+   ` https://localhost:4502/libs/wcm/core/content/siteadmin.html  
+   https://localhost:80/libs/wcm/core/content/siteadmin.html  
    `The results should be identical. Confirm access to other pages with the same mechanism.
 
 1. Check that the cache directory is being filled.
@@ -1841,7 +1841,7 @@ For example,
 Also, the `X-Dispatcher-Info` header does not need a value, but if you use `curl` for testing you must supply a value in order to send the header, such as:
 
 ```
-curl -v -H "X-Dispatcher-Info: true" http://localhost/content/we-retail/us/en.html
+curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.html
 
 ```
 

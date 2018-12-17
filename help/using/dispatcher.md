@@ -32,13 +32,13 @@ The process for deploying a Dispatcher is independent of the web server and OS p
 
 >[!NOTE]
 >
->To gain a better undestanding of how Dispatcher works with AEM see [Ask the AEM Community Experts for July 2017](http://bit.ly/ATACE0717).
+>To gain a better undestanding of how Dispatcher works with AEM see [Ask the AEM Community Experts for July 2017](https://bit.ly/ATACE0717).
 
 Use the following information as required:
 
-* [](http://helpx.adobe.com/cq/kb/index/dispatcher.html) [The Dispatcher Security Checklist](security-checklist.md)
+* [](https://helpx.adobe.com/cq/kb/index/dispatcher.html) [The Dispatcher Security Checklist](security-checklist.md)
 
-* [The Dispatcher Knowledge Base](http://helpx.adobe.com/cq/kb/index/dispatcher.html)
+* [The Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html)
 * [Optimizing a Website for Cache Performance](optimizing-caching.md)
 * [Using Dispatcher with Multiple Domains](dispatcher-domains.md)
 * [Using SSL with Dispatcher](dispatcher-ssl.md)
@@ -49,7 +49,7 @@ Use the following information as required:
 >
 >**The most common use of Dispatcher** is to cache responses from an AEM **publish instance**, to increase the responsiveness and security of your externally facing published website. Most of the discussion focuses on this case.
 >
->But, the Dispatcher can also be used to increase the responsiveness of your **author instance**, particularly if you have a large number users editing and updating your website. For details specific to this case see [Using a Dispatcher with an Author Server](#UsingaDispatcherwithanAuthorServer), below.
+>But, the Dispatcher can also be used to increase the responsiveness of your **author instance**, particularly if you have a large number users editing and updating your website. For details specific to this case see [Using a Dispatcher with an Author Server](#using-a-dispatcher-with-an-author-server), below.
 
 ## Why use Dispatcher to implement Caching? {#why-use-dispatcher-to-implement-caching}
 
@@ -95,7 +95,7 @@ This allows you to create richer, dynamic content, which increases the flexibili
 
 >[!NOTE]
 >
->When lacking the configuration for HTTP Header Caching, the Dispatcher stores only the HTML code of the page - it does not store the HTTP headers. This can be an issue if you use different encodings within your website, as these may get lost. To enable HTTP Header Caching, see [Configuring the Dispatcher Cache.](/using/dispatcher-configuration.html?cq_ck=1510236516566)
+>When lacking the configuration for HTTP Header Caching, the Dispatcher stores only the HTML code of the page - it does not store the HTTP headers. This can be an issue if you use different encodings within your website, as these may get lost. To enable HTTP Header Caching, see [Configuring the Dispatcher Cache.](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html)
 
 >[!NOTE]
 >
@@ -149,7 +149,7 @@ Again, certain points should be noted:
 
 ### Determining whether a document is subject to caching
 
-You can [define which documents the Dispatcher caches in the configuration file](dispatcher-configuration.md#main-pars_146_44_0010). The Dispatcher checks the request against the list of cacheable documents. If the document is not in this list, the Dispatcher requests the document from the AEM instance.
+You can [define which documents the Dispatcher caches in the configuration file](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html). The Dispatcher checks the request against the list of cacheable documents. If the document is not in this list, the Dispatcher requests the document from the AEM instance.
 
 The Dispatcher *always* requests the document directly from the AEM instance in the following cases:
 
@@ -159,7 +159,7 @@ The Dispatcher *always* requests the document directly from the AEM instance in 
 
 >[!NOTE]
 >
->The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
+>The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](https://helpx.adobe.com/experience-manager/dispatcher/using/dispatcher-configuration.html) section.
 
 ### Determining if a document is cached
 
@@ -262,7 +262,7 @@ There are a numer of ways to control for how long a CDN will cache a resource be
    Configure, how long particular resources are held in the CDN's cache, depending on mime type, extension, request type, etc.  
 
 1. Expiration and cache-control headers  
-   Most CDNs will honor `Expires:` and `Cache-Control:` HTTP Headers if sent by the upstream server. This can be achieved e.g. by using the [mod_expires](http://httpd.apache.org/docs/2.2/mod/mod_expires.html) Apache Module.
+   Most CDNs will honor `Expires:` and `Cache-Control:` HTTP Headers if sent by the upstream server. This can be achieved e.g. by using the [mod_expires](https://httpd.apache.org/docs/2.2/mod/mod_expires.html) Apache Module.
 
 1. Manual invalidation  
    CDNs allow resources to be removed from the cache through web interfaces.
@@ -273,11 +273,11 @@ In a typical AEM setup, configuration by extension and/or path, which can be ach
 
 If this approach is used to cache managed content, it implies that content changes are only visible to end users once the configured caching period is expired and the document is fetched from Dispatcher again.
 
-For finer-grained control, API based invalidation allows you to invalidate a CDN's cache as the Dispatcher cache is invalidated. Based on the CDNs API, you can implement your own [ContentBuilder](http://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/ContentBuilder.html) and [TransportHandler](http://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/TransportHandler.html) (if the API is not REST-based) and set up a Replication Agent that will use these to invalidate the CDN's cache.
+For finer-grained control, API based invalidation allows you to invalidate a CDN's cache as the Dispatcher cache is invalidated. Based on the CDNs API, you can implement your own [ContentBuilder](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/ContentBuilder.html) and [TransportHandler](https://docs.adobe.com/docs/en/cq/current/javadoc/com/day/cq/replication/TransportHandler.html) (if the API is not REST-based) and set up a Replication Agent that will use these to invalidate the CDN's cache.
 
 >[!NOTE]
 >
->See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](http://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](http://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html).
+>See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](https://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html).
 
 ## Using a Dispatcher with an Author Server {#using-a-dispatcher-with-an-author-server}
 
@@ -325,5 +325,5 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 >[!NOTE]
 >
 >A related knowledge base article can be found here:  
->[How to configure the dispatcher in front of an authoring environment](http://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)
+>[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)
 

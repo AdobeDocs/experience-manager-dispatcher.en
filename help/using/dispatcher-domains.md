@@ -34,7 +34,7 @@ For example, a company publishes websites for two of their brands: Brand A and B
 | - content nodes
 ```
 
-Pages for BrandA.com are stored below `/content/sitea`. Client requests for the URL `http://BrandA.com/en.html` are returned the rendered page for the `/content/sitea/en` node. Similarly, pages for BrandB.com are stored below `/content/siteb`.
+Pages for BrandA.com are stored below `/content/sitea`. Client requests for the URL `https://BrandA.com/en.html` are returned the rendered page for the `/content/sitea/en` node. Similarly, pages for BrandB.com are stored below `/content/siteb`.
 
 When using Dispatcher to cache content, associations must be made between the page URL in the client HTTP request, the path of the corresponding file in the cache, and the path of the corresponding file in the repository.
 
@@ -134,7 +134,7 @@ The following example `httpd.conf` file configures two virtual domains for an Ap
 * The server names (which coincide with the domain names) are branda.com (line 16) and brandb.com (line 30).
 * The document root of each virtual domain is the directory in the Dispatcher cache that contains the site's pages. (lines 17 and 31)
 
-With this configuration, the web server performs the following actions when it recieves a request for `http://branda.com/en/products.html`:
+With this configuration, the web server performs the following actions when it recieves a request for `https://branda.com/en/products.html`:
 
 * Associates the URL with the virtual host that has a `ServerName` of `branda.com.`
 
@@ -202,9 +202,9 @@ To support URLs that include domain names and their corresponding virtual hosts,
 Farms for virtual hosts must have the following configurations so that the URLs in client HTTP requests are resolved to the correct files in the Dispatcher cache:
 
 * The `/virtualhosts` property is set to the domain name. This property enables Dispatcher to associate the farm with the domain.
-* The `/filter` property allows access to the path of the request URL truncated after the domain name part. For example, for the `http://branda.com/en.html` URL, the path is interpreted as `/en.html`, so the filter must allow access to this path.
+* The `/filter` property allows access to the path of the request URL truncated after the domain name part. For example, for the `https://branda.com/en.html` URL, the path is interpreted as `/en.html`, so the filter must allow access to this path.
 
-* The `/docroot` property is set to the path of the root directory of the domain's site content in the Dispatcher cache. This path is used as the prefix for the concatenated URL from the original request. For example, the docroot of `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` causes the request for `http://branda.com/en.html` to resolve to the `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` file.
+* The `/docroot` property is set to the path of the root directory of the domain's site content in the Dispatcher cache. This path is used as the prefix for the concatenated URL from the original request. For example, the docroot of `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` causes the request for `https://branda.com/en.html` to resolve to the `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html` file.
 
 Additionally, the AEM publish instance must be designated as the render for the virtual host. Configure other farm properties as required. The following code is an abbreviated farm configuration for the branda.com domain:
 
@@ -277,7 +277,7 @@ Dispatcher initializing (build 4.1.2)
 
 Use Sling mapping for resource resolution so that domain-based URLs resolve to content on the AEM publish instance. The resource mapping translates the incoming URLs from Dispatcher (originally from client HTTP requests) to content nodes.
 
-To learn about Sling resource mapping, see [Mappings for Resource Resolution](http://sling.apache.org/site/mappings-for-resource-resolution.html) in the Sling documentation.
+To learn about Sling resource mapping, see [Mappings for Resource Resolution](https://sling.apache.org/site/mappings-for-resource-resolution.html) in the Sling documentation.
 
 Typically, mappings are required for the following resources, although additional mappings can be necessary:
 
@@ -311,15 +311,15 @@ The following table lists the nodes that implement resource mapping for the bran
 
 The Dispatcher Flush replication agent on the AEM publish instance must send invalidation requests to the correct Dispatcher farm. To target a farm, use the URI property of the Dispatcher Flush replication agent (on the Transport tab). Include the value of the `/virtualhost` property for the Dispatcher farm that is configured for invalidating the cache:
 
-`http://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
+`https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
-For example, to use the `farm_flush` farm of the previous example, the URI is `http://localhost:80/invalidation_only/dispatcher/invalidate.cache`.
+For example, to use the `farm_flush` farm of the previous example, the URI is `https://localhost:80/invalidation_only/dispatcher/invalidate.cache`.
 
 ![](assets/chlimage_1-12.png) 
 
 ## The Web Server Rewrites Incoming URLs {#the-web-server-rewrites-incoming-urls}
 
-Use the internal URL rewriting feature of your web server to translate domain-based URLs to file paths in the Dispatcher cache. For example, client requests for the `http://brandA.com/en.html` page are translated to the `content/sitea/en.html`file in the document root of the web server.
+Use the internal URL rewriting feature of your web server to translate domain-based URLs to file paths in the Dispatcher cache. For example, client requests for the `https://brandA.com/en.html` page are translated to the `content/sitea/en.html`file in the document root of the web server.
 
 ![](assets/chlimage_1-13.png)
 
@@ -345,7 +345,7 @@ The following example httpd.conf file configures two virtual hosts for an Apache
 * The URL rewrite rule for each virtual domain is a regular expression that prefixes the path of the requested page with the path to the pages in the cache. (lines 19 and 35)
 * The `DispatherUseProcessedURL` property is set to `1`. (line 10)
 
-For example, the web server performes the following actions when it recieves a request with the `http://brandA.com/en/products.html` URL:
+For example, the web server performes the following actions when it recieves a request with the `https://brandA.com/en/products.html` URL:
 
 * Associates the URL with the virtual host that has a `ServerName` of `brandA.com.`
 
@@ -649,7 +649,7 @@ Create a JCR node that defines a pipeline that uses your transformer. The follow
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="https://www.jcp.org/jcr/1.0" xmlns:nt="https://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
     contentTypes="[text/html]"
     enabled="{Boolean}true"

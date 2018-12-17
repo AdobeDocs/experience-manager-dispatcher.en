@@ -96,30 +96,30 @@ For detailed instructions, see [Installing Dispatcher](using/dispatcher-install.
 
 | Platform |Architecture |SSL Support |Download |
 |---|---|---|---|
-| AIX |PowerPC (32-bit) |No | [dispatcher-apache2.4-aix-powerpc-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.1.tar.gz) |
-| AIX |PowerPC (32-bit) |Yes | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.1.tar.gz) |
-| AIX |PowerPC (64-bit) |No | [dispatcher-apache2.4-aix-powerpc64-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.1.tar.gz) |
-| AIX |PowerPC (64-bit) |Yes | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.1.tar.gz) |
-| Linux |i686 (32-bit) |No | [dispatcher-apache2.4-linux-i686-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.1.tar.gz) |
-| Linux |i686 (32-bit) |Yes | [dispatcher-apache2.4-linux-i686-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.1.tar.gz) |
-| Linux |x86_64 (64-bit) |No | [dispatcher-apache2.4-linux-x86_64-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.1.tar.gz) |
-| Linux |x86_64 (64-bit) |Yes | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz) |
-| macOS |x86_64 (64-bit) |No | [dispatcher-apache2.4-darwin-x86_64-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.1.tar.gz) |
-| Solaris |AMD (32-bit) |No | [dispatcher-apache2.4-solaris-i386-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.1.tar.gz) |
-| Solaris |AMD (32-bit) |Yes | [dispatcher-apache2.4-solaris-i386-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.1.tar.gz) |
-| Solaris |AMD (64-bit) |No | [dispatcher-apache2.4-solaris-amd64-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.1.tar.gz) |
-| Solaris |AMD (64-bit) |Yes | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.1.tar.gz) |
-| Solaris |SPARC (32-bit) |No | [dispatcher-apache2.4-solaris-sparc-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.1.tar.gz) |
-| Solaris |SPARC (32-bit) |Yes | [dispatcher-apache2.4-solaris-sparc-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-ssl-4.3.1.tar.gz) |
-| Solaris |SPARC (64-bit) |No | [dispatcher-apache2.4-solaris-sparcv9-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.1.tar.gz) |
-| Solaris |SPARC (64-bit) |Yes | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.1.tar.gz](http://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.1.tar.gz) |
+| AIX |PowerPC (32-bit) |No | [dispatcher-apache2.4-aix-powerpc-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-4.3.1.tar.gz) |
+| AIX |PowerPC (32-bit) |Yes | [dispatcher-apache2.4-aix-powerpc-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc-ssl-4.3.1.tar.gz) |
+| AIX |PowerPC (64-bit) |No | [dispatcher-apache2.4-aix-powerpc64-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-4.3.1.tar.gz) |
+| AIX |PowerPC (64-bit) |Yes | [dispatcher-apache2.4-aix-powerpc64-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-aix-powerpc64-ssl-4.3.1.tar.gz) |
+| Linux |i686 (32-bit) |No | [dispatcher-apache2.4-linux-i686-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.1.tar.gz) |
+| Linux |i686 (32-bit) |Yes | [dispatcher-apache2.4-linux-i686-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl-4.3.1.tar.gz) |
+| Linux |x86_64 (64-bit) |No | [dispatcher-apache2.4-linux-x86_64-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-4.3.1.tar.gz) |
+| Linux |x86_64 (64-bit) |Yes | [dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz) |
+| macOS |x86_64 (64-bit) |No | [dispatcher-apache2.4-darwin-x86_64-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.1.tar.gz) |
+| Solaris |AMD (32-bit) |No | [dispatcher-apache2.4-solaris-i386-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-4.3.1.tar.gz) |
+| Solaris |AMD (32-bit) |Yes | [dispatcher-apache2.4-solaris-i386-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-i386-ssl-4.3.1.tar.gz) |
+| Solaris |AMD (64-bit) |No | [dispatcher-apache2.4-solaris-amd64-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-4.3.1.tar.gz) |
+| Solaris |AMD (64-bit) |Yes | [dispatcher-apache2.4-solaris-amd64-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-amd64-ssl-4.3.1.tar.gz) |
+| Solaris |SPARC (32-bit) |No | [dispatcher-apache2.4-solaris-sparc-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-4.3.1.tar.gz) |
+| Solaris |SPARC (32-bit) |Yes | [dispatcher-apache2.4-solaris-sparc-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparc-ssl-4.3.1.tar.gz) |
+| Solaris |SPARC (64-bit) |No | [dispatcher-apache2.4-solaris-sparcv9-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-4.3.1.tar.gz) |
+| Solaris |SPARC (64-bit) |Yes | [dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.1.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-solaris-sparcv9-ssl-4.3.1.tar.gz) |
 
 ### IIS {#iis}
 
 | Platform |Architecture |SSL support |Download |
 |---|---|---|---|
-| Windows |x86 (32-bit) |No | [dispatcher-iis-windows-x86-4.3.1.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.1.zip) |
-| Windows |x86 (32-bit) |Yes | [dispatcher-iis-windows-x86-ssl-4.3.1.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.1.zip) |
-| Windows |x64 (64-bit) |No | [dispatcher-iis-windows-x64-4.3.1.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.1.zip) |
-| Windows |x64 (64-bit) |Yes | [dispatcher-iis-windows-x64-ssl-4.3.1.zip](http://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.1.zip) |
+| Windows |x86 (32-bit) |No | [dispatcher-iis-windows-x86-4.3.1.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.1.zip) |
+| Windows |x86 (32-bit) |Yes | [dispatcher-iis-windows-x86-ssl-4.3.1.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl-4.3.1.zip) |
+| Windows |x64 (64-bit) |No | [dispatcher-iis-windows-x64-4.3.1.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.1.zip) |
+| Windows |x64 (64-bit) |Yes | [dispatcher-iis-windows-x64-ssl-4.3.1.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl-4.3.1.zip) |
 

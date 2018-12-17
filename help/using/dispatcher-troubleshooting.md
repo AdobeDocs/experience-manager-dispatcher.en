@@ -25,7 +25,7 @@ discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 
 >[!NOTE]
 >
->Please check the [Dispatcher Knowledge Base](http://helpx.adobe.com/cq/kb/index/dispatcher.html) or [Troubleshooting Dispatcher](http://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) for further information.
+>Please check the [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html) or [Troubleshooting Dispatcher](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) for further information.
 
 ## Check the Basic Configuration {#check-the-basic-configuration}
 
@@ -57,8 +57,8 @@ These can help you monitor activity.
 
 When using IIS you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
 
-* [IIS 6/7: POST method returns 404](http://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
-* [IIS 6: Requests to URLs that contain the base path `/bin` return `404 Not Found`](http://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
+* [IIS 6/7: POST method returns 404](https://helpx.adobe.com/dispatcher/kb/IIS6IsapiFilters.html)
+* [IIS 6: Requests to URLs that contain the base path `/bin` return `404 Not Found`](https://helpx.adobe.com/dispatcher/kb/RequestsToBinDirectoryFailInIIS6.html)
 
 You should also check that the dispatcher cache root and the IIS document root are set to the same directory.
 

@@ -51,13 +51,13 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 Use the following procedure to configure a replication agent on the AEM author instance for invalidating the Dispatcher cache upon page activation:
 
-1. Open the AEM Tools console. ( [http://localhost:4502/miscadmin#/etc](http://localhost:4502/miscadmin#/etc))
+1. Open the AEM Tools console. ( [https://localhost:4502/miscadmin#/etc](https://localhost:4502/miscadmin#/etc))
 1. Open the required replication agent below Tools/replication/Agents on author. You can use the Dispatcher Flush agent that is installed by default.
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.  
 
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, http://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
   
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
@@ -106,7 +106,7 @@ The dispatcher flush is controlled by a replication agent operating on the publi
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, http://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
   
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
@@ -224,7 +224,7 @@ public class Flushcache extends SlingSafeMethodsServlet {
 
       HttpClient client = new HttpClient();
 
-      PostMethod post = new PostMethod("http://"+host+uri);
+      PostMethod post = new PostMethod("https://"+host+uri);
       post.setRequestHeader("CQ-Action", "Activate");
       post.setRequestHeader("CQ-Handle",handle);
    

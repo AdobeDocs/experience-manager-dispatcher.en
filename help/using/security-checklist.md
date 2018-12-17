@@ -100,7 +100,7 @@ A denial of service (DoS) attack is an attempt to make a computer resource unava
 
 At the dispatcher level, there are two methods of configuring to prevent DoS attacks: [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (Filters))
 
-* Use the mod_rewrite module (for example, [Apache 2.2](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).  
+* Use the mod_rewrite module (for example, [Apache 2.2](https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).  
 
 * Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#ConfiguringAccesstoContentfilter).  
   For example, change the caching rules to limit caching to the expected mime types, such as:

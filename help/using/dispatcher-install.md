@@ -88,7 +88,7 @@ Comment Type: draft
 For information on how to install this web server, see the following resources:
 
 * Microsoft's own documentation on the Internet Information Server
-* ["The Official Microsoft IIS site"](http://www.iis.net/)
+* ["The Official Microsoft IIS site"](https://www.iis.net/)
 
 ### Required IIS Components {#required-iis-components}
 
@@ -298,7 +298,7 @@ Before you can start using the Dispatcher you must now:
 
 ### Installing Apache Web Server {#installing-apache-web-server}
 
-For Information about how to install an Apache Web Server read the installation manual - either [online](http://httpd.apache.org/) or in the distribution.
+For Information about how to install an Apache Web Server read the installation manual - either [online](https://httpd.apache.org/) or in the distribution.
 
 >[!CAUTION]
 >
@@ -306,7 +306,7 @@ For Information about how to install an Apache Web Server read the installation 
 >
 >More information can be found in the Apache Web Server installation manual.
 
-Also see the Apache HTTP Server [Security Tips](http://httpd.apache.org/docs/2.2/misc/security_tips.html) and [Security Reports](http://httpd.apache.org/security_report.html).
+Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.2/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
 
 ### Apache Web Server - Add the Dispatcher Module {#apache-web-server-add-the-dispatcher-module}
 
@@ -435,7 +435,7 @@ The individual configuration parameters:
   </tr> 
   <tr> 
    <td valign="top">DispatcherUseProcessedURL</td> 
-   <td>Defines whether to use pre-processed URLs for all further processing by Dispatcher:<br /> <strong>0</strong> - use the original URL passed to the web server.<br /> <strong>1</strong> - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. mod_rewrite) instead of the original URL passed to the web server.<br /> <br /> For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure. <br /> <br /> See the Apache web site documentation for information about mod_rewrite; for example, <a href="http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">Apache 2.2</a>. When using mod_rewrite, it is advisable to use the flag <strong><a href="http://docs.adobe.com/content/kb/home/Dispatcher/troubleshooting/DispatcherModReWrite.html">'passthrough|PT' (pass through to next handler)</a></strong> to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.<br /> </td> 
+   <td>Defines whether to use pre-processed URLs for all further processing by Dispatcher:<br /> <strong>0</strong> - use the original URL passed to the web server.<br /> <strong>1</strong> - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. mod_rewrite) instead of the original URL passed to the web server.<br /> <br /> For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure. <br /> <br /> See the Apache web site documentation for information about mod_rewrite; for example, <a href="https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">Apache 2.2</a>. When using mod_rewrite, it is advisable to use the flag <strong><a href="https://docs.adobe.com/content/kb/home/Dispatcher/troubleshooting/DispatcherModReWrite.html">'passthrough|PT' (pass through to next handler)</a></strong> to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.<br /> </td> 
   </tr> 
   <tr> 
    <td valign="top">DispatcherPassError<br /> </td> 
@@ -463,7 +463,7 @@ The individual configuration parameters:
 >DispatcherNoServerHeader 0`  
 >Which shows the AEM version (for statistical purposes). If you want to disable such information being available in the header you can set: `  
 >ServerTokens Prod`  
->See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.2)](http://httpd.apache.org/docs/2.2/mod/core.html) for more information.
+>See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.2)](https://httpd.apache.org/docs/2.2/mod/core.html) for more information.
 
 **SetHandler**
 
@@ -513,7 +513,7 @@ The **ModMimeUsePathInfo** parameter should be set `On` for all Apache configura
 
 `ModMimeUsePathInfo On`
 
-The mod_mime module (see for example, [Apache Module mod_mime](http://httpd.apache.org/docs/2.2/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. The default setup means that when mod_mime determines the content type, only the part of the URL that maps to a file or directory will be considered.
+The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.2/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. The default setup means that when mod_mime determines the content type, only the part of the URL that maps to a file or directory will be considered.
 
 When `On`, the `ModMimeUsePathInfo` parameter specifies that `mod_mime` is to determine the content type based on the *complete* URL; this means that virtual resources will have metainformation applied based on their extension.
 
