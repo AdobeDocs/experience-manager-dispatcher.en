@@ -6,13 +6,12 @@ seo-description: Learn how to install the Dispatcher module on Microsoft Interne
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: User
 converted: true
-products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
 ---
 
-# Installing Dispatcher{#installing-dispatcher}
+# Installing Dispatcher {#installing-dispatcher}
 
 <!-- 
 
@@ -108,8 +107,8 @@ The ZIP file contains the following files:
 
 |File|Description|
 |--- |--- |
-|disp_iis.dll|The Dispatcher dynamic link library file.|
-|disp_iis.ini|Configuration file for the IIS. This example can be updated with your requirements. NOTE: The ini file must have the same name-root as the dll.|
+|`disp_iis.dll`|The Dispatcher dynamic link library file.|
+|`disp_iis.ini`|Configuration file for the IIS. This example can be updated with your requirements. NOTE: The ini file must have the same name-root as the dll.|
 |`dispatcher.any`|An example configuration file for the Dispatcher.|
 |`author_dispatcher.any`|An example configuration file for Dispatcher working with the author instance.|
 |README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
@@ -117,17 +116,15 @@ The ZIP file contains the following files:
 
 Use the following procedure to copy the Dispatcher files to the correct location.
 
-1. Use Windows Explorer to create the `<*IIS_INSTALLDIR*>/Scripts` directory,  
-       for example, `C:\inetpub\Scripts`.
+1. Use Windows Explorer to create the `<*IIS_INSTALLDIR*>/Scripts` directory, for example, `C:\inetpub\Scripts`.
 
 1. Extract the following files from the Dispatcher package into this Scripts directory:
 
-    * `disp_iis.dll`
-    * `disp_iis.ini`
-    * One of the following files depending on if Dispatcher is working with an AEM author instance or publish instance:
-
-      * Author instance: `author_dispatcher.any`
-      * Publish instance: `dispatcher.any`
+   * `disp_iis.dll`
+   * `disp_iis.ini`
+   * One of the following files depending on if Dispatcher is working with an AEM author instance or publish instance:
+     * Author instance: `author_dispatcher.any`
+     * Publish instance: `dispatcher.any`
 
 ## Microsoft IIS - Configure the Dispatcher INI File {#microsoft-iis-configure-the-dispatcher-ini-file}
 
