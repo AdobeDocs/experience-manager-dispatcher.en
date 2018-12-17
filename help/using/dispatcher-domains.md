@@ -20,7 +20,7 @@ discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
 
 Use Dispatcher to process page requests in multiple web domains while supporting the following conditions:
 
-* Web content for both domains is stored in a single AEM repository. 
+* Web content for both domains is stored in a single AEM repository.
 * The files in the Dispatcher cache can be invalidated separately for each domain.
 
 For example, a company publishes websites for two of their brands: Brand A and Brand B. The content for the website pages are authored in AEM, and stored in the same repository workspace:
@@ -38,19 +38,19 @@ Pages for BrandA.com are stored below `/content/sitea`. Client requests for the 
 
 When using Dispatcher to cache content, associations must be made between the page URL in the client HTTP request, the path of the corresponding file in the cache, and the path of the corresponding file in the repository.
 
-**Client requests**
+## Client requests
 
 When clients send HTTP requests to the web server, the URL of the requested page must be resolved to the content in the Dispatcher cache, and eventually to the content in the repository.
 
 ![](assets/chlimage_1-8.png)
 
 1. The domain name system discovers the IP address of the web server which is registered for the domain name in the HTTP request.
-1. The HTTP request is sent to the web server. 
-1. The HTTP request is passed to Dispatcher. 
+1. The HTTP request is sent to the web server.
+1. The HTTP request is passed to Dispatcher.
 1. Dispatcher determines whether the cached files are valid. If valid, the cached files are served to the client.
 1. If cached files are not valid, Dispatcher requests newly-rendered pages from the AEM publish instance.
 
-**Cache Invalidation**
+## Cache Invalidation
 
 When Dispatcher Flush replication agents request that Dispatcher invalidates cached files, the path of the content in the repository must resolve to the content in the cache.
 
@@ -85,8 +85,8 @@ Your environment must implement the following configurations to support Dispatch
 The example solutions that are provided apply to an environment with the following characteristics:
 
 * The AEM author and publish instances are deployed on Linux systems.
-* Apache HTTPD is the web server, deployed on a Linux system. 
-* The AEM content repository and the document root of the web server use the following file structures (the document root of the Apache web server is /usr/lib/apache/httpd-2.4.3/htdocs):
+* Apache HTTPD is the web server, deployed on a Linux system.
+* The AEM content repository and the document root of the web server use the following file structures (the document root of the Apache web server is /`usr/lib/apache/httpd-2.4.3/htdocs)`:
 
   **Repository**
 
@@ -197,7 +197,7 @@ To support URLs that include domain names and their corresponding virtual hosts,
 * Configure a Dispatcher farm for each virtual host. These farms process requests from the web server for each domain, check for cached files, and request pages from the renders.  
 * Configure a Dispatcher farm that is used for invalidating content the cache, regardless of which domain the content belongs to. This farm handles file invalidation requests from Flush Dispatcher replication agents.
 
-**Create Dispatcher farms for virtual hosts**
+### Create Dispatcher farms for virtual hosts
 
 Farms for virtual hosts must have the following configurations so that the URLs in client HTTP requests are resolved to the correct files in the Dispatcher cache:
 
@@ -228,14 +228,13 @@ Additionally, the AEM publish instance must be designated as the render for the 
 }
 ```
 
-**Create a Dispatcher farm for cache invalidation**
+### Create a Dispatcher farm for cache invalidation
 
 A Dispatcher farm is required for handling requests for invalidating cached files. This farm must be able to access .stat files in the docroot directories of each virtual host.
 
 The following property configurations enable Dispatcher to resolve files in the AEM content repository from files in the cache:
 
 * The `/docroot` property is set to the default docroot of the web server. Typically, this is the directory where the `/content` folder is created. An example value for Apache on Linux is `/usr/lib/apache/httpd-2.4.3/htdocs`.
-
 * The `/filter` property allows access to files below the `/content` directory.
 
 The `/statfileslevel`property must be high enough so that .stat files are created in the root directory of each virtual host. This property enables the cache of each domain to be invalidated separately. For the example setup, a `/statfileslevel` value of `2` creates .stat files in the `*docroot*/content/sitea` directory and the `*docroot*/content/siteb` directory.
@@ -283,7 +282,7 @@ Typically, mappings are required for the following resources, although additiona
 
 * The root node of the content page (below /content)
 * The design node that the pages use (below /etc/designs)
-* The /libs folder
+* The `/libs` folder
 
 After you create the mapping for the content page, to discover additional required mappings use a web browser to open a page on the web server. In the error.log file of the publish instance, locate messages about resources that are not found. The following example message indicates that a mapping for `/etc/clientlibs` is required:
 
@@ -295,7 +294,7 @@ After you create the mapping for the content page, to discover additional requir
 >
 >The linkchecker transformer of the default Apache Sling rewriter automatically modifies hyperlinks in the page to prevent broken links. However, link rewriting is performed only when the link target is an HTML or HTM file. To update links to other file types, create a transformer component and add it to an HTML rewriter pipeline.
 
-**Example resource mapping nodes**
+### Example resource mapping nodes
 
 The following table lists the nodes that implement resource mapping for the branda.com domain. Similar nodes are created for the brandb.com domain, such as /etc/map/http/brandb.com. In all cases, mappings are required when references in the page HTML to not resolve correctly in the context of Sling.
 
@@ -307,7 +306,7 @@ The following table lists the nodes that implement resource mapping for the bran
 |`/etc/map/http/branda.com/etc/designs`|sling:Mapping|Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs|
 |`/etc/map/http/branda.com/etc/clientlibs`|sling:Mapping|Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs|
 
-### Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
+## Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
 
 The Dispatcher Flush replication agent on the AEM publish instance must send invalidation requests to the correct Dispatcher farm. To target a farm, use the URI property of the Dispatcher Flush replication agent (on the Transport tab). Include the value of the `/virtualhost` property for the Dispatcher farm that is configured for invalidating the cache:
 
@@ -327,12 +326,12 @@ The Dispatcher cache mirrors the repository node structure. Therefore, when page
 
 ![](assets/chlimage_1-14.png) 
 
-### Define virtual hosts and rewrite rules on the Web server {#define-virtual-hosts-and-rewrite-rules-on-the-web-server}
+## Define virtual hosts and rewrite rules on the Web server {#define-virtual-hosts-and-rewrite-rules-on-the-web-server}
 
 Configure the following aspects on the web server:
 
 * Define a virtual host for each of your web domains.
-* For each domain, confgure the document root to coincide with the folder in the repository that contains the domain's web content.
+* For each domain, configure the document root to coincide with the folder in the repository that contains the domain's web content.
 * For each virtual domain, create a URL renaming rule that translates the incoming URL to the path of the cached file. 
 * Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
 * The Dispatcher module must be configured to use the URL that the web server has rewritten. (See the `DispatcherUseProcessedURL` proeprty in [Installing Dispatcher](dispatcher-install.md).)
@@ -345,10 +344,9 @@ The following example httpd.conf file configures two virtual hosts for an Apache
 * The URL rewrite rule for each virtual domain is a regular expression that prefixes the path of the requested page with the path to the pages in the cache. (lines 19 and 35)
 * The `DispatherUseProcessedURL` property is set to `1`. (line 10)
 
-For example, the web server performes the following actions when it recieves a request with the `https://brandA.com/en/products.html` URL:
+For example, the web server performs the following actions when it receives a request with the `https://brandA.com/en/products.html` URL:
 
 * Associates the URL with the virtual host that has a `ServerName` of `brandA.com.`
-
 * Rewrites the URL to be `/content/sitea/en/products.html.`
 * Forwards the URL to Dispatcher.
 
@@ -406,7 +404,7 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 ### Configure a Dispatcher Farm {#configure-a-dispatcher-farm}
 
-When the web server rewrites URLs, Dispatcher requires a single farm defined according to [Configuring Dispatcher](dispatcher-configuration.md). The following configurations are requiremed to support the web server virtual hosts and URL renaming rules:
+When the web server rewrites URLs, Dispatcher requires a single farm defined according to [Configuring Dispatcher](dispatcher-configuration.md). The following configurations are required to support the web server virtual hosts and URL renaming rules:
 
 * The `/virtualhosts` property must include the ServerName values for the all VirtualHost definitions.
 * The `/statfileslevel` property must be high enough to create .stat files in the directories that contain the content files for each domain.
@@ -418,7 +416,7 @@ The following example configuration file is based on the example dispatcher.any 
 
 As usual, the document root of the cache is the same as the document root of the web server (line 40): `/usr/lib/apache/httpd-2.4.3/htdocs`
 
-### dispatcher.any {#dispatcher-any}
+### `dispatcher.any` {#dispatcher-any}
 
 ```xml
 /name "testDispatcher"
@@ -510,8 +508,8 @@ The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewri
 
 AEM uses a default pipeline rewriter that processes documents of type text/html:
 
-* The generator parses HTML documents and generates SAX events when it encounters a, img, area, form, base, link, script, and body elements. The generator alias is htmlparser.
-* The pipeline includes the following transformers: linkchecker, mobile, mobiledebug, contentsync. The linkchecker transformer externalizes paths to referenced HTML or HTM files to prevent broken links.
+* The generator parses HTML documents and generates SAX events when it encounters a, img, area, form, base, link, script, and body elements. The generator alias is `htmlparser`.
+* The pipeline includes the following transformers: `linkchecker`, `mobile`, `mobiledebug`, `contentsync`. The `linkchecker` transformer externalizes paths to referenced HTML or HTM files to prevent broken links.
 * The serializer writes the HTML output. The serializer alias is htmlwriter.
 
 The /libs/cq/config/rewriter/default node defines the pipeline.
@@ -520,17 +518,17 @@ The /libs/cq/config/rewriter/default node defines the pipeline.
 
 Perform the following tasks to create a transformer component and use it in a pipeline:
 
-1. Implement the org.apache.sling.rewriter.TransformerFactory interface. This class creates instances of your transformer class. Specify values for the transformer.type property (the transformer alias) and configure the class as an OSGi service component. 
-1. Implement the org.apache.sling.rewriter.Transformer interface. To minimize the work, you can extend the org.apache.cocoon.xml.sax.AbstractSAXPipe class. Override the startElement method to customize the rewriting behavior. This method is called for every SAX event that is passed to the transformer.
+1. Implement the `org.apache.sling.rewriter.TransformerFactory` interface. This class creates instances of your transformer class. Specify values for the `transformer.type` property (the transformer alias) and configure the class as an OSGi service component. 
+1. Implement the `org.apache.sling.rewriter.Transformer` interface. To minimize the work, you can extend the `org.apache.cocoon.xml.sax.AbstractSAXPipe` class. Override the startElement method to customize the rewriting behavior. This method is called for every SAX event that is passed to the transformer.
 1. Bundle and deploy the classes.
 1. Add a configuration node to your AEM application to add the transformer to the pipeline.
 
-**Tip: **You can instead configure the TransformerFactory to that the transformer is inserted into every rewriter that is defined. Consequently you do not need to configure a pipeline:
-
-* Set the `pipeline.mode` property to `global`.
-
-* Set the `service.ranking` property to a positive integer.
-* Do not include a `pipeline.type` property.
+>[!TIP]
+>You can instead configure the TransformerFactory to that the transformer is inserted into every rewriter that is defined. Consequently you do not need to configure a pipeline:
+>
+>* Set the `pipeline.mode` property to `global`.
+>* Set the `service.ranking` property to a positive integer.
+>* Do not include a `pipeline.type` property.
 
 >[!NOTE]
 >
