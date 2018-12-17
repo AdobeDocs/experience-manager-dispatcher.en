@@ -113,11 +113,11 @@ The example solutions that are provided apply to an environment with the followi
 
 Sling mapping for resource resolution enables you to associate incoming URLs with AEM content paths. Create mappings on the AEM publish instance so that render requests from Dispatcher resolve to the correct content in the repository.
 
-Dispatcher requests for page rendering identify the page using the URL that it is passed from the web server. When the URL includes a domain name, Sling mappings resolve the URL to the content. The following graphic illustrates a mapping of the branda.com/en.html URL to the /content/sitea/en node.
+Dispatcher requests for page rendering identify the page using the URL that it is passed from the web server. When the URL includes a domain name, Sling mappings resolve the URL to the content. The following graphic illustrates a mapping of the `branda.com/en.html` URL to the `/content/sitea/en` node.
 
 ![](assets/chlimage_1-10.png)
 
-The Dispatcher cache mirrors the repository node structure. Therefore, when page activations occur the resulting requests for invalditing the cached page require no URL or path translations. 
+The Dispatcher cache mirrors the repository node structure. Therefore, when page activations occur the resulting requests for invalditing the cached page require no URL or path translations.
 
 ![](assets/chlimage_1-11.png) 
 
@@ -126,7 +126,7 @@ The Dispatcher cache mirrors the repository node structure. Therefore, when page
 Define virtual hosts on the web server so that a different document root can be assigned to each web domain:
 
 * The web server must define a virtual domain for each of your web domains.
-* For each domain, confgure the document root to coincide with the folder in the repository that contains the domain's web content.
+* For each domain, configure the document root to coincide with the folder in the repository that contains the domain's web content.
 * Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
 
 The following example `httpd.conf` file configures two virtual domains for an Apache web server:
@@ -280,8 +280,8 @@ To learn about Sling resource mapping, see [Mappings for Resource Resolution](ht
 
 Typically, mappings are required for the following resources, although additional mappings can be necessary:
 
-* The root node of the content page (below /content)
-* The design node that the pages use (below /etc/designs)
+* The root node of the content page (below `/content`)
+* The design node that the pages use (below `/etc/designs`)
 * The `/libs` folder
 
 After you create the mapping for the content page, to discover additional required mappings use a web browser to open a page on the web server. In the error.log file of the publish instance, locate messages about resources that are not found. The following example message indicates that a mapping for `/etc/clientlibs` is required:
@@ -296,7 +296,7 @@ After you create the mapping for the content page, to discover additional requir
 
 ### Example resource mapping nodes
 
-The following table lists the nodes that implement resource mapping for the branda.com domain. Similar nodes are created for the brandb.com domain, such as /etc/map/http/brandb.com. In all cases, mappings are required when references in the page HTML to not resolve correctly in the context of Sling.
+The following table lists the nodes that implement resource mapping for the branda.com domain. Similar nodes are created for the `brandb.com` domain, such as `/etc/map/http/brandb.com`. In all cases, mappings are required when references in the page HTML to not resolve correctly in the context of Sling.
 
 |Node path|Type|Property|
 |--- |--- |--- |
@@ -322,7 +322,7 @@ Use the internal URL rewriting feature of your web server to translate domain-ba
 
 ![](assets/chlimage_1-13.png)
 
-The Dispatcher cache mirrors the repository node structure. Therefore, when page activations occur the resulting requests for invalditing the cached page require no URL or path translations. 
+The Dispatcher cache mirrors the repository node structure. Therefore, when page activations occur the resulting requests for invalidating the cached page require no URL or path translations. 
 
 ![](assets/chlimage_1-14.png) 
 
@@ -409,9 +409,9 @@ When the web server rewrites URLs, Dispatcher requires a single farm defined acc
 * The `/virtualhosts` property must include the ServerName values for the all VirtualHost definitions.
 * The `/statfileslevel` property must be high enough to create .stat files in the directories that contain the content files for each domain.
 
-The following example configuration file is based on the example dispatcher.any file that is installed with Dispatcher. The following changes are required to support the web server configurations of the previous httpd.conf file:
+The following example configuration file is based on the example `dispatcher.any` file that is installed with Dispatcher. The following changes are required to support the web server configurations of the previous `httpd.conf` file:
 
-* The `/virtualhosts` property causes Dispatcher to handle requests for the brandA.com and brandB.com domains. (line 12)
+* The `/virtualhosts` property causes Dispatcher to handle requests for the `brandA.com` and `brandB.com` domains. (line 12)
 * The `/statfileslevel` property is set to 2, so that stat files are created in each directory that contains the domain's web content (line 41): `/statfileslevel "2"`
 
 As usual, the document root of the cache is the same as the document root of the web server (line 40): `/usr/lib/apache/httpd-2.4.3/htdocs`
@@ -512,7 +512,7 @@ AEM uses a default pipeline rewriter that processes documents of type text/html:
 * The pipeline includes the following transformers: `linkchecker`, `mobile`, `mobiledebug`, `contentsync`. The `linkchecker` transformer externalizes paths to referenced HTML or HTM files to prevent broken links.
 * The serializer writes the HTML output. The serializer alias is htmlwriter.
 
-The /libs/cq/config/rewriter/default node defines the pipeline.
+The `/libs/cq/config/rewriter/default` node defines the pipeline.
 
 ### Creating a Transformer {#creating-a-transformer}
 
@@ -661,4 +661,3 @@ Create a JCR node that defines a pipeline that uses your transformer. The follow
 The following graphic shows the CRXDE Lite representation of the node:
 
 ![](assets/chlimage_1-16.png)
-
