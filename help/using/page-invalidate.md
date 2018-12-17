@@ -123,7 +123,7 @@ To invalidate (or flush) the Dispatcher cache without activating a page, you can
 
 The HTTP request causes Dispatcher to delete specific files from the cache. Optionally, the Dispatcher then refreshes the cache with a new copy.
 
-#### Delete cached files {#delete-cached-files}
+### Delete cached files {#delete-cached-files}
 
 Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it recieves a client request for the page. Deleting cached files ins this manner is appropraite for web sites that are not likely to receive simultaneous requests for the same page.
 
@@ -144,7 +144,7 @@ All other files in the dispatcher cache (or up to a particular level, depending 
 
 Invalidation (i.e. touching of .stat files) can be prevented by sending an additional Header `CQ-Action-Scope: ResourceOnly`. This can be used to flush particular resources without invalidating other parts of the cache, like JSON data that is dynamically created and requires regular flushing independent of the cache (e.g. representing data that is obtained from a third-party system to display news, stock tickers, etc.).
 
-#### Delete and recache files {#delete-and-recache-files}
+### Delete and recache files {#delete-and-recache-files}
 
 Issue an HTTP request that causes Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
 
@@ -172,7 +172,7 @@ Content-Length: 36
 
 /content/geometrixx-outdoors/en.html
 
-#### Example flush servlet {#example-flush-servlet}
+### Example flush servlet {#example-flush-servlet}
 
 The following code implements a servlet that sends an invalidate request to Dispatcher. The servlet receives a request message that contains `handle` and `page` parameters. These parameters provide the value of the `CQ-Handle` header and the path of the page to recache, respectively. The servlet uses the values to construct the HTTP request for Dispatcher.
 

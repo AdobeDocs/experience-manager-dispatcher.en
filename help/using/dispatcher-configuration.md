@@ -1749,7 +1749,7 @@ Please see the Apache web server documentation on Log Rotation and Piped Logs; f
 >
 >However, this requires additional resources, so when the Dispatcher is working smoothly *according to your requirements*, you can(should) lower the log level.
 
-#### Trace Logging {#trace-logging}
+### Trace Logging {#trace-logging}
 
 Amongst other enhancements for the Dispatcher, version 4.2.0 also introduces Trace Logging.
 

@@ -86,7 +86,7 @@ The following example servlet obtains the URL of the requested resource from the
 >
 >The value of the sling.servlet.paths property must be enabled in the Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver) service.
 
-#### Example servlet {#example-servlet}
+### Example servlet {#example-servlet}
 
 ```java
 package com.adobe.example;
@@ -151,7 +151,7 @@ When Dispatcher starts, the Dispatcher log file includes the following debug-lev
 
 The following example auth_checker section configures Dispatcher to use the servlet of the prevoius topic. The filter section causes permission checks to be performed only on secure HTML resources.
 
-## Example configuration {#example-configuration}
+### Example configuration {#example-configuration}
 
 ```xml
 /auth_checker
