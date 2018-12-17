@@ -131,15 +131,16 @@ Use the following procedure to copy the Dispatcher files to the correct location
 Edit the `disp_iis.ini` file to configure the Dispatcher installation. The basic format of the `.ini` file is as follows:
 
 ```xml
+
 [main]
 configpath=<path to dispatcher.any>
 loglevel=1|2|3
 servervariables=0|1
 replaceauthorization=0|1
+
 ```
 
 The following describes each property.
-
 
 *configpath*
 * The location of `dispatcher.any` within the local file system (absolute path).
@@ -175,11 +176,13 @@ The following describes each property.
 An example configuration:
 
 ```xml
+
 [main]
 configpath=C:\Inetpub\Scripts\dispatcher.any
 loglevel=1
 servervariables=1
 replaceauthorization=0
+
 ```
 
 ### Configuring Microsoft IIS {#configuring-microsoft-iis}
@@ -220,7 +223,7 @@ Use the following procedure to add the Dispatcher ISAPI Module to IIS.
 
 ### Configuring Access to the Cache - IIS 8.5 and 10 {#configuring-access-to-the-cache-iis-and}
 
-Provide the default App Pool user with write-acess to the folder that is being used as the Dispatcher cache.
+Provide the default App Pool user with write-access to the folder that is being used as the Dispatcher cache.
 
 1. Right-click the root folder of the website that you are using as the Dispatcher cache and click Properties, such as `C:\inetpub\wwwroot`.
 1. On the Security tab, click Edit, and then on the Permissions dialog box, click Add. A dialog box opens for selecting user accounts. Click the Locations button, select your computer name, and then click OK.
@@ -243,8 +246,8 @@ Use the following procedure to register the JSON MIME type, when you want Dispat
 1. In IIS Manager, select your web site and using Features View, double-click Mime Types.
 1. If the JSON extension is not in the list, in the Actions panel click Add, enter the following property values, and then click OK:
 
-   * File Name Extension: . `json`
-   * MIME Type: application/json
+   * File Name Extension: `.json`
+   * MIME Type: `application/json`
 
 ### Removing the bin Hidden Segment - IIS 8.5 and 10 {#removing-the-bin-hidden-segment-iis-and}
 
@@ -272,11 +275,13 @@ Use the following procedure to write Dispatcher log messages to a log file inste
 
 1. Click the Check Names button. When Windows resolves the user account, click OK.
 1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account** except for Full Control,** and click OK. Click OK to close the folder Properties dialog box. 
-1. Use a text editor to open the disp_iis.ini file.
+1. Use a text editor to open the `disp_iis.ini` file.
 1. Add a line of text similar to the following example to configure the location of the log file and then save the file:
 
    ```xml
+
    logfile=C:\inetpub\logs\dispatcher\dispatcher.log
+
    ```
 
 ### Next Steps {#next-steps}
@@ -349,13 +354,15 @@ This is likely due to an enabled SELinux security. Then you you need perform the
 * Enable HTTPD scripts and modules to make network connections.
 * Configure the SELinux context of the docroot, where the cached files are stored.
 
-Enter the following commands in a terminal window, replacing * `[path to the dispatcher.so file]`* with the path to the Dispatcher module that you installed to Apache Web Server, and *`path to the docroot`* with the path where the docroot is located (e.g. `/opt/cq/cache`):
+Enter the following commands in a terminal window, replacing `[path to the dispatcher.so file]` with the path to the Dispatcher module that you installed to Apache Web Server, and *`path to the docroot`* with the path where the docroot is located (e.g. `/opt/cq/cache`):
 
 ```shell
+
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
 setsebool -P httpd_can_network_connect on
 chcon -R --type httpd_sys_content_t [path to the docroot]
 semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
+
 ```
 
 ### Apache Web Server - Configure Apache Web Server for Dispatcher {#apache-web-server-configure-apache-web-server-for-dispatcher}
@@ -376,10 +383,13 @@ These steps are compulsory:
 1. (Optional) It is recommended that you change the owner of the htdocs directory:
 
    * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (`&lt;*APACHE_ROOT*&gt;/htdocs`) must belong to the user daemon:  
-    ```
-    cd &lt;APACHE_ROOT&gt;  
-    chown -R daemon:daemon htdocs
-    ```
+
+     ```
+
+     cd &lt;APACHE_ROOT&gt;  
+     chown -R daemon:daemon htdocs
+    
+     ```
 
 **LoadModule**
 
@@ -400,53 +410,38 @@ The following table lists examples that can be used; the exact entries are accor
 
 The Dispatcher-specific configuration entries are placed after the LoadModule entry. The following table lists an example configuration that is applicable for both Unix and Windows:
 
-|||
-|--- |--- |
-|Windows and Unix|... <br/> `<IfModule disp_apache2.c>` <br/>`DispatcherConfig conf/dispatcher.any`<br/> `DispatcherLog logs/dispatcher.log DispatcherLogLevel 3` <br/>`DispatcherNoServerHeader 0 DispatcherDeclineRoot 0`<br/> `DispatcherUseProcessedURL 0`<br/> `DispatcherPassError 0`<br/> `DispatcherKeepAliveTimeout 60`<br/> `</IfModule>` ...|
+**Windows & Unix**
 
+```
+...
+<fModule disp_apache2.c>
+DispatcherConfig conf/dispatcher.any
+DispatcherLog logs/dispatcher.log DispatcherLogLevel 3
+DispatcherNoServerHeader 0 DispatcherDeclineRoot 0
+DispatcherUseProcessedURL 0
+DispatcherPassError 0
+DispatcherKeepAliveTimeout 60
+</IfModule>
+...
+
+```
 
 The individual configuration parameters:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td valign="top"><a id="dispatcherconfig" name="dispatcherconfig"></a>DispatcherConfig</td> 
-   <td><p>Location and name of the Dispatcher configuration file.</p> <p>When this property is located in the main server configuration, all virtual hosts inherit the property value. However, virtual hosts can include a <span class="code">DispatcherConfig</span> property to override the main server configuration.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherLog</td> 
-   <td>Location and name of the log file.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherLogLevel</td> 
-   <td><p>Log level for the log file:<br /> <strong>0</strong> - Errors<br /> <strong>1</strong> - Warnings<br /> <strong>2</strong> - Infos<br /> <strong>3</strong> - Debug<br /> <strong>Note</strong>: It is recommended to set the log level to 3 during installation and testing, then to 0 when running in a production environment.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherNoServerHeader</td> 
-   <td><p><strong>This parameter is deprecated and no longer has any effect.</strong></p> <p>Defines the Server Header to be used:<br /> <strong>undefined or 0</strong> - the HTTP server header contains the AEM version.<br /> <strong>1</strong> - the Apache server header is used.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherDeclineRoot</td> 
-   <td>Defines whether to decline requests to the root "/":<br /> <strong>0</strong> - accept requests to <strong>/</strong><br /> <strong>1</strong> - requests to <strong>/</strong> are not handled by the dispatcher; use mod_alias for the correct mapping.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherUseProcessedURL</td> 
-   <td>Defines whether to use pre-processed URLs for all further processing by Dispatcher:<br /> <strong>0</strong> - use the original URL passed to the web server.<br /> <strong>1</strong> - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. mod_rewrite) instead of the original URL passed to the web server.<br /> <br /> For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure. <br /> <br /> See the Apache web site documentation for information about mod_rewrite; for example, <a href="https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html">Apache 2.2</a>. When using mod_rewrite, it is advisable to use the flag <strong><a href="https://docs.adobe.com/content/kb/home/Dispatcher/troubleshooting/DispatcherModReWrite.html">'passthrough|PT' (pass through to next handler)</a></strong> to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.<br /> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">DispatcherPassError<br /> </td> 
-   <td>Defines how to support error codes for ErrorDocument handling:<br /> <strong>0</strong> - Dispatcher spools all error responses to the client.<br /> <strong>1</strong> - Dispatcher does not spool an error response to the client (where the status code is greater or equal than 400), but passes the status code to Apache, which e.g. allows an ErrorDocument directive to process such a status code.<br /> <strong>Code Range -</strong> Specify a range of error codes for which the response is passed to Apache. Other error codes are passed to the client. For example, the following configuration passes responses for error 412 to the client, and all other errors are passed to Apache: DispatcherPassError 400-411,413-417</td> 
-  </tr> 
-  <tr> 
-   <td>DispatcherKeepAliveTimeout</td> 
-   <td>Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive. </td> 
-  </tr> 
-  <tr> 
-   <td>DispatcherNoCanonURL</td> 
-   <td><p>Setting this parameter to <strong>On</strong> will pass the raw URL to the backend instead of the canonicalised one and will override the settings of <span class="code">DispatcherUseProcessedURL.</span> The default value is <strong>Off</strong>.</p> <p><strong>Note:</strong> The filter rules in the Dispatcher configuration will always be evaluated against the <strong>sanitised</strong> URL not the raw URL.</p> </td> 
-  </tr> 
- </tbody> 
-</table>
+|Parameter|Description|
+|--- |--- |
+|DispatcherConfig|Location and name of the Dispatcher configuration file. <br/>When this property is located in the main server configuration, all virtual hosts inherit the property value. However, virtual hosts can include a DispatcherConfig property to override the main server configuration.|
+|DispatcherLog|Location and name of the log file.|
+|DispatcherLogLevel|Log level for the log file: <br/>0 - Errors <br/>1 - Warnings <br/>2 - Infos <br/>3 - Debug <br/>**Note**: It is recommended to set the log level to 3 during installation and testing, then to 0 when running in a production environment.|
+|DispatcherNoServerHeader|*This parameter is deprecated and no longer has any effect.*<br/><br/> Defines the Server Header to be used: <br/><ul><li>undefined or 0 - the HTTP server header contains the AEM version. </li><li>1 - the Apache server header is used.</li></ul>|
+|DispatcherDeclineRoot|Defines whether to decline requests to the root "/": <br/>**0** - accept requests to / <br/>**1** - requests to / are not handled by the dispatcher; use mod_alias for the correct mapping.|
+|DispatcherUseProcessedURL|Defines whether to use pre-processed URLs for all further processing by Dispatcher: <br/>**0** - use the original URL passed to the web server. <br/>**1** - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. `mod_rewrite`) instead of the original URL passed to the web server.  For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure.   See the Apache web site documentation for information about mod_rewrite; for example, Apache 2.2. When using mod_rewrite, it is advisable to use the flag 'passthrough|PT' (pass through to next handler) to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.|
+|DispatcherPassError|Defines how to support error codes for ErrorDocument handling: <br/>**0** - Dispatcher spools all error responses to the client. <br/>**1** - Dispatcher does not spool an error response to the client (where the status code is greater or equal than 400), but passes the status code to Apache, which e.g. allows an ErrorDocument directive to process such a status code. <br/>**Code Range** - Specify a range of error codes for which the response is passed to Apache. Other error codes are passed to the client. For example, the following configuration passes responses for error 412 to the client, and all other errors are passed to Apache: DispatcherPassError 400-411,413-417|
+|DispatcherKeepAliveTimeout|Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive.|
+|DispatcherNoCanonURL|Setting this parameter to On will pass the raw URL to the backend instead of the canonicalised one and will override the settings of DispatcherUseProcessedURL. The default value is Off. <br/>**Note**: The filter rules in the Dispatcher configuration will always be evaluated against the sanitised URL not the raw URL.|
+
+
+
 
 >[!NOTE]
 >
@@ -465,29 +460,56 @@ The individual configuration parameters:
 
 After these entries you must add a **SetHandler** statement to the context of your configuration ( `<Directory>`, `<Location>`) for the Dispatcher to handle the incoming requests. The following example configures the Dispatcher to handle requests for the complete website:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows<br /> and<br /> Unix<br /> </td> 
-   <td>...<br /> &lt;Directory /&gt;<br /> &lt;IfModule disp_apache2.c&gt;<br /> SetHandler dispatcher-handler<br /> &lt;/IfModule&gt;<br /> <br /> Options FollowSymLinks<br /> AllowOverride None<br /> &lt;/Directory&gt;<br /> ...</td> 
-  </tr> 
- </tbody> 
-</table>
+**Windows and Unix** 
+
+```
+...  
+<Directory />  
+<IfModule disp\_apache2.c>  
+SetHandler dispatcher-handler  
+</IfModule>  
+  
+Options FollowSymLinks  
+AllowOverride None  
+</Directory>  
+...
+```
 
 The following example configures the Dispatcher to handle requests for a virtual domain:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows</td> 
-   <td>...<br /> &lt;VirtualHost 123.45.67.89&gt;<br /> ServerName www.mycompany.com<br /> DocumentRoot <i>[cache-path]</i>\docs<br /> &lt;Directory <i>[cache-path]</i>\docs&gt;<br /> &lt;IfModule disp_apache2.c&gt;<br /> SetHandler dispatcher-handler<br /> &lt;/IfModule&gt;<br /> AllowOverride None<br /> &lt;/Directory&gt;<br /> &lt;/VirtualHost&gt;<br /> ...</td> 
-  </tr> 
-  <tr> 
-   <td>Unix</td> 
-   <td> ...<br /> &lt;VirtualHost 123.45.67.89&gt;<br /> ServerName www.mycompany.com<br /> DocumentRoot /usr/apachecache/docs<br /> &lt;Directory /usr/apachecache/docs&gt;<br /> &lt;IfModule disp_apache2.c&gt;<br /> SetHandler dispatcher-handler<br /> &lt;/IfModule&gt;<br /> AllowOverride None<br /> &lt;/Directory&gt;<br /> &lt;/VirtualHost&gt;<br /> ...</td> 
-  </tr> 
- </tbody> 
-</table>
+**Windows**
+
+```
+...  
+<VirtualHost 123.45.67.89>  
+ServerName www.mycompany.com  
+DocumentRoot _\[cache-path\]_\\docs  
+<Directory _\[cache-path\]_\\docs>  
+<IfModule disp\_apache2.c>  
+SetHandler dispatcher-handler  
+</IfModule>  
+AllowOverride None  
+</Directory>  
+</VirtualHost>  
+...
+```
+
+**Unix**
+
+```
+...  
+<VirtualHost 123.45.67.89>  
+ServerName www.mycompany.com  
+DocumentRoot /usr/apachecache/docs  
+<Directory /usr/apachecache/docs>  
+<IfModule disp\_apache2.c>  
+SetHandler dispatcher-handler  
+</IfModule>  
+AllowOverride None  
+</Directory>  
+</VirtualHost>  
+...
+```
 
 >[!NOTE]
 >
@@ -515,14 +537,21 @@ When `On`, the `ModMimeUsePathInfo` parameter specifies that `mod_mime` is to de
 
 The following example activates **ModMimeUsePathInfo**:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows<br /> and<br /> Unix<br /> </td> 
-   <td><p>...<br /> &lt;Directory /&gt;<br /> &lt;IfModule disp_apache2.c&gt;<br /> SetHandler dispatcher-handler<br /> ModMimeUsePathInfo On<br /> &lt;/IfModule&gt;<br /> <br /> Options FollowSymLinks<br /> AllowOverride None<br /> &lt;/Directory&gt;<br /> ...</p> <p></p> </td> 
-  </tr> 
- </tbody> 
-</table>
+**Windows and Unix**
+
+```
+...  
+<Directory />  
+<IfModule disp\_apache2.c>  
+SetHandler dispatcher-handler  
+ModMimeUsePathInfo On  
+</IfModule>  
+  
+Options FollowSymLinks  
+AllowOverride None  
+</Directory>  
+...
+```
 
 ### Enable Support for HTTPS (Unix and Linux) {#enable-support-for-https-unix-and-linux}
 
