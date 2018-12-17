@@ -138,40 +138,41 @@ servervariables=0|1
 replaceauthorization=0|1
 ```
 
-The following table describes each property.
+The following describes each property.
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <th>Parameter</th> 
-   <th>Description</th> 
-  </tr> 
-  <tr> 
-   <td valign="top">configpath</td> 
-   <td>The location of <span class="code">dispatcher.any</span> within the local file system (absolute path).</td> 
-  </tr> 
-  <tr> 
-   <td>logfile</td> 
-   <td>The location of the dispatcher.log file. If this is not set then log messages go to the windows event log.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">loglevel</td> 
-   <td><p>Defines the Log Level used to output messages to the event log. The following values may be specified:</p> <p>0: error messages only.<br /> 1: errors and warnings.<br /> 2: errors, warnings and informational messages.<br /> 3: errors, warnings, informational and debug messages.</p> <p><br /> Note: It is recommended to set the log level to 3 during installation and testing, then revert to 0 when running in a production environment.</p> </td> 
-  </tr> 
-  <tr> 
-   <td>replaceauthorization</td> 
-   <td><p>Specifies how authorization headers in the HTTP request are handled. The following values are valid:</p> <p>0: Authorization headers are not modified.<br /> 1: Replaces any header named "Authorization" other than "Basic" with its "Basic &lt;IIS:LOGON_USER&gt;" equivalent.</p> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top">servervariables</td> 
-   <td><p>Defines how server variables are processed.</p> <p>0: IIS server variables are sent to neither the Dispatcher nor AEM.<br /> 1: all IIS server variables (such as <span class="code">LOGON_USER, QUERY_STRING,</span> ...) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).<br /> <br /> Server variables include AUTH_USER, LOGON_USER, HTTPS_KEYSIZE and many others. See the IIS documentation for the full list of variables, with details.</p> </td> 
-  </tr> 
-  <tr> 
-   <td>enable_chunked_transfer</td> 
-   <td>Defines whether to enable (1) or disable (0) chunked transfer for the client response. The default value is 0.</td> 
-  </tr> 
- </tbody> 
-</table>
+
+*configpath*
+* The location of dispatcher.any within the local file system (absolute path).
+
+*logfile*
+* The location of the dispatcher.log file. If this is not set then log messages go to the windows event log.
+
+*loglevel*
+* Defines the Log Level used to output messages to the event log. The following values may be specified:
+
+  * 0: error messages only.
+  * 1: errors and warnings.  
+  * 2: errors, warnings and informational messages.  
+  * 3: errors, warnings, informational and debug messages.
+  
+  >[!NOTE]
+  >It is recommended to set the log level to 3 during installation and testing, then revert to 0 when running in a production environment.
+
+*replaceauthorization*
+* Specifies how authorization headers in the HTTP request are handled. The following values are valid:
+  * 0: Authorization headers are not modified.  
+  * 1: Replaces any header named "Authorization" other than "Basic" with its `Basic <IIS:LOGON\_USER>` equivalent.
+
+*servervariables*
+* Defines how server variables are processed.
+  * 0: IIS server variables are sent to neither the Dispatcher nor AEM. * 1: all IIS server variables (such as LOGON\_USER, QUERY\_STRING, ...) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).  
+  
+  Server variables include AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE and many others. See the IIS documentation for the full list of variables, with details.
+
+*enable\_chunked\_transfer*
+* Defines whether to enable (1) or disable (0) chunked transfer for the client response. The default value is 0.
+
+
 
 An example configuration:
 
