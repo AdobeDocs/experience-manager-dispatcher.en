@@ -1,8 +1,8 @@
 ---
 title: Troubleshooting Dispatcher Problems
-seo-title: Troubleshooting Dispatcher Problems
-description: null
-seo-description: Learn to troubleshoot Dispatcher issues.
+seo-title: Troubleshooting AEM Dispatcher Problems
+description: Learn to troubleshoot Dispatcher issues.
+seo-description: Learn to troubleshoot AEM Dispatcher issues.
 uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -12,9 +12,7 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-index: y
-internal: n
-snippet: y
+
 ---
 
 # Troubleshooting Dispatcher Problems{#troubleshooting-dispatcher-problems}
@@ -101,7 +99,7 @@ Add the following headers to the `/clientheaders` section of your `dispatcher.an
 
 This describes how the dispatcher interacts with `mod_dir` inside the Apache webserver, as this can lead to various, potentially unexpected effects:
 
-#### Apache 1.3 {#apache}
+### Apache 1.3 {#apache}
 
 In Apache 1.3 `mod_dir` handles every request where the URL maps to a directory in the file system.
 
@@ -112,7 +110,7 @@ It will either:
 
 When the dispatcher is enabled, it processes such requests by registering itself as a handler for the content type `httpd/unix-directory`.
 
-#### Apache 2.x {#apache-x}
+### Apache 2.x {#apache-x}
 
 In Apache 2.x things are different. A module can handle different stages of the request, such as URL fixup. `mod_dir` handles this stage by redirecting a request (when the URL maps to a directory) to the URL with a `/` appended.
 
@@ -123,4 +121,3 @@ If this happens you must either:
 * disable `mod_dir` for the `Directory` or `Location` subtree handled by the dispatcher  
 
 * use `DirectorySlash Off` to configure `mod_dir` not to append `/`
-
