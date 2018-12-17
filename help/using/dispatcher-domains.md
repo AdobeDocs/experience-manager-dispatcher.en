@@ -10,9 +10,6 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
-index: y
-internal: n
-snippet: y
 ---
 
 # Using Dispatcher with Multiple Domains {#using-dispatcher-with-multiple-domains}
@@ -28,14 +25,16 @@ Use Dispatcher to process page requests in multiple web domains while supporting
 
 For example, a company publishes websites for two of their brands: Brand A and Brand B. The content for the website pages are authored in AEM, and stored in the same repository workspace:
 
-`/  
+```
+/  
 | - content  
 | - sitea  
 | | - content nodes  
 | - siteb  
-| - content nodes`
+| - content nodes
+```
 
-Pages for BrandA.com are stored below /content/sitea. Client requests for the URL http://BrandA.com/en.html are returned the rendered page for the /content/sitea/en node. Similarly, pages for BrandB.com are stored below /content/siteb.
+Pages for BrandA.com are stored below `/content/sitea`. Client requests for the URL `http://BrandA.com/en.html` are returned the rendered page for the `/content/sitea/en` node. Similarly, pages for BrandB.com are stored below `/content/siteb`.
 
 When using Dispatcher to cache content, associations must be made between the page URL in the client HTTP request, the path of the corresponding file in the cache, and the path of the corresponding file in the repository.
 
@@ -63,25 +62,25 @@ When Dispatcher Flush replication agents request that Dispatcher invalidates cac
 
 To use Dispatcher with multiple domains, you need to configure AEM, Dispatcher, and your web server. The solutions described on this page are general and apply to most environments. Due to the complexity of some AEM topologies, your solution can require further custom configurations to resolve particular issues. You will likely need to adapt the examples to satisfy your existing IT infrastructure and management policies.
 
-### URL Mapping {#url-mapping}
+## URL Mapping {#url-mapping}
 
 To enable domain URLs and content paths to resolve to cached files, at some point in the process a file path or page URL must be translated. Descriptions of the following common strategies are provided, where path or URL translations occur at different points in the process:
 
-* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. (See [AEM Rewrites Incoming URLs](../using/dispatcher-domains.md#main-pars_title_2).)
-* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. (See [The Web Server Rewrites Incoming URLs](../using/dispatcher-domains.md#main-pars_title_1).)
+* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. (See [AEM Rewrites Incoming URLs](dispatcher-domains.md#main-pars_title_2).)
+* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. (See [The Web Server Rewrites Incoming URLs](dispatcher-domains.md#main-pars_title_1).)
 
 It is generally desirable to use short URLs for web pages. Typically, page URLs mirror the structure of the repository folders that contain the web content. However, the URLs do not reveal the topmost repository nodes, such as `/content`. The client is not necessarily aware of the structure of the AEM repository.
 
-### General Requirements {#general-requirements}
+## General Requirements {#general-requirements}
 
 Your environment must implement the following configurations to support Dispatcher working with multiple domains:
 
 * Content for each domain resides in separate branches of the repository (see the example environment below).
-* The Dispatcher Flush replication agent is configured on the AEM publish instance. (See [Invalidating Dispatcher Cache from a Publishing Instance](../using/page-invalidate.md).)
+* The Dispatcher Flush replication agent is configured on the AEM publish instance. (See [Invalidating Dispatcher Cache from a Publishing Instance](page-invalidate.md).)
 * The domain name system resolves the domain names to the IP address of the web server.
 * The Dispatcher cache mirrors the directory structure of the AEM content repository. The file paths below the document root of the web server are the same as the paths of the files in the repository.
 
-### Environment for the Provided Examples {#environment-for-the-provided-examples}
+## Environment for the Provided Examples {#environment-for-the-provided-examples}
 
 The example solutions that are provided apply to an environment with the following characteristics:
 
@@ -122,13 +121,13 @@ The Dispatcher cache mirrors the repository node structure. Therefore, when page
 
 ![](assets/chlimage_1-11.png) 
 
-#### Define virtual hosts on the web server {#define-virtual-hosts-on-the-web-server}
+## Define virtual hosts on the web server {#define-virtual-hosts-on-the-web-server}
 
 Define virtual hosts on the web server so that a different document root can be assigned to each web domain:
 
 * The web server must define a virtual domain for each of your web domains.
 * For each domain, confgure the document root to coincide with the folder in the repository that contains the domain's web content.
-* Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](../using/dispatcher-install.md) page.
+* Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
 
 The following example httpd.conf file configures two virtual domains for an Apache web server:
 
@@ -141,7 +140,7 @@ With this configuration, the web server performes the following actions when it 
 
 * Forwards the URL to Dispatcher.
 
-#### httpd.conf {#httpd-conf}
+### httpd.conf {#httpd-conf}
 
 ```xml
 # load the Dispatcher module
@@ -189,9 +188,9 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-Note that virtual hosts inherit the [DispatcherConfig](../using/dispatcher-install.md#main-pars_67_table_7) property value that is configured in the main server section. Virtual hosts can include their own DispatcherConfig property to override the main server configuration.
+Note that virtual hosts inherit the [DispatcherConfig](dispatcher-install.md#main-pars_67_table_7) property value that is configured in the main server section. Virtual hosts can include their own DispatcherConfig property to override the main server configuration.
 
-#### Configure Dispatcher to Handle Multiple Domains {#configure-dispatcher-to-handle-multiple-domains}
+### Configure Dispatcher to Handle Multiple Domains {#configure-dispatcher-to-handle-multiple-domains}
 
 To support URLs that include domain names and their corresponding virtual hosts, define the following Dispatcher farms:
 
@@ -274,7 +273,7 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-#### Configure Sling Mapping for Resource Resolution {#configure-sling-mapping-for-resource-resolution}
+### Configure Sling Mapping for Resource Resolution {#configure-sling-mapping-for-resource-resolution}
 
 Use Sling mapping for resource resolution so that domain-based URLs resolve to content on the AEM publish instance. The resource mapping translates the incoming URLs from Dispatcher (originally from client HTTP requests) to content nodes.
 
@@ -335,7 +334,7 @@ The following table lists the nodes that implement resource mapping for the bran
  </tbody> 
 </table>
 
-#### Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
+### Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
 
 The Dispatcher Flush replication agent on the AEM publish instance must send invalidation requests to the correct Dispatcher farm. To target a farm, use the URI property of the Dispatcher Flush replication agent (on the Transport tab). Include the value of the `/virtualhost` property for the Dispatcher farm that is configured for invalidating the cache:
 
@@ -355,15 +354,15 @@ The Dispatcher cache mirrors the repository node structure. Therefore, when page
 
 ![](assets/chlimage_1-14.png) 
 
-#### Define virtual hosts and rewrite rules on the Web server {#define-virtual-hosts-and-rewrite-rules-on-the-web-server}
+### Define virtual hosts and rewrite rules on the Web server {#define-virtual-hosts-and-rewrite-rules-on-the-web-server}
 
 Configure the following aspects on the web server:
 
 * Define a virtual host for each of your web domains.
 * For each domain, confgure the document root to coincide with the folder in the repository that contains the domain's web content.
 * For each virtual domain, create a URL renaming rule that translates the incoming URL to the path of the cached file. 
-* Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](../using/dispatcher-install.md) page.
-* The Dispatcher module must be configured to use the URL that the web server has rewritten. (See the `DispatcherUseProcessedURL` proeprty in [Installing Dispatcher](../using/dispatcher-install.md).)
+* Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
+* The Dispatcher module must be configured to use the URL that the web server has rewritten. (See the `DispatcherUseProcessedURL` proeprty in [Installing Dispatcher](dispatcher-install.md).)
 
 The following example httpd.conf file configures two virtual hosts for an Apache web server:
 
@@ -380,7 +379,7 @@ For example, the web server performes the following actions when it recieves a r
 * Rewrites the URL to be `/content/sitea/en/products.html.`
 * Forwards the URL to Dispatcher.
 
-#### httpd.conf {#httpd-conf-1}
+### httpd.conf {#httpd-conf-1}
 
 ```xml
 # load the Dispatcher module
@@ -432,9 +431,9 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-#### Configure a Dispatcher Farm {#configure-a-dispatcher-farm}
+### Configure a Dispatcher Farm {#configure-a-dispatcher-farm}
 
-When the web server rewrites URLs, Dispatcher requires a single farm defined according to [Configuring Dispatcher](../using/dispatcher-configuration.md). The following configurations are requiremed to support the web server virtual hosts and URL renaming rules:
+When the web server rewrites URLs, Dispatcher requires a single farm defined according to [Configuring Dispatcher](dispatcher-configuration.md). The following configurations are requiremed to support the web server virtual hosts and URL renaming rules:
 
 * The `/virtualhosts` property must include the ServerName values for the all VirtualHost definitions.
 * The `/statfileslevel` property must be high enough to create .stat files in the directories that contain the content files for each domain.
@@ -446,7 +445,7 @@ The following example configuration file is based on the example dispatcher.any 
 
 As usual, the document root of the cache is the same as the document root of the web server (line 40): `/usr/lib/apache/httpd-2.4.3/htdocs`
 
-#### dispatcher.any {#dispatcher-any}
+### dispatcher.any {#dispatcher-any}
 
 ```xml
 /name "testDispatcher"
@@ -534,7 +533,7 @@ The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewri
 
 ![](assets/chlimage_1-15.png) 
 
-#### The AEM Default Rewriter Pipeline {#the-aem-default-rewriter-pipeline}
+### The AEM Default Rewriter Pipeline {#the-aem-default-rewriter-pipeline}
 
 AEM uses a default pipeline rewriter that processes documents of type text/html:
 
@@ -544,7 +543,7 @@ AEM uses a default pipeline rewriter that processes documents of type text/html:
 
 The /libs/cq/config/rewriter/default node defines the pipeline.
 
-#### Creating a Transformer {#creating-a-transformer}
+### Creating a Transformer {#creating-a-transformer}
 
 Perform the following tasks to create a transformer component and use it in a pipeline:
 
@@ -571,7 +570,7 @@ The following examples implement a transformer that rewrites references to image
 
 The examples are not robust and should not be used in a production environment.
 
-#### Example TransformerFactory implementation {#example-transformerfactory-implementation}
+### Example TransformerFactory implementation {#example-transformerfactory-implementation}
 
 ```java
 package com.adobe.example;
@@ -597,7 +596,7 @@ public class MyRewriterTransformerFactory implements TransformerFactory {
 }
 ```
 
-#### Example Transformer implementation {#example-transformer-implementation}
+### Example Transformer implementation {#example-transformer-implementation}
 
 ```java
 package com.adobe.example;
@@ -665,7 +664,7 @@ public class MyRewriterTransformer extends AbstractSAXPipe implements Transforme
 }
 ```
 
-#### Adding the Transformer to a Rewriter Pipeline {#adding-the-transformer-to-a-rewriter-pipeline}
+### Adding the Transformer to a Rewriter Pipeline {#adding-the-transformer-to-a-rewriter-pipeline}
 
 Create a JCR node that defines a pipeline that uses your transformer. The following node definition creates a pipeline that processes text/html files. The default AEM generator and parser for HTML are used.
 
@@ -673,7 +672,7 @@ Create a JCR node that defines a pipeline that uses your transformer. The follow
 >
 >If you set the Transformer property `pipeline.mode` to `global`, you do not need to configure a pipeline. The `global` mode inserts the transformer into all pipelines.
 
-#### Rewriter configuration node - XML representation {#rewriter-configuration-node-xml-representation}
+### Rewriter configuration node - XML representation {#rewriter-configuration-node-xml-representation}
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

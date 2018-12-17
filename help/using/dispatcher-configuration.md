@@ -6,14 +6,9 @@ seo-description: Learn how to configure Dispatcher.
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
-contentOwner: User
-products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
-index: y
-internal: n
-snippet: y
 ---
 
 # Configuring Dispatcher{#configuring-dispatcher}
@@ -24,11 +19,11 @@ snippet: y
 
 The following sections describe how to configure various aspects of the Dispatcher.
 
-### Support for IPv4 and IPv6 {#support-for-ipv-and-ipv}
+## Support for IPv4 and IPv6 {#support-for-ipv-and-ipv}
 
 All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](/content/help/en/experience-manager/6-3/sites/deploying/using/technical-requirements#AdditionalPlatformNotes).
 
-### Dispatcher Configuration Files {#dispatcher-configuration-files}
+## Dispatcher Configuration Files {#dispatcher-configuration-files}
 
 By default the Dispatcher configuration is stored in the `dispatcher.any` text file, though you can change the name and location of this file during installation.
 
@@ -130,17 +125,17 @@ For example, if the files `farm_1.any` through to `farm_5.any` contain the confi
   }
 ```
 
-### Using Environment Variables {#using-environment-variables}
+## Using Environment Variables {#using-environment-variables}
 
 You can use environment variables in string-valued properties in the dispatcher.any file instead of hard-coding the values. To include the value of an environment variable, use the format `${variable_name}`.
 
-For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [/docroot](../using/dispatcher-configuration.md#main-pars_title_30) property can be used:
+For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [/docroot](dispatcher-configuration.md#main-pars_title_30) property can be used:
 
 ```xml
 /docroot "${PWD}/cache"
 ```
 
-As another example, if you create an environment variable named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](../using/dispatcher-configuration.md#main-pars_127_25_0008) property can be used:
+As another example, if you create an environment variable named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](dispatcher-configuration.md#main-pars_127_25_0008) property can be used:
 
 ```xml
 /renders {
@@ -193,7 +188,7 @@ The value can have include any alphanumeric (a-z, 0-9) character. The following 
 
 >[!NOTE]
 >
->If you use more than one render farm, the list is evaluated bottom-up. This is particularly relevant when defining [Virtual Hosts](../using/dispatcher-configuration.md#main-pars_117_15_0006) for your websites.
+>If you use more than one render farm, the list is evaluated bottom-up. This is particularly relevant when defining [Virtual Hosts](dispatcher-configuration.md#main-pars_117_15_0006) for your websites.
 
 Each farm property can contain the following child properties:
 
@@ -386,9 +381,7 @@ The `/virtualhosts` property defines a list of all hostname/URI combinations tha
 ```
 
 * `scheme`: (Optional) Either `http://` or `https://.`
-
 * `host`: The name or IP address of the host computer and the port number if necessary. (See [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.23))
-
 * `uri`: (Optional) The path to the resources.
 
 The following example configuration handles requests for the .com and .ch domains of myCompany, and all domains of mySubDivision:
@@ -421,9 +414,7 @@ When Dispatcher receives an HTTP or HTTPS request, it finds the virtual host val
 Dispatcher finds the best-matching virtual host value in the following manner:
 
 * The first-encountered virtual host that matches all three of the `host`, the `scheme`, and the `uri` of the request is used.
-
 * If no `virtualhosts` values has `scheme` and `uri` parts that both match the `scheme` and `uri` of the request, the first-encountered virtual host that matches the `host` of the request is used.
-
 * If no `virtualhosts` values have a host part that matches the host of the request, the topmost virtual host of the topmost farm is used.
 
 Therefore, you should place your default virtual host at the top of the `virtualhosts` property in the topmost farm of your dispatcher.any file.
@@ -587,7 +578,7 @@ Amazon Elastic Load Balancing (ELB) is such a service that responds to getaddrin
 
 **/secure**
 
-If the `/secure` property has a value of "1" Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](../using/dispatcher-ssl.md#ConfiguringDispatchertoUseSSL).
+If the `/secure` property has a value of "1" Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#ConfiguringDispatchertoUseSSL).
 
 **/always-resolve**
 
@@ -613,11 +604,11 @@ Also, this property can be used in case you run into dynamic IP resolution issue
 
 Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. All other requests are sent back to the web server with a 404 error code (page not found). If no `/filter` section exists, all requests are accepted.
 
-**Note:** Requests for the [statfile](../using/dispatcher-configuration.md#main-pars_title_28) are always rejected.
+**Note:** Requests for the [statfile](dispatcher-configuration.md#main-pars_title_28) are always rejected.
 
 >[!CAUTION]
 >
->See the [Dispatcher Security Checklist](../using/security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Cheklist](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist) for additional security details regarding your AEM installation.
+>See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Cheklist](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist) for additional security details regarding your AEM installation.
 
 The /filter section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. You should use a whiltelist strategy for your /filter section:
 
@@ -634,15 +625,15 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 
 * **glob Property: **The `/glob` property is used to match with the entire request-line of the HTTP request.
 
-For information about /glob properties, see [Designing Patterns for glob Properties](../using/dispatcher-configuration.md#main-pars_title_25). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
+For information about /glob properties, see [Designing Patterns for glob Properties](dispatcher-configuration.md#main-pars_title_25). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
 
 >[!NOTE]
 >
 >As of Dispatcher version 4.2.0, several enhancements for filter configurations and logging capabilities have been added:
 >
->* [Support for POSIX regular expressions](../using/dispatcher-configuration.md#main-pars_title_1996763852)
->* [Support for filtering additional elements of the request URL](../using/dispatcher-configuration.md#main-pars_title_694578373)
->* [Trace Logging](../using/dispatcher-configuration.md#main-pars_title_1950006642)
+>* [Support for POSIX regular expressions](dispatcher-configuration.md#main-pars_title_1996763852)
+>* [Support for filtering additional elements of the request URL](dispatcher-configuration.md#main-pars_title_694578373)
+>* [Trace Logging](dispatcher-configuration.md#main-pars_title_1950006642)
 >
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
@@ -755,9 +746,9 @@ When configuring Dispatcher you should restrict external access as much as possi
     * `/etc/designs/mydesign&#42;  
       `
 
-After you create filters, [test page access](../using/dispatcher-configuration.md#main-pars_title_19) to ensure your AEM instance is secure.
+After you create filters, [test page access](dispatcher-configuration.md#main-pars_title_19) to ensure your AEM instance is secure.
 
-The following /filter section of the dispatcher.any file can be used as a basis in your [Dispatcher configuration](../using/dispatcher-configuration.md) file.
+The following /filter section of the dispatcher.any file can be used as a basis in your [Dispatcher configuration](dispatcher-configuration.md) file.
 
 This example is based on the default configuration file that is provided with Dispatcher and is intended as an example for use in a production environment. Items prefixed with # are deactivated (commented out), care should be taken if you decide to activate any of these (by removing the # on that line) as this can have a security impact.
 
@@ -828,7 +819,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 >[!NOTE]
 >
->When used with Apache, design your filter URL patterns according to the DispatcherUseProcessedURL property of the Dispatcher module. (See [Apache Web Server - Configure your Apache Web Server for Dispatcher](../using/dispatcher-install.md#main-pars_55_35_1022).)
+>When used with Apache, design your filter URL patterns according to the DispatcherUseProcessedURL property of the Dispatcher module. (See [Apache Web Server - Configure your Apache Web Server for Dispatcher](dispatcher-install.md#main-pars_55_35_1022).)
 
 >[!NOTE]
 >
@@ -987,7 +978,7 @@ The `/vanity_urls` section contains the following properties:
 Use the following procedure to enable access to vanity URLs.
 
 1. If your render service is an AEM 6.3 instance or a previous version of AEM or CQ, install the com.adobe.granite.dispatcher.vanityurl.content package on your publish instance.
-1. For each vanity URL that you have configured for an AEM or CQ page, ensure that the ` [/filter](../using/dispatcher-configuration.md#main-pars_134_32_0009)` configuration denies the URL. If necessary, add a filter that denies the URL. 
+1. For each vanity URL that you have configured for an AEM or CQ page, ensure that the ` [/filter](dispatcher-configuration.md#main-pars_134_32_0009)` configuration denies the URL. If necessary, add a filter that denies the URL. 
 1. Add the `/vanity_urls` section below `/farms`.
 1. Restart Apache web server.
 
@@ -1039,7 +1030,7 @@ An example cache section might look as follows:
 
 >[!NOTE]
 >
->For permission-sensitive caching, read [Caching Secured Content](../using/permissions-cache.md).
+>For permission-sensitive caching, read [Caching Secured Content](permissions-cache.md).
 
 ### Specifying the Cache Directory {#specifying-the-cache-directory}
 
@@ -1103,7 +1094,7 @@ The `/rules` property controls which documents are cached according to the docum
 
 >[!NOTE]
 >
->The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](../using/dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
+>The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
 
 Each item in the /rules property includes a [glob](#main-pars_title_25) pattern and a type:
 
@@ -1274,7 +1265,7 @@ It is called with the following arguments:
 * Action  
   The replication Action (e.g. Activate, Deactivate)
 * Action Scope  
-  The replication Action's Scope (empty, unless a header of `CQ-Action-Scope: ResourceOnly` is sent, see [Invalidating Cached Pages from AEM](../using/page-invalidate.md) for details)
+  The replication Action's Scope (empty, unless a header of `CQ-Action-Scope: ResourceOnly` is sent, see [Invalidating Cached Pages from AEM](page-invalidate.md) for details)
 
 This can be used to cover a number of different use cases, such as invalidating other application specific caches, or to handle cases where the externalized URL of a page and its place in the docroot does not match the content path.
 
@@ -1385,7 +1376,7 @@ Presented below is a sample from the default configuration:
 
 >[!NOTE]
 >
->Also, be aware that file globbing characters are not allowed. For more details, see [Designing Patterns for glob Properties](../using/dispatcher-configuration.md#DesigningPatternsforglobProperties).
+>Also, be aware that file globbing characters are not allowed. For more details, see [Designing Patterns for glob Properties](dispatcher-configuration.md#DesigningPatternsforglobProperties).
 
 >[!NOTE]
 >

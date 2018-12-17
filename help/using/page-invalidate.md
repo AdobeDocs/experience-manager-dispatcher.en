@@ -59,14 +59,14 @@ Use the following procedure to configure a replication agent on the AEM author i
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
    If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, http://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](../using/dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.  
 1. Click OK to activate the agent.
 
 Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](/content/help/en/experience-manager/6-2/sites/deploying/using/replication#ConfiguringaDispatcherFlushagent).
 
-For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](../using/dispatcher-configuration.md#EnablingAccesstoVanityURLsvanityurls).
+For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#EnablingAccesstoVanityURLsvanityurls).
 
 >[!NOTE]
 >
@@ -108,7 +108,7 @@ The dispatcher flush is controlled by a replication agent operating on the publi
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
    If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, http://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](../using/dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.
 1. Repeat for every publish instance affected.
@@ -140,7 +140,7 @@ Dispatcher flushes (deletes) the cached files and folders that have names that m
 
 * Any directory named " `_jcr_content`" below the en directory (which, if it exists, contains cached renderings of sub-nodes of the page)
 
-All other files in the dispatcher cache (or up to a particular level, depending on the `/statfileslevel` setting) are invalidated by touching the `.stat` file. This file's last modification date is compared to the last modification date of a cached document and the document is re-fetched if the `.stat` file is newer. See [Invalidating Files by Folder Level](../using/dispatcher-configuration.md#main-pars_title_26) for details.
+All other files in the dispatcher cache (or up to a particular level, depending on the `/statfileslevel` setting) are invalidated by touching the `.stat` file. This file's last modification date is compared to the last modification date of a cached document and the document is re-fetched if the `.stat` file is newer. See [Invalidating Files by Folder Level](dispatcher-configuration.md#main-pars_title_26) for details.
 
 Invalidation (i.e. touching of .stat files) can be prevented by sending an additional Header `CQ-Action-Scope: ResourceOnly`. This can be used to flush particular resources without invalidating other parts of the cache, like JSON data that is dynamically created and requires regular flushing independent of the cache (e.g. representing data that is obtained from a third-party system to display news, stock tickers, etc.).
 
@@ -162,7 +162,7 @@ CQ-Handle: *path-pattern
 ...  
 *page_pathn*`
 
-The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](../using/dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the /content/geometroxx-outdoors/en.html page:
+The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the /content/geometroxx-outdoors/en.html page:
 
 `POST /dispatcher/invalidate.cache HTTP/1.1  
 CQ-Action: Activate  

@@ -36,7 +36,7 @@ The dispatcher as a front end system offers an extra layer of security to your A
 
 ## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
-You should install the latest available version that is available for your platform. You should upgrade your Dispatcher instance to use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](../using/dispatcher-install.md).
+You should install the latest available version that is available for your platform. You should upgrade your Dispatcher instance to use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
@@ -48,7 +48,7 @@ You should install the latest available version that is available for your platf
 
 ## Restrict Clients that Can Flush Your Cache {#restrict-clients-that-can-flush-your-cache}
 
-Adobe recommends that you [limit the clients that can flush your cache.](../using/dispatcher-configuration.md#LimitingtheClientsThatCanFlushtheCache)
+Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#LimitingtheClientsThatCanFlushtheCache)
 
 ## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
 
@@ -73,13 +73,13 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restrict Access {#restrict-access}
 
-When configuring the Dispatcher you should restrict external access as much as possible. See [Example /filter Section](../using/dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
+When configuring the Dispatcher you should restrict external access as much as possible. See [Example /filter Section](dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
 
 ## Make Sure Access to Administrative URLs is Denied {#make-sure-access-to-administrative-urls-is-denied}
 
 Make sure you use filters to block external access to any administrative URLs, such as the Web Console.
 
-See [Testing Dispatcher Security](../using/dispatcher-configuration.md#TestingDispatcherSecurity) for a list of URLs that need to be blocked.
+See [Testing Dispatcher Security](dispatcher-configuration.md#TestingDispatcherSecurity) for a list of URLs that need to be blocked.
 
 ## Use Whitelists Instead Of Blacklists {#use-whitelists-instead-of-blacklists}
 
@@ -102,7 +102,7 @@ At the dispatcher level, there are two methods of configuring to prevent DoS att
 
 * Use the mod_rewrite module (for example, [Apache 2.2](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).  
 
-* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](../using/dispatcher-configuration.md#ConfiguringAccesstoContentfilter).  
+* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#ConfiguringAccesstoContentfilter).  
   For example, change the caching rules to limit caching to the expected mime types, such as:
 
     * `.html`

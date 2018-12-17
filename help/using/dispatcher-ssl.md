@@ -18,8 +18,8 @@ snippet: y
 
 Use SSL connections between Dispatcher and the render computer:
 
-* [One-way SSL](../using/dispatcher-ssl.md#main-pars_title_1)
-* [Mutual SSL](../using/dispatcher-ssl.md#main-pars_title_2)
+* [One-way SSL](dispatcher-ssl.md#main-pars_title_1)
+* [Mutual SSL](dispatcher-ssl.md#main-pars_title_2)
 
 >[!NOTE]
 >
@@ -54,7 +54,7 @@ X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239
 
 ### Configuring Dispatcher to Use SSL {#configuring-dispatcher-to-use-ssl}
 
-To configure Dispatcher to connect with AEM or CQ over SSL, your [dispatcher.any](../using/dispatcher-configuration.md) file requires the following properties:
+To configure Dispatcher to connect with AEM or CQ over SSL, your [dispatcher.any](dispatcher-configuration.md) file requires the following properties:
 
 * A virtual host that handles HTTPS requests.
 * The `renders` section of the virtual host includes an item that identifies the host name and port of the CQ or AEM instance that uses HTTPS.
@@ -127,10 +127,10 @@ To configure mutual SSL, you require certificates that are signed by a trusted c
 
 Perform the following steps to configure mutual SSL:
 
-1. [Install](../using/dispatcher-install.md) the latest version of Dispatcher for your platform. Use a Dispatcher binary that supports SSL (SSL is in the file name, such as dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
-1. [Create or obtain CA-signed certificate](../using/dispatcher-ssl.md#main-pars_title_3) for Dispatcher and the render instance. 
-1. [Create a keystore containing render certificate](../using/dispatcher-ssl.md#main-pars_title_6) and configure the render's HTTP service to use it.
-1. [Configure the Dispatcher web server module](../using/dispatcher-ssl.md#main-pars_title_4) for mutual SSL.
+1. [Install](dispatcher-install.md) the latest version of Dispatcher for your platform. Use a Dispatcher binary that supports SSL (SSL is in the file name, such as dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
+1. [Create or obtain CA-signed certificate](dispatcher-ssl.md#main-pars_title_3) for Dispatcher and the render instance. 
+1. [Create a keystore containing render certificate](dispatcher-ssl.md#main-pars_title_6) and configure the render's HTTP service to use it.
+1. [Configure the Dispatcher web server module](dispatcher-ssl.md#main-pars_title_4) for mutual SSL.
 
 ### Creating or Obtaining CA-Signed Certificates {#creating-or-obtaining-ca-signed-certificates}
 
@@ -155,7 +155,7 @@ If you are acting as the CA, use [OpenSSL](https://www.openssl.org/) to create t
 
 Use OpenSSL to create the certificate requests to send to the third-party CA or to sign with your CA.
 
-When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you are configuring Dispatcher to accept the certificate only if it matches the hostname of the Publish instance. (See the [DispatcherCheckPeerCN](../using/dispatcher-ssl.md#main-pars_title_11) property.)
+When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you are configuring Dispatcher to accept the certificate only if it matches the hostname of the Publish instance. (See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars_title_11) property.)
 
 1. Open a terminal and change the current directory to the directory that contains the CH.sh file of your OpenSSL libraries.
 1. Enter the following command and provide values when prompted. If required, use the host name of the publish instance as the the Common Name. The host name is DNS-resolvable name for the IP address of the render:
@@ -281,7 +281,7 @@ Combine the dispatcher certificate and the unencrypted private key into a single
 
 #### Specifying the Certificate to Use for Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
 
-Add the following properties to the [Dispatcher module configuration](../using/dispatcher-install.md#main-pars_55_35_1022) (in httpd.conf):
+Add the following properties to the [Dispatcher module configuration](dispatcher-install.md#main-pars_55_35_1022) (in httpd.conf):
 
 * DispatcherCertificateFile: The path to the Dispatcher unified certificate file, containing the public certificate and the unencrypted private key. This file is used when SSL server requests the Dispatcher client certificate.
 * DispatcherCACertificateFile: The path to the CA certificate file, used if the SSL server presents a CA that is not trusted by a root authority.

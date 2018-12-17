@@ -1,18 +1,15 @@
 ---
 title: Dispatcher Overview
-seo-title: Dispatcher Overview
-description: null
-seo-description: This article provides a general overview of Dispatcher.
+seo-title: Adobe AEM Dispatcher Overview
+description: This article provides a general overview of Dispatcher.
+seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
 contentOwner: User
-products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
-index: y
-internal: n
-snippet: y
+
 ---
 
 # Dispatcher Overview{#dispatcher-overview}
@@ -26,12 +23,12 @@ Dispatcher is Adobe Experience Manager's caching and/or load balancing tool. Usi
 The process for deploying a Dispatcher is independent of the web server and OS platform chosen:
 
 1. Learn about Dispatcher (this page). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
-1. Install a [supported web server](/content/help/en/experience-manager/6-3/sites/deploying/using/technical-requirements#SupportedPlatforms) according to the web server documentation.  
+1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.  
 
-1. [Install the Dispatcher module](../using/dispatcher-install.md) on your web server and configure the web server accordingly.
-1. [Configure Dispatcher](../using/dispatcher-configuration.md) (the dispatcher.any file).  
+1. [Install the Dispatcher module](dispatcher-install.md) on your web server and configure the web server accordingly.
+1. [Configure Dispatcher](dispatcher-configuration.md) (the dispatcher.any file).  
 
-1. [Configure AEM](../using/page-invalidate.md) so that content updates invalidate the cache.
+1. [Configure AEM](page-invalidate.md) so that content updates invalidate the cache.
 
 >[!NOTE]
 >
@@ -39,14 +36,14 @@ The process for deploying a Dispatcher is independent of the web server and OS p
 
 Use the following information as required:
 
-* [](http://helpx.adobe.com/cq/kb/index/dispatcher.html) [The Dispatcher Security Checklist](../using/security-checklist.md)
+* [](http://helpx.adobe.com/cq/kb/index/dispatcher.html) [The Dispatcher Security Checklist](security-checklist.md)
 
 * [The Dispatcher Knowledge Base](http://helpx.adobe.com/cq/kb/index/dispatcher.html)
-* [Optimizing a Website for Cache Performance](../using/optimizing-caching.md)
-* [Using Dispatcher with Multiple Domains](../using/dispatcher-domains.md)
-* [Using SSL with Dispatcher](../using/dispatcher-ssl.md)
-* [Implementing Permission-Sensitive Caching](../using/permissions-cache.md)
-* [Troubleshooting Dispatcher Problems](../using/dispatcher-troubleshooting.md)
+* [Optimizing a Website for Cache Performance](optimizing-caching.md)
+* [Using Dispatcher with Multiple Domains](dispatcher-domains.md)
+* [Using SSL with Dispatcher](dispatcher-ssl.md)
+* [Implementing Permission-Sensitive Caching](permissions-cache.md)
+* [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
 
 >[!NOTE]
 >
@@ -76,7 +73,7 @@ The Dispatcher contains mechanisms to generate, and update, static HTML based on
 
 This section illustrates the principles behind this.
 
-#### Static Web Server {#static-web-server}
+### Static Web Server {#static-web-server}
 
 ![](assets/chlimage_1-3.png)
 
@@ -84,7 +81,7 @@ A static web server, such as Apache or IIS, serves static HTML files to visitors
 
 This process is very simple, and thus extremely efficient. If a visitor requests a file (e.g. a HTML page), the file is usually taken directly from memory, at worst it is read from the local drive. Static web servers have been available for quite some time, so there is a wide range of tools for administration and security management, and they are very well integrated with network infrastructures.
 
-#### Content Management Servers {#content-management-servers}
+### Content Management Servers {#content-management-servers}
 
 ![](assets/chlimage_1-4.png)
 
@@ -110,14 +107,14 @@ This allows you to create richer, dynamic content, which increases the flexibili
 >
 >There can be OS-level limitations for length of file name; i.e. if you have an URL with a lot of selectors.
 
-**Methods for Caching**
+### Methods for Caching
 
 The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
 
 * **Content Updates** remove the pages that have changed, as well as files that are directly associated with them.
 * **Auto-Invalidation** automatically invalidates those parts of the cache that may be out of date after an update. i.e. it effectively flags relevant pages as being out of date, without deleting anything.
 
-**Content Updates**
+### Content Updates
 
 In a content update, one or more AEM documents change. AEM sends a syndication request to the Dispatcher, which updates the cache accordingly:
 
@@ -132,7 +129,7 @@ The following points should be noted:
 * Typically, automatically generated pictures that incorporate text from a page are stored in picture files starting with the same handle - thus ensuring that the association exists for deletion. For example, you may store the title text of the page mypage.html as the picture mypage.titlePicture.gif in the same folder. This way the picture is automatically deleted from the cache each time the page is updated, so you can be sure that the picture always reflects the current version of the page.
 * You may have several statfiles, for example one per language folder. If a page is updated, AEM looks for the next parent folder containing a statfile, and *touches* that file.
 
-**Auto-invalidation**
+### Auto-invalidation
 
 Auto-invalidation automatically invalidates parts of the cache - without physically deleting any files. At every content update, the so-called statfile is touched, so its timestamp reflects the last content update.
 
@@ -150,9 +147,9 @@ Again, certain points should be noted:
 
 ![](assets/chlimage_1-6.png)
 
-**Determining whether a document is subject to caching**
+### Determining whether a document is subject to caching
 
-You can [define which documents the Dispatcher caches in the configuration file](../using/dispatcher-configuration.md#main-pars_146_44_0010). The Dispatcher checks the request against the list of cacheable documents. If the document is not in this list, the Dispatcher requests the document from the AEM instance.
+You can [define which documents the Dispatcher caches in the configuration file](dispatcher-configuration.md#main-pars_146_44_0010). The Dispatcher checks the request against the list of cacheable documents. If the document is not in this list, the Dispatcher requests the document from the AEM instance.
 
 The Dispatcher *always* requests the document directly from the AEM instance in the following cases:
 
@@ -162,16 +159,16 @@ The Dispatcher *always* requests the document directly from the AEM instance in 
 
 >[!NOTE]
 >
->The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](../using/dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
+>The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#CachingHTTPResponseHeaders) section.
 
-**Determining if a document is cached**
+### Determining if a document is cached
 
 The Dispatcher stores the cached files on the web server as if they were part of a static website. If a user requests a cacheable document the Dispatcher checks whether that document exists in the web server's file system:
 
 * if the document is cached, Dispatcher returns the file.
 * if it is not cached, the Dispatcher requests the document from the AEM instance.
 
-**Determining if a document is up-to-date**
+### Determining if a document is up-to-date
 
 To find out if a document is up to date, the Dispatcher performs two steps:
 
@@ -206,9 +203,9 @@ You gain:
 >
 >While a single Dispatcher will usually be able to saturate the capacity of the available Publish instances, for some rare applications it can make sense to additionally balance the load between two Dispatcher instances. Configurations with multiple Dispatchers need to be considered carefully, since an additional Dispatcher will increase the load on the available Publish instances and can easily decrease performance in most applications.
 
-#### How the Dispatcher performs Load Balancing {#how-the-dispatcher-performs-load-balancing}
+## How the Dispatcher performs Load Balancing {#how-the-dispatcher-performs-load-balancing}
 
-**Performance Statistics**
+### Performance Statistics
 
 The Dispatcher keeps internal statistics about how fast each instance of AEM processes documents. Based on this data, the Dispatcher estimates which instance will provide the quickest response time when answering a request, and so it reserves the necessary computation time on that instance.
 
@@ -216,7 +213,7 @@ Different types of requests may have differing average completion times, so the 
 
 If you use an elaborate search function, you may create a new category for search queries. This helps the Dispatcher send search queries to the instance that responds fastest. This prevents a slower instance from stalling when it receives several "expensive" search queries, while the others get the "cheaper" requests.
 
-**Personalized content (Sticky Connections)**
+### Personalized content (Sticky Connections)
 
 Sticky connections ensure that documents for one user are all composed on the same instance of AEM. This is important if you use personalized pages and session data. The data is stored on the instance, so subsequent requests from the same user must return to that instance or the data is lost.
 
@@ -257,7 +254,7 @@ The "next closest server" depends on your specific setup. For example, in an Aka
 
 In most cases, Dispatcher is the next server that might serve the document from a cache and influence the response headers returned to the CDN server.
 
-#### Controlling a CDN cache {#controlling-a-cdn-cache}
+## Controlling a CDN cache {#controlling-a-cdn-cache}
 
 There are a numer of ways to control for how long a CDN will cache a resource before it re-fetches is from Dispatcher.
 
@@ -280,13 +277,13 @@ For finer-grained control, API based invalidation allows you to invalidate a CDN
 
 >[!NOTE]
 >
->See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](http://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](http://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html#).
+>See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](http://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](http://docs.adobe.com/content/ddc/en/gems/dispatcher-caching---new-features-and-optimizations.html).
 
 ## Using a Dispatcher with an Author Server {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->if you are using [AEM with Touch UI](/content/help/en/experience-manager/6-3/sites/developing/using/touch-ui-concepts) you should **not** cache author instance content. If caching was enabled for the author instance, you need to disable it and delete the contents of the cache directory. To disable caching, you should edit the `author_dispatcher.any` file and modify the `/rule` property of the `/cache` section as follows:
+>if you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) you should **not** cache author instance content. If caching was enabled for the author instance, you need to disable it and delete the contents of the cache directory. To disable caching, you should edit the `author_dispatcher.any` file and modify the `/rule` property of the `/cache` section as follows:
 
 ```
 /rules
@@ -298,16 +295,14 @@ For finer-grained control, API based invalidation allows you to invalidate a CDN
 
 A Dispatcher can be used in front of an author instance to improve authoring performance. To configure an authoring Dispatcher, do the following:
 
-1. Install a Dispatcher in a web server (this could be Apache or IIS web server, see [Installing Dispatcher](../using/dispatcher-install.md)).
+1. Install a Dispatcher in a web server (this could be Apache or IIS web server, see [Installing Dispatcher](dispatcher-install.md)).
 1. You may wish to test the newly installed Dispatcher against a working AEM publish instance, to ensure that a baseline correct install has been acheived.
 1. Now make sure that the Dispatcher is able to connect via TCP/IP to your author instance.
 1. Replace the Dispatcher's sample `dispatcher.any` file with the `author_dispatcher.any` file provided below.
 1. Open the `author_dispatcher.any` in a text editor and make the following changes:
 
     1. Change the `/hostname` and `/port` of the `/renders` section to point to your author instance.
-    
-    1. Change the `/docroot` of the `/cache` section to point to a cache directory. In case you are using [AEM with Touch UI](/content/help/en/experience-manager/6-3/sites/developing/using/touch-ui-concepts), see the warning above.
-    
+    1. Change the `/docroot` of the `/cache` section to point to a cache directory. In case you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html), see the warning above.
     1. Save the changes.
 
 1. Delete all existing files in the `/cache` > `/docroot` directory which you configured above.
@@ -324,10 +319,11 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 1. Delete or disable the **author dispatcher's** flushing agent on your AEM author instance.
 1. Re-do the author dispatcher configuration by following the new instructions above.
 
+<!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
-
+-->
 >[!NOTE]
 >
 >A related knowledge base article can be found here:  
->** [How to configure the dispatcher in front of an authoring environment](http://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)**
+>[How to configure the dispatcher in front of an authoring environment](http://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)
 

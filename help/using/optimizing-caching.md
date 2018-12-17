@@ -55,7 +55,7 @@ HTTP request headers are not cached and so problems can occur if you store page 
 
 #### Avoid URL Parameters {#avoid-url-parameters}
 
-If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless Dispatcher is [configured accordingly](../using/dispatcher-configuration.md#main-pars_title_24)):
+If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless Dispatcher is [configured accordingly](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -140,7 +140,7 @@ The Dispatcher cannot cache personalized data, so it is recommended that you lim
 
 #### Sticky Connections {#sticky-connections}
 
-[Sticky connections](../using/dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder to hold all documents that require sticky connections for the website. Try not to have other documents in it. This impacts load-balancing if you use personalized pages and session data.
+[Sticky connections](dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder to hold all documents that require sticky connections for the website. Try not to have other documents in it. This impacts load-balancing if you use personalized pages and session data.
 
 #### MIME Types {#mime-types}
 

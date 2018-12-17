@@ -10,9 +10,6 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-index: y
-internal: n
-snippet: y
 ---
 
 # Installing Dispatcher{#installing-dispatcher}
@@ -29,7 +26,7 @@ Comment Type: draft
 >
 >Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
 
-Use the [Dispatcher Release Notes](../release-notes.md) page to obtain the latest Dispatcher installation file for your operating system and web server. Dispatcher release numbers are independent of the Adobe Experience Manager release numbers and are compatible with Adobe Experience Manager 6.x, 5.x and Adobe CQ 5.x releases.
+Use the [Dispatcher Release Notes](release-notes.md) page to obtain the latest Dispatcher installation file for your operating system and web server. Dispatcher release numbers are independent of the Adobe Experience Manager release numbers and are compatible with Adobe Experience Manager 6.x, 5.x and Adobe CQ 5.x releases.
 
 The following file naming convention is used:
 
@@ -39,30 +36,13 @@ For example, the dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz file contain
 
 The following table lists the web server identifier that is used in file names for each web server:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td style="text-align: center;"> Web Server</td> 
-   <td style="text-align: center;"> Installation Kit</td> 
-  </tr> 
-  <tr> 
-   <td> Apache 2.4</td> 
-   <td> dispatcher-<strong>apache2.4</strong>-&lt;<i>other parameters</i>&gt;</td> 
-  </tr> 
-  <tr> 
-   <td> Apache 2.2</td> 
-   <td> dispatcher-<strong>apache2.2</strong>-&lt;<i>other parameters</i>&gt;</td> 
-  </tr> 
-  <tr> 
-   <td> Microsoft Internet<br /> Information Server 7.5, 8, 8.5<br /> </td> 
-   <td> dispatcher-<strong>iis</strong>-&lt;<i>other parameters</i>&gt;</td> 
-  </tr> 
-  <tr> 
-   <td> Sun Java Web Server / iPlanet<br /> </td> 
-   <td> dispatcher-<strong>ns</strong>-&lt;<i>other parameters</i>&gt;</td> 
-  </tr> 
- </tbody> 
-</table>
+|||
+|--- |--- |
+|Web Server|Installation Kit|
+|Apache 2.4|dispatcher-apache2.4-&lt;other parameters&gt;|
+|Apache 2.2|dispatcher-apache2.2-&lt;other parameters&gt;|
+|Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-iis-&lt;other parameters&gt;|
+|Sun Java Web Server iPlanet | dispatcher-ns-&lt;other parameters&gt;|
 
 >[!NOTE]
 >
@@ -110,7 +90,7 @@ For information on how to install this web server, see the following resources:
 * Microsoft's own documentation on the Internet Information Server
 * ["The Official Microsoft IIS site"](http://www.iis.net/)
 
-#### Required IIS Components {#required-iis-components}
+### Required IIS Components {#required-iis-components}
 
 IIS versions 8.5 and 10 require that the following IIS components are installed:
 
@@ -118,7 +98,7 @@ IIS versions 8.5 and 10 require that the following IIS components are installed:
 
 Also, you must add the Web Server (IIS) role. Use Server Manager to add the role and components.  
 
-### Microsoft IIS - Installing the Dispatcher module {#microsoft-iis-installing-the-dispatcher-module}
+## Microsoft IIS - Installing the Dispatcher module {#microsoft-iis-installing-the-dispatcher-module}
 
 The required archive for Microsoft Internet Information System is:
 
@@ -126,58 +106,32 @@ The required archive for Microsoft Internet Information System is:
 
 The ZIP file contains the following files:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <th>File<br /> </th> 
-   <th> Description</th> 
-  </tr> 
-  <tr> 
-   <td valign="top"> disp_iis.dll</td> 
-   <td>The Dispatcher dynamic link library file.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> disp_iis.ini</td> 
-   <td>Configuration file for the IIS. This example can be updated with your requirements.<br /> <strong>NOTE</strong>: The ini file must have the same name-root as the dll.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top"> dispatcher.any</td> 
-   <td>An example configuration file for the Dispatcher.</td> 
-  </tr> 
-  <tr> 
-   <td>author_dispatcher.any</td> 
-   <td>An example configuration file for Dispatcher working with the author instance.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">README<br /> </td> 
-   <td><p>Readme file that contains installation instructions and last-minute information.</p> <p><strong>Note</strong>: Please check this file before starting the installation. </p> </td> 
-  </tr> 
-  <tr> 
-   <td>CHANGES</td> 
-   <td>Changes file that lists issues fixed in current and past releases.</td> 
-  </tr> 
- </tbody> 
-</table>
+|File|Description|
+|--- |--- |
+|disp_iis.dll|The Dispatcher dynamic link library file.|
+|disp_iis.ini|Configuration file for the IIS. This example can be updated with your requirements. NOTE: The ini file must have the same name-root as the dll.|
+|dispatcher.any|An example configuration file for the Dispatcher.|
+|author_dispatcher.any|An example configuration file for Dispatcher working with the author instance.|
+|README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
+|CHANGES|Changes file that lists issues fixed in current and past releases.|
 
 Use the following procedure to copy the Dispatcher files to the correct location.
 
-1.
-
-    1. Use Windows Explorer to create the `<*IIS_INSTALLDIR*>/Scripts` directory,  
+1. Use Windows Explorer to create the `<*IIS_INSTALLDIR*>/Scripts` directory,  
        for example, `C:\inetpub\Scripts`.
 
 1. Extract the following files from the Dispatcher package into this Scripts directory:
 
-    * disp_iis.dll
-    * disp_iis.ini
+    * `disp_iis.dll`
+    * `disp_iis.ini`
     * One of the following files depending on if Dispatcher is working with an AEM author instance or publish instance:
 
-        * Author intance: author_dispatcher.any
-        * Publish instance: dispatcher.any
+      * Author instance: `author_dispatcher.any`
+      * Publish instance: `dispatcher.any`
 
-### Microsoft IIS - Configure the Dispatcher INI File {#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft IIS - Configure the Dispatcher INI File {#microsoft-iis-configure-the-dispatcher-ini-file}
 
-Edit the **disp_iis.ini** file to configure the Dispatcher installation. The basic format of the `.ini` file is as follows:
+Edit the `disp_iis.ini` file to configure the Dispatcher installation. The basic format of the `.ini` file is as follows:
 
 ```xml
 [main]
@@ -236,7 +190,7 @@ replaceauthorization=0
 
 Configure IIS to integrate the Dispatcher ISAPI module. In IIS you use wildcard application mapping.
 
-#### Configuring Anonymous Access - IIS 8.5 and 10 {#configuring-anonymous-access-iis-and}
+### Configuring Anonymous Access - IIS 8.5 and 10 {#configuring-anonymous-access-iis-and}
 
 The default Flush replication agent on the Author instance is configured so that it does not send security credentials with flush requests. Therefore, the website that you are using a the Dispatcher cache must allow anonymous access.
 
@@ -246,7 +200,7 @@ If your website uses an authentication method, the Flush replication agent must 
 1. Using Features View mode, in the IIS section double click Authentication.
 1. If Anonymous Authentication is not enabled, select Anonymous Authentication and in the Actions area click Enable.
 
-#### Integrating the Dispatcher ISAPI Module - IIS 8.5 and 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Integrating the Dispatcher ISAPI Module - IIS 8.5 and 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 Use the following procedure to add the Dispatcher ISAPI Module to IIS.
 
@@ -268,7 +222,7 @@ Use the following procedure to add the Dispatcher ISAPI Module to IIS.
 1. (IIS 8.0) To ensure that the handler is used for files and folders that are not yet cached, deselect Invoke Handler Only If Request Is Mapped To, and then click OK.
 1. (IIS 8.0) On the Edit Script Map dialog box, click OK.
 
-#### Configuring Access to the Cache - IIS 8.5 and 10 {#configuring-access-to-the-cache-iis-and}
+### Configuring Access to the Cache - IIS 8.5 and 10 {#configuring-access-to-the-cache-iis-and}
 
 Provide the default App Pool user with write-acess to the folder that is being used as the Dispatcher cache.
 
@@ -286,7 +240,7 @@ Provide the default App Pool user with write-acess to the folder that is being u
 1. Click the Check Names button. When Windows resolves the user account, click OK.
 1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account** except for Full Control,** and click OK. Click OK to close the folder Properties dialog box.
 
-#### Registering the JSON Mime Type - IIS 8.5 and 10 {#registering-the-json-mime-type-iis-and}
+### Registering the JSON Mime Type - IIS 8.5 and 10 {#registering-the-json-mime-type-iis-and}
 
 Use the following procedure to register the JSON MIME type, when you want Dispatcher to allow JSON calls.
 
@@ -296,14 +250,14 @@ Use the following procedure to register the JSON MIME type, when you want Dispat
     * File Name Extension: . `json`
     * MIME Type: application/json
 
-#### Removing the bin Hidden Segment - IIS 8.5 and 10 {#removing-the-bin-hidden-segment-iis-and}
+### Removing the bin Hidden Segment - IIS 8.5 and 10 {#removing-the-bin-hidden-segment-iis-and}
 
 Use the following procedure to remove the `bin` hidden segment. Web sites that are not new can contain this hidden segment.
 
 1. In IIS Manager, select your web site and using Features View, double-click Request Filtering.
 1. Select the `bin` segment, click Remove, and in the confirmation dialog box click Yes.
 
-#### Logging IIS Messages to a File - IIS 8.5 and 10 {#logging-iis-messages-to-a-file-iis-and}
+### Logging IIS Messages to a File - IIS 8.5 and 10 {#logging-iis-messages-to-a-file-iis-and}
 
 Use the following procedure to write Dispatcher log messages to a log file instead of to the Windows Event log. You need to configure Dispatcher to use the log file, and provide IIS with write-access to the file.
 
@@ -333,8 +287,8 @@ Use the following procedure to write Dispatcher log messages to a log file inste
 
 Before you can start using the Dispatcher you must now:
 
-* [Configure](../using/dispatcher-configuration.md) Dispatcher
-* [Confgure AEM](../using/page-invalidate.md) to work with Dispatcher.
+* [Configure](dispatcher-configuration.md) Dispatcher
+* [Confgure AEM](page-invalidate.md) to work with Dispatcher.
 
 ## Apache Web Server {#apache-web-server}
 
@@ -363,53 +317,25 @@ The Dispatcher comes as either:
 
 The installation archive files contains the following files - dependent on whether you have selected Windows or Unix:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <th valign="top" width="250">File</th> 
-   <th valign="top" width="250">Description</th> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">disp_apache&lt;<i>x.y</i>&gt;.dll</td> 
-   <td><strong>Windows:<br /> </strong>The Dispatcher dynamic link library file.<br /> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">dispatcher-apache&lt;<i>x.y</i>&gt;-&lt;<i>rel-nr</i>&gt;.so</td> 
-   <td><strong>Unix:<br /> </strong>The Dispatcher shared object library file.<br /> </td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">mod_dispatcher.so</td> 
-   <td><strong>Unix</strong>:<br /> An example link.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">http.conf.disp&lt;<i>x</i>&gt;</td> 
-   <td>An example configuration file for the Apache server.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">dispatcher.any</td> 
-   <td>An example configuration file for the Dispatcher.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">README</td> 
-   <td>Readme file that contains installation instructions and last-minute information.<br /> <strong>Note</strong>: Please check this file before starting the installation.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top" width="250">CHANGES</td> 
-   <td>Changes file that lists issues fixed in the current and past releases.</td> 
-  </tr> 
- </tbody> 
-</table>
+|File|Description|
+|--- |--- |
+|disp_apache&lt;x.y&gt;.dll|Windows: The Dispatcher dynamic link library file.|
+|dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so|Unix: The Dispatcher shared object library file.|
+|mod_dispatcher.so|Unix: An example link.|
+|http.conf.disp&lt;x&gt;|An example configuration file for the Apache server.|
+|dispatcher.any|An example configuration file for the Dispatcher.|
+|README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
+|CHANGES|Changes file that lists issues fixed in the current and past releases.|
 
 Use the following steps to add Dispatcher to your Apache Web Server:
 
 1. Place the Dispatcher file in the appropriate Apache module directory:
 
-    * **Windows**: Place `disp_apache<*x.y*>.dll` `<APACHE_ROOT>/modules`
-    
-    * **Unix**: Locate either the `<APACHE_ROOT>/libexec` or `<APACHE_ROOT>/modules`directory according to your installation.  
-      Copy `dispatcher-apache<*options*>.so` into this directory.  
-      To simplify long-term maintenance you can also create a symbolic link named `mod_dispatcher.so` to the Dispatcher: `  
-      ln -s dispatcher-apache<*x*>-<*os*>-<rel-nr>.so mod_dispatcher.so`
+   * **Windows**: Place `disp_apache<*x.y*>.dll` `<APACHE_ROOT>/modules`
+   * **Unix**: Locate either the `<APACHE_ROOT>/libexec` or `<APACHE_ROOT>/modules`directory according to your installation.  
+     Copy `dispatcher-apache<*options*>.so` into this directory.  
+     To simplify long-term maintenance you can also create a symbolic link named `mod_dispatcher.so` to the Dispatcher:  
+     `ln -s dispatcher-apache<*x*>-<*os*>-<rel-nr>.so mod_dispatcher.so`
 
 1. Copy the dispatcher.any file to the `<*APACHE_ROOT*>/conf` directory.
 
@@ -444,42 +370,33 @@ These steps are compulsory:
 
 1. Navigate to `<*APACHE_ROOT*>/conf`.
 1. Open `httpd.conf`for editing.  
-
 1. The following configuration entries must be added, in the order listed:
 
-    * **LoadModule** to load the module on start up.
-    * Dispatcher-specific configuration entries, including **DispatcherConfig, DispatcherLog** and **DispatcherLogLevel**.
-    
-    * **SetHandler** to activate the Dispatcher. **LoadModule**.
-    
-    * **ModMimeUsePathInfo** to configure behavior of **mod_mime**.
+   * **LoadModule** to load the module on start up.
+   * Dispatcher-specific configuration entries, including **DispatcherConfig, DispatcherLog** and **DispatcherLogLevel**.
+   * **SetHandler** to activate the Dispatcher. **LoadModule**.
+   * **ModMimeUsePathInfo** to configure behavior of **mod_mime**.
 
 1. (Optional) It is recommended that you change the owner of the htdocs directory:
 
-    * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (&lt;*APACHE_ROOT*&gt;/htdocs) must belong to the user daemon:  
-      cd &lt;APACHE_ROOT&gt;  
-      chown -R daemon:daemon htdocs
+   * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (&lt;*APACHE_ROOT*&gt;/htdocs) must belong to the user daemon:  
+    ```
+    cd &lt;APACHE_ROOT&gt;  
+    chown -R daemon:daemon htdocs
+    ```
 
 **LoadModule**
 
 The following table lists examples that can be used; the exact entries are according to your specific Apache Web Server:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td> Windows</td> 
-   <td>...<br /> LoadModule dispatcher_module modules\disp_apache.dll<br /> ...</td> 
-  </tr> 
-  <tr> 
-   <td> Unix <br /> (assuming symbolic link)</td> 
-   <td>...<br /> LoadModule dispatcher_module libexec/mod_dispatcher.so<br /> ...</td> 
-  </tr> 
- </tbody> 
-</table>
+|||
+|--- |--- |
+|Windows|`... LoadModule dispatcher_module modules\disp_apache.dll ...`|
+|Unix  (assuming symbolic link)|`... LoadModule dispatcher_module libexec/mod_dispatcher.so ...`|
 
 >[!NOTE]
 >
->****The first parameter of each statement must be written *exactly as in the above examples*. 
+>*The first parameter of each statement must be written *exactly as in the above examples*.
 >
 >See the example configuration files provided and the Apache Web Server documentation for full details about this command.
 
@@ -487,14 +404,10 @@ The following table lists examples that can be used; the exact entries are accor
 
 The Dispatcher-specific configuration entries are placed after the LoadModule entry. The following table lists an example configuration that is applicable for both Unix and Windows:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows<br /> and<br /> Unix</td> 
-   <td> ...<br /> &lt;IfModule disp_apache2.c&gt;<br /> DispatcherConfig conf/dispatcher.any<br /> DispatcherLog logs/dispatcher.log<br /> DispatcherLogLevel 3<br /> DispatcherNoServerHeader 0<br /> DispatcherDeclineRoot 0<br /> DispatcherUseProcessedURL 0<br /> DispatcherPassError 0<br /> DispatcherKeepAliveTimeout 60<br /> &lt;/IfModule&gt;<br /> ...</td> 
-  </tr> 
- </tbody> 
-</table>
+|||
+|--- |--- |
+|Windows and Unix|... <br/> `<IfModule disp_apache2.c>` <br/>`DispatcherConfig conf/dispatcher.any`<br/> `DispatcherLog logs/dispatcher.log DispatcherLogLevel 3` <br/>`DispatcherNoServerHeader 0 DispatcherDeclineRoot 0`<br/> `DispatcherUseProcessedURL 0`<br/> `DispatcherPassError 0`<br/> `DispatcherKeepAliveTimeout 60`<br/> `</IfModule>` ...|
+
 
 The individual configuration parameters:
 
@@ -636,8 +549,8 @@ Dispatcher uses OpenSSL to implement secure communication over HTTP. Starting fr
 
 Before you can start using the Dispatcher you must now:
 
-* [Configure](../using/dispatcher-configuration.md) Dispatcher
-* [Confgure AEM](../using/page-invalidate.md) to work with Dispatcher.
+* [Configure](dispatcher-configuration.md) Dispatcher
+* [Confgure AEM](page-invalidate.md) to work with Dispatcher.
 
 ## Sun Java System Web Server / iPlanet {#sun-java-system-web-server-iplanet}
 
@@ -788,6 +701,6 @@ Depending on your requirements you can define the Dispatcher as a service for yo
 
 Before you can start using the Dispatcher you must now:
 
-* [Configure](../using/dispatcher-configuration.md) Dispatcher
-* [Confgure AEM](../using/page-invalidate.md) to work with Dispatcher.
+* [Configure](dispatcher-configuration.md) Dispatcher
+* [Confgure AEM](page-invalidate.md) to work with Dispatcher.
 
