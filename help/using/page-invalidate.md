@@ -1,8 +1,8 @@
 ---
 title: Invalidating Cached Pages From AEM
-seo-title: Invalidating Cached Pages From AEM
-description: null
-seo-description: Learn how to configure the interaction between Dispatcher and AEM to ensure effective cache management.
+seo-title: Invalidating Cached Pages From Adobe AEM
+description: Learn how to configure the interaction between Dispatcher and AEM to ensure effective cache management.
+seo-description: Learn how to configure the interaction between Adobe AEM Dispatcher and AEM to ensure effective cache management.
 uuid: 66533299-55c0-4864-9beb-77e281af9359
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -12,9 +12,6 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
-index: y
-internal: n
-snippet: y
 ---
 
 # Invalidating Cached Pages From AEM{#invalidating-cached-pages-from-aem}
@@ -23,9 +20,9 @@ When using Dispatcher with AEM, the interaction must be configured to ensure eff
 
 ## Setting up AEM User Accounts {#setting-up-aem-user-accounts}
 
-The default `admin` user account is used to authenticate the replication agents that are installed by default. You should create a dedicated user account for use with replication agents. [](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist#VerificationSteps)
+The default `admin` user account is used to authenticate the replication agents that are installed by default. You should create a dedicated user account for use with replication agents. [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
 
-For more information see the [Configure Replication and Transport Users](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist#VerificationSteps) section of the Security Checklist.
+For more information see the [Configure Replication and Transport Users](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) section of the Security Checklist.
 
 ## Invalidating Dispatcher Cache from the Authoring Environment {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
@@ -57,16 +54,16 @@ Use the following procedure to configure a replication agent on the AEM author i
 
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, `https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache` 
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/&#42;` and farm #2 has a virtual host of `www.mysite.com/path2/&#42;`. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.  
 1. Click OK to activate the agent.
 
-Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](/content/help/en/experience-manager/6-2/sites/deploying/using/replication#ConfiguringaDispatcherFlushagent).
+Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent).
 
-For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#EnablingAccesstoVanityURLsvanityurls).
+For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
 >[!NOTE]
 >
@@ -92,7 +89,7 @@ Comment Type: draft
 
  -->
 
-* Preventing possible timing conflicts between Dispatcher and the publish instance (see [Invalidating Dispatcher cache from the Authoring Environment](#InvalidatingDispatchercachefromtheAuthoringEnvironment)).
+* Preventing possible timing conflicts between Dispatcher and the publish instance (see [Invalidating Dispatcher cache from the Authoring Environment](#invalidating-dispatcher-cache-from-the-authoring-environment)).
 * The system includes several publishing instances that reside on high performance servers, and only one authoring instance.
 
 >[!NOTE]
@@ -106,9 +103,9 @@ The dispatcher flush is controlled by a replication agent operating on the publi
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache  
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, `https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache` 
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of www.mysite.com/path1/&#42; and farm #2 has a virtual host of www.mysite.com/path2/&#42;. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/&#42;` and farm #2 has a virtual host of `www.mysite.com/path2/&#42;`. You can use a URL of /path1/invalidate.cache to target the first farm and /path2/invalidate.cache to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.
 1. Repeat for every publish instance affected.
@@ -125,7 +122,7 @@ The HTTP request causes Dispatcher to delete specific files from the cache. Opti
 
 ### Delete cached files {#delete-cached-files}
 
-Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it recieves a client request for the page. Deleting cached files ins this manner is appropraite for web sites that are not likely to receive simultaneous requests for the same page.
+Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files ins this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
 
 The HTTP request has the following form:
 
@@ -148,7 +145,7 @@ Invalidation (i.e. touching of .stat files) can be prevented by sending an addit
 
 Issue an HTTP request that causes Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
 
-**Note:** Deleting and recaching fies should be performed on the publish instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they haved been published.
+**Note:** Deleting and recaching files should be performed on the publish instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they have been published.
 
 The HTTP request has the following form:
 
@@ -162,7 +159,7 @@ CQ-Handle: *path-pattern
 ...  
 *page_pathn*`
 
-The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the /content/geometroxx-outdoors/en.html page:
+The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the `/content/geometrixx-outdoors/en.html page`:
 
 `POST /dispatcher/invalidate.cache HTTP/1.1  
 CQ-Action: Activate  
