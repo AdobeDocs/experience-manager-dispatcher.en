@@ -32,17 +32,17 @@ The following file naming convention is used:
 
 `dispatcher-<*web-server*>-<*operating-system*>-<*dispatcher-version-number*>.<*file-format*>`
 
-For example, the dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz file contains Dispatcher version 4.3.1 for an Apache 2.4 web server that runs on Linux i686 and is packaged using the **tar** format.
+For example, the `dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz` file contains Dispatcher version 4.3.1 for an Apache 2.4 web server that runs on Linux i686 and is packaged using the **tar** format.
 
 The following table lists the web server identifier that is used in file names for each web server:
 
 |||
 |--- |--- |
 |Web Server|Installation Kit|
-|Apache 2.4|dispatcher-apache2.4-&lt;other parameters&gt;|
-|Apache 2.2|dispatcher-apache2.2-&lt;other parameters&gt;|
-|Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-iis-&lt;other parameters&gt;|
-|Sun Java Web Server iPlanet | dispatcher-ns-&lt;other parameters&gt;|
+|Apache 2.4|`dispatcher-apache2.4-&lt;other parameters&gt;`|
+|Apache 2.2|`dispatcher-apache2.2-&lt;other parameters&gt;`|
+|Microsoft Internet Information Server 7.5, 8, 8.5|`dispatcher-iis-&lt;other parameters&gt;`|
+|Sun Java Web Server iPlanet | `dispatcher-ns-&lt;other parameters&gt;`|
 
 >[!NOTE]
 >
@@ -102,7 +102,7 @@ Also, you must add the Web Server (IIS) role. Use Server Manager to add the role
 
 The required archive for Microsoft Internet Information System is:
 
-* dispatcher-iis-&lt;operating-system&gt;-&lt;*dispatcher-release-number*&gt;.zip
+* `dispatcher-iis-<operating-system>-<dispatcher-release-number>.zip`
 
 The ZIP file contains the following files:
 
@@ -110,8 +110,8 @@ The ZIP file contains the following files:
 |--- |--- |
 |disp_iis.dll|The Dispatcher dynamic link library file.|
 |disp_iis.ini|Configuration file for the IIS. This example can be updated with your requirements. NOTE: The ini file must have the same name-root as the dll.|
-|dispatcher.any|An example configuration file for the Dispatcher.|
-|author_dispatcher.any|An example configuration file for Dispatcher working with the author instance.|
+|`dispatcher.any`|An example configuration file for the Dispatcher.|
+|`author_dispatcher.any`|An example configuration file for Dispatcher working with the author instance.|
 |README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
 |CHANGES|Changes file that lists issues fixed in current and past releases.|
 
@@ -226,7 +226,7 @@ Use the following procedure to add the Dispatcher ISAPI Module to IIS.
 
 Provide the default App Pool user with write-acess to the folder that is being used as the Dispatcher cache.
 
-1. Right-click the root folder of the website that you are using as the Dispatcher cache and click Properties, such as C:\inetpub\wwwroot.
+1. Right-click the root folder of the website that you are using as the Dispatcher cache and click Properties, such as `C:\inetpub\wwwroot`.
 1. On the Security tab, click Edit, and then on the Permissions dialog box, click Add. A dialog box opens for selecting user accounts. Click the Locations button, select your computer name, and then click OK.
 
    Keep this dialog box open while you complete the next step.
@@ -319,11 +319,11 @@ The installation archive files contains the following files - dependent on wheth
 
 |File|Description|
 |--- |--- |
-|disp_apache&lt;x.y&gt;.dll|Windows: The Dispatcher dynamic link library file.|
-|dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so|Unix: The Dispatcher shared object library file.|
-|mod_dispatcher.so|Unix: An example link.|
-|http.conf.disp&lt;x&gt;|An example configuration file for the Apache server.|
-|dispatcher.any|An example configuration file for the Dispatcher.|
+|`disp_apache&lt;x.y&gt;.dll`|Windows: The Dispatcher dynamic link library file.|
+|`dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so`|Unix: The Dispatcher shared object library file.|
+|`mod_dispatcher.so`|Unix: An example link.|
+|`http.conf.disp<x>`|An example configuration file for the Apache server.|
+|`dispatcher.any`|An example configuration file for the Dispatcher.|
 |README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
 |CHANGES|Changes file that lists issues fixed in the current and past releases.|
 
