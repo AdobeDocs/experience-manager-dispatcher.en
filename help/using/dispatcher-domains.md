@@ -26,15 +26,17 @@ Use Dispatcher to process page requests in multiple web domains while supporting
 For example, a company publishes websites for two of their brands: Brand A and Brand B. The content for the website pages are authored in AEM, and stored in the same repository workspace:
 
 ```
-/  
+
+/
 | - content  
 | - sitea  
-| | - content nodes  
+| - content nodes  
 | - siteb  
 | - content nodes
+
 ```
 
-Pages for BrandA.com are stored below `/content/sitea`. Client requests for the URL `https://BrandA.com/en.html` are returned the rendered page for the `/content/sitea/en` node. Similarly, pages for BrandB.com are stored below `/content/siteb`.
+Pages for `BrandA.com` are stored below `/content/sitea`. Client requests for the URL `https://BrandA.com/en.html` are returned the rendered page for the `/content/sitea/en` node. Similarly, pages for BrandB.com are stored below `/content/siteb`.
 
 When using Dispatcher to cache content, associations must be made between the page URL in the client HTTP request, the path of the corresponding file in the cache, and the path of the corresponding file in the repository.
 
@@ -90,14 +92,17 @@ The example solutions that are provided apply to an environment with the followi
 
   **Repository**
 
+```
   | - /content  
   | - sitea  
   | | - *content nodes* 
   | - siteb  
   | - *conent nodes*
+```
 
   **Document root of the web server**
 
+```
   | - /usr  
   | - lib  
   | - apache  
@@ -108,6 +113,7 @@ The example solutions that are provided apply to an environment with the followi
   | | - *content nodes* 
   | - siteb  
   | - *content nodes*
+```
 
 ## AEM Rewrites Incoming URLs {#aem-rewrites-incoming-urls}
 
