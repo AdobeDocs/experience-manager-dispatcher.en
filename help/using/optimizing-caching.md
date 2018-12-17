@@ -42,7 +42,7 @@ Dispatcher offers a number of built-in mechanisms that you can use to optimize p
 >
 >In general, a lot of caching strategies involve selecting good URLs and not relying on this additional data.
 
-#### Using Consistent Page Encoding {#using-consistent-page-encoding}
+## Using Consistent Page Encoding {#using-consistent-page-encoding}
 
 HTTP request headers are not cached and so problems can occur if you store page encoding information in the header. In this situation, when Dispatcher serves a page from the cache the default encoding of the web server is used for the page. There are two ways to avoid this problem:
 
@@ -53,7 +53,7 @@ HTTP request headers are not cached and so problems can occur if you store page 
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-#### Avoid URL Parameters {#avoid-url-parameters}
+## Avoid URL Parameters {#avoid-url-parameters}
 
 If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless Dispatcher is [configured accordingly](dispatcher-configuration.md#main-pars_title_24)):
 
@@ -72,7 +72,7 @@ www.myCompany.com/pictures/gallery.christmas.1.html
 >
 >This URL calls the same page and the same template as gallery.html. In the template definition, you can specify which script renders the page, or you can use the same script for all pages.
 
-#### Customize by URL {#customize-by-url}
+## Customize by URL {#customize-by-url}
 
 If you allow users to change the font size (or any other layout customization), make sure that the different customizations are reflected in the URL.
 
@@ -94,7 +94,7 @@ www.myCompany.com/news/main.large.html
 >
 >Using the script globbing of the template definition, you can specify a separate script that renders the print pages.
 
-#### Invalidating Image Files Used As Titles {#invalidating-image-files-used-as-titles}
+## Invalidating Image Files Used As Titles {#invalidating-image-files-used-as-titles}
 
 If you render page titles, or other text, as pictures, then it is recommended to store the files so that they are deleted upon a content update on the page:
 
@@ -109,7 +109,7 @@ For example, you can store the title of the page myPage.html in the file myPage.
 >
 >The image file does not necessarily physically exist on the AEM instance. You can use a script that dynamically creates the image file. Dispatcher then stores the file on the web server.
 
-#### Invalidating Image Files Used For Navigation {#invalidating-image-files-used-for-navigation}
+## Invalidating Image Files Used For Navigation {#invalidating-image-files-used-for-navigation}
 
 If you use pictures for the navigation entries, the method is basically the same as with titles, just slightly more complex. Store all the navigation images with the target pages. If you use two pictures for normal and active, you can use the following scripts:
 
@@ -121,7 +121,7 @@ It is important that you create these pictures with the same naming handle as th
 
 For pages that are not modified, the pictures still remain in the cache, although the pages themselves are usually auto-invalidated.
 
-#### Personalization {#personalization}
+## Personalization {#personalization}
 
 The Dispatcher cannot cache personalized data, so it is recommended that you limit personalization to where it is necessary. To illustrate why:
 
@@ -138,11 +138,11 @@ The Dispatcher cannot cache personalized data, so it is recommended that you lim
 >* use client-side JavaScript to display personalized information. However, you have to make sure that the page still displays correctly if a user turns JavaScript off.
 >
 
-#### Sticky Connections {#sticky-connections}
+## Sticky Connections {#sticky-connections}
 
 [Sticky connections](dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder to hold all documents that require sticky connections for the website. Try not to have other documents in it. This impacts load-balancing if you use personalized pages and session data.
 
-#### MIME Types {#mime-types}
+## MIME Types {#mime-types}
 
 There are two ways in which a browser can determine the type of a file:
 

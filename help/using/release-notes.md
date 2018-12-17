@@ -14,38 +14,14 @@ discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 
 ## Release Information {#release-information}
 
-<table border="1" cellpadding="1" cellspacing="0" width="100%"> 
- <tbody>
-  <tr>
-   <td>Products</td> 
-   <td><strong>Adobe Experience Manager (AEM) Dispatcher</strong></td> 
-  </tr>
-  <tr>
-   <td>Version</td> 
-   <td>4.3.1</td> 
-  </tr>
-  <tr>
-   <td>Type</td> 
-   <td>Minor Release</td> 
-  </tr>
-  <tr>
-   <td>Date</td> 
-   <td>October 16, 2018</td> 
-  </tr>
-  <tr>
-   <td>Download URL</td> 
-   <td>
-    <ul> 
-     <li><a href="release-notes.md#apache24">Apache 2.4</a></li> 
-     <li><a href="release-notes.md#iis">Microsoft Internet Information Services (IIS)</a></li> 
-    </ul> </td> 
-  </tr>
-  <tr>
-   <td>Compatibility</td> 
-   <td>AEM 6.1 or higher</td> 
-  </tr>
- </tbody>
-</table>
+|||
+|--- |--- |
+|Products|Adobe Experience Manager (AEM) Dispatcher|
+|Version|4.3.1|
+|Type|Minor Release|
+|Date|October 16, 2018|
+|Download URL|<ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul>|
+|Compatibility|AEM 6.1 or higher|
 
 ## System requirements and prerequisites {#system-requirements-and-prerequisites}
 
@@ -59,7 +35,7 @@ For detailed instructions, see [Installing Dispatcher](using/dispatcher-install.
 
 ## Release History {#release-history}
 
-### 4.3.1 (2018-Oct-16) {#oct}
+### Release 4.3.1 (2018-Oct-16) {#oct}
 
 **Bug Fixes**:
 
@@ -87,7 +63,7 @@ For detailed instructions, see [Installing Dispatcher](using/dispatcher-install.
 * DISP-722 - Cache files are created with octal mode 0600
 * DISP-726 - Log a warning when no farm actually matches the incoming host
 
-### 4.3.0 (2018-Jun-13) {#jun}
+### Release 4.3.0 (2018-Jun-13) {#jun}
 
 **Bug Fixes:**
 

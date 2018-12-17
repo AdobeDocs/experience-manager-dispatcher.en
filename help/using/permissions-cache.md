@@ -1,17 +1,15 @@
 ---
 title: Caching Secured Content
-seo-title: Caching Secured Content
-description: null
-seo-description: Learn how permission-sensitive caching works in Dispatcher.
+seo-title: Caching Secured Content in AEM Dispatcher
+description: Learn how permission-sensitive caching works in Dispatcher.
+seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
 uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
-index: y
-internal: n
-snippet: y
+
 ---
 
 # Caching Secured Content{#caching-secured-content}
@@ -28,7 +26,7 @@ Because the methods of authentication and authorization are specific to the AEM 
 
 The following diagrams illustrate the order of events that occur when a web browser requests a page for which permission-sensitive caching is used.
 
-#### Page is cached and user is authorized {#page-is-cached-and-user-is-authorized}
+## Page is cached and user is authorized {#page-is-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1.png)
 
@@ -37,7 +35,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 1. The render calls the authorizer to perform the security check and responds to Dispatcher. The response message includes an HTTP status code of 200 to indicate that the user is authorized.
 1. Dispatcher sends a response message to the browser that consists of the header lines from the render response and the cached content in the body.
 
-#### Page is not cached and user is authorized {#page-is-not-cached-and-user-is-authorized}
+## Page is not cached and user is authorized {#page-is-not-cached-and-user-is-authorized}
 
 ![](assets/chlimage_1-1.png)
 
@@ -46,7 +44,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 1. The render calls the authorizer servlet to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
-#### User is not authorized {#user-is-not-authorized}
+## User is not authorized {#user-is-not-authorized}
 
 ![](assets/chlimage_1-2.png)
 
@@ -66,7 +64,7 @@ To implement permission-sensitive caching, perform the following tasks:
 >Typically, secure resources are stored in a separate folder than unsecure files. For example, /content/secure/
 >
 
-#### Create the authorization servlet {#create-the-authorization-servlet}
+## Create the authorization servlet {#create-the-authorization-servlet}
 
 Create and deploy a servlet that performs the authentication and authorization of the user who requests the web content. The servlet can use any authentication and authorization method, such as the AEM user account and repository ACLs, or an LDAP lookup service. You deploy the servlet to the AEM instance that Dispatcher uses as the render.
 
@@ -137,7 +135,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 }
 ```
 
-#### Configure Dispatcher for permission-sensitive caching {#configure-dispatcher-for-permission-sensitive-caching}
+## Configure Dispatcher for permission-sensitive caching {#configure-dispatcher-for-permission-sensitive-caching}
 
 The auth_checker section of the dispatcher.any file controls the behavior of permission-sensitive caching. The auth_checker section includes the following subsections:
 
@@ -153,7 +151,7 @@ When Dispatcher starts, the Dispatcher log file includes the following debug-lev
 
 The following example auth_checker section configures Dispatcher to use the servlet of the prevoius topic. The filter section causes permission checks to be performed only on secure HTML resources.
 
-#### Example configuration {#example-configuration}
+## Example configuration {#example-configuration}
 
 ```xml
 /auth_checker
