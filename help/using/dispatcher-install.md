@@ -2,7 +2,7 @@
 title: Installing Dispatcher
 seo-title: Installing Dispatcher
 description: null
-seo-description: Learn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server/iPlanet.
+seo-description: Learn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: User
 converted: true
@@ -142,10 +142,10 @@ The following describes each property.
 
 
 *configpath*
-* The location of dispatcher.any within the local file system (absolute path).
+* The location of `dispatcher.any` within the local file system (absolute path).
 
 *logfile*
-* The location of the dispatcher.log file. If this is not set then log messages go to the windows event log.
+* The location of the `dispatcher.log` file. If this is not set then log messages go to the windows event log.
 
 *loglevel*
 * Defines the Log Level used to output messages to the event log. The following values may be specified:
@@ -165,14 +165,12 @@ The following describes each property.
 
 *servervariables*
 * Defines how server variables are processed.
-  * 0: IIS server variables are sent to neither the Dispatcher nor AEM. * 1: all IIS server variables (such as LOGON\_USER, QUERY\_STRING, ...) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).  
+  * 0: IIS server variables are sent to neither the Dispatcher nor AEM. * 1: all IIS server variables (such as `LOGON\_USER, QUERY\_STRING, ...`) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).  
   
-  Server variables include AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE and many others. See the IIS documentation for the full list of variables, with details.
+  Server variables include `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` and many others. See the IIS documentation for the full list of variables, with details.
 
-*enable\_chunked\_transfer*
+*`enable\_chunked\_transfer`*
 * Defines whether to enable (1) or disable (0) chunked transfer for the client response. The default value is 0.
-
-
 
 An example configuration:
 
@@ -207,9 +205,9 @@ Use the following procedure to add the Dispatcher ISAPI Module to IIS.
 1. Using Features View mode, in the IIS section double click Handler Mappings.
 1. In the Actions panel of the Handler Mappings page, click Add Wildcard Script Map, add the following property values and then click OK:
 
-    * Request Path: &#42;
-    * Executable: The absolute path of the disp_iis.dll file, for example `C:\inetpub\Scripts\disp_iis.dll`.
-    * Name: A descriptive name for the handler mapping, for example `Dispatcher`.
+   * Request Path: &#42;
+   * Executable: The absolute path of the disp_iis.dll file, for example `C:\inetpub\Scripts\disp_iis.dll`.
+   * Name: A descriptive name for the handler mapping, for example `Dispatcher`.
 
 1. In the dialog box that appears, to add the disp_iis.dll library to the ISAPI and CGI Restrictions list, click Yes.
 
@@ -245,8 +243,8 @@ Use the following procedure to register the JSON MIME type, when you want Dispat
 1. In IIS Manager, select your web site and using Features View, double-click Mime Types.
 1. If the JSON extension is not in the list, in the Actions panel click Add, enter the following property values, and then click OK:
 
-    * File Name Extension: . `json`
-    * MIME Type: application/json
+   * File Name Extension: . `json`
+   * MIME Type: application/json
 
 ### Removing the bin Hidden Segment - IIS 8.5 and 10 {#removing-the-bin-hidden-segment-iis-and}
 
@@ -300,7 +298,7 @@ For Information about how to install an Apache Web Server read the installation 
 
 >[!CAUTION]
 >
->If you are creating an Apache binary by compiling the source files, make sure that you turn on **dynamic modules support**. This can be done by using any of the **--enable-shared** options. At a minimum include the** mod_so** module.
+>If you are creating an Apache binary by compiling the source files, make sure that you turn on **dynamic modules support**. This can be done by using any of the **--enable-shared** options. At a minimum include the `mod_so` module.
 >
 >More information can be found in the Apache Web Server installation manual.
 
@@ -351,7 +349,7 @@ This is likely due to an enabled SELinux security. Then you you need perform the
 * Enable HTTPD scripts and modules to make network connections.
 * Configure the SELinux context of the docroot, where the cached files are stored.
 
-Enter the following commands in a terminal window, replacing * `[path to the dispatcher.so file]`* with the path to the Dispatcher module that you installed to Apache Web Server, and *[path to the docroot]* with the path where the docroot is located (e.g. `/opt/cq/cache`):
+Enter the following commands in a terminal window, replacing * `[path to the dispatcher.so file]`* with the path to the Dispatcher module that you installed to Apache Web Server, and *`path to the docroot`* with the path where the docroot is located (e.g. `/opt/cq/cache`):
 
 ```shell
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
@@ -377,7 +375,7 @@ These steps are compulsory:
 
 1. (Optional) It is recommended that you change the owner of the htdocs directory:
 
-   * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (&lt;*APACHE_ROOT*&gt;/htdocs) must belong to the user daemon:  
+   * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (`&lt;*APACHE_ROOT*&gt;/htdocs`) must belong to the user daemon:  
     ```
     cd &lt;APACHE_ROOT&gt;  
     chown -R daemon:daemon htdocs
@@ -574,47 +572,19 @@ The Dispatcher comes as either:
 
 The installation archive files contains the following files - dependent on whether you have selected Windows or Unix:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td valign="top">File</td> 
-   <td>Description</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">disp_ns.dll</td> 
-   <td><strong>Windows</strong>:<br /> The Dispatcher dynamic link library file.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">dispatcher.so</td> 
-   <td><strong>Unix</strong>:<br /> The Dispatcher shared object library file.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">dispatcher.so</td> 
-   <td><strong>Unix</strong>:<br /> An example link.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">obj.conf.disp </td> 
-   <td>An example configuration file for the iPlanet / Sun Java System web server.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">dispatcher.any </td> 
-   <td>An example configuration file for the Dispatcher.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">README</td> 
-   <td>Readme file that contains installation instructions and last-minute information.<br /> <strong>Note</strong>: Please check this file before starting the installation.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">CHANGES</td> 
-   <td>Changes file that lists issues fixed in the current and past releases.</td> 
-  </tr> 
- </tbody> 
-</table>
+|--- |--- |
+|File|Description|
+|`disp_ns.dll`|Windows: The Dispatcher dynamic link library file.|
+|`dispatcher.so`|Unix: The Dispatcher shared object library file.|
+|`dispatcher.so`|Unix: An example link.|
+|`obj.conf.disp`|An example configuration file for the iPlanet / Sun Java System web server.|
+|`dispatcher.any`|An example configuration file for the Dispatcher.|
+|README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
+|CHANGES|Changes file that lists issues fixed in the current and past releases.|
 
 Use the following steps to add the Dispatcher to your web server:
 
 1. Place the Dispatcher file in the web server's `plugin` directory:
-1.
 
 ### Sun Java System Web Server / iPlanet - Configure for the Dispatcher {#sun-java-system-web-server-iplanet-configure-for-the-dispatcher}
 
