@@ -1,8 +1,8 @@
 ---
 title: Installing Dispatcher
-seo-title: Installing Dispatcher
-description: null
-seo-description: Learn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
+seo-title: Installing AEM Dispatcher
+description: earn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
+seo-description: Learn how to install the AEM Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: User
 converted: true
@@ -572,8 +572,8 @@ The Dispatcher comes as either:
 
 The installation archive files contains the following files - dependent on whether you have selected Windows or Unix:
 
-|--- |--- |
 |File|Description|
+|---|---|
 |`disp_ns.dll`|Windows: The Dispatcher dynamic link library file.|
 |`dispatcher.so`|Unix: The Dispatcher shared object library file.|
 |`dispatcher.so`|Unix: An example link.|
@@ -614,14 +614,15 @@ The web server needs to be configured, using `obj.conf`. In the Dispatcher insta
 
 The following table lists examples that can be used; the exact entries are according to your specific web server:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows<br /> and<br /> Unix</td> 
-   <td><span class="code">...<br /> Init funcs="dispService,dispInit" fn="load-modules" shlib="$(SERVER_ROOT)/plugins/dispatcher.so"<br /> Init fn="dispInit" config="$(PRODUCT_SUBDIR)/dispatcher.any" loglevel="1" logfile="$(PRODUCT_SUBDIR)/logs/dispatcher.log"<br /> keepalivetimeout="60" <br /> ...</span></td> 
-  </tr> 
- </tbody> 
-</table>
+**Windows and Unix**
+
+```
+...  
+Init funcs="dispService,dispInit" fn="load-modules" shlib="$(SERVER\_ROOT)/plugins/dispatcher.so"  
+Init fn="dispInit" config="$(PRODUCT\_SUBDIR)/dispatcher.any" loglevel="1" logfile="$(PRODUCT\_SUBDIR)/logs/dispatcher.log"  
+keepalivetimeout="60"  
+...
+```
 
 where: 
 
@@ -641,8 +642,8 @@ where:
   </tr> 
   <tr> 
    <td valign="top">loglevel </td> 
-   <td>Log level for when writing messages to the log file:<br /> <strong>0</strong> Errors<br /> <strong>1</strong> Warnings<br /> <strong>2</strong> Infos<br /> <strong>3</strong> Debug<br /> <strong>Note</strong>: It is recommended to set the log level to 3 during installation and testing and to 0 when running in a production environment.</td> 
-  </tr> 
+   <td>Log level for when writing messages to the log file:<br /> <strong>0</strong> Errors<br/> <strong>1</strong> Warnings<br /> <strong>2</strong> Infos<br/> <strong>3</strong> Debug<br /> <strong>Note</strong>: It is recommended to set the log level to 3 during installation and testing and to 0 when running in a production environment.</td>
+  </tr>
   <tr> 
    <td>keepalivetimeout</td> 
    <td>Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive. </td> 
@@ -652,18 +653,26 @@ where:
 
 Depending on your requirements you can define the Dispatcher as a service for your objects. To configure the Dispatcher for your entire website modify the default object:
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td>Windows</td> 
-   <td><span class="code">...<br /> NameTrans fn="document-root" root="$(PRODUCT_SUBDIR)\dispcache"<br /> ...<br /> Service fn="dispService" method="(GET|HEAD|POST)" type="*\*"<br /> ...</span></td> 
-  </tr> 
-  <tr> 
-   <td>Unix </td> 
-   <td><span class="code">...<br /> NameTrans fn="document-root" root="$(PRODUCT_SUBDIR)/dispcache"<br /> ...<br /> Service fn="dispService" method="(GET|HEAD|POST)" type="*/*"<br /> ...</span></td> 
-  </tr> 
- </tbody> 
-</table>
+
+**Windows**
+
+```
+...  
+NameTrans fn="document-root" root="$(PRODUCT\_SUBDIR)\\dispcache"  
+...  
+Service fn="dispService" method="(GET|HEAD|POST)" type="\*\\\*"  
+...
+```
+
+**Unix**
+
+```
+...  
+NameTrans fn="document-root" root="$(PRODUCT\_SUBDIR)/dispcache"  
+...  
+Service fn="dispService" method="(GET|HEAD|POST)" type="\*/\*"  
+...
+```
 
 ### Next Steps {#next-steps-2}
 
