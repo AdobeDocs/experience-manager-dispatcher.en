@@ -32,7 +32,7 @@ The dispatcher as a front end system offers an extra layer of security to your A
 
 >[!CAUTION]
 >
->You must also complete the Security Checklist of your version of AEM before going live. Please refer to the corresponding [Adobe Experience Manager documentation](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist).
+>You must also complete the Security Checklist of your version of AEM before going live. Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
 
 ## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
@@ -48,7 +48,7 @@ You should install the latest available version that is available for your platf
 
 ## Restrict Clients that Can Flush Your Cache {#restrict-clients-that-can-flush-your-cache}
 
-Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#LimitingtheClientsThatCanFlushtheCache)
+Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
 ## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
 
@@ -79,7 +79,7 @@ When configuring the Dispatcher you should restrict external access as much as p
 
 Make sure you use filters to block external access to any administrative URLs, such as the Web Console.
 
-See [Testing Dispatcher Security](dispatcher-configuration.md#TestingDispatcherSecurity) for a list of URLs that need to be blocked.
+See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
 
 ## Use Whitelists Instead Of Blacklists {#use-whitelists-instead-of-blacklists}
 
@@ -102,7 +102,7 @@ At the dispatcher level, there are two methods of configuring to prevent DoS att
 
 * Use the mod_rewrite module (for example, [Apache 2.2](https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).  
 
-* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#ConfiguringAccesstoContentfilter).  
+* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).  
   For example, change the caching rules to limit caching to the expected mime types, such as:
 
     * `.html`
@@ -114,7 +114,7 @@ At the dispatcher level, there are two methods of configuring to prevent DoS att
     * `.pdf`
     * `.ppt`
 
-  An example configuration file can be seen for [restricting external access](#RestrictAccess), this includes restrictions for mime types.
+  An example configuration file can be seen for [restricting external access](#restrict-access), this includes restrictions for mime types.
 
 To safely enable full functionality on the publish instances, configure filters to prevent access to the following nodes:
 
@@ -146,7 +146,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM provides a [framework](/content/help/en/experience-manager/6-3/sites/administering/using/security-checklist#VerificationSteps) aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to whitelist CSRF token support in the dispatcher. You can do this by:
+AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to whitelist CSRF token support in the dispatcher. You can do this by:
 
 1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
 1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
