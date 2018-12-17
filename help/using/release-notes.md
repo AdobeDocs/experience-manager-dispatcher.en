@@ -1,19 +1,13 @@
 ---
 title: AEM Dispatcher Release Notes
 seo-title: AEM Dispatcher Release Notes
-description: null
+description: Release notes specific to Adobe Experience Manager Dispatcher
 seo-description: Release notes specific to Adobe Experience Manager Dispatcher
 uuid: ae3ccf62-0514-4c03-a3b9-71799a482cbd
 topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
-disttype: dist5
-gnavtheme: light
-locpublishoption: now
-index: y
-internal: n
-snippet: y
 ---
 
 # AEM Dispatcher Release Notes{#aem-dispatcher-release-notes}
