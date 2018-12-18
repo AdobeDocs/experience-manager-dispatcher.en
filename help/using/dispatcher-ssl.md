@@ -39,12 +39,12 @@ Before you configure Dispatcher, configure AEM or CQ to use SSL:
 
 When Dispatcher recieves an HTTPS request, Dispatcher includes the following headers in the subsequent request that it sends to AEM or CQ:
 
-* X-Forwarded-SSL
-* X-Forwarded-SSL-Cipher
-* X-Forwarded-SSL-Keysize
-* X-Forwarded-SSL-Session-ID
+* `X-Forwarded-SSL`
+* `X-Forwarded-SSL-Cipher`
+* `X-Forwarded-SSL-Keysize`
+* `X-Forwarded-SSL-Session-ID`
 
-A request through Apache-2.2 with mod_ssl includes headers that are similar to the following example:
+A request through Apache-2.2 with `mod_ssl` includes headers that are similar to the following example:
 
 ```shell
 X-Forwarded-SSL: on
@@ -255,7 +255,7 @@ Use the render certificate with the instructions in the *Enable SSL on the Publi
 
 To configure Dispatcher to use mutual SSL, prepare the Dispatcher certificate and then configure the web server module.
 
-#### Creating a Unified Dispatcher Certificate {#creating-a-unified-dispatcher-certificate}
+### Creating a Unified Dispatcher Certificate {#creating-a-unified-dispatcher-certificate}
 
 Combine the dispatcher certificate and the unencrypted private key into a single PEM file. Use a text editor or the `cat` command to create a file that is similar to the following example:
 
@@ -279,17 +279,18 @@ Combine the dispatcher certificate and the unencrypted private key into a single
    -----END CERTIFICATE-----
    ```
 
-#### Specifying the Certificate to Use for Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
+### Specifying the Certificate to Use for Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
 
-Add the following properties to the [Dispatcher module configuration](dispatcher-install.md#main-pars-55-35-1022) (in httpd.conf):
+Add the following properties to the [Dispatcher module configuration](dispatcher-install.md#main-pars-55-35-1022) (in `httpd.conf`):
 
-* DispatcherCertificateFile: The path to the Dispatcher unified certificate file, containing the public certificate and the unencrypted private key. This file is used when SSL server requests the Dispatcher client certificate.
-* DispatcherCACertificateFile: The path to the CA certificate file, used if the SSL server presents a CA that is not trusted by a root authority.
-* DispatcherCheckPeerCN: Whether to enable ( `On`) or disable ( `Off`) host name checking for remote server certificates.
+* `DispatcherCertificateFile`: The path to the Dispatcher unified certificate file, containing the public certificate and the unencrypted private key. This file is used when SSL server requests the Dispatcher client certificate.
+* `DispatcherCACertificateFile`: The path to the CA certificate file, used if the SSL server presents a CA that is not trusted by a root authority.
+* `DispatcherCheckPeerCN`: Whether to enable ( `On`) or disable ( `Off`) host name checking for remote server certificates.
 
 The following code is an example configuration:  
 
 ```xml
+
 <IfModule disp_apache2.c>
   DispatcherConfig conf/dispatcher.any
   DispatcherLog    logs/dispatcher.log
@@ -302,5 +303,6 @@ The following code is an example configuration:
   DispatcherCACertificateFile cacert.pem
   DispatcherCheckPeerCN On
 </IfModule>
+
 ```
 

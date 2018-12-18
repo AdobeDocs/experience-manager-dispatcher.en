@@ -655,30 +655,12 @@ keepalivetimeout="60"
 
 where: 
 
-<table border="1" cellpadding="1" cellspacing="0" columns="3" header="none" width="600"> 
- <tbody> 
-  <tr> 
-   <td valign="top">Parameter</td> 
-   <td>Description</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">config</td> 
-   <td>Location and name of the configuration file <span class="code">dispatcher.any.</span></td> 
-  </tr> 
-  <tr> 
-   <td valign="top">logfile </td> 
-   <td>Location and name of the log file.</td> 
-  </tr> 
-  <tr> 
-   <td valign="top">loglevel </td> 
-   <td>Log level for when writing messages to the log file:<br /> <strong>0</strong> Errors<br/> <strong>1</strong> Warnings<br /> <strong>2</strong> Infos<br/> <strong>3</strong> Debug<br /> <strong>Note</strong>: It is recommended to set the log level to 3 during installation and testing and to 0 when running in a production environment.</td>
-  </tr>
-  <tr> 
-   <td>keepalivetimeout</td> 
-   <td>Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive. </td> 
-  </tr> 
- </tbody> 
-</table>
+|Parameter|Description|
+|--- |--- |
+|config|Location and name of the configuration file `dispatcher.any.`|
+|logfile|Location and name of the log file.|
+|loglevel|Log level for when writing messages to the log file: <br/>**0** Errors <br/>**1** Warnings <br/>**2** Infos <br/>**3** Debug <br/>**Note:** It is recommended to set the log level to 3 during installation and testing and to 0 when running in a production environment.|
+|keepalivetimeout|Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive.|
 
 Depending on your requirements you can define the Dispatcher as a service for your objects. To configure the Dispatcher for your entire website modify the default object:
 
@@ -709,4 +691,3 @@ Before you can start using the Dispatcher you must now:
 
 * [Configure](dispatcher-configuration.md) Dispatcher
 * [Confgure AEM](page-invalidate.md) to work with Dispatcher.
-

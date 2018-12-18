@@ -192,6 +192,24 @@ The value can have include any alphanumeric (a-z, 0-9) character. The following 
 
 Each farm property can contain the following child properties:
 
+|Property name|Description|
+|--- |--- |
+|/homepage|Default homepage (optional)(IIS only)|
+|/clientheaders|The headers from the client HTTP request to pass through.|
+|/virtualhosts|The virtual hosts for this farm.|
+|/sessionmanagement|Support for session management and authentication.|
+|/renders|The servers that provide rendered pages (typically AEM publish instances).|
+|/filter|Defines the URLs to which Dispatcher enables access.|
+|/vanity_urls|Configures access to vanity URLs.|
+|/propagateSyndPost|Support for the forwarding of syndication requests.|
+|/cache|Configures caching behavior.|
+|/statistics|Defining statistic categories for load-balancing calculations.|
+|/stickyConnectionsFor|The folder that contains sticky documents.|
+|/health_check|The URL to use to determine server availability.|
+|/retryDelay|The delay before retrying a failed connection.|
+|/unavailablePenalty|Penalties that affect statistics for load-balancing calculations.|
+|/failover|Resend requests to different renders when the original request fails.|
+
 <table border="1" cellpadding="1" cellspacing="0" width="600"> 
  <colgroup> 
   <col width="300" /> 
@@ -742,9 +760,8 @@ When configuring Dispatcher you should restrict external access as much as possi
 * `/content`
 * miscellaneous content such as designs and client libraries; for example:
 
-    * `/etc/designs/default*`
-    * `/etc/designs/mydesign&#42;  
-      `
+  * `/etc/designs/default*`
+  * `/etc/designs/mydesign&#42;` 
 
 After you create filters, [test page access](dispatcher-configuration.md#main-pars-title-19) to ensure your AEM instance is secure.
 
@@ -882,6 +899,7 @@ Dispatcher filters should block access to the following pages and scripts on AEM
 
 Note that you should see normal page rendering for /content/add_valid_page.html?debug=layout.
 
+```
 * /admin
 * /system/console
 * /dav/crx.default
@@ -928,6 +946,7 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 * /content.rss.xml
 * /content.feed.html
 * /content/add_valid_page.html?debug=layout
+```
 
 Issue the following command in a terminal or command prompt to determine whether anonymous write access is enabled. You should not be able to write data to the node.
 
@@ -992,6 +1011,7 @@ If necessary, set the /propagateSyndPost property to "1" to forward syndication 
 
 The `/cache` section controls how Dispatcher caches documents. Configure several sub-properties to implement your caching strategies:
 
+```
 * /docroot 
 * /statfile
 * /serveStaleOnError
@@ -1005,6 +1025,7 @@ The `/cache` section controls how Dispatcher caches documents. Configure several
 * /headers
 * /mode
 * /gracePeriod
+```
 
 An example cache section might look as follows:
 
@@ -1088,9 +1109,9 @@ The `/rules` property controls which documents are cached according to the docum
 * The authentication header is set (this can be configured)
 * If the AEM instance responds with the following headers:
 
-    * `no-cache`
-    * `no-store`
-    * `must-revalidate`
+  * `no-cache`
+  * `no-store`
+  * `must-revalidate`
 
 >[!NOTE]
 >
@@ -1631,7 +1652,11 @@ Setting `/ignoreEINTR` to `"1"` causes Dispatcher to continue to attempt to read
 
 Several sections in the Dispatcher configuration file use `glob` properties as selection criteria for client requests. The values of glob properties are patterns that Dispatcher compares to an aspect of the request, such as the path of the requested resource, or the IP address of the client. For example, the items in the `/filter` section use glob patterns to identify the paths of the pages that Dispatcher acts on or rejects.
 
-The glob values can include wildcard characters and alphanumeric characters to define the pattern. The following table describes the wildcard characters.
+The glob values can include wildcard characters and alphanumeric characters to define the pattern. 
+
+<!--- need to troubleshoot table
+
+The following table describes the wildcard characters.
 
 <table border="1" cellpadding="1" cellspacing="0" width="100%"> 
  <tbody> 
@@ -1719,6 +1744,7 @@ The glob values can include wildcard characters and alphanumeric characters to d
   </tr> 
  </tbody> 
 </table>
+-->
 
 ## Logging {#logging}
 
@@ -1891,4 +1917,3 @@ Below is a list containing the response headers that `X-Dispatcher-Info` will re
 
 * **not cacheable: response content length is zero  
   **The content length of the response is zero; the dispatcher will not create a zero-length file.
-
