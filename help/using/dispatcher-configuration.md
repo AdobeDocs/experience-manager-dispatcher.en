@@ -29,8 +29,8 @@ By default the Dispatcher configuration is stored in the `dispatcher.any` text f
 
 The configuration file contains a series of single-valued or multi-valued properties that control the behavior of Dispatcher:
 
-* Property names are prefixed with a forward slash ("/").
-* Multi-valued properties enclose child items using braces ("{ }").
+* Property names are prefixed with a forward slash `/`.
+* Multi-valued properties enclose child items using braces `{ }`.
 
 An example configuration is structured as follows:
 
@@ -102,7 +102,7 @@ An example configuration is structured as follows:
 
 You can include other files that contribute to the configuration:
 
-* If your configuration file is large you can split it into several smaller files (that are easier to manage) then include these.   
+* If your configuration file is large you can split it into several smaller files (that are easier to manage) then include these.
 * To include files that are generated automatically.
 
 For example, to include the file myFarm.any in the /farms configuration use the following code:
@@ -114,7 +114,7 @@ For example, to include the file myFarm.any in the /farms configuration use the 
   }
 ```
 
-Use the asterisk ("&#42;") as a wildcard to specify a range of files to include.
+Use the asterisk `&#42;` as a wildcard to specify a range of files to include.
 
 For example, if the files `farm_1.any` through to `farm_5.any` contain the configuration of farms one to five, you can include them as follows:
 
@@ -129,7 +129,7 @@ For example, if the files `farm_1.any` through to `farm_5.any` contain the confi
 
 You can use environment variables in string-valued properties in the dispatcher.any file instead of hard-coding the values. To include the value of an environment variable, use the format `${variable_name}`.
 
-For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [/docroot](dispatcher-configuration.md#main-pars-title-30) property can be used:
+For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [docroot](dispatcher-configuration.md#main-pars-title-30) property can be used:
 
 ```xml
 /docroot "${PWD}/cache"
@@ -152,12 +152,12 @@ Use the `/name` property to specify a unique name to identify your Dispatcher in
 
 ## Defining Farms {#defining-farms-farms}
 
-The /farms property defines one or more sets of Dispatcher behaviors, where each set is associated with different web sites or URLs. The /farms property can include a single farm or multiple farms:
+The `/farms` property defines one or more sets of Dispatcher behaviors, where each set is associated with different web sites or URLs. The `/farms` property can include a single farm or multiple farms:
 
 * Use a single farm when you want Dispatcher to handle all of your web pages or web sites in the same way.
 * Create multiple farms when different areas of your web site or different web sites require different Dispatcher behavior.
 
-The /farms property is a top-level property in the configuration structure. To define a farm, add a child property to the /farms property. Use a property name that uniquely identifies the farm within the Dispatcher instance.
+The `/farms` property is a top-level property in the configuration structure. To define a farm, add a child property to the `/farms` property. Use a property name that uniquely identifies the farm within the Dispatcher instance.
 
 The `/*farmname*` property is multi-valued, and contains other properties that define Dispatcher behavior:
 
@@ -166,7 +166,7 @@ The `/*farmname*` property is multi-valued, and contains other properties that d
 * The statistics to use for load-balancing multiple document renderers.
 * Several other behaviors, such as which files to cache and where.
 
-The value can have include any alphanumeric (a-z, 0-9) character. The following example shows the skeleton definition for two farms named /daycom and /docsdaycom:
+The value can have include any alphanumeric (a-z, 0-9) character. The following example shows the skeleton definition for two farms named `/daycom` and `/docsdaycom`:
 
 ```xml
 #name of dispatcher
@@ -194,95 +194,21 @@ Each farm property can contain the following child properties:
 
 |Property name|Description|
 |--- |--- |
-|/homepage|Default homepage (optional)(IIS only)|
-|/clientheaders|The headers from the client HTTP request to pass through.|
-|/virtualhosts|The virtual hosts for this farm.|
-|/sessionmanagement|Support for session management and authentication.|
-|/renders|The servers that provide rendered pages (typically AEM publish instances).|
-|/filter|Defines the URLs to which Dispatcher enables access.|
-|/vanity_urls|Configures access to vanity URLs.|
-|/propagateSyndPost|Support for the forwarding of syndication requests.|
-|/cache|Configures caching behavior.|
-|/statistics|Defining statistic categories for load-balancing calculations.|
-|/stickyConnectionsFor|The folder that contains sticky documents.|
-|/health_check|The URL to use to determine server availability.|
-|/retryDelay|The delay before retrying a failed connection.|
-|/unavailablePenalty|Penalties that affect statistics for load-balancing calculations.|
-|/failover|Resend requests to different renders when the original request fails.|
-
-<table border="1" cellpadding="1" cellspacing="0" width="600"> 
- <colgroup> 
-  <col width="300" /> 
-  <col width="150" /> 
-  <col width="150" /> 
- </colgroup> 
- <tbody> 
-  <tr> 
-   <th>Property name</th> 
-   <th>Description</th> 
-  </tr> 
-  <tr> 
-   <td><a href="#SpecifyaDefaultPageIISOnlyhomepage">/homepage</a><br /> </td> 
-   <td width="180">Default homepage<br /> (optional)(IIS only)</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#SpecifyingtheHTTPHeaderstoPassThroughclientheaders">/clientheaders<br /> </a></td> 
-   <td width="180">The headers from the client HTTP request to pass through.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#IdentifyingVirtualHostsvirtualhosts">/virtualhosts</a></td> 
-   <td width="180">The virtual hosts for this farm.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#EnablingSecureSessionssessionmanagement">/sessionmanagement</a><br /> </td> 
-   <td width="180">Support for session management and authentication.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#DefiningPageRenderersrenders">/renders</a></td> 
-   <td width="180">The servers that provide rendered pages (typically AEM publish instances).</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#ConfiguringAccesstoContentfilter">/filter</a></td> 
-   <td width="180">Defines the URLs to which Dispatcher enables access. </td> 
-  </tr> 
-  <tr> 
-   <td><a href="#EnablingAccesstoVanityURLsvanityurls">/vanity_urls</a></td> 
-   <td>Configures access to vanity URLs.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#ForwardingSyndicationRequestspropagateSyndPost">/propagateSyndPost <br /> </a></td> 
-   <td width="180">Support for the forwarding of syndication requests.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#ConfiguringtheDispatcherCachecache">/cache<br /> </a></td> 
-   <td width="180">Configures caching behavior.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#ConfiguringLoadBalancingstatistics">/statistics <br /> </a></td> 
-   <td width="180">Defining statistic categories for load-balancing calculations.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#IdentifyingaStickyConnectionFolderstickyConnectionsFor">/stickyConnectionsFor</a></td> 
-   <td width="180">The folder that contains sticky documents.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#SpecifyingaHealthCheckPage">/health_check</a></td> 
-   <td>The URL to use to determine server availability.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#SpecifyingthePageRetryDelay">/retryDelay</a></td> 
-   <td>The delay before retrying a failed connection. </td> 
-  </tr> 
-  <tr> 
-   <td><a href="#ReflectingServerUnavailabilityinDispatcherStatistics">/unavailablePenalty</a></td> 
-   <td>Penalties that affect statistics for load-balancing calculations.</td> 
-  </tr> 
-  <tr> 
-   <td><a href="#UsingtheFailoverMechanism">/failover</a></td> 
-   <td>Resend requests to different renders when the original request fails. </td> 
-  </tr> 
- </tbody> 
-</table>
+|[/homepage](#specify-a-default-page-iis-only-homepage)|Default homepage (optional)(IIS only)|
+|[/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders)|The headers from the client HTTP request to pass through.|
+|[/virtualhosts](#identifying-virtual-hosts-virtual-hosts)|The virtual hosts for this farm.|
+|[/sessionmanagement](#enabling-secure-sessions-session-management)|Support for session management and authentication.|
+|[/renders](#defining-page-renderers-renders)|The servers that provide rendered pages (typically AEM publish instances).|
+|[/filter](#configuring-access-to-content-filter)|Defines the URLs to which Dispatcher enables access.|
+|[/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls)|Configures access to vanity URLs.|
+|[/propagateSyndPost](#forwarding-syndication-requests-propagate-syndpost)|Support for the forwarding of syndication requests.|
+|[/cache](#configuring-the-dispatcher-cache-cache)|Configures caching behavior.|
+|[/statistics](#configuring-load-balancing-statistics)|Defining statistic categories for load-balancing calculations.|
+|[/stickyConnectionsFor](#identifying-a-sticky-connection-folder-sticky-connections-for)|The folder that contains sticky documents.|
+|[/health_check](#specifying-a-health-check-page)|The URL to use to determine server availability.|
+|[/retryDelay](#specifying-the-page-retry-delay)|The delay before retrying a failed connection.|
+|[/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics)|Penalties that affect statistics for load-balancing calculations.|
+|[/failover](#using-the-fail-over-mechanism)|Resend requests to different renders when the original request fails.|
 
 ## Specify a Default Page (IIS Only) - /homepage {#specify-a-default-page-iis-only-homepage}
 
