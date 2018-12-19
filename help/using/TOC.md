@@ -1,17 +1,17 @@
 ---
 cloud: experience-cloud
-product: Experience Manager Dispatcher
+product: AEM Dispatcher
 archtype: Administrator
-user-guide: Experience Manager Dispatcher Help
+user-guide: AEM Dispatcher Help
 ---
 
-# Experience Manager Dispatcher Help {#experience-manager-dispatcher-help}
+# AEM Dispatcher Help {#using}
 
 + [Dispatcher Overview](dispatcher.md)
 + Getting Started {#getting-started}
   + [Installing Dispatcher](dispatcher-install.md)
   + [Configuring Dispatcher](dispatcher-configuration.md)
-+ Dispatcher Operation
++ Dispatcher Operation {#operation}
   + [The Dispatcher Security Checklist](security-checklist.md)
   + [Using SSL with Dispatcher](dispatcher-ssl.md)
   + [Caching Secured Content](permissions-cache.md)

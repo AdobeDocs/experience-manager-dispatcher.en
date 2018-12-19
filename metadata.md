@@ -1,13 +1,13 @@
 ---
 cloud: experience-cloud
-solution-title: Experience Cloud HTL
-solution-hub-url: https://helpx.adobe.com/support/target.html
+solution-title: Experience Cloud Dispatcher
+solution-hub-url: https://helpx.adobe.com/support/experience-manager/6-4.html
 solution-image: 
 getting-started-title: Getting Started
-getting-started-url: https://helpx.adobe.com/target/get-started.html
+getting-started-url: https://helpx.adobe.com/support/experience-manager/6-4.html
 tutorials-title: Tutorials
-tutorials-url: https://helpx.adobe.com/target/kt/index/target-videos.html
-git-repo: https://git.corp.adobe.com/AdobeDocs/experience-manager-htl.en
+tutorials-url: https://helpx.adobe.com/experience-manager/kt/index/aem-6-4-videos.html
+git-repo: https://git.corp.adobe.com/AdobeDocs/experience-manager-dispatcher.en
 ---
 
 # Metadata for internal use
