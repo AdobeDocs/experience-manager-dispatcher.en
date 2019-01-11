@@ -8,6 +8,7 @@ getting-started-url: https://helpx.adobe.com/support/experience-manager/6-4.html
 tutorials-title: Tutorials
 tutorials-url: https://helpx.adobe.com/experience-manager/kt/index/aem-6-4-videos.html
 git-repo: https://git.corp.adobe.com/AdobeDocs/experience-manager-dispatcher.en
+index: n
 ---
 
 # Metadata for internal use
