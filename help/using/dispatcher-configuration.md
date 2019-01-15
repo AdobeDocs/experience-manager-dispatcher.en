@@ -114,7 +114,7 @@ For example, to include the file myFarm.any in the /farms configuration use the 
   }
 ```
 
-Use the asterisk `&#42;` as a wildcard to specify a range of files to include.
+Use the asterisk ("*") as a wildcard to specify a range of files to include.
 
 For example, if the files `farm_1.any` through to `farm_5.any` contain the configuration of farms one to five, you can include them as follows:
 
@@ -318,7 +318,7 @@ The following code is an example configuration for `/clientheaders`:
 
 ## Identifying Virtual Hosts {#identifying-virtual-hosts-virtualhosts}
 
-The `/virtualhosts` property defines a list of all hostname/URI combinations that Dispatcher accepts for this farm. You can use the asterisk ("&#42;") character as a wildcard. Values for the / `virtualhosts` property use the following format:
+The `/virtualhosts` property defines a list of all hostname/URI combinations that Dispatcher accepts for this farm. You can use the asterisk ("*") character as a wildcard. Values for the / `virtualhosts` property use the following format:
 
 ```xml
 [scheme]host[uri][*]
@@ -401,7 +401,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 
 | Request URL |Resolved virtual host |
 |---|---|
-| https://www.mycompany.com/products/gloves.html |www.mycompany.com/products/&#42; |
+| https://www.mycompany.com/products/gloves.html |www.mycompany.com/products/*; |
 | https://www.mycompany.com/about.html |www.mycompany.com |
 
 ## Enabling Secure Sessions - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
@@ -526,7 +526,7 @@ If the `/secure` property has a value of "1" Dispatcher uses HTTPS to communicat
 
 **/always-resolve**
 
-With Dispatcher version **4.1.6**,** **you can configure the `/always-resolve` property as follows:
+With Dispatcher version **4.1.6**, you can configure the `/always-resolve` property as follows:
 
 * When set to "1" it will resolve the host-name on every request (the Dispatcher will never cache any IP address). There may be a slight performance impact due to the additional call required to get the host information for each request.
 * If the property is not set, the IP address will be cached by default.
@@ -563,11 +563,11 @@ The /filter section consist of a series of rules that either deny or allow acces
 
 Each item in the `/filter` section includes a type and a pattern that is matched with a specific element of the request line or the entire request line. Each filter can contain the following items:
 
-* **Type: **The `/type` indicates whether to allow or deny access for the requests that match the pattern. The value can be either `allow` or `deny`. 
+* **Type**: The `/type` indicates whether to allow or deny access for the requests that match the pattern. The value can be either `allow` or `deny`. 
 
 * **Element of the Request Line:** Include `/method`, `/url`, `/query`, or `/protocol` and a pattern for filtering requests according to these specific parts of the request-line part of the HTTP request. Filtering on elements of the request line (rather than on the entire request line) is the preferred filter method.
 
-* **glob Property: **The `/glob` property is used to match with the entire request-line of the HTTP request.
+* **glob Property**: The `/glob` property is used to match with the entire request-line of the HTTP request.
 
 For information about /glob properties, see [Designing Patterns for glob Properties](dispatcher-configuration.md#main-pars-title-25). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
 
@@ -687,7 +687,7 @@ When configuring Dispatcher you should restrict external access as much as possi
 * miscellaneous content such as designs and client libraries; for example:
 
   * `/etc/designs/default*`
-  * `/etc/designs/mydesign&#42;` 
+  * `/etc/designs/mydesign*`
 
 After you create filters, [test page access](dispatcher-configuration.md#main-pars-title-19) to ensure your AEM instance is secure.
 
@@ -770,7 +770,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 Consider the following recommendations if you do choose to extend access:
 
-* External access to `/admi`n should always be *completely* disabled if you are using CQ version 5.4 or an earlier version.  
+* External access to `/admin` should always be *completely* disabled if you are using CQ version 5.4 or an earlier version.  
 
 * Care must be taken when allowing access to files in `/libs`. Access should be allowed on an individual basis.
 * Deny access to the replication configuration so it cannot be seen:
@@ -811,13 +811,14 @@ A single entry can have either *glob* or some combination of *method*,*url*,*que
 >
 >In above example, if requests to `/etc` that have no query string should be allowed as well, the following rules would be required:
 >
->`/filter {  
->/0001 { /type "deny" /method “&#42;" /url "/path/&#42;" }  
->/0002 { /type "allow" /method "GET" /url "/path/&#42;" }  
->/0003 { /type “deny" /method "GET" /url "/path/&#42;" /query "&#42;" }  
->/0004 { /type "allow" /method "GET" /url "/path/&#42;" /query "a=&#42;" }  
->}  
->`
+```xml
+/filter {  
+>/0001 { /type "deny" /method “*" /url "/path/*" }  
+>/0002 { /type "allow" /method "GET" /url "/path/*" }  
+>/0003 { /type “deny" /method "GET" /url "/path/*" /query "*" }  
+>/0004 { /type "allow" /method "GET" /url "/path/*" /query "a=*" }  
+}  
+```
 
 ### Testing Dispatcher Security {#testing-dispatcher-security}
 
@@ -825,7 +826,7 @@ Dispatcher filters should block access to the following pages and scripts on AEM
 
 Note that you should see normal page rendering for /content/add_valid_page.html?debug=layout.
 
-```
+
 * /admin
 * /system/console
 * /dav/crx.default
@@ -855,9 +856,9 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 * /content.tidy.-1.blubber.json
 * /content/dam.tidy.-100.json
 * /content/content/geometrixx.sitemap.txt 
-* /content/add_valid_page.query.json?statement=//&#42;
-* /content/add_valid_page.qu%65ry.js%6Fn?statement=//&#42;
-* /content/add_valid_page.query.json?statement=//&#42;[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)
+* /content/add_valid_page.query.json?statement=//*
+* /content/add_valid_page.qu%65ry.js%6Fn?statement=//*
+* /content/add_valid_page.query.json?statement=//*[@transportPassword]/(@transportPassword%20|%20@transportUri%20|%20@transportUser)
 * /content/add_valid_path_to_a_page/_jcr_content.json
 * /content/add_valid_path_to_a_page/jcr:content.json
 * /content/add_valid_path_to_a_page/_jcr_content.feed
@@ -872,7 +873,7 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 * /content.rss.xml
 * /content.feed.html
 * /content/add_valid_page.html?debug=layout
-```
+
 
 Issue the following command in a terminal or command prompt to determine whether anonymous write access is enabled. You should not be able to write data to the node.
 
@@ -937,7 +938,7 @@ If necessary, set the /propagateSyndPost property to "1" to forward syndication 
 
 The `/cache` section controls how Dispatcher caches documents. Configure several sub-properties to implement your caching strategies:
 
-```
+
 * /docroot 
 * /statfile
 * /serveStaleOnError
@@ -951,7 +952,7 @@ The `/cache` section controls how Dispatcher caches documents. Configure several
 * /headers
 * /mode
 * /gracePeriod
-```
+
 
 An example cache section might look as follows:
 
@@ -1074,7 +1075,7 @@ If there are some sections of your page that are dynamic (for example a news app
   }
 ```
 
-**Compression **
+**Compression**
 
 On Apache web servers you can compress the cached documents. Compression allows Apache to return the document in a compressed form if so requested by the client. Compression is done automatically by enabling the Apache module `mod_deflate`, for example:
 
@@ -1176,7 +1177,7 @@ For information about glob properties, see [Designing Patterns for glob Properti
 
 This configuration causes the following activity when /content/geometrixx/en is activated:
 
-* All the files with pattern en.&#42; are removed from the /content/geometrixx/ folder.
+* All the files with pattern en.* are removed from the /content/geometrixx/ folder.
 * The /content/geometrixx/en/_jcr_content folder is removed.
 * All the other files that match the /invalidate configuration are not immediately deleted. These files are deleted when the next request occurs. In our example /content/geometrixx.html is not deleted, it will be deleted when /content/geometrixx.html is requested.
 
@@ -1251,8 +1252,7 @@ For information about glob properties, see [Designing Patterns for glob Properti
 
 >[!CAUTION]
 >
->It is recommended that you define the /allowedClients.   
-
+>It is recommended that you define the /allowedClients.
 >
 >If this is not done, any client can issue a call to clear the cache; if this is done repeatedly it can severely impact the site performance.
 
@@ -1332,7 +1332,6 @@ Presented below is a sample from the default configuration:
 >* Add the header name in the `/cache/headers`section.
 >* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher related section:
 >
-
 ```
 FileETag none
 ```
@@ -1408,9 +1407,9 @@ The score for a render's category is based on previous response times, as well a
 
 Define a category for each type of document for which you want to keep statistics for render selection. The /statistics section contains a /categories section. To define a category, add a line below the /categories section that has the following format:
 
-`/*name* { /glob "*pattern*"}`
+`/name { /glob "pattern"}`
 
-The categor `y *name*` must be unique to the farm. Th `e *pattern*` is described in the [Designing Patterns for glob Properties](#main-pars_title_25) section.
+The category `name` must be unique to the farm. The `pattern` is described in the [Designing Patterns for glob Properties](#main-pars_title_25) section.
 
 To determine the category of a URI, Dispatcher compares the URI with each category pattern until a match is found. Dispatcher begins with the first category in the list and cointinues in order. Therefore, place categories with more specific patterns first.
 
@@ -1516,11 +1515,11 @@ Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The
 
 ### Configuring the Number of Retries {#configuring-the-number-of-retries}
 
-The / `numberOfRetries` property sets the maximum number of rounds of connection attempts that Dispatcher performs with the renders. If Dispatcher cannot successfully connect to a render after this number of retries, Dispatcher returns a failed response.
+The `/numberOfRetries` property sets the maximum number of rounds of connection attempts that Dispatcher performs with the renders. If Dispatcher cannot successfully connect to a render after this number of retries, Dispatcher returns a failed response.
 
 For each round, the maximum number of times Dispatcher attempts a connection to a render is the number of renders in the farm. Therefore, the maximum number of times that Dispatcher attempts a connection is ( `/numberOfRetries`) x (the number of renders).
 
-`"5"` is the default value used if not explicitly defined.
+If the value is not explicitly defined, the default value is **5**.
 
 ```xml
 /numberOfRetries "5"
@@ -1677,7 +1676,7 @@ The following table describes the wildcard characters.
 In the web server configuration, you can set:
 
 * The location of the Dispatcher log file.  
-* The log level ``.
+* The log level.
 
 Refer to the web server documentation and the readme file of your Dispatcher instance for more information.
 
@@ -1696,8 +1695,7 @@ Please see the Apache web server documentation on Log Rotation and Piped Logs; f
 
 >[!NOTE]
 >
->Upon installation the default log level is high (i.e. level 3 = Debug), so that the Dispatcher logs all errors and warnings. This is very useful in the initial stages.  
-
+>Upon installation the default log level is high (i.e. level 3 = Debug), so that the Dispatcher logs all errors and warnings. This is very useful in the initial stages.
 >
 >However, this requires additional resources, so when the Dispatcher is working smoothly *according to your requirements*, you can(should) lower the log level.
 
@@ -1799,47 +1797,39 @@ curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.h
 
 Below is a list containing the response headers that `X-Dispatcher-Info` will return:
 
-* **cached  
-  **The target file is contained in the cache and the dispatcher has determined that it is valid to deliver it.
-* **caching  
-  **The target file isn't contained in the cache and the dispatcher has determined that it is valid to cache the output and deliver it.
-* **caching: stat file is more recent  
-  **The target file is contained in the cache, however, it is invalidated by a more recent stat file. The dispatcher will delete the target file, recreate it from the output and deliver it.
+* **cached**  
+  The target file is contained in the cache and the dispatcher has determined that it is valid to deliver it.
+* **caching**  
+  The target file isn't contained in the cache and the dispatcher has determined that it is valid to cache the output and deliver it.
+* **caching: stat file is more recent**
+  The target file is contained in the cache, however, it is invalidated by a more recent stat file. The dispatcher will delete the target file, recreate it from the output and deliver it.
 * **not cacheable: no document root** 
   The farm's configuration doesn't contain a document root (configuration element `cache.docroot`).
-
-* **not cacheable: cache file path too long  
-  **The target file - the concatenation of document root and URL file - exceeds the longest possible file name on the system.
-* **not cacheable: temporary file path too long  
-  **The temporary file name template exceeds the longest possible file name on the system. The dispatcher creates a temporary file first, before actually creating or overwriting the cached file. The temporary file name is the target file name with the characters `_YYYYXXXXXX` appended to it, where the `Y` and `X` will be replaced to create a unique name.
-
-* **not cacheable: request URL has no extension  
-  **The request URL has no extension, or there is a path following the file extension, for example: `/test.html/a/path`.
-
-* **not cacheable: request wasn't a GET or HEAD  
-  **The HTTP method is neither a GET nor a HEAD. The dispatcher assumes that the output will contain dynamic data that shouldn't be cached.
-* **not cacheable: request contained a query string  
-  **The request contained a query string. The dispatcher assumes that the output depends on the query string given and therefore doesn't cache.
-* **not cacheable: session manager didn't authenticate  
-  **The farm's cache is governed by a session manager (the configuration contains a `sessionmanagement` node) and the request didn't contain the appropriate authentication information.
-
-* **not cacheable: request contains authorization  
-  **The farm is not allowed to cache output ( `allowAuthorized 0`) and the request contains authentication information.
-
-* **not cacheable: target is a directory  
-  **The target file is a directory. This might point to some conceptual mistake, where a URL and some sub-URL both contain cacheable output, for example if a request to `/test.html/a/file.ext` comes first and contains cacheable output, the dispatcher will not be able to cache the output of a subsequent request to `/test.html`.
-
-* **not cacheable: request URL has a trailing slash  
-  **The request URL has a trailing slash.
-* **not cacheable: request URL not in cache rules  
-  **The farm's cache rules explicitly deny caching the output of some request URL.
-* **not cacheable: authorization checker denied access  
-  **The farm's authorization checker denied access to the cached file.
-* **not cacheable: session not valid  
-  **The farm's cache is governed by a session manager (configuration contains a `sessionmanagement` node) and the user's session is not or no longer valid.
-
-* **not cacheable: response contains `no_cache  
-  `**The remote server returned a `Dispatcher: no_cache` header, forbidding the dispatcher to cache the output.
-
-* **not cacheable: response content length is zero  
-  **The content length of the response is zero; the dispatcher will not create a zero-length file.
+* **not cacheable: cache file path too long**  
+  The target file - the concatenation of document root and URL file - exceeds the longest possible file name on the system.
+* **not cacheable: temporary file path too long**  
+  The temporary file name template exceeds the longest possible file name on the system. The dispatcher creates a temporary file first, before actually creating or overwriting the cached file. The temporary file name is the target file name with the characters `_YYYYXXXXXX` appended to it, where the `Y` and `X` will be replaced to create a unique name.
+* **not cacheable: request URL has no extension**  
+  The request URL has no extension, or there is a path following the file extension, for example: `/test.html/a/path`.
+* **not cacheable: request wasn't a GET or HEAD** 
+  The HTTP method is neither a GET nor a HEAD. The dispatcher assumes that the output will contain dynamic data that shouldn't be cached.
+* **not cacheable: request contained a query string**  
+  The request contained a query string. The dispatcher assumes that the output depends on the query string given and therefore doesn't cache.
+* **not cacheable: session manager didn't authenticate**  
+  The farm's cache is governed by a session manager (the configuration contains a `sessionmanagement` node) and the request didn't contain the appropriate authentication information.
+* **not cacheable: request contains authorization**  
+  The farm is not allowed to cache output ( `allowAuthorized 0`) and the request contains authentication information.
+* **not cacheable: target is a directory**  
+  The target file is a directory. This might point to some conceptual mistake, where a URL and some sub-URL both contain cacheable output, for example if a request to `/test.html/a/file.ext` comes first and contains cacheable output, the dispatcher will not be able to cache the output of a subsequent request to `/test.html`.
+* **not cacheable: request URL has a trailing slash**  
+  The request URL has a trailing slash.
+* **not cacheable: request URL not in cache rules**  
+  The farm's cache rules explicitly deny caching the output of some request URL.
+* **not cacheable: authorization checker denied access**  
+  The farm's authorization checker denied access to the cached file.
+* **not cacheable: session not valid** 
+  The farm's cache is governed by a session manager (configuration contains a `sessionmanagement` node) and the user's session is not or no longer valid.
+* **not cacheable: response contains `no_cache `**
+  The remote server returned a `Dispatcher: no_cache` header, forbidding the dispatcher to cache the output.
+* **not cacheable: response content length is zero** 
+  The content length of the response is zero; the dispatcher will not create a zero-length file.
