@@ -1,7 +1,7 @@
 ---
 title: Installing Dispatcher
 seo-title: Installing AEM Dispatcher
-description: earn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
+description: Learn how to install the Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
 seo-description: Learn how to install the AEM Dispatcher module on Microsoft Internet Information Server, Apache Web Server and Sun Java Web Server-iPlanet.
 uuid: 2384b907-1042-4707-b02f-fba2125618cf
 contentOwner: User
@@ -29,19 +29,18 @@ Use the [Dispatcher Release Notes](release-notes.md) page to obtain the latest D
 
 The following file naming convention is used:
 
-`dispatcher-<*web-server*>-<*operating-system*>-<*dispatcher-version-number*>.<*file-format*>`
+`dispatcher-<web-server>-<operating-system>-<dispatcher-version-number>.<file-format>`
 
 For example, the `dispatcher-apache2.4-linux-x86_64-ssl-4.3.1.tar.gz` file contains Dispatcher version 4.3.1 for an Apache 2.4 web server that runs on Linux i686 and is packaged using the **tar** format.
 
 The following table lists the web server identifier that is used in file names for each web server:
 
-|||
-|--- |--- |
 |Web Server|Installation Kit|
-|Apache 2.4|`dispatcher-apache2.4-&lt;other parameters&gt;`|
-|Apache 2.2|`dispatcher-apache2.2-&lt;other parameters&gt;`|
-|Microsoft Internet Information Server 7.5, 8, 8.5|`dispatcher-iis-&lt;other parameters&gt;`|
-|Sun Java Web Server iPlanet | `dispatcher-ns-&lt;other parameters&gt;`|
+|--- |--- |
+|Apache 2.4| dispatcher-apache**2.4**-&lt;other parameters&gt;|
+|Apache 2.2| dispatcher-apache**2.2**-&lt;other parameters&gt;|
+|Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-**iis**-&lt;other parameters&gt;|
+|Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt;|
 
 >[!NOTE]
 >
@@ -108,15 +107,15 @@ The ZIP file contains the following files:
 |File|Description|
 |--- |--- |
 |`disp_iis.dll`|The Dispatcher dynamic link library file.|
-|`disp_iis.ini`|Configuration file for the IIS. This example can be updated with your requirements. NOTE: The ini file must have the same name-root as the dll.|
+|`disp_iis.ini`|Configuration file for the IIS. This example can be updated with your requirements. **Note**: The ini file must have the same name-root as the dll.|
 |`dispatcher.any`|An example configuration file for the Dispatcher.|
 |`author_dispatcher.any`|An example configuration file for Dispatcher working with the author instance.|
-|README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
+|README|Readme file that contains installation instructions and last-minute information. **Note**: Please check this file before starting the installation.|
 |CHANGES|Changes file that lists issues fixed in current and past releases.|
 
 Use the following procedure to copy the Dispatcher files to the correct location.
 
-1. Use Windows Explorer to create the `<*IIS_INSTALLDIR*>/Scripts` directory, for example, `C:\inetpub\Scripts`.
+1. Use Windows Explorer to create the `<IIS_INSTALLDIR>/Scripts` directory, for example, `C:\inetpub\Scripts`.
 
 1. Extract the following files from the Dispatcher package into this Scripts directory:
 
@@ -140,38 +139,16 @@ replaceauthorization=0|1
 
 ```
 
-The following describes each property.
+The following table describes each property.
 
-*configpath*
-* The location of `dispatcher.any` within the local file system (absolute path).
-
-*logfile*
-* The location of the `dispatcher.log` file. If this is not set then log messages go to the windows event log.
-
-*loglevel*
-* Defines the Log Level used to output messages to the event log. The following values may be specified:
-
-  * 0: error messages only.
-  * 1: errors and warnings.  
-  * 2: errors, warnings and informational messages.  
-  * 3: errors, warnings, informational and debug messages.
-  
-  >[!NOTE]
-  >It is recommended to set the log level to 3 during installation and testing, then revert to 0 when running in a production environment.
-
-*replaceauthorization*
-* Specifies how authorization headers in the HTTP request are handled. The following values are valid:
-  * 0: Authorization headers are not modified.  
-  * 1: Replaces any header named "Authorization" other than "Basic" with its `Basic <IIS:LOGON\_USER>` equivalent.
-
-*servervariables*
-* Defines how server variables are processed.
-  * 0: IIS server variables are sent to neither the Dispatcher nor AEM. * 1: all IIS server variables (such as `LOGON\_USER, QUERY\_STRING, ...`) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).  
-  
-  Server variables include `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` and many others. See the IIS documentation for the full list of variables, with details.
-
-*`enable\_chunked\_transfer`*
-* Defines whether to enable (1) or disable (0) chunked transfer for the client response. The default value is 0.
+|Parameter|Description|
+|--- |--- |
+|configpath|The location of `dispatcher.any` within the local file system (absolute path).|
+|logfile|The location of the `dispatcher.log` file. If this is not set then log messages go to the windows event log.|
+|loglevel|Defines the Log Level used to output messages to the event log. The following values may be specified:Log level for the log file: <br/>0 - error messages only. <br/>1 - errors and warnings. <br/>2 - errors, warnings and informational messages <br/>3 - errors, warnings, informational and debug messages. <br/>**Note**: It is recommended to set the log level to 3 during installation and testing, then to 0 when running in a production environment.|
+|replaceauthorization|Specifies how authorization headers in the HTTP request are handled. The following values are valid:<br/>0 - Authorization headers are not modified. <br/>1 - Replaces any header named "Authorization" other than "Basic" with its `Basic <IIS:LOGON\_USER>` equivalent.<br/>|
+|servervariables|Defines how server variables are processed.<br/>0 - IIS server variables are sent to neither the Dispatcher nor AEM. <br/>1 - all IIS server variables (such as `LOGON\_USER, QUERY\_STRING, ...`) are sent to the Dispatcher, together with the request headers (and also to the AEM instance if not cached).  <br/>Server variables include `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` and many others. See the IIS documentation for the full list of variables, with details.|
+|enable_chunked_transfer|Defines whether to enable (1) or disable (0) chunked transfer for the client response. The default value is 0.|
 
 An example configuration:
 
@@ -237,7 +214,7 @@ Provide the default App Pool user with write-access to the folder that is being 
    `IIS AppPool\DefaultAppPool`
 
 1. Click the Check Names button. When Windows resolves the user account, click OK.
-1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account** except for Full Control,** and click OK. Click OK to close the folder Properties dialog box.
+1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account  **except for Full Control** and click OK. Click OK to close the folder Properties dialog box.
 
 ### Registering the JSON Mime Type - IIS 8.5 and 10 {#registering-the-json-mime-type-iis-and}
 
@@ -320,25 +297,25 @@ The installation archive files contains the following files - dependent on wheth
 
 |File|Description|
 |--- |--- |
-|`disp_apache&lt;x.y&gt;.dll`|Windows: The Dispatcher dynamic link library file.|
-|`dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so`|Unix: The Dispatcher shared object library file.|
-|`mod_dispatcher.so`|Unix: An example link.|
-|`http.conf.disp<x>`|An example configuration file for the Apache server.|
-|`dispatcher.any`|An example configuration file for the Dispatcher.|
-|README|Readme file that contains installation instructions and last-minute information. Note: Please check this file before starting the installation.|
+|disp_apache&lt;x.y&gt;.dll|Windows: The Dispatcher dynamic link library file.|
+|dispatcher-apache&lt;x.y&gt;-&lt;rel-nr&gt;.so|Unix: The Dispatcher shared object library file.|
+|mod_dispatcher.so|Unix: An example link.|
+|http.conf.disp&lt;x&gt;|An example configuration file for the Apache server.|
+|dispatcher.any|An example configuration file for the Dispatcher.|
+|README|Readme file that contains installation instructions and last-minute information. **Note**: Please check this file before starting the installation.|
 |CHANGES|Changes file that lists issues fixed in the current and past releases.|
 
 Use the following steps to add Dispatcher to your Apache Web Server:
 
 1. Place the Dispatcher file in the appropriate Apache module directory:
 
-   * **Windows**: Place `disp_apache<*x.y*>.dll` `<APACHE_ROOT>/modules`
+   * **Windows**: Place `disp_apache<x.y>.dll` `<APACHE_ROOT>/modules`
    * **Unix**: Locate either the `<APACHE_ROOT>/libexec` or `<APACHE_ROOT>/modules`directory according to your installation.  
-     Copy `dispatcher-apache<*options*>.so` into this directory.  
+     Copy `dispatcher-apache<options>.so` into this directory.  
      To simplify long-term maintenance you can also create a symbolic link named `mod_dispatcher.so` to the Dispatcher:  
-     `ln -s dispatcher-apache<*x*>-<*os*>-<rel-nr>.so mod_dispatcher.so`
+     `ln -s dispatcher-apache<x>-<os>-<rel-nr>.so mod_dispatcher.so`
 
-1. Copy the dispatcher.any file to the `<*APACHE_ROOT*>/conf` directory.
+1. Copy the dispatcher.any file to the `<APACHE_ROOT>/conf` directory.
 
    **Note:** You can place this file in a different location, as long as the DispatcherLog property of the Dispatcher module is configured accordingly. (See Dispatcher-Specific Configuration Entries below.)
 
@@ -367,11 +344,11 @@ semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
 
 ### Apache Web Server - Configure Apache Web Server for Dispatcher {#apache-web-server-configure-apache-web-server-for-dispatcher}
 
-The Apache Web Server needs to be configured, using `httpd.conf`. In the Dispatcher installation kit you will find an example configuration file named `httpd.conf.disp<*x*>`.
+The Apache Web Server needs to be configured, using `httpd.conf`. In the Dispatcher installation kit you will find an example configuration file named `httpd.conf.disp<x>`.
 
 These steps are compulsory:
 
-1. Navigate to `<*APACHE_ROOT*>/conf`.
+1. Navigate to `<APACHE_ROOT>/conf`.
 1. Open `httpd.conf`for editing.  
 1. The following configuration entries must be added, in the order listed:
 
@@ -382,11 +359,11 @@ These steps are compulsory:
 
 1. (Optional) It is recommended that you change the owner of the htdocs directory:
 
-   * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (`&lt;*APACHE_ROOT*&gt;/htdocs`) must belong to the user daemon:  
+   * The apache server starts as root, though the child processes start as daemon (for security purposes). The DocumentRoot (`<APACHE_ROOT>/htdocs`) must belong to the user daemon:  
 
-     ```
+     ```xml
 
-     cd &lt;APACHE_ROOT&gt;  
+     cd <APACHE_ROOT>  
      chown -R daemon:daemon htdocs
     
      ```
@@ -402,7 +379,7 @@ The following table lists examples that can be used; the exact entries are accor
 
 >[!NOTE]
 >
->*The first parameter of each statement must be written *exactly as in the above examples*.
+>The first parameter of each statement must be written exactly as in the above examples.
 >
 >See the example configuration files provided and the Apache Web Server documentation for full details about this command.
 
@@ -445,7 +422,7 @@ The individual configuration parameters:
 
 >[!NOTE]
 >
->****Path entries are relative to the root directory of the Apache Web Server.
+>Path entries are relative to the root directory of the Apache Web Server.
 
 >[!NOTE]
 >
@@ -513,7 +490,7 @@ AllowOverride None
 
 >[!NOTE]
 >
->****The parameter of the **SetHandler** statement must be written *exactly as in the above examples*, as this is the name of the handler defined in the module.
+>The parameter of the **SetHandler** statement must be written *exactly as in the above examples*, as this is the name of the handler defined in the module.
 >
 >See the example configuration files provided and the Apache Web Server documentation for full details about this command.
 
@@ -619,7 +596,7 @@ Use the following steps to add the Dispatcher to your web server:
 
 The web server needs to be configured, using `obj.conf`. In the Dispatcher installation kit you will find an example configuration file named `obj.conf.disp`.
 
-1. Navigate to `<*WEBSERVER_ROOT*>/config`.
+1. Navigate to `<WEBSERVER_ROOT>/config`.
 1. Open `obj.conf`for editing.
 1. Copy the line that starts:  
    `Service fn="dispService"`  
