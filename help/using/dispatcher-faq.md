@@ -64,7 +64,7 @@ Read [Using Dispatcher with Multiple Domains](dispatcher-domains.md) for further
 
 ### How do I configure the Dispatcher, such that all requests from a user are routed to the same Publish instance?
 
-You can use the [*sticky connections*](dispatcher-configuration#identifying-a-sticky-connection-folder-stickyconnectionsfor) feature, which ensures that all documents for a user are processed on the same instance of AEM. This feature is important if you use personalized pages and session data. The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
+You can use the [*sticky connections*](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) feature, which ensures that all documents for a user are processed on the same instance of AEM. This feature is important if you use personalized pages and session data. The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
 
 Because sticky connections restrict the Dispatcher's ability to optimize requests, you should use this approach only when necessary. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are processed on the same instance for a user.
 
@@ -107,7 +107,7 @@ For further details on this topic, see [Manually Invalidating the Dispatcher Cac
 
 ### How do I implement permission-sensitive caching?
 
-See the [Caching Secure Content](permissions-invalidate.md) page.
+See the [Caching Secure Content](permissions-cache.md) page.
 
 ### How do I secure communications between the Dispatcher and CQ instances?
 
@@ -119,7 +119,7 @@ See the Dispatcher Security Checklist and the AEM Security Checklist pages.
 
 **Answer**: Please use `ResourceResolver.map()` method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format.You need to use the map() method to generate the URL that is used in the Ajax call.
 
-Further read: [http://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](http://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
+Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
 ## Flush the Dispatcher
 
@@ -135,7 +135,7 @@ See the [Replication](https://helpx.adobe.com/content/help/en/experience-manager
 * How do I debug a situation where cache files are not getting updated?
 * How do I debug a situation where nothing related to Dispatcher flushing is working?
 
-If Delete operations are causing the Dispatcher to flush, [use the workaround in this community blog post by Sensei Martin](http://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
+If Delete operations are causing the Dispatcher to flush, [use the workaround in this community blog post by Sensei Martin](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
 
 ### How do I flush DAM assets from the Dispatcher cache?
 

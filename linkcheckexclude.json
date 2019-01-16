@@ -68,6 +68,16 @@
         },
         {
             "pattern": "^.*html2canvas.hertzen.com"
-        }
+        },
+        {
+            "pattern": "^.*mycompany.com/products/*"
+        },
+        {
+            "pattern": "^.*mycompany.com"
+        },
+        {
+            "pattern": "^.*localhost:4502/miscadmin#/etcm"
+        }             
     ]
 }
+
