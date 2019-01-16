@@ -1,7 +1,7 @@
 ---
 title: Configuring Dispatcher
 seo-title: Configuring Dispatcher
-description: null
+description: Learn how to configure Dispatcher.
 seo-description: Learn how to configure Dispatcher.
 uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
