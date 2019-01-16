@@ -533,7 +533,7 @@ With Dispatcher version **4.1.6**, you can configure the `/always-resolve` prope
 
 Also, this property can be used in case you run into dynamic IP resolution issues, as shown in the following sample:
 
-```
+```xml
 /rend {
   /0001 {
      /hostname "host-name-here"
@@ -1079,7 +1079,7 @@ If there are some sections of your page that are dynamic (for example a news app
 
 On Apache web servers you can compress the cached documents. Compression allows Apache to return the document in a compressed form if so requested by the client. Compression is done automatically by enabling the Apache module `mod_deflate`, for example:
 
-```
+```xml
 AddOutputFilterByType DEFLATE text/plain
 ```
 
@@ -1332,7 +1332,8 @@ Presented below is a sample from the default configuration:
 >* Add the header name in the `/cache/headers`section.
 >* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher related section:
 >
-```
+
+```xml
 FileETag none
 ```
 
@@ -1771,13 +1772,13 @@ When adding the header `X-Dispatcher-Info` to a request, Dispatcher answers whet
 
 This functionality is not enabled by default, so in order for the response header `X-Cache-Info` to be included, the farm must contain the following entry:
 
-```
+```xml
 /info "1"
 ```
 
 For example,
 
-```
+```xml
 /farm
 {
     /mywebsite
@@ -1790,7 +1791,7 @@ For example,
 
 Also, the `X-Dispatcher-Info` header does not need a value, but if you use `curl` for testing you must supply a value in order to send the header, such as:
 
-```
+```xml
 curl -v -H "X-Dispatcher-Info: true" https://localhost/content/we-retail/us/en.html
 
 ```
