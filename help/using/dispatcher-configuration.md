@@ -642,7 +642,6 @@ If you still need to access single pages within the restricted area, you can all
 
 ```xml
 /0004  { /type "allow"  /url "/libs/cq/workflow/content/console/archive*"   }
-
 ```
 
 >[!NOTE]
@@ -811,6 +810,7 @@ A single entry can have either *glob* or some combination of *method*,*url*,*que
 >
 >In above example, if requests to `/etc` that have no query string should be allowed as well, the following rules would be required:
 >
+
 ```xml
 /filter {  
 >/0001 { /type "deny" /method “*" /url "/path/*" }  
@@ -973,7 +973,7 @@ An example cache section might look as follows:
     # List of files that are auto-invalidated
     }
   }
-
+  
 ```
 
 >[!NOTE]
