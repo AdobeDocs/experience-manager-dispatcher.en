@@ -12,7 +12,7 @@ discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 
 ---
 
-# Dispatcher Overview{#dispatcher-overview}
+# Dispatcher Overview {#dispatcher-overview}
 
 >[!NOTE]
 >
@@ -91,7 +91,9 @@ This allows you to create richer, dynamic content, which increases the flexibili
 
 ## How Dispatcher performs Caching {#how-dispatcher-performs-caching}
 
-![](assets/chlimage_1-5.png) **The Cache Directory** For caching, the Dispatcher module uses the web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the web server. 
+![](assets/chlimage_1-5.png) 
+
+**The Cache Directory** For caching, the Dispatcher module uses the web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the web server. 
 
 >[!NOTE]
 >
@@ -285,7 +287,7 @@ For finer-grained control, API based invalidation allows you to invalidate a CDN
 >
 >if you are using [AEM with Touch UI](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/touch-ui-concepts.html) you should **not** cache author instance content. If caching was enabled for the author instance, you need to disable it and delete the contents of the cache directory. To disable caching, you should edit the `author_dispatcher.any` file and modify the `/rule` property of the `/cache` section as follows:
 
-```
+```xml
 /rules
 {
 /0000
