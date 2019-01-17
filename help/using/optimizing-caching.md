@@ -9,7 +9,7 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: ba323503-1494-4048-941d-c1d14f2e85b2
-redirecttarget: /experience-manager/6-2/sites/deploying/using/configuring-performance.html
+redirecttarget: /experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
