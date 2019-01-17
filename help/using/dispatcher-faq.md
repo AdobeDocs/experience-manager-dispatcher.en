@@ -64,7 +64,7 @@ Read [Using Dispatcher with Multiple Domains](dispatcher-domains.md) for further
 
 ### How do I configure the Dispatcher, such that all requests from a user are routed to the same Publish instance?
 
-You can use the [*sticky connections*](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) feature, which ensures that all documents for a user are processed on the same instance of AEM. This feature is important if you use personalized pages and session data. The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
+You can use the [sticky connections](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) feature, which ensures that all documents for a user are processed on the same instance of AEM. This feature is important if you use personalized pages and session data. The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
 
 Because sticky connections restrict the Dispatcher's ability to optimize requests, you should use this approach only when necessary. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are processed on the same instance for a user.
 
@@ -111,9 +111,9 @@ See the [Caching Secure Content](permissions-cache.md) page.
 
 ### How do I secure communications between the Dispatcher and CQ instances?
 
-See the Dispatcher Security Checklist and the AEM Security Checklist pages.
+See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Security Checklist](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) pages.
 
-*Dispatcher issue* `jcr:content` changed to `jcr%3acontent`
+### Dispatcher issue `jcr:content` changed to `jcr%3acontent`
 
 **Question**: We have recently faced a problem at dispatcher level wherein one of the ajax call which was getting some data form CQ repository had `jcr:content` in it and that got encoded to `jcr%3acontent` resulting in wrong result set.
 
@@ -144,7 +144,7 @@ You can use the "chain replication" feature.  With this feature enabled, the dis
 To enable it:
 
 1. [Follow the steps here](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) to create flushing agents on publish
-1. Go to each of those agent's configuration and on the Triggers tab check the On Receive box.
+1. Go to each of those agent's configuration and on the **Triggers** tab check the **On Receive** box.
 
 ## Miscellaneous
 
