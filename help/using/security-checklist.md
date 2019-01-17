@@ -1,7 +1,7 @@
 ---
 title: The Dispatcher Security Checklist
 seo-title: The Dispatcher Security Checklist
-description: null
+description: A security checklist that should be completed before going on production.
 seo-description: A security checklist that should be completed before going on production.
 uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: User

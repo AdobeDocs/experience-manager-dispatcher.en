@@ -1,7 +1,7 @@
 ---
 title: Optimizing a Website for Cache Performance
 seo-title: Optimizing a Website for Cache Performance
-description: null
+description: Learn how to design your web site to maximize the benefits of caching.
 seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
 uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
@@ -15,7 +15,7 @@ internal: n
 snippet: y
 ---
 
-# Optimizing a Website for Cache Performance{#optimizing-a-website-for-cache-performance}
+# Optimizing a Website for Cache Performance {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 

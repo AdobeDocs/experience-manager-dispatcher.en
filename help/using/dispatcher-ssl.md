@@ -1,7 +1,7 @@
 ---
 title: Using SSL with Dispatcher
 seo-title: Using SSL with Dispatcher
-description: null
+description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
 seo-description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
 uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
 contentOwner: User
@@ -14,7 +14,7 @@ internal: n
 snippet: y
 ---
 
-# Using SSL with Dispatcher{#using-ssl-with-dispatcher}
+# Using SSL with Dispatcher {#using-ssl-with-dispatcher}
 
 Use SSL connections between Dispatcher and the render computer:
 
