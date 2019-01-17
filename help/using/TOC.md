@@ -15,7 +15,7 @@ user-guide: AEM Dispatcher Help
 + Configuring {#configuring}
   + [Configuring Dispatcher](dispatcher-configuration.md)
   + [Invalidating Cached Pages From AEM](page-invalidate.md)
-  + [Optimizing a Website for Cache Performance](optimizing-caching.md)
+  + [Optimizing a Website for Cache Performance](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
   + [Caching Secured Content](permissions-cache.md)
   + [Using Dispatcher with Multiple Domains ](dispatcher-domains.md)
   + [Using SSL with Dispatcher](dispatcher-ssl.md)
