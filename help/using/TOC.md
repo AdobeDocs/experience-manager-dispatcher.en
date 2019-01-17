@@ -7,8 +7,8 @@ user-guide: AEM Dispatcher Help
 
 # AEM Dispatcher Help {#using}
 
++ [Overview](dispatcher.md)
 + Getting Started {#getting-started}
-  + [Dispatcher Overview](dispatcher.md)
   + [Installing Dispatcher](dispatcher-install.md)
   + [The Dispatcher Security Checklist](security-checklist.md)
   + [AEM Dispatcher Release Notes](release-notes.md)
