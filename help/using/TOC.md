@@ -19,5 +19,6 @@ user-guide: AEM Dispatcher Help
   + [Configuring Dispatcher to Prevent CSRF Attacks](configuring-dispatcher-to-prevent-csrf.md)
   + [Optimizing a Website for Cache Performance](optimizing-caching.md)
   + [Invalidating Cached Pages From AEM](page-invalidate.md)
++ [Dispatcher Top Issues FAQ](dispatcher-faq.md)
 + [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
 + [AEM Dispatcher Release Notes](release-notes.md)
