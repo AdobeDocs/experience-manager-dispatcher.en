@@ -324,8 +324,8 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
->[!NOTE]
+<!--[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)
-
+-->

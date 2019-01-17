@@ -48,7 +48,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
 Use the following procedure to configure a replication agent on the AEM author instance for invalidating the Dispatcher cache upon page activation:
 
-1. Open the AEM Tools console. ( [https://localhost:4502/miscadmin#/etc](https://localhost:4502/miscadmin#/etc))
+1. Open the AEM Tools console. (`https://localhost:4502/miscadmin#/etc`)
 1. Open the required replication agent below Tools/replication/Agents on author. You can use the Dispatcher Flush agent that is installed by default.
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.  
 
