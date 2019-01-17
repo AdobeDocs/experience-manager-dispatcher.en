@@ -21,5 +21,5 @@ user-guide: AEM Dispatcher Help
   + [Using SSL with Dispatcher](dispatcher-ssl.md)
   + [Configuring Dispatcher to Prevent CSRF Attacks](configuring-dispatcher-to-prevent-csrf.md)
 + Troubleshooting {#troubleshooting}
-+ [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
-+ [Dispatcher Top Issues FAQ](dispatcher-faq.md)
+  + [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
+  + [Dispatcher Top Issues FAQ](dispatcher-faq.md)
