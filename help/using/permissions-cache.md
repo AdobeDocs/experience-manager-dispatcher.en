@@ -12,9 +12,9 @@ discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 
 ---
 
-# Caching Secured Content{#caching-secured-content}
+# Caching Secured Content {#caching-secured-content}
 
-Permission-sensitive caching enables you to cache secured pages. Dispatcher checks users' access permissions for a page before delivering the cached page.
+Permission-sensitive caching enables you to cache secured pages. Dispatcher checks user's access permissions for a page before delivering the cached page.
 
 Dispatcher includes the AuthChecker module that implements permission-sensitive caching. When the module is activated, the render calls an AEM servlet to perform user authentication and authorization for the requested content. The servlet response determines whether the content is delivered to the web browser.
 
@@ -147,7 +147,7 @@ The auth_checker section of the dispatcher.any file controls the behavior of per
 
 When Dispatcher starts, the Dispatcher log file includes the following debug-level message:
 
-`AuthChecker: initialized with URL '*configured_url*'.`
+`AuthChecker: initialized with URL 'configured_url'.`
 
 The following example auth_checker section configures Dispatcher to use the servlet of the prevoius topic. The filter section causes permission checks to be performed only on secure HTML resources.
 

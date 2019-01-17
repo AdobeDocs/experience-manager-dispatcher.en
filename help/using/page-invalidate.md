@@ -14,7 +14,7 @@ content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
 ---
 
-# Invalidating Cached Pages From AEM{#invalidating-cached-pages-from-aem}
+# Invalidating Cached Pages From AEM {#invalidating-cached-pages-from-aem}
 
 When using Dispatcher with AEM, the interaction must be configured to ensure effective cache management. Depending on your environment, the configuration can also increase performance.
 
@@ -54,9 +54,9 @@ Use the following procedure to configure a replication agent on the AEM author i
 
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, `https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache` 
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache 
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/&#42;` and farm #2 has a virtual host of `www.mysite.com/path2/&#42;`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.  
 1. Click OK to activate the agent.
@@ -103,9 +103,9 @@ The dispatcher flush is controlled by a replication agent operating on the publi
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, `https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache` 
+   If you are using the standard Dispatcher Flush agent you will probably need to update the hostname and port; for example, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache` 
   
-   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/&#42;` and farm #2 has a virtual host of `www.mysite.com/path2/&#42;`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
+   **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.
 1. Repeat for every publish instance affected.
@@ -126,10 +126,12 @@ Issue an HTTP request that causes Dispatcher to delete files from the cache. Dis
 
 The HTTP request has the following form:
 
-`POST /dispatcher/invalidate.cache HTTP/1.1  
+```xml
+POST /dispatcher/invalidate.cache HTTP/1.1  
 CQ-Action: Activate  
-CQ-Handle: *path-pattern* 
-Content-Length: 0`
+CQ-Handle: path-pattern
+Content-Length: 0
+```
 
 Dispatcher flushes (deletes) the cached files and folders that have names that match the value of the `CQ-Handler` header. For example, a `CQ-Handle` of `/content/geomtrixx-outdoors/en` matches the following items:
 
@@ -149,25 +151,29 @@ Issue an HTTP request that causes Dispatcher to delete cached files, and immedia
 
 The HTTP request has the following form:
 
-`POST /dispatcher/invalidate.cache HTTP/1.1  
+```xml
+POST /dispatcher/invalidate.cache HTTP/1.1  
 CQ-Action: Activate   
 `Content-Type: text/plain  
-CQ-Handle: *path-pattern  
-*Content-Length: *numchars in bodypage_path0*
+CQ-Handle: path-pattern  
+Content-Length: numchars in bodypage_path0
 
-`*page_path1* 
+page_path1 
 ...  
-*page_pathn*`
+page_pathn
+```
 
 The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the `/content/geometrixx-outdoors/en.html page`:
 
-`POST /dispatcher/invalidate.cache HTTP/1.1  
+```xml
+POST /dispatcher/invalidate.cache HTTP/1.1  
 CQ-Action: Activate  
 Content-Type: text/plain   
-`CQ-Handle: /content/geometrixx-outdoors/en/men.html  
+CQ-Handle: /content/geometrixx-outdoors/en/men.html  
 Content-Length: 36
 
 /content/geometrixx-outdoors/en.html
+```
 
 ### Example flush servlet {#example-flush-servlet}
 

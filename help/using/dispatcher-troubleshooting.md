@@ -15,7 +15,7 @@ discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 
 ---
 
-# Troubleshooting Dispatcher Problems{#troubleshooting-dispatcher-problems}
+# Troubleshooting Dispatcher Problems {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
