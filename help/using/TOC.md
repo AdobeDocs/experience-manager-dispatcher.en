@@ -2,7 +2,7 @@
 cloud: experience-cloud
 product: AEM Dispatcher
 archtype: Administrator
-user-guide: AEM Dispatcher Help
+user-guide-title: Experience Manager Dispatcher Help
 ---
 
 # AEM Dispatcher Help {#using}
