@@ -25,7 +25,7 @@ discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 
 >[!NOTE]
 >
->Please check the [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html) or [Troubleshooting Dispatcher](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) for further information.
+>Please also check the [Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://helpx.adobe.com/adobe-cq/kb/troubleshooting-dispatcher-flushing-issues.html) and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
 
 ## Check the Basic Configuration {#check-the-basic-configuration}
 

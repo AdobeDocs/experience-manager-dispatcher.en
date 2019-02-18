@@ -263,7 +263,7 @@ Use the following procedure to write Dispatcher log messages to a log file inste
 
 ### Next Steps {#next-steps}
 
-Before you can start using the Dispatcher you must now:
+Before you can start using the Dispatcher you must know:
 
 * [Configure](dispatcher-configuration.md) Dispatcher
 * [Confgure AEM](page-invalidate.md) to work with Dispatcher.

@@ -36,14 +36,14 @@ The process for deploying a Dispatcher is independent of the web server and OS p
 
 Use the following information as required:
 
-* [](https://helpx.adobe.com/cq/kb/index/dispatcher.html) [The Dispatcher Security Checklist](security-checklist.md)
-
+* [The Dispatcher Security Checklist](security-checklist.md)
 * [The Dispatcher Knowledge Base](https://helpx.adobe.com/cq/kb/index/dispatcher.html)
-* [Optimizing a Website for Cache Performance](optimizing-caching.md)
+* [Optimizing a Website for Cache Performance](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html)
 * [Using Dispatcher with Multiple Domains](dispatcher-domains.md)
 * [Using SSL with Dispatcher](dispatcher-ssl.md)
 * [Implementing Permission-Sensitive Caching](permissions-cache.md)
 * [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
+* [Dispatcher Top Issues FAQ](dispatcher-faq.md)
 
 >[!NOTE]
 >
