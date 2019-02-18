@@ -340,7 +340,7 @@ Configure the following aspects on the web server:
 * For each domain, configure the document root to coincide with the folder in the repository that contains the domain's web content.
 * For each virtual domain, create a URL renaming rule that translates the incoming URL to the path of the cached file. 
 * Each virtual domain must also include Dispatcher-related configurations, as described on the [Installing Dispatcher](dispatcher-install.md) page.
-* The Dispatcher module must be configured to use the URL that the web server has rewritten. (See the `DispatcherUseProcessedURL` proeprty in [Installing Dispatcher](dispatcher-install.md).)
+* The Dispatcher module must be configured to use the URL that the web server has rewritten. (See the `DispatcherUseProcessedURL` property in [Installing Dispatcher](dispatcher-install.md).)
 
 The following example httpd.conf file configures two virtual hosts for an Apache web server:
 

@@ -5,7 +5,7 @@ description: Top issues for AEM Dispatcher
 seo-description: Top issues for Adobe AEM Dispatcher
 ---
 
-# AEM Dispatcher top issues FAQ
+# AEM Dispatcher Top Issues FAQ
 
 ![Configuring Dispatcher](assets/CQDispatcher_workflow_v2.png)
 
