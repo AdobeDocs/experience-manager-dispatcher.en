@@ -300,7 +300,7 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 1. Install a Dispatcher in a web server (this could be Apache or IIS web server, see [Installing Dispatcher](dispatcher-install.md)).
 1. You may wish to test the newly installed Dispatcher against a working AEM publish instance, to ensure that a baseline correct install has been acheived.
 1. Now make sure that the Dispatcher is able to connect via TCP/IP to your author instance.
-1. Replace the sample `dispatcher.any` file with the `author_dispatcher.any` file provided with the [Dispatcher donwload](https://helpx.adobe.com/experience-manager/dispatcher/release-notes.html#Downloads).
+1. Replace the sample dispatcher.any file with the author_dispatcher.any file provided with the [Dispatcher download](release-notes.md#downloads).
 1. Open the `author_dispatcher.any` in a text editor and make the following changes:
 
     1. Change the `/hostname` and `/port` of the `/renders` section to point to your author instance.
