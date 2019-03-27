@@ -569,7 +569,7 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 
 * **glob Property**: The `/glob` property is used to match with the entire request-line of the HTTP request.
 
-For information about /glob properties, see [Designing Patterns for glob Properties](dispatcher-configuration.md#main-pars-title-25). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
+For information about /glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
 
 >[!NOTE]
 >
@@ -1044,7 +1044,7 @@ The `/rules` property controls which documents are cached according to the docum
 >
 >The GET or HEAD (for the HTTP header) methods are cacheable by the Dispatcher. For additional information on response header caching, see the [Caching HTTP Response Headers](dispatcher-configuration.md#caching-http-response-headers) section.
 
-Each item in the /rules property includes a [glob](#main-pars-title-25) pattern and a type:
+Each item in the /rules property includes a [glob](#designing-patterns-for-glob-properties) pattern and a type:
 
 * The glob pattern is used to match the path of the document.
 * The type indicates whether to cache the documents that match the glob pattern. The value can be either allow (to cache the document) or deny (to always render the document).
@@ -1058,7 +1058,7 @@ If you do not have dynamic pages (beyond those already excluded by the above rul
   }
 ```
 
-For information about glob properties, see [Designing Patterns for glob Properties](#main-pars-title-25).
+For information about glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties).
 
 If there are some sections of your page that are dynamic (for example a news application) or within a closed user group, you can define exceptions:
 
@@ -1173,7 +1173,7 @@ Automatic invalidation is typically used for HTML pages. HTML pages often contai
 
 ```
 
-For information about glob properties, see [Designing Patterns for glob Properties](#main-pars-title-25).
+For information about glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties).
 
 This configuration causes the following activity when /content/geometrixx/en is activated:
 
@@ -1248,7 +1248,7 @@ The following example:
   }
 ```
 
-For information about glob properties, see [Designing Patterns for glob Properties](#main-pars-title-25).
+For information about glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties).
 
 >[!CAUTION]
 >
@@ -1293,7 +1293,7 @@ GET /mypage.html?q=5&p=4
 
 ```
 
-For information about glob properties, see [Designing Patterns for glob Properties](#main-pars-title-25).
+For information about glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties).
 
 ### Caching HTTP Response Headers {#caching-http-response-headers}
 
@@ -1323,7 +1323,7 @@ Presented below is a sample from the default configuration:
 
 >[!NOTE]
 >
->Also, be aware that file globbing characters are not allowed. For more details, see [Designing Patterns for glob Properties](dispatcher-configuration.md#designing-patterns-for-globproperties).
+>Also, be aware that file globbing characters are not allowed. For more details, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties).
 
 >[!NOTE]
 >
@@ -1410,7 +1410,7 @@ Define a category for each type of document for which you want to keep statistic
 
 `/name { /glob "pattern"}`
 
-The category `name` must be unique to the farm. The `pattern` is described in the [Designing Patterns for glob Properties](#main-pars_title_25) section.
+The category `name` must be unique to the farm. The `pattern` is described in the [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties) section.
 
 To determine the category of a URI, Dispatcher compares the URI with each category pattern until a match is found. Dispatcher begins with the first category in the list and cointinues in order. Therefore, place categories with more specific patterns first.
 
