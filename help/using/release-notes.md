@@ -39,18 +39,18 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Bug Fixes**:
 
-*DISP-734 - Dispatcher causes crash in insert_output_filter if not set as handler
-*DISP-735 - REs do not work on Alpine Linux
-*DISP-740 - Loading dispatcher in macOS Mojave is disabled by default
-*DISP-742 - Blocked requests may leak information to auth checker protected resources
+* DISP-734 - Dispatcher causes crash in insert_output_filter if not set as handler
+* DISP-735 - REs do not work on Alpine Linux
+* DISP-740 - Loading dispatcher in macOS Mojave is disabled by default
+* DISP-742 - Blocked requests may leak information to auth checker protected resources
 
 **Improvements**:
 
-*DISP-746 - Unlabelled strings in dispatcher.any should generate a warning
+* DISP-746 - Unlabelled strings in dispatcher.any should generate a warning
 
 **New Feature**:
 
-*DISP-747 - Provide request information in Apache environment
+* DISP-747 - Provide request information in Apache environment
 
 ### Release 4.3.1 (2018-Oct-16) {#oct}
 
