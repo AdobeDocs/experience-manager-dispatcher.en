@@ -547,6 +547,10 @@ Dispatcher uses OpenSSL to implement secure communication over HTTP. Starting fr
    ln -s libcrypto.so libcrypto.so.1.0.1
    ```
 
+  >[!NOTE]
+>
+>If you are using a customized version of Apache, make sure Apache and Dispatcher are compiled using the same version of [OpenSSL](https://www.openssl.org/source/).
+
 ### Next Steps {#next-steps-1}
 
 Before you can start using the Dispatcher you must now:
