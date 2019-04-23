@@ -44,7 +44,7 @@ When Dispatcher recieves an HTTPS request, Dispatcher includes the following hea
 * `X-Forwarded-SSL-Keysize`
 * `X-Forwarded-SSL-Session-ID`
 
-A request through Apache-2.2 with `mod_ssl` includes headers that are similar to the following example:
+A request through Apache-2.4 with `mod_ssl` includes headers that are similar to the following example:
 
 ```shell
 X-Forwarded-SSL: on

@@ -1702,7 +1702,7 @@ This will automatically rotate:
 * the dispatcher log file; with a timestamp in the extension (logs/dispatcher.log%Y%m%d).  
 * on a weekly basis (60 x 60 x 24 x 7 = 604800 seconds).
 
-Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.2](https://httpd.apache.org/docs/2.2/logs.html).
+Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
 
 >[!NOTE]
 >

@@ -264,7 +264,7 @@ There are a numer of ways to control for how long a CDN will cache a resource be
    Configure, how long particular resources are held in the CDN's cache, depending on mime type, extension, request type, etc.  
 
 1. Expiration and cache-control headers  
-   Most CDNs will honor `Expires:` and `Cache-Control:` HTTP Headers if sent by the upstream server. This can be achieved e.g. by using the [mod_expires](https://httpd.apache.org/docs/2.2/mod/mod_expires.html) Apache Module.
+   Most CDNs will honor `Expires:` and `Cache-Control:` HTTP Headers if sent by the upstream server. This can be achieved e.g. by using the [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) Apache Module.
 
 1. Manual invalidation  
    CDNs allow resources to be removed from the cache through web interfaces.
