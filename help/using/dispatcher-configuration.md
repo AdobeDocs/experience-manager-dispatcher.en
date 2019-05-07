@@ -873,7 +873,11 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 * /content.rss.xml
 * /content.feed.html
 * /content/add_valid_page.html?debug=layout
-
+* /projects
+* /tagging
+* /etc/replication.html
+* /etc/cloudservices.html
+* /welcome
 
 Issue the following command in a terminal or command prompt to determine whether anonymous write access is enabled. You should not be able to write data to the node.
 
