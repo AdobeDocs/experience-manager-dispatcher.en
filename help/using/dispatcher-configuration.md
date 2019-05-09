@@ -577,11 +577,13 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 
 >[!CAUTION]
 >
->Be cautious with globs. They can trigger on more items than you might expect. If you choose to use a glob in your filter, be sure to test it thoroughly before using it in production.
+>Filtering with globs is deprecated in Dispatcher. As such, you should avoid using globs in the `/filter` sections since it may lead to security issues. So, instead of:
 
->[!NOTE]
->
->For information about /glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
+`/glob "* *.css *"`
+
+you should use
+
+`/url "*.css"`
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
 
