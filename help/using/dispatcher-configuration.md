@@ -599,7 +599,7 @@ Your patterns must take into account the space characters in the request-line an
 
 #### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
 
-When crafting your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
+When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
 
 #### Regular Expressions {#regular-expressions}
 
@@ -607,7 +607,7 @@ After Dispatcher 4.2.0, you can include POSIX Extended Regular Expressions in yo
 
 #### Troubleshooting Filters {#troubleshooting-filters}
 
-If your filters are not triggering the way you would expect, enable [Trace Logging](#trace-logging) on the dispatcher so you can see which filter is intercepting the request.
+If your filters are not triggering in the way you would expect, enable [Trace Logging](#trace-logging) on dispatcher so you can see which filter is intercepting the request.
 
 #### Example Filter: Deny All {#example-filter-deny-all}
 
