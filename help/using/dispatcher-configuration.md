@@ -567,18 +567,23 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 
 * **Element of the Request Line:** Include `/method`, `/url`, `/query`, or `/protocol` and a pattern for filtering requests according to these specific parts of the request-line part of the HTTP request. Filtering on elements of the request line (rather than on the entire request line) is the preferred filter method.
 
-* **glob Property**: The `/glob` property is used to match with the entire request-line of the HTTP request.
-
-For information about /glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
+* **Advanced Elements of the Request Line:** Starting with Dispatcher 4.2.0, four new filter elements are available for use. These new elements are `/path`, `/selectors`, `/extension` and `/suffix` respectively. Include one or more of these items to further control URL patterns.
 
 >[!NOTE]
 >
->As of Dispatcher version 4.2.0, several enhancements for filter configurations and logging capabilities have been added:
+>For more information about what part of the request line each of these elements references, see the [Sling URL Decomposition](https://sling.apache.org/documentation/the-sling-engine/url-decomposition.html) wiki page.
+
+* **glob Property**: The `/glob` property is used to match with the entire request-line of the HTTP request.  
+
+>[!CAUTION]
 >
->* [Support for POSIX regular expressions](dispatcher-configuration.md#main-pars-title-1996763852)
->* [Support for filtering additional elements of the request URL](dispatcher-configuration.md#main-pars-title-694578373)
->* [Trace Logging](dispatcher-configuration.md#main-pars-title-1950006642)
->
+>Filtering with globs is deprecated in Dispatcher. As such, you should avoid using globs in the `/filter` sections since it may lead to security issues. So, instead of:
+
+`/glob "* *.css *"`
+
+you should use
+
+`/url "*.css"`
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
 
@@ -591,6 +596,18 @@ The &lt;CRLF&gt; characters repesent a carriage return followed by a line feed. 
 GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
 
 Your patterns must take into account the space characters in the request-line and the &lt;CRLF&gt; characters.
+
+#### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
+
+When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
+
+#### Regular Expressions {#regular-expressions}
+
+After Dispatcher 4.2.0, you can include POSIX Extended Regular Expressions in your filter patterns. 
+
+#### Troubleshooting Filters {#troubleshooting-filters}
+
+If your filters are not triggering in the way you would expect, enable [Trace Logging](#trace-logging) on dispatcher so you can see which filter is intercepting the request.
 
 #### Example Filter: Deny All {#example-filter-deny-all}
 
@@ -657,15 +674,6 @@ This filter enables extensions in non-public content directories using a regular
 ```
 
 #### Example filter: Filter Additional Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
-
-One of the enhancements introduced in dispatcher 4.2.0 is the ability to filter additional elements of the request URL. The new elements introduced are:
-
-* path  
-* selectors
-* extension
-* suffix
-
-These can be configured by adding the property of the same name to the filtering rule: `/path`, `/selectors`, `/extension` and `/suffix` respectively.
 
 Below is a rule example that blocks content grabbing from the `/content` path and its subtree, using filters for path, selectors and extensions:
 
