@@ -410,7 +410,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 >
 >`/allowAuthorized` **must** be set to `"0"` in the `/cache` section in order to enable this feature.
 
-Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access all pages in the farm. See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs.
+Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 The `/sessionmanagement` property is a subproperty of `/farms`.
 
@@ -423,6 +423,17 @@ The `/sessionmanagement` property is a subproperty of `/farms`.
 **/directory** (mandatory)
 
 The directory that stores the session information. If the directory does not exist, it is created.
+
+>[!CAUTION]
+>
+> When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. You should always specify the path to the folder that stores the session information. For example:
+
+```xml
+/sessionmanagement 
+  { 
+  /directory "/usr/local/apache/.sessions"
+  }
+```
 
 **/encode** (optional)
 
