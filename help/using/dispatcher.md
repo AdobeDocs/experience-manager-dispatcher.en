@@ -5,7 +5,6 @@ description: This article provides a general overview of Dispatcher.
 seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
-contentOwner: User
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
