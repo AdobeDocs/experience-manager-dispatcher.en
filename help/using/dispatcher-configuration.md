@@ -159,7 +159,7 @@ The `/farms` property defines one or more sets of Dispatcher behaviors, where ea
 
 The `/farms` property is a top-level property in the configuration structure. To define a farm, add a child property to the `/farms` property. Use a property name that uniquely identifies the farm within the Dispatcher instance.
 
-The `/*farmname*` property is multi-valued, and contains other properties that define Dispatcher behavior:
+The `/farmname` property is multi-valued, and contains other properties that define Dispatcher behavior:
 
 * The URLs of the pages that the farm applies to.
 * One or more service URLs (typically of AEM publish instances) to use for rendering documents.
@@ -209,6 +209,7 @@ Each farm property can contain the following child properties:
 |[/retryDelay](#specifying-the-page-retry-delay)|The delay before retrying a failed connection.|
 |[/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics)|Penalties that affect statistics for load-balancing calculations.|
 |[/failover](#using-the-fail-over-mechanism)|Resend requests to different renders when the original request fails.|
+|[/auth_checker](permissions-cache.md)|For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md).|
 
 ## Specify a Default Page (IIS Only) - /homepage {#specify-a-default-page-iis-only-homepage}
 
@@ -545,7 +546,7 @@ With Dispatcher version **4.1.6**, you can configure the `/always-resolve` prope
 Also, this property can be used in case you run into dynamic IP resolution issues, as shown in the following sample:
 
 ```xml
-/rend {
+/renders {
   /0001 {
      /hostname "host-name-here"
      /port "4502"
@@ -974,6 +975,7 @@ The `/cache` section controls how Dispatcher caches documents. Configure several
 * /headers
 * /mode
 * /gracePeriod
+* /enableTTL
 
 
 An example cache section might look as follows:
@@ -1507,7 +1509,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 
 ### secure {#secure}
 
-When sticky connections are enabled, the dispatcher module sets the `renderid` cookie. This cookie doesn't have the **secure** flag, which should be added in order to enhance security. You can do this by setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either 0 or 1) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is 0, which means the attribute will be added if* *the incoming request is secure. If the value is set to 1 then the secure flag will be added regardless of whether the incoming request is secure or not.
+When sticky connections are enabled, the dispatcher module sets the `renderid` cookie. This cookie doesn't have the **secure** flag, which should be added in order to enhance security. You can do this by setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either 0 or 1) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is 0, which means the attribute will be added **if** the incoming request is secure. If the value is set to 1 then the secure flag will be added regardless of whether the incoming request is secure or not.
 
 ## Handling Render Connection Errors {#handling-render-connection-errors}
 
