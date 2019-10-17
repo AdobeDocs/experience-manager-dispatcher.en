@@ -39,7 +39,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Bug Fixes**:
 
-* DISP-739 - LogLevel dispatcher: **level** doesn't work
+* DISP-739 - LogLevel dispatcher: level doesn't work
 * DISP-749 - Alpine Linux dispatcher crashes with trace log level
 
 **Improvements**:
@@ -135,7 +135,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ### Apache 2.4 {#apache}
 
-<!-- | Platform |Architecture |OpenSSL support |Download |
+| Platform |Architecture |OpenSSL support |Download |
 |---|---|---|---|
 | Linux |i686 (32-bit)   |None | [dispatcher-apache2.4-linux-i686-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.3.tar.gz) |
 | Linux |i686 (32-bit)   |1.0  | [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.3.tar.gz) |
@@ -155,4 +155,3 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 | Windows |x64 (64-bit) |None | [dispatcher-iis-windows-x64-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.3.zip) |
 | Windows |x64 (64-bit) |1.0  | [dispatcher-iis-windows-x64-ssl1.0-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.3.zip) |
 | Windows |x64 (64-bit) |1.1  | [dispatcher-iis-windows-x64-ssl1.1-4.3.3.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.3.zip) |
--->
