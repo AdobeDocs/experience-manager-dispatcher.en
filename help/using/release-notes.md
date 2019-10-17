@@ -40,7 +40,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 **Bug Fixes**:
 
 * DISP-739 - LogLevel dispatcher:<level> doesn't work
-* DISP-749 - Alpine Linux dispatcher crashes with trace log lovel
+* DISP-749 - Alpine Linux dispatcher crashes with trace log level
 
 **Improvements**:
 
