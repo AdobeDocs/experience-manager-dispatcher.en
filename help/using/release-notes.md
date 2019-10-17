@@ -35,11 +35,11 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ## Release History {#release-history}
 
-### Release 4.3.3 (2019-Oct-18) {#oct}
+### Release 4.3.3 (2019-Oct-18) {#october}
 
 **Bug Fixes**:
 
-* DISP-739 - LogLevel dispatcher: level doesn't work
+* DISP-739 - LogLevel dispatcher: **level** doesn't work
 * DISP-749 - Alpine Linux dispatcher crashes with trace log level
 
 **Improvements**:
