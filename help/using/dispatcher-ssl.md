@@ -116,7 +116,7 @@ Configure the connections between Dispatcher and the render computer (typically 
 
 * Dispatcher connects to the render instance over SSL.
 * The render instance verifies the validity of Dispatcher's certificate.
-* Dispatcher verifies that the CA of the the render instance's certificate is trusted.
+* Dispatcher verifies that the CA of the render instance's certificate is trusted.
 * (Optional) Dispatcher verifies that the certificate of the render instance matches the render instance's server address.
 
 To configure mutual SSL, you require certificates that are signed by a trusted certificate authority (CA). Self-signed certificates are not adequate. You can either act as the CA or use the services of a third-party CA to sign your certificates. To configure mutual SSL, you require the following items:
@@ -158,7 +158,7 @@ Use OpenSSL to create the certificate requests to send to the third-party CA or 
 When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you are configuring Dispatcher to accept the certificate only if it matches the hostname of the Publish instance. (See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) property.)
 
 1. Open a terminal and change the current directory to the directory that contains the CH.sh file of your OpenSSL libraries.
-1. Enter the following command and provide values when prompted. If required, use the host name of the publish instance as the the Common Name. The host name is DNS-resolvable name for the IP address of the render:
+1. Enter the following command and provide values when prompted. If required, use the host name of the publish instance as the Common Name. The host name is DNS-resolvable name for the IP address of the render:
 
    ```shell
    ./CA.sh -newreq

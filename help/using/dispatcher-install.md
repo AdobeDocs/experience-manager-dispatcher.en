@@ -250,7 +250,7 @@ Use the following procedure to write Dispatcher log messages to a log file inste
    `IIS AppPool\DefaultAppPool`
 
 1. Click the Check Names button. When Windows resolves the user account, click OK.
-1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account** except for Full Control,** and click OK. Click OK to close the folder Properties dialog box. 
+1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account **except for Full Control,** and click OK. Click OK to close the folder Properties dialog box. 
 1. Use a text editor to open the `disp_iis.ini` file.
 1. Add a line of text similar to the following example to configure the location of the log file and then save the file:
 
