@@ -1385,19 +1385,13 @@ The `/gracePeriod` property defines the number of seconds a stale, auto-invalida
 
 For additional details, also read the `/invalidate` and `/statfileslevel`sections above.
 
-## Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
+### Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-If set, the `enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control` max-age or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
-
-You can enable the feature by adding this line to the `dispatcher.any` file:
-
-```xml
-/enableTTL "1"
-```
+If set, the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control` max-age or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
 
 >[!NOTE]
 >
->This feature is avaiable with version **4.1.11** of the Dispatcher.
+>This feature is available in version **4.1.11** or later of the Dispatcher.
 
 ## Configuring Load Balancing - /statistics {#configuring-load-balancing-statistics}
 
