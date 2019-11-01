@@ -1,6 +1,6 @@
 ---
 cloud: experience-cloud
-solution-title: Experience Cloud Dispatcher
+solution-title: Learn & Support
 solution-hub-url: https://helpx.adobe.com/support/experience-manager/6-4.html
 solution-image: 
 getting-started-title: Getting Started

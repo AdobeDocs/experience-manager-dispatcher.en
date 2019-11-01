@@ -78,7 +78,7 @@ For some applications, it can be possible to use both sticky connections and cac
 
 Yes, if the machine is sufficiently powerful. However, it is recommended that you set up the Dispatcher and the AEM Publish instance on different machines.
 
-Usually, the Publish instance resides inside the firewall and the the Dispatcher resides in the DMZ. If you decide to have both the Publish instance and Dispatcher on the same physical machine, ensure that the firewall settings prohibit direct access to the Publish instance from external networks.
+Usually, the Publish instance resides inside the firewall and the Dispatcher resides in the DMZ. If you decide to have both the Publish instance and Dispatcher on the same physical machine, ensure that the firewall settings prohibit direct access to the Publish instance from external networks.
 
 ### Can I cache only files with specific extensions?
 

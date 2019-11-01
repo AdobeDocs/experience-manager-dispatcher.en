@@ -38,7 +38,6 @@ The following table lists the web server identifier that is used in file names f
 |Web Server|Installation Kit|
 |--- |--- |
 |Apache 2.4| dispatcher-apache**2.4**-&lt;other parameters&gt;|
-|Apache 2.2| dispatcher-apache**2.2**-&lt;other parameters&gt;|
 |Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-**iis**-&lt;other parameters&gt;|
 |Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt;|
 
@@ -251,7 +250,7 @@ Use the following procedure to write Dispatcher log messages to a log file inste
    `IIS AppPool\DefaultAppPool`
 
 1. Click the Check Names button. When Windows resolves the user account, click OK.
-1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account** except for Full Control,** and click OK. Click OK to close the folder Properties dialog box. 
+1. In the Permissions dialog box for the dispatcher folder, select the account that you just added, enable all of the permissions for the account **except for Full Control,** and click OK. Click OK to close the folder Properties dialog box. 
 1. Use a text editor to open the `disp_iis.ini` file.
 1. Add a line of text similar to the following example to configure the location of the log file and then save the file:
 
@@ -284,7 +283,7 @@ For Information about how to install an Apache Web Server read the installation 
 >
 >More information can be found in the Apache Web Server installation manual.
 
-Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.2/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
+Also see the Apache HTTP Server [Security Tips](https://httpd.apache.org/docs/2.4/misc/security_tips.html) and [Security Reports](https://httpd.apache.org/security_report.html).
 
 ### Apache Web Server - Add the Dispatcher Module {#apache-web-server-add-the-dispatcher-module}
 
@@ -412,7 +411,7 @@ The individual configuration parameters:
 |DispatcherLogLevel|Log level for the log file: <br/>0 - Errors <br/>1 - Warnings <br/>2 - Infos <br/>3 - Debug <br/>**Note**: It is recommended to set the log level to 3 during installation and testing, then to 0 when running in a production environment.|
 |DispatcherNoServerHeader|*This parameter is deprecated and no longer has any effect.*<br/><br/> Defines the Server Header to be used: <br/><ul><li>undefined or 0 - the HTTP server header contains the AEM version. </li><li>1 - the Apache server header is used.</li></ul>|
 |DispatcherDeclineRoot|Defines whether to decline requests to the root "/": <br/>**0** - accept requests to / <br/>**1** - requests to / are not handled by the dispatcher; use mod_alias for the correct mapping.|
-|DispatcherUseProcessedURL|Defines whether to use pre-processed URLs for all further processing by Dispatcher: <br/>**0** - use the original URL passed to the web server. <br/>**1** - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. `mod_rewrite`) instead of the original URL passed to the web server.  For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure.   See the Apache web site documentation for information about mod_rewrite; for example, Apache 2.2. When using mod_rewrite, it is advisable to use the flag 'passthrough|PT' (pass through to next handler) to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.|
+|DispatcherUseProcessedURL|Defines whether to use pre-processed URLs for all further processing by Dispatcher: <br/>**0** - use the original URL passed to the web server. <br/>**1** - the dispatcher uses the URL already processed by the handlers that precede the dispatcher (i.e. `mod_rewrite`) instead of the original URL passed to the web server.  For example, either the original or the processed URL is matched with Dispatcher filters. The URL is also used as the basis for the cache file structure.   See the Apache web site documentation for information about mod_rewrite; for example, Apache 2.4. When using mod_rewrite, it is advisable to use the flag 'passthrough|PT' (pass through to next handler) to force the rewrite engine to set the uri field of the internal request_rec structure to the value of the filename field.|
 |DispatcherPassError|Defines how to support error codes for ErrorDocument handling: <br/>**0** - Dispatcher spools all error responses to the client. <br/>**1** - Dispatcher does not spool an error response to the client (where the status code is greater or equal than 400), but passes the status code to Apache, which e.g. allows an ErrorDocument directive to process such a status code. <br/>**Code Range** - Specify a range of error codes for which the response is passed to Apache. Other error codes are passed to the client. For example, the following configuration passes responses for error 412 to the client, and all other errors are passed to Apache: DispatcherPassError 400-411,413-417|
 |DispatcherKeepAliveTimeout|Specifies the keep-alive timeout, in seconds. Starting with Dispatcher version 4.2.0 the default keep-alive value is 60. A value of 0 disables keep-alive.|
 |DispatcherNoCanonURL|Setting this parameter to On will pass the raw URL to the backend instead of the canonicalised one and will override the settings of DispatcherUseProcessedURL. The default value is Off. <br/>**Note**: The filter rules in the Dispatcher configuration will always be evaluated against the sanitised URL not the raw URL.|
@@ -431,7 +430,7 @@ The individual configuration parameters:
 >DispatcherNoServerHeader 0`  
 >Which shows the AEM version (for statistical purposes). If you want to disable such information being available in the header you can set: `  
 >ServerTokens Prod`  
->See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.2)](https://httpd.apache.org/docs/2.2/mod/core.html) for more information.
+>See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
 
 **SetHandler**
 
@@ -508,7 +507,7 @@ The **ModMimeUsePathInfo** parameter should be set `On` for all Apache configura
 
 `ModMimeUsePathInfo On`
 
-The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.2/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. The default setup means that when mod_mime determines the content type, only the part of the URL that maps to a file or directory will be considered.
+The mod_mime module (see for example, [Apache Module mod_mime](https://httpd.apache.org/docs/2.4/mod/mod_mime.html)) is used to assign content metadata to the content selected for an HTTP response. The default setup means that when mod_mime determines the content type, only the part of the URL that maps to a file or directory will be considered.
 
 When `On`, the `ModMimeUsePathInfo` parameter specifies that `mod_mime` is to determine the content type based on the *complete* URL; this means that virtual resources will have metainformation applied based on their extension.
 
@@ -546,6 +545,10 @@ Dispatcher uses OpenSSL to implement secure communication over HTTP. Starting fr
    ln -s libssl.so libssl.so.1.0.1
    ln -s libcrypto.so libcrypto.so.1.0.1
    ```
+
+  >[!NOTE]
+>
+>If you are using a customized version of Apache, make sure Apache and Dispatcher are compiled using the same version of [OpenSSL](https://www.openssl.org/source/).
 
 ### Next Steps {#next-steps-1}
 

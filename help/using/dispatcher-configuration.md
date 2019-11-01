@@ -159,7 +159,7 @@ The `/farms` property defines one or more sets of Dispatcher behaviors, where ea
 
 The `/farms` property is a top-level property in the configuration structure. To define a farm, add a child property to the `/farms` property. Use a property name that uniquely identifies the farm within the Dispatcher instance.
 
-The `/*farmname*` property is multi-valued, and contains other properties that define Dispatcher behavior:
+The `/farmname` property is multi-valued, and contains other properties that define Dispatcher behavior:
 
 * The URLs of the pages that the farm applies to.
 * One or more service URLs (typically of AEM publish instances) to use for rendering documents.
@@ -209,6 +209,7 @@ Each farm property can contain the following child properties:
 |[/retryDelay](#specifying-the-page-retry-delay)|The delay before retrying a failed connection.|
 |[/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics)|Penalties that affect statistics for load-balancing calculations.|
 |[/failover](#using-the-fail-over-mechanism)|Resend requests to different renders when the original request fails.|
+|[/auth_checker](permissions-cache.md)|For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md).|
 
 ## Specify a Default Page (IIS Only) - /homepage {#specify-a-default-page-iis-only-homepage}
 
@@ -216,7 +217,7 @@ Each farm property can contain the following child properties:
 >
 >The `/homepage`parameter (IIS only) no longer works. Instead, you should use the [IIS URL Rewrite Module](https://docs.microsoft.com/en-us/iis/extensions/url-rewrite-module/using-the-url-rewrite-module).
 >
->If you are using Apache, you should use the `mod_rewrite` module. See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag ** ['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
+>If you are using Apache, you should use the `mod_rewrite` module. See the Apache web site documentation for information about `mod_rewrite` (for example, [Apache 2.4](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)). When using `mod_rewrite`, it is advisable to use the flag **['passthrough|PT' (pass through to next handler)](https://helpx.adobe.com/dispatcher/kb/DispatcherModReWrite.html)** to force the rewrite engine to set the `uri` field of the internal `request_rec` structure to the value of the `filename` field.
 
 <!-- 
 
@@ -410,7 +411,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 >
 >`/allowAuthorized` **must** be set to `"0"` in the `/cache` section in order to enable this feature.
 
-Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access all pages in the farm. See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs.
+Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 The `/sessionmanagement` property is a subproperty of `/farms`.
 
@@ -423,6 +424,17 @@ The `/sessionmanagement` property is a subproperty of `/farms`.
 **/directory** (mandatory)
 
 The directory that stores the session information. If the directory does not exist, it is created.
+
+>[!CAUTION]
+>
+> When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. You should always specify the path to the folder that stores the session information. For example:
+
+```xml
+/sessionmanagement 
+  { 
+  /directory "/usr/local/apache/.sessions"
+  }
+```
 
 **/encode** (optional)
 
@@ -534,7 +546,7 @@ With Dispatcher version **4.1.6**, you can configure the `/always-resolve` prope
 Also, this property can be used in case you run into dynamic IP resolution issues, as shown in the following sample:
 
 ```xml
-/rend {
+/renders {
   /0001 {
      /hostname "host-name-here"
      /port "4502"
@@ -577,11 +589,13 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 
 >[!CAUTION]
 >
->Be cautious with globs. They can trigger on more items than you might expect. If you choose to use a glob in your filter, be sure to test it thoroughly before using it in production.
+>Filtering with globs is deprecated in Dispatcher. As such, you should avoid using globs in the `/filter` sections since it may lead to security issues. So, instead of:
 
->[!NOTE]
->
->For information about /glob properties, see [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties). The rules for using wildcard characters in /glob properties also apply to the patterns for matching elements of the request line.
+`/glob "* *.css *"`
+
+you should use
+
+`/url "*.css"`
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
 
@@ -597,7 +611,7 @@ Your patterns must take into account the space characters in the request-line an
 
 #### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
 
-When crafting your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
+When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
 
 #### Regular Expressions {#regular-expressions}
 
@@ -605,7 +619,7 @@ After Dispatcher 4.2.0, you can include POSIX Extended Regular Expressions in yo
 
 #### Troubleshooting Filters {#troubleshooting-filters}
 
-If your filters are not triggering the way you would expect, enable [Trace Logging](#trace-logging) on the dispatcher so you can see which filter is intercepting the request.
+If your filters are not triggering in the way you would expect, enable [Trace Logging](#trace-logging) on dispatcher so you can see which filter is intercepting the request.
 
 #### Example Filter: Deny All {#example-filter-deny-all}
 
@@ -879,7 +893,11 @@ Note that you should see normal page rendering for /content/add_valid_page.html?
 * /content.rss.xml
 * /content.feed.html
 * /content/add_valid_page.html?debug=layout
-
+* /projects
+* /tagging
+* /etc/replication.html
+* /etc/cloudservices.html
+* /welcome
 
 Issue the following command in a terminal or command prompt to determine whether anonymous write access is enabled. You should not be able to write data to the node.
 
@@ -898,8 +916,7 @@ Last Modified By: unknown unknown (sbroders@adobe.com)
 Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">For https://jira.corp.adobe.com/browse/DOC-4812</p> 
-<p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The com.adobe.granite.dispatcher.vanityurl.content package needs to be made public before publishing this contnet.</p>
-
+<p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
 Configure Dispatcher to enable access to vanity URLs that are configured for your CQ or AEM pages.
@@ -958,6 +975,7 @@ The `/cache` section controls how Dispatcher caches documents. Configure several
 * /headers
 * /mode
 * /gracePeriod
+* /enableTTL
 
 
 An example cache section might look as follows:
@@ -1145,7 +1163,7 @@ Use the `/statfileslevel` property to invalidate cached files according to their
 
     * For example: if you set the `statfileslevel` property to 6 and a file is invalidated at level 5 then every `.stat` file from docroot to 5 will be touched. Continuing with this example, if a file is invalidated at level 7 then every . `stat` file from docroot to 6 will be touched (since `/statfileslevel = "6"`).
 
-Only resources** along the path** to the invalidated file are affected. Consider the following example: a website uses the structure `/content/myWebsite/xx/.` If you set `statfileslevel` as 3, a `.stat`file is created as follows:
+Only resources **along the path** to the invalidated file are affected. Consider the following example: a website uses the structure `/content/myWebsite/xx/.` If you set `statfileslevel` as 3, a `.stat`file is created as follows:
 
 * `docroot`
 * `/content`
@@ -1491,7 +1509,7 @@ For additional information about the `httponly` flag, read [this page](https://w
 
 ### secure {#secure}
 
-When sticky connections are enabled, the dispatcher module sets the `renderid` cookie. This cookie doesn't have the **secure** flag, which should be added in order to enhance security. You can do this by setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either 0 or 1) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is 0, which means the attribute will be added if* *the incoming request is secure. If the value is set to 1 then the secure flag will be added regardless of whether the incoming request is secure or not.
+When sticky connections are enabled, the dispatcher module sets the `renderid` cookie. This cookie doesn't have the **secure** flag, which should be added in order to enhance security. You can do this by setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either 0 or 1) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is 0, which means the attribute will be added **if** the incoming request is secure. If the value is set to 1 then the secure flag will be added regardless of whether the incoming request is secure or not.
 
 ## Handling Render Connection Errors {#handling-render-connection-errors}
 
@@ -1708,7 +1726,7 @@ This will automatically rotate:
 * the dispatcher log file; with a timestamp in the extension (logs/dispatcher.log%Y%m%d).  
 * on a weekly basis (60 x 60 x 24 x 7 = 604800 seconds).
 
-Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.2](https://httpd.apache.org/docs/2.2/logs.html).
+Please see the Apache web server documentation on Log Rotation and Piped Logs; for example [Apache 2.4](https://httpd.apache.org/docs/2.4/logs.html).
 
 >[!NOTE]
 >
