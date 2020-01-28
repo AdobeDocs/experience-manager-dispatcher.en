@@ -402,7 +402,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 
 | Request URL |Resolved virtual host |
 |---|---|
-| `https://www.mycompany.com/products/gloves.html`|`www.mycompany.com/products/*;`|
+| `https://www.mycompany.com/products/gloves.html`|`www.mycompany.com/products/*`|
 | `https://www.mycompany.com/about.html` |`www.mycompany.com` |
 
 ## Enabling Secure Sessions - /sessionmanagement {#enabling-secure-sessions-sessionmanagement}
