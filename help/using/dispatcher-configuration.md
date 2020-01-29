@@ -480,7 +480,7 @@ The /renders property defines the URL to which Dispatcher sends requests to rend
   }
 ```
 
-The following example /renders section identifies an AEM instance that runs on the same computer as Dispatcher:
+The following example /renders section identifies an AEM instance that runs on the same computer as dispatcher:
 
 ```xml
 /renders
