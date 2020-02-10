@@ -68,8 +68,8 @@ To use Dispatcher with multiple domains, you need to configure AEM, Dispatcher, 
 
 To enable domain URLs and content paths to resolve to cached files, at some point in the process a file path or page URL must be translated. Descriptions of the following common strategies are provided, where path or URL translations occur at different points in the process:
 
-* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. (See [AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls).)
-* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. (See [The Web Server Rewrites Incoming URLs](#the-web-server-rewrites-incoming-urls).)
+* (Recommended) The AEM publish instance uses Sling mapping for resource resolution to implement internal URL rewriting rules. Domain URLs are translated to content repository paths. See [AEM Rewrites Incoming URLs](#aem-rewrites-incoming-urls).
+* The web server uses internal URL rewriting rules that translate Domain URLs to cache paths. See [The Web Server Rewrites Incoming URLs](#the-web-server-rewrites-incoming-urls).
 
 It is generally desirable to use short URLs for web pages. Typically, page URLs mirror the structure of the repository folders that contain the web content. However, the URLs do not reveal the topmost repository nodes, such as `/content`. The client is not necessarily aware of the structure of the AEM repository.
 
