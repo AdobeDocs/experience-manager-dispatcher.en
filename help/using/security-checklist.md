@@ -87,9 +87,9 @@ Whitelists are a better way of providing access control since inherently, they a
 
 ## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
-When configuring the Dispatcher you should ensure that the web server is ran by a dedicated user with least privileges. It is recommended to only grant write acess to the dispatcher cache folder.
+When configuring the Dispatcher you should ensure that the web server is ran by a dedicated user with least privileges. It is recommended to only grant write access to the dispatcher cache folder.
 
-Additionnaly, IIS users need to configure their website as follows:
+Additionally, IIS users need to configure their website as follows:
 
 1. In the physical path setting for your web site, select **Connect as specific user**.
 1. Set the user.
