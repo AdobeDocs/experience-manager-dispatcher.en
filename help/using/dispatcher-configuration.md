@@ -196,19 +196,19 @@ Each farm property can contain the following child properties:
 |--- |--- |
 |[/homepage](#specify-a-default-page-iis-only-homepage)|Default homepage (optional)(IIS only)|
 |[/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders)|The headers from the client HTTP request to pass through.|
-|[/virtualhosts](#identifying-virtual-hosts-virtual-hosts)|The virtual hosts for this farm.|
-|[/sessionmanagement](#enabling-secure-sessions-session-management)|Support for session management and authentication.|
+|[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|The virtual hosts for this farm.|
+|[/sessionmanagement](#enabling-secure-sessions-sessionmanagement)|Support for session management and authentication.|
 |[/renders](#defining-page-renderers-renders)|The servers that provide rendered pages (typically AEM publish instances).|
 |[/filter](#configuring-access-to-content-filter)|Defines the URLs to which Dispatcher enables access.|
 |[/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls)|Configures access to vanity URLs.|
-|[/propagateSyndPost](#forwarding-syndication-requests-propagate-syndpost)|Support for the forwarding of syndication requests.|
+|[/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost)|Support for the forwarding of syndication requests.|
 |[/cache](#configuring-the-dispatcher-cache-cache)|Configures caching behavior.|
 |[/statistics](#configuring-load-balancing-statistics)|Defining statistic categories for load-balancing calculations.|
-|[/stickyConnectionsFor](#identifying-a-sticky-connection-folder-sticky-connections-for)|The folder that contains sticky documents.|
+|[/stickyConnectionsFor](#identifying-a-sticky-connection-folder-stickyconnectionsfor)|The folder that contains sticky documents.|
 |[/health_check](#specifying-a-health-check-page)|The URL to use to determine server availability.|
 |[/retryDelay](#specifying-the-page-retry-delay)|The delay before retrying a failed connection.|
 |[/unavailablePenalty](#reflecting-server-unavailability-in-dispatcher-statistics)|Penalties that affect statistics for load-balancing calculations.|
-|[/failover](#using-the-fail-over-mechanism)|Resend requests to different renders when the original request fails.|
+|[/failover](#using-the-failover-mechanism)|Resend requests to different renders when the original request fails.|
 |[/auth_checker](permissions-cache.md)|For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md).|
 
 ## Specify a Default Page (IIS Only) - /homepage {#specify-a-default-page-iis-only-homepage}
