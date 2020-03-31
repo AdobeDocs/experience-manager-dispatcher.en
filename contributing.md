@@ -1,49 +1,54 @@
-# Contributing
+# Contributing to Adobe Experience Manager Documentation
 
-Thanks for choosing to contribute!
+Thank you for choosing to contribute to Adobe Experience Manager documentation! We welcome content contributions from our entire reader community as well as from fellow Adobe employees.
 
-The following are a set of guidelines to follow when contributing to this project.
+This file describes how you can contribute as well as points out the guidelines to follow when making your contributions.
 
-## Code Of Conduct
+## Adobe Open Source Code of Conduct
 
-This project adheres to the Adobe [code of conduct](code-of-conduct.md). By participating,
-you are expected to uphold this code. Please report unacceptable behavior to
-[Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
+This project has adopted the [Adobe Open Source Code of Conduct](code-of-conduct.md). By contributing to AEM documentation, you agree to adhere to this code of conduct. Please report unacceptable behavior to [Grp-opensourceoffice@adobe.com](mailto:Grp-opensourceoffice@adobe.com).
 
-## Have A Question?
+## Guidelines for Contributing
 
-Start by filing an issue. The existing committers on this project work to reach
-consensus around project direction and issue solutions within issue threads
-(when appropriate).
+While we welcome any contributions to improve AEM documentation, we do ask that contributions adhere to certain guidelines and standards where possible. Please review the [Guidelines for Contributing to AEM Documentation](guidelines.md) for more information.
 
-## Contributor License Agreement
+## How to Contribute
 
-All third-party contributions to this project must be accompanied by a signed contributor
-license agreement. This gives Adobe permission to redistribute your contributions
-as part of the project. [Sign our CLA](http://opensource.adobe.com/cla.html). You
-only need to submit an Adobe CLA one time, so if you have submitted one previously,
-you are good to go!
+We want to make it as easy as possible submit your contributions. You can contribute in two ways:
 
-## Code Reviews
+* [Create an issue](#create-an-issue)
+* [Create a pull request](#create-a-pull-request)
 
-All submissions should come in the form of pull requests and need to be reviewed
-by project committers. Read [GitHub's pull request documentation](https://help.github.com/articles/about-pull-requests/)
-for more information on sending pull requests.
+Which method you choose depends on how comfortable you are editing the documentation in GitHub yourself.
 
-<!--
-Lastly, please follow the [pull request template](PULL_REQUEST_TEMPLATE.md) when
-submitting a pull request!
--->
+>[!NOTE]
+>
+>Contributions that you submit are covered by the [Adobe terms of use.](https://www.adobe.com/legal/terms.html)
 
-## From Contributor To Committer
+### Create an Issue {#create-an-issue}
 
-We love contributions from our community! If you'd like to go a step beyond contributor
-and become a committer with full write access and a say in the project, you must
-be invited to the project. The existing committers employ an internal nomination
-process that must reach lazy consensus (silence is approval) before invitations
-are issued. If you feel you are qualified and want to get more deeply involved,
-feel free to reach out to existing committers to have a conversation about that.
+Do you have a suggestion, observation about the current docs, or question the way something is described? Then please create an issue. Issues are also excellent if you have something to contribute, but don't feel comfortable editing the docs or making a pull request yourself.
 
-## Security Issues
+Issues allow you to easily describe your idea for improvement to the docs and an AEM Docs Team member can review it. Simply click on the **Log an issue** link at the top of the right navigation panel on any page to create an issue.
 
-Security issues shouldn't be reported on this issue tracker. Instead, [file an issue to our security experts](https://helpx.adobe.com/security/alertus.html)
+### Create a Pull Request {#create-a-pull-request}
+
+If you see a problem and know exactly hwo to fix it, consider creating a pull request. Pull requests allow you to make your own edits to the documentation, which are then reviewed for inclusion by an AEM Docs Team member. Simply click on the **Edit this page** link at the top of the right navigation panel on any page to make your suggested changes and create the pull request.
+
+All pull requests must be accompanied by a signed [contributor license agreement or CLA.](https://opensource.adobe.com/cla.html)  This gives Adobe permission to redistribute your contributions as part of the project. You only need to submit an Adobe CLA one time, so if you have submitted one previously, you are good to go!
+
+### Quick Video Introduction
+
+Have a look at the following video for a quick overview of how to create issues and pull requests.
+
+>[!VIDEO](https://video.tv.adobe.com/v/27069)
+
+### Contributions from Adobe Employees
+
+If you are an Adobe employee and would like to make a pull request, please use the private repository at `https://git.corp.adobe.com/AdobeDocs`.
+
+For issues, please feel free to use the public repositories.
+
+## Further Information
+
+See the [Adobe Docs Contributor Guide](https://docs.adobe.com/help/en/contributor/contributor-guide/introduction.html) for further details on how to use the GitHub authoring platform.
