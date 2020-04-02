@@ -20,7 +20,7 @@ When using Dispatcher with AEM, the interaction must be configured to ensure eff
 
 ## Setting up AEM User Accounts {#setting-up-aem-user-accounts}
 
-The default `admin` user account is used to authenticate the replication agents that are installed by default. You should create a dedicated user account for use with replication agents. [](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps)
+The default `admin` user account is used to authenticate the replication agents that are installed by default. You should create a dedicated user account for use with replication agents.
 
 For more information see the [Configure Replication and Transport Users](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps) section of the AEM Security Checklist.
 
