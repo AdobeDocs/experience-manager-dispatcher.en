@@ -81,9 +81,9 @@ Make sure you use filters to block external access to any administrative URLs, s
 
 See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
 
-## Use Whitelists Instead Of Blacklists {#use-whitelists-instead-of-blacklists}
+## Use Allowlists Instead Of Blocklists {#use-allowlists-instead-of-blocklists}
 
-Whitelists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the whitelist. This model provides more restrictive control over new requests that might not have been reviewed yet or taken into consideration during a certain configuration stage.
+Allowlists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the allowlist. This model provides more restrictive control over new requests that might not have been reviewed yet or taken into consideration during a certain configuration stage.
 
 ## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
@@ -146,7 +146,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to whitelist CSRF token support in the dispatcher. You can do this by:
+AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to allowlist CSRF token support in the dispatcher. You can do this by:
 
 1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
 1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
