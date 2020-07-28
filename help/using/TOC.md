@@ -4,6 +4,7 @@ product: experience manager
 sub-product: experience manager dispatcher
 archetype: Administrator
 user-guide-title: Experience Manager Dispatcher Help
+user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
 ---
 
 # AEM Dispatcher Help {#using}
