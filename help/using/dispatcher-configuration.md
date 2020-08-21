@@ -1580,9 +1580,11 @@ Use the /ignoreEINTR parameter if your instance has such a configuration and the
 
 Internally, Dispatcher reads the response from the remote server (i.e. AEM) using a loop that can be represented as:
 
-`while (response not finished) {  
+```
+while (response not finished) {  
 read more data  
-}`
+}
+```
 
 Such messages can be generated when the `EINTR` occurs in the " `read more data`" section and are caused by the reception of a signal before any data was received.
 
