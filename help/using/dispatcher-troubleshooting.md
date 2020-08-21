@@ -86,14 +86,16 @@ Add the following headers to the `/clientheaders` section of your `dispatcher.an
 * `x-http-method-override`
 * `x-requested-with`
 
-`{  
+```
+{  
 {  
 /clientheaders  
 {  
 ...  
 "x-http-method-override"  
 "x-requested-with"  
-}`
+}
+```
 
 ## Interference with mod_dir (Apache) {#interference-with-mod-dir-apache}
 
