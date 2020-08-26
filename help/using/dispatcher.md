@@ -23,15 +23,17 @@ The process for deploying a Dispatcher is independent of the web server and the 
 
 1. Learn about Dispatcher (this page). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
 1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.  
-
 1. [Install the Dispatcher module](dispatcher-install.md) on your web server and configure the web server accordingly.
 1. [Configure Dispatcher](dispatcher-configuration.md) (the dispatcher.any file).  
-
 1. [Configure AEM](page-invalidate.md) so that content updates invalidate the cache.
 
 >[!NOTE]
 >
->To gain a better undestanding of how Dispatcher works with AEM see [Ask the AEM Community Experts for July 2017](https://bit.ly/ATACE0717).
+>To gain a better understanding of how Dispatcher works with AEM:
+>
+>* See [Ask the AEM Community Experts for July 2017](https://bit.ly/ATACE0717).
+>* Access [this repository](https://github.com/adobe/aem-dispatcher-experiments). It contains a collection of experiments in a "take-home" laboratory format.
+
 
 Use the following information as required:
 
