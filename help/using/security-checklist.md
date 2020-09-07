@@ -28,7 +28,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-The dispatcher as a front end system offers an extra layer of security to your Adobe Experience Manager infrastructure. Adobe strongly recommends that you complete the following checklist before going on production.
+Adobe strongly recommends that you complete the following checklist before going on production.
 
 >[!CAUTION]
 >
