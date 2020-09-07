@@ -17,9 +17,9 @@ discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 >
 >Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
 
-Dispatcher is Adobe Experience Manager's caching and/or load balancing tool. Using AEM's Dispatcher also helps to protect your AEM server from attack. Therefore, you can increase the security of your AEM instance by using the Dispatcher in conjunction with an enterprise-class web server.
+Dispatcher is Adobe Experience Manager's caching and/or load balancing tool which can be used in conjunction with an enterprise-class web server.
 
-The process for deploying a Dispatcher is independent of the web server and the OS platform chosen:
+The process for deploying dispatcher is independent of the web server and the OS platform chosen:
 
 1. Learn about Dispatcher (this page). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
 1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.  
