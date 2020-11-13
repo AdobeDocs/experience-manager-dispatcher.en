@@ -1,14 +1,6 @@
 ---
 title: Configuring Dispatcher
-seo-title: Configuring Dispatcher
 description: Learn how to configure Dispatcher.
-seo-description: Learn how to configure Dispatcher.
-uuid: 253ef0f7-2491-4cec-ab22-97439df29fd6
-cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
-pageversionid: 1193211344162
-topic-tags: dispatcher
-content-type: reference
-discoiquuid: aeffee8e-bb34-42a7-9a5e-b7d0e848391a
 ---
 
 # Configuring Dispatcher{#configuring-dispatcher}
@@ -21,7 +13,7 @@ The following sections describe how to configure various aspects of the Dispatch
 
 ## Support for IPv4 and IPv6 {#support-for-ipv-and-ipv}
 
-All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html#AdditionalPlatformNotes).
+All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv).
 
 ## Dispatcher Configuration Files {#dispatcher-configuration-files}
 
@@ -42,7 +34,7 @@ An example configuration is structured as follows:
 /farms
  {
   # first farm entry (label is not important, just for your convenience)
-   /website 
+   /website
      {  
      /clientheaders
        {
@@ -52,7 +44,7 @@ An example configuration is structured as follows:
        {
        # List of URLs for this Web site
        }
-     /sessionmanagement 
+     /sessionmanagement
        {
        # settings for user authentification
        }
@@ -114,7 +106,7 @@ For example, to include the file myFarm.any in the /farms configuration use the 
   }
 ```
 
-Use the asterisk ("*") as a wildcard to specify a range of files to include.
+Use the asterisk (`*`) as a wildcard to specify a range of files to include.
 
 For example, if the files `farm_1.any` through to `farm_5.any` contain the configuration of farms one to five, you can include them as follows:
 
@@ -129,13 +121,13 @@ For example, if the files `farm_1.any` through to `farm_5.any` contain the confi
 
 You can use environment variables in string-valued properties in the dispatcher.any file instead of hard-coding the values. To include the value of an environment variable, use the format `${variable_name}`.
 
-For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [docroot](dispatcher-configuration.md#main-pars-title-30) property can be used:
+For example, if the dispatcher.any file is located in the same directory as the cache directory, the following value for the [docroot](#specifying-the-cache-directory) property can be used:
 
 ```xml
 /docroot "${PWD}/cache"
 ```
 
-As another example, if you create an environment variable named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](dispatcher-configuration.md#main-pars-127-25-0008) property can be used:
+As another example, if you create an environment variable named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](#defining-page-renderers-renders) property can be used:
 
 ```xml
 /renders {
@@ -188,7 +180,7 @@ The value can have include any alphanumeric (a-z, 0-9) character. The following 
 
 >[!NOTE]
 >
->If you use more than one render farm, the list is evaluated bottom-up. This is particularly relevant when defining [Virtual Hosts](dispatcher-configuration.md#main-pars-117-15-0006) for your websites.
+>If you use more than one render farm, the list is evaluated bottom-up. This is particularly relevant when defining [Virtual Hosts](#identifying-virtual-hosts-virtualhosts) for your websites.
 
 Each farm property can contain the following child properties:
 
@@ -319,7 +311,7 @@ The following code is an example configuration for `/clientheaders`:
 
 ## Identifying Virtual Hosts {#identifying-virtual-hosts-virtualhosts}
 
-The `/virtualhosts` property defines a list of all hostname/URI combinations that Dispatcher accepts for this farm. You can use the asterisk ("*") character as a wildcard. Values for the / `virtualhosts` property use the following format:
+The `/virtualhosts` property defines a list of all hostname/URI combinations that Dispatcher accepts for this farm. You can use the asterisk (`*`) character as a wildcard. Values for the / `virtualhosts` property use the following format:
 
 ```xml
 [scheme]host[uri][*]
@@ -362,17 +354,17 @@ Dispatcher finds the best-matching virtual host value in the following manner:
 * If no `virtualhosts` values has `scheme` and `uri` parts that both match the `scheme` and `uri` of the request, the first-encountered virtual host that matches the `host` of the request is used.
 * If no `virtualhosts` values have a host part that matches the host of the request, the topmost virtual host of the topmost farm is used.
 
-Therefore, you should place your default virtual host at the top of the `virtualhosts` property in the topmost farm of your dispatcher.any file.
+Therefore, you should place your default virtual host at the top of the `virtualhosts` property in the topmost farm of your `dispatcher.any` file.
 
 ### Example Virtual Host Resolution {#example-virtual-host-resolution}
 
-The following example represents a snippet from a dispatcher.any file that defines two Dispatcher farms, and each farm defines a `virtualhosts` property.
+The following example represents a snippet from a `dispatcher.any` file that defines two Dispatcher farms, and each farm defines a `virtualhosts` property.
 
 ```xml
 /farms
   {
-  /myProducts 
-    { 
+  /myProducts
+    {
     /virtualhosts
       {
       "www.mycompany.com"
@@ -383,8 +375,8 @@ The following example represents a snippet from a dispatcher.any file that defin
       /port "80"
       }
     }
-  /myCompany 
-    { 
+  /myCompany
+    {
     /virtualhosts
       {
       "www.mycompany.com/products/*"
@@ -411,7 +403,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 >
 >`/allowAuthorized` **must** be set to `"0"` in the `/cache` section in order to enable this feature.
 
-Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/cug.html#CreatingTheUserGroupToBeUsed) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
+Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 The `/sessionmanagement` property is a subproperty of `/farms`.
 
@@ -430,33 +422,33 @@ The directory that stores the session information. If the directory does not exi
 > When configuring the directory sub-parameter **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. You should always specify the path to the folder that stores the session information. For example:
 
 ```xml
-/sessionmanagement 
-  { 
+/sessionmanagement
+  {
   /directory "/usr/local/apache/.sessions"
   }
 ```
 
 **/encode** (optional)
 
-How the session information is encoded. Use "md5" for encryption using the md5 algorithm, or "hex" for hexadecimal encoding. If you encrypt the session data, a user with access to the file system cannot read the session contents. The default is "md5".
+How the session information is encoded. Use `md5` for encryption using the md5 algorithm, or `hex` for hexadecimal encoding. If you encrypt the session data, a user with access to the file system cannot read the session contents. The default is `md5`.
 
 **/header** (optional)
 
-The name of the HTTP header or cookie that stores the authorization information. If you store the information in the http header, use `HTTP:<*header-name*>`. To store the information in a cookie, use `Cookie:<header-name>`. If you do not specify a value `HTTP:authorization` is used.
+The name of the HTTP header or cookie that stores the authorization information. If you store the information in the http header, use `HTTP:<header-name>`. To store the information in a cookie, use `Cookie:<header-name>`. If you do not specify a value `HTTP:authorization` is used.
 
 **/timeout** (optional)
 
-The number of seconds until the session times out after it has been used last. If not specified "800" is used, so the session times out a little over 13 minutes after the last request of the user.
+The number of seconds until the session times out after it has been used last. If not specified `"800"` is used, so the session times out a little over 13 minutes after the last request of the user.
 
 An example configuration looks as follows:
 
 ```xml
-/sessionmanagement 
-  { 
-  /directory "/usr/local/apache/.sessions" 
-  /encode "md5" 
-  /header "HTTP:authorization" 
-  /timeout "800" 
+/sessionmanagement
+  {
+  /directory "/usr/local/apache/.sessions"
+  /encode "md5"
+  /header "HTTP:authorization"
+  /timeout "800"
   }
 
 ```
@@ -517,30 +509,31 @@ The following example /renders section distributes render requests equally among
 
 **/timeout**
 
-Specifies the connection timeout accessing the AEM instance in milliseconds. The default is "0", causing the Dispatcher to wait indefinitely.
+Specifies the connection timeout accessing the AEM instance in milliseconds. The default is `"0"`, causing the Dispatcher to wait indefinitely.
 
 **/receiveTimeout**
 
-Specifies the time in milliseconds that a response is allowed to take. The default is "600000", causing Dispatcher to wait for 10 Minutes. A setting of "0" eliminates the timeout completely.  
+Specifies the time in milliseconds that a response is allowed to take. The default is `"600000"`, causing Dispatcher to wait for 10 Minutes. A setting of `"0"` eliminates the timeout completely.
+
 If the timeout is reached while parsing response headers, an HTTP Status of 504 (Bad Gateway) is returned. If the timeout is reached while the response body is read, the Dispatcher will return the incomplete response to the client but delete any cache file that might have been written.
 
 **/ipv4**
 
-Specifies whether Dispatcher uses the `getaddrinfo` function (for IPv6) or the `gethostbyname` function (for IPv4) for obtaining the IP address of the render. A value of 0 causes `getaddrinfo` to be used. A value of 1 causes `gethostbyname` to be used. The default value is 0.
+Specifies whether Dispatcher uses the `getaddrinfo` function (for IPv6) or the `gethostbyname` function (for IPv4) for obtaining the IP address of the render. A value of 0 causes `getaddrinfo` to be used. A value of `1` causes `gethostbyname` to be used. The default value is `0`.
 
-The getaddrinfo function returns a list of IP addresses. Dispatcher iterates the list of addresses until it establishes a TCP/IP connection. Therefore, the ipv4 property is important when the render hostname is associated with mutliple IP addresses and the host, in response to the getaddrinfo function, returns a list of IP addresses that are always in the same order. In this situation, you should use the gethostbyname function so that the IP address that Dispatcher connects with is randomized.
+The `getaddrinfo` function returns a list of IP addresses. Dispatcher iterates the list of addresses until it establishes a TCP/IP connection. Therefore, the `ipv4` property is important when the render hostname is associated with multiple IP addresses and the host, in response to the `getaddrinfo` function, returns a list of IP addresses that are always in the same order. In this situation, you should use the `gethostbyname` function so that the IP address that Dispatcher connects with is randomized.
 
 Amazon Elastic Load Balancing (ELB) is such a service that responds to getaddrinfo with a potentially same-ordered list of IP addresses.
 
 **/secure**
 
-If the `/secure` property has a value of "1" Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+If the `/secure` property has a value of `"1"` Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
 With Dispatcher version **4.1.6**, you can configure the `/always-resolve` property as follows:
 
-* When set to "1" it will resolve the host-name on every request (the Dispatcher will never cache any IP address). There may be a slight performance impact due to the additional call required to get the host information for each request.
+* When set to `"1"` it will resolve the host-name on every request (the Dispatcher will never cache any IP address). There may be a slight performance impact due to the additional call required to get the host information for each request.
 * If the property is not set, the IP address will be cached by default.
 
 Also, this property can be used in case you run into dynamic IP resolution issues, as shown in the following sample:
@@ -564,9 +557,9 @@ Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. 
 
 >[!CAUTION]
 >
->See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Cheklist](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html) for additional security details regarding your AEM installation.
+>See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Checklist](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security) for additional security details regarding your AEM installation.
 
-The /filter section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. You should use a whiltelist strategy for your /filter section:
+The `/filter` section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. You should use a whiltelist strategy for your `/filter` section:
 
 * First, deny access to everything.
 * Allow access to content as needed.
@@ -575,7 +568,7 @@ The /filter section consist of a series of rules that either deny or allow acces
 
 Each item in the `/filter` section includes a type and a pattern that is matched with a specific element of the request line or the entire request line. Each filter can contain the following items:
 
-* **Type**: The `/type` indicates whether to allow or deny access for the requests that match the pattern. The value can be either `allow` or `deny`. 
+* **Type**: The `/type` indicates whether to allow or deny access for the requests that match the pattern. The value can be either `allow` or `deny`.
 
 * **Element of the Request Line:** Include `/method`, `/url`, `/query`, or `/protocol` and a pattern for filtering requests according to these specific parts of the request-line part of the HTTP request. Filtering on elements of the request line (rather than on the entire request line) is the preferred filter method.
 
@@ -590,24 +583,24 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 >[!CAUTION]
 >
 >Filtering with globs is deprecated in Dispatcher. As such, you should avoid using globs in the `/filter` sections since it may lead to security issues. So, instead of:
-
-`/glob "* *.css *"`
-
-you should use
-
-`/url "*.css"`
+>
+>`/glob "* *.css *"`
+>
+>you should use
+>
+>`/url "*.css"`
 
 #### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
 
 HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
 
-*Method Request-URI HTTP-Version*&lt;CRLF&gt;
+`Method Request-URI HTTP-Version<CRLF>`
 
-The &lt;CRLF&gt; characters repesent a carriage return followed by a line feed. The following example is the request-line that is recieved when a client requests the en page of the Geometrixx-Outoors site:
+The `<CRLF>` characters represent a carriage return followed by a line feed. The following example is the request-line that is received when a client requests the US-English page of the WKND site:
 
-GET /content/geometrixx-outdoors/en.html HTTP.1.1&lt;CRLF&gt;
+`GET /content/wknd/us/en.html HTTP.1.1<CRLF>`
 
-Your patterns must take into account the space characters in the request-line and the &lt;CRLF&gt; characters.
+Your patterns must take into account the space characters in the request-line and the `<CRLF>` characters.
 
 #### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
 
@@ -615,7 +608,7 @@ When creating your filter rules, use double quotation marks `"pattern"` for simp
 
 #### Regular Expressions {#regular-expressions}
 
-After Dispatcher 4.2.0, you can include POSIX Extended Regular Expressions in your filter patterns. 
+In Dispatcher versions later than 4.2.0, you can include POSIX Extended Regular Expressions in your filter patterns.
 
 #### Troubleshooting Filters {#troubleshooting-filters}
 
@@ -631,7 +624,7 @@ The following example filter section causes Dispatcher to deny requests for all 
 
 Requests to an explicitly denied area result in a 404 error code (page not found) being returned.
 
-#### Example Filter: Deny Acess to Specific Areas {#example-filter-deny-acess-to-specific-areas}
+#### Example Filter: Deny Access to Specific Areas {#example-filter-deny-access-to-specific-areas}
 
 Filters also allow you to deny access to various elements for example ASP pages and sensitive areas within a publish instance. The following filter denies access to ASP pages:
 
