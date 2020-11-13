@@ -3,7 +3,7 @@ title: Configuring Dispatcher
 description: Learn how to configure Dispatcher.
 ---
 
-# Configuring Dispatcher{#configuring-dispatcher}
+# Configuring Dispatcher {#configuring-dispatcher}
 
 >[!NOTE]
 >
@@ -559,7 +559,7 @@ Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. 
 >
 >See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Checklist](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security) for additional security details regarding your AEM installation.
 
-The `/filter` section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. You should use a whiltelist strategy for your `/filter` section:
+The `/filter` section consist of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. You should use an allow list strategy for your `/filter` section:
 
 * First, deny access to everything.
 * Allow access to content as needed.
