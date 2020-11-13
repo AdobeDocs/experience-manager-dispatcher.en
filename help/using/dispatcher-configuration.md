@@ -934,7 +934,7 @@ The `/vanity_urls` section contains the following properties:
 
 >[!NOTE]
 >
->If your render is an instance of AEM you must install the VanityURLS-Components from [Software Distribution](https://downloads.experiencecloud.adobe.com/) package to install the vanity URL service. (See [Software Distribution](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution) for more details.)
+>If your render is an instance of AEM you must install the [VanityURLS-Components package from Software Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) to enable the vanity URL service. (See [Software Distribution](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution) for more details.)
 
 Use the following procedure to enable access to vanity URLs.
 
