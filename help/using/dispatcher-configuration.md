@@ -560,7 +560,7 @@ Also, this property can be used in case you run into dynamic IP resolution issue
 
 Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. All other requests are sent back to the web server with a 404 error code (page not found). If no `/filter` section exists, all requests are accepted.
 
-**Note:** Requests for the [statfile](dispatcher-configuration.md#main-pars-title-28) are always rejected.
+**Note:** Requests for the [statfile](#naming-the-statfile) are always rejected.
 
 >[!CAUTION]
 >
