@@ -18,8 +18,8 @@ snippet: y
 
 Use SSL connections between Dispatcher and the render computer:
 
-* [One-way SSL](dispatcher-ssl.md#main-pars-title-1)
-* [Mutual SSL](dispatcher-ssl.md#main-pars-title-2)
+* [One-way SSL](#use-ssl-when-dispatcher-connects-to-aem)
+* [Mutual SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
 
 >[!NOTE]
 >
