@@ -31,10 +31,10 @@ discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 
 As always the first steps are to check the basics:
 
-* [Confirm Basic Operation](#ConfirmBasicOperation)
-* Check all log files for your web server and dispatcher. If necessary increase the `loglevel` used for the dispatcher [logging](#Logging).
+* [Confirm Basic Operation](/help/using/dispatcher-configuration.md#confirming-basic-operation)
+* Check all log files for your web server and dispatcher. If necessary increase the `loglevel` used for the dispatcher [logging](/help/using/dispatcher-configuration.md#logging).
 
-* [Check your configuration](#ConfiguringtheDispatcher):
+* [Check your configuration](/help/using/dispatcher-configuration.md):
 
     * Do you have multiple Dispatchers?
 
