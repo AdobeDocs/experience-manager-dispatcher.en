@@ -21,11 +21,11 @@ Comment Type: draft
 
  -->
 
+Use the [Dispatcher Release Notes](release-notes.md) page to obtain the latest Dispatcher installation file for your operating system and web server. Dispatcher release numbers are independent of the Adobe Experience Manager release numbers and are compatible with Adobe Experience Manager 6.x, 5.x and Adobe CQ 5.x releases.
+
 >[!NOTE]
 >
->Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
-
-Use the [Dispatcher Release Notes](release-notes.md) page to obtain the latest Dispatcher installation file for your operating system and web server. Dispatcher release numbers are independent of the Adobe Experience Manager release numbers and are compatible with Adobe Experience Manager 6.x, 5.x and Adobe CQ 5.x releases.
+>Please note that Adobe Experience Manager 6.5 requires Dispatcher version 4.3.2 or higher. That said, Dispatcher versions are independent of AEM, for example, Dispatcher version 4.3.2 is also compatible with Adobe Experience Manager 6.4.
 
 The following file naming convention is used:
 
@@ -41,7 +41,7 @@ The following table lists the web server identifier that is used in file names f
 |Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-**iis**-&lt;other parameters&gt;|
 |Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt;|
 
->[!NOTE]
+>[!CAUTION]
 >
 >You should install the latest version of Dispatcher that is available for your platform. On a yearly basis, you should upgrade your Dispatcher instance to use the latest version to take advantage of product improvements.
 
