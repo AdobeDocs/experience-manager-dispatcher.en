@@ -8,9 +8,6 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
-feature: Dispatcher
-topic: Administration
-role: Administrator
 ---
 
 # AEM Dispatcher Release Notes{#aem-dispatcher-release-notes}

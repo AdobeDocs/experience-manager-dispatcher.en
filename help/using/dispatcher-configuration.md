@@ -1,9 +1,6 @@
 ---
 title: Configuring Dispatcher
 description: Learn how to configure Dispatcher.
-feature: Dispatcher
-topic: Administration
-role: Administrator
 ---
 
 # Configuring Dispatcher {#configuring-dispatcher}

@@ -13,9 +13,6 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 
-feature: Dispatcher
-topic: Administration
-role: Administrator
 ---
 
 # Troubleshooting Dispatcher Problems {#troubleshooting-dispatcher-problems}

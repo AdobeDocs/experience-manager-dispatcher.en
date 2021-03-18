@@ -9,9 +9,6 @@ converted: true
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: f00ad751-6b95-4365-8500-e1e0108d9536
-feature: Dispatcher
-topic: Administration
-role: Administrator
 ---
 
 # Installing Dispatcher {#installing-dispatcher}

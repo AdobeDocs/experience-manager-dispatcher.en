@@ -6,6 +6,10 @@ archetype: Administrator
 user-guide-title: Experience Manager Dispatcher Help
 breadcrumb-title: Dispatcher Guide
 user-guide-description: Learn to use Dispatcher for caching, load balancing, and improving security for your AEM server.
+feature-set: Experience Manager
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # AEM Dispatcher Help {#using}
