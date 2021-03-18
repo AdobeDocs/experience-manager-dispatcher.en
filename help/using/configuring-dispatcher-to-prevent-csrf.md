@@ -7,6 +7,9 @@ uuid: f290bdeb-54e2-4649-b0fc-6257b422af2d
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: d61d021e-b338-4a1d-91ee-55427557e931
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Configuring Dispatcher to Prevent CSRF Attacks{#configuring-dispatcher-to-prevent-csrf-attacks}

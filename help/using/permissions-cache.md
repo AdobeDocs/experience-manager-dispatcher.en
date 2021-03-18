@@ -10,6 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Caching Secured Content {#caching-secured-content}

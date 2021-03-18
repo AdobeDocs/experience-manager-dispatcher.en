@@ -12,6 +12,9 @@ discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Using SSL with Dispatcher {#using-ssl-with-dispatcher}

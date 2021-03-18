@@ -9,6 +9,9 @@ topic-tags: dispatcher
 content-type: reference
 discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Dispatcher Overview {#dispatcher-overview}

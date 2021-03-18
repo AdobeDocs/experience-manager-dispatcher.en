@@ -12,6 +12,9 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Invalidating Cached Pages From AEM {#invalidating-cached-pages-from-aem}

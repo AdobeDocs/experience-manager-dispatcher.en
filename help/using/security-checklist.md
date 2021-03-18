@@ -13,6 +13,9 @@ jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # The Dispatcher Security Checklist{#the-dispatcher-security-checklist}

@@ -10,6 +10,9 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 40d91d66-c99b-422d-8e61-c0ced23272ef
+feature: Dispatcher
+topic: Administration
+role: Administrator
 ---
 
 # Using Dispatcher with Multiple Domains {#using-dispatcher-with-multiple-domains}
