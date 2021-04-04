@@ -3,8 +3,8 @@ title: Dispatcher top issues
 seo-title: Top issues for AEM Dispatcher
 description: Top issues for AEM Dispatcher
 seo-description: Top issues for Adobe AEM Dispatcher
+exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 ---
-
 # AEM Dispatcher Top Issues FAQ
 
 ![Configuring Dispatcher](assets/CQDispatcher_workflow_v2.png)
@@ -179,4 +179,3 @@ The Dispatcher stores cached files on the web server as if they were part of a s
 ### Can I implement multiple Dispatchers in a setup?
 
 Yes. In such cases, ensure that both the Dispatchers can access the AEM website directly. A Dispatcher cannot handle requests coming from another Dispatcher.
-

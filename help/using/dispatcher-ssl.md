@@ -12,8 +12,8 @@ discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
+exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 ---
-
 # Using SSL with Dispatcher {#using-ssl-with-dispatcher}
 
 Use SSL connections between Dispatcher and the render computer:
@@ -305,4 +305,3 @@ The following code is an example configuration:
 </IfModule>
 
 ```
-

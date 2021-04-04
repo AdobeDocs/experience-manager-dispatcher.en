@@ -7,8 +7,8 @@ uuid: f290bdeb-54e2-4649-b0fc-6257b422af2d
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: d61d021e-b338-4a1d-91ee-55427557e931
+exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
 ---
-
 # Configuring Dispatcher to Prevent CSRF Attacks{#configuring-dispatcher-to-prevent-csrf-attacks}
 
 AEM provides a framework aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to make the following changes to your dispatcher configuration:

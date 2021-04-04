@@ -12,8 +12,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 79cd94be-a6bc-4d34-bfe9-393b4107925c
+exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 ---
-
 # Invalidating Cached Pages From AEM {#invalidating-cached-pages-from-aem}
 
 When using Dispatcher with AEM, the interaction must be configured to ensure effective cache management. Depending on your environment, the configuration can also increase performance.
@@ -245,4 +245,3 @@ public class Flushcache extends SlingSafeMethodsServlet {
  }
 }
 ```
-

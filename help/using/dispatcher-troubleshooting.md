@@ -12,9 +12,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
-
+exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 ---
-
 # Troubleshooting Dispatcher Problems {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]

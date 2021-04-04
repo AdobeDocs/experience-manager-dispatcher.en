@@ -1,8 +1,8 @@
 ---
 title: Configuring Dispatcher
 description: Learn how to configure Dispatcher.
+exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 ---
-
 # Configuring Dispatcher {#configuring-dispatcher}
 
 >[!NOTE]

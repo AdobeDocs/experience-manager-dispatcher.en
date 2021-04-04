@@ -8,8 +8,8 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
+exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 ---
-
 # AEM Dispatcher Release Notes{#aem-dispatcher-release-notes}
 
 ## Release Information {#release-information}

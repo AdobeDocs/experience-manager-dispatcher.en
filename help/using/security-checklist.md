@@ -13,8 +13,8 @@ jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
 snippet: y
+exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 ---
-
 # The Dispatcher Security Checklist{#the-dispatcher-security-checklist}
 
 <!-- 
@@ -159,5 +159,4 @@ For more [information on clickjacking please see the OWASP site](https://www.owa
 
 ## Perform a Penetration Test {#perform-a-penetration-test}
 
-Adobe strongly recommends to perform a penetration test of your AEM infrastructure before going on production.  
-
+Adobe strongly recommends to perform a penetration test of your AEM infrastructure before going on production.

@@ -9,9 +9,8 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
-
+exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 ---
-
 # Caching Secured Content {#caching-secured-content}
 
 Permission-sensitive caching enables you to cache secured pages. Dispatcher checks user's access permissions for a page before delivering the cached page.
@@ -191,4 +190,3 @@ The following example auth_checker section configures Dispatcher to use the serv
     }
   }
 ```
-
