@@ -425,11 +425,16 @@ The individual configuration parameters:
 
 >[!NOTE]
 >
->The default settings for the Server Header are: `  
->ServerTokens Full` `  
->DispatcherNoServerHeader 0`  
->Which shows the AEM version (for statistical purposes). If you want to disable such information being available in the header you can set: `  
->ServerTokens Prod`  
+>The default settings for the Server Header are:  
+>
+>`ServerTokens Full`
+>
+>`DispatcherNoServerHeader 0`  
+>
+>Which shows the AEM version (for statistical purposes). If you want to disable such information being available in the header you can set:
+>
+>`ServerTokens Prod`  
+>
 >See the [Apache Documentation about ServerTokens Directive (for example, for Apache 2.4)](https://httpd.apache.org/docs/2.4/mod/core.html) for more information.
 
 **SetHandler**

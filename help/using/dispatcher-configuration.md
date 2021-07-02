@@ -938,7 +938,7 @@ The `/vanity_urls` section contains the following properties:
 
 Use the following procedure to enable access to vanity URLs.
 
-1. If your render service is an AEM instance, install the `com.adobe.granite.dispatcher.vanityurl.content package on the publish instance (see the note above).
+1. If your render service is an AEM instance, install the `com.adobe.granite.dispatcher.vanityurl.content` package on the publish instance (see the note above).
 1. For each vanity URL that you have configured for an AEM or CQ page, ensure that the [`/filter`](#configuring-access-to-content-filter) configuration denies the URL. If necessary, add a filter that denies the URL.
 1. Add the `/vanity_urls` section below `/farms`.
 1. Restart Apache web server.
