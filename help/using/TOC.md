@@ -9,7 +9,7 @@ user-guide-description: Learn to use Dispatcher for caching, load balancing, and
 feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
-role: Administrator
+role: Admin
 ---
 
 # AEM Dispatcher Help {#using}
