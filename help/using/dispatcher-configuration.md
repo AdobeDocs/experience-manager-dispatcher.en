@@ -564,6 +564,10 @@ The `/filter` section consist of a series of rules that either deny or allow acc
 * First, deny access to everything.
 * Allow access to content as needed.
 
+>[!NOTE]
+>
+>It is recommended to purge the cache whenever there is any change in the filter rules.
+
 ### Defining a Filter {#defining-a-filter}
 
 Each item in the `/filter` section includes a type and a pattern that is matched with a specific element of the request line or the entire request line. Each filter can contain the following items:
