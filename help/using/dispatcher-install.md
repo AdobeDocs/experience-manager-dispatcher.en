@@ -45,6 +45,10 @@ The following table lists the web server identifier that is used in file names f
 >
 >You should install the latest version of Dispatcher that is available for your platform. On a yearly basis, you should upgrade your Dispatcher instance to use the latest version to take advantage of product improvements.
 
+>[!NOTE]
+>
+>Customers upgrading specifically from version 4.3.3 to version 4.3.4 will notice a different behavior in how caching headers are set for uncacheable content. To read more about this change please see the [Release Notes](/help/using/release-notes.md#nov) page.
+
 Each archive contains the following files:
 
 * the Dispatcher modules  
