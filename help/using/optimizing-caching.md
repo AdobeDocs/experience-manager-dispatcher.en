@@ -88,7 +88,7 @@ www.myCompany.com/news/main.large.html
 >
 >For most layout aspects, it is also possible to use style sheets and/or client side scripts. These will usually work very well with caching.
 >
->This is also useful for a print version, where you can use an URL such as: ``
+>This is also useful for a print version, where you can use an URL such as:
 >
 >`www.myCompany.com/news/main.print.html`
 >
