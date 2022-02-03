@@ -44,7 +44,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Improvements**:
 
-* DISP-874 - Creates a dispatcher configuration to turn implementation of DISP-818 either On or Off through a flag `DispatcherRestrictUncacheableContent`. The default value is Off. When Off, it removes any caching headers set by mod expires for uncacheable content. This is different from the behavior found in version 4.3.3 (but the same as versions earlier than 4.3.3). Keeping `DispatcherRestrictUncacheableContent`'s default Off is the recommended approach so the browser cache has more flexibility. If, when upgrading from version 4.3.3 to 4.3.4, you wish to keep the same behavior as in version 4.3.3, you must explicitly set `DispatcherRestrictUncacheableContent` to On.
+* DISP-874 - Creates a dispatcher configuration to turn implementation of DISP-818 either On or Off through a flag `DispatcherRestrictUncacheableContent`. The default value is Off. When On, it removes any caching headers set by mod expires for uncacheable content. This is different from the behavior found in version 4.3.3 (where the default was On) but the same as versions earlier than 4.3.3 (where the default was Off). Keeping `DispatcherRestrictUncacheableContent`'s default Off is the recommended approach so the browser cache has more flexibility. If, when upgrading from version 4.3.3 to 4.3.4, you wish to keep the same behavior as in version 4.3.3, you must explicitly set `DispatcherRestrictUncacheableContent` to On.
 * DISP-841 - Dispatcher doesn't respect /serverStaleOnError for 504 response code
 * DISP-874 - Create a dispatcher configuration to turn implementation of DISP-818 on or off
 * DISP-883 - Trace showing URL request Decomposition in Dispatcher
