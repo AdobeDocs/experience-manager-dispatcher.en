@@ -394,7 +394,7 @@ The Dispatcher-specific configuration entries are placed after the LoadModule en
 
 ```
 ...
-<fModule disp_apache2.c>
+<IfModule disp_apache2.c>
 DispatcherConfig conf/dispatcher.any
 DispatcherLog logs/dispatcher.log DispatcherLogLevel 3
 DispatcherNoServerHeader 0 DispatcherDeclineRoot 0
