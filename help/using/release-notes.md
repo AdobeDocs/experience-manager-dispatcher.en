@@ -25,9 +25,9 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 
 ## System requirements and prerequisites {#system-requirements-and-prerequisites}
 
-Please see the [Supported Platforms](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html) page for more information regarding requirements and prerequisites.
+Please see the [Supported Platforms](https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/technical-requirements.html)page for more information regarding requirements and prerequisites.
 
-Adobe strongly recommends using the latest version of AEM Dispatcher to avail the latest functionality, the most recent bug fixes, and the best possible performance.
+Adobe strongly recommends using the latest version of AEM Dispatcher to benefit from the latest functionality, the most recent bug fixes, and the best possible performance.
 
 ## Installation instructions {#installation-instructions}
 
