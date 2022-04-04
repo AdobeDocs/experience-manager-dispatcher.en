@@ -14,6 +14,7 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 
 ## Release Information {#release-information}
 
+|||
 |--- |--- |
 |Products|Adobe Experience Manager (AEM) Dispatcher|
 |Version|4.3.5|
