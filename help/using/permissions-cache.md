@@ -15,7 +15,7 @@ exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 
 Permission-sensitive caching enables you to cache secured pages. Dispatcher checks user's access permissions for a page before delivering the cached page.
 
-Dispatcher includes the AuthChecker module that implements permission-sensitive caching. When the module is activated, the render calls an AEM servlet to perform user authentication and authorization for the requested content. The servlet response determines whether the content is delivered to the web browser.
+Dispatcher includes the AuthChecker module that implements permission-sensitive caching. When the module is activated, the Dispatcher calls an AEM servlet to perform user authentication and authorization for the requested content. The servlet response determines whether the content is delivered to the web browser from the cache or not.
 
 Because the methods of authentication and authorization are specific to the AEM deployment, you are required to create the servlet.
 
@@ -31,7 +31,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher determines that the requested content is cached and valid.
 1. Dispatcher sends a request message to the render. The HEAD section includes all of the header lines from the browser request.
-1. The render calls the authorizer to perform the security check and responds to Dispatcher. The response message includes an HTTP status code of 200 to indicate that the user is authorized.
+1. The render calls the auth checker servlet to perform the security check and responds to Dispatcher. The response message includes an HTTP status code of 200 to indicate that the user is authorized.
 1. Dispatcher sends a response message to the browser that consists of the header lines from the render response and the cached content in the body.
 
 ## Page is not cached and user is authorized {#page-is-not-cached-and-user-is-authorized}
@@ -40,7 +40,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher determines that the content is not cached or requires updating.
 1. Dispatcher forwards the original request to the render.
-1. The render calls the authorizer servlet to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. The render calls the AEM authorizer servlet (This is not Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
 ## User is not authorized {#user-is-not-authorized}
@@ -49,7 +49,11 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher checks the cache.
 1. Dispatcher sends a request message to the render that includes all header lines from the browser's request.
-1. The render calls the authorizer servlet to perform a security check which fails, and the render forwards the original request to Dispatcher.
+1. The render calls the Auth Checker servlet to perform a security check which fails, and the render forwards the original request to Dispatcher.
+1. Dispatcher forwards the original request to the render.
+1. The render calls the AEM authorizer servlet (This is not Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
+
 
 ## Implementing permission-sensitive caching {#implementing-permission-sensitive-caching}
 
@@ -63,7 +67,7 @@ To implement permission-sensitive caching, perform the following tasks:
 >Typically, secure resources are stored in a separate folder than unsecure files. For example, /content/secure/
 >
 
-## Create the authorization servlet {#create-the-authorization-servlet}
+## Create the Auth Checker servlet {#create-the-auth-checker-servlet}
 
 Create and deploy a servlet that performs the authentication and authorization of the user who requests the web content. The servlet can use any authentication and authorization method, such as the AEM user account and repository ACLs, or an LDAP lookup service. You deploy the servlet to the AEM instance that Dispatcher uses as the render.
 
