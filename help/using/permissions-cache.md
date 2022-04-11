@@ -40,7 +40,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher determines that the content is not cached or requires updating.
 1. Dispatcher forwards the original request to the render.
-1. The render calls the AEM authorizer servlet (This is not Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. The render calls the AEM authorizer servlet (this is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
 ## User is not authorized {#user-is-not-authorized}
@@ -51,7 +51,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 1. Dispatcher sends a request message to the render that includes all header lines from the browser's request.
 1. The render calls the Auth Checker servlet to perform a security check which fails, and the render forwards the original request to Dispatcher.
 1. Dispatcher forwards the original request to the render.
-1. The render calls the AEM authorizer servlet (This is not Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. The render calls the AEM authorizer servlet (this is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
 
