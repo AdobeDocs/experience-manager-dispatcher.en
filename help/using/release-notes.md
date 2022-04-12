@@ -35,7 +35,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ## Release History {#release-history}
 
-### Release 4.3.5 (2022-Apr-29) {#apr}
+### Release 4.3.5 (2022-Apr-04) {#apr}
 
 **Improvements**:
 
