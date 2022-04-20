@@ -152,7 +152,7 @@ When Dispatcher starts, the Dispatcher log file includes the following debug-lev
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-The following example auth_checker section configures Dispatcher to use the servlet of the prevoius topic. The filter section causes permission checks to be performed only on secure HTML resources.
+The following example auth_checker section configures Dispatcher to use the servlet of the previous topic. The filter section causes permission checks to be performed only on secure HTML resources.
 
 ### Example configuration {#example-configuration}
 
