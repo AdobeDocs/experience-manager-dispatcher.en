@@ -839,7 +839,7 @@ A single entry can have either `glob` or some combination of `method`, `url`, `q
 
 ### Testing Dispatcher Security {#testing-dispatcher-security}
 
-Dispatcher filters should block access to the following pages and scripts on AEM publish instances. Use a web browser to attempt to open the following pages as a site visitor would and verify that a code 404 is returned. If any other result is obtained, adjust your filters.
+Dispatcher filters should block access to the following pages and scripts on AEM publish instances. Use a web browser to attempt to open the following pages as a site visitor would and verify that a code 403 is returned. If any other result is obtained, adjust your filters.
 
 Note that you should see normal page rendering for `/content/add_valid_page.html?debug=layout`.
 
