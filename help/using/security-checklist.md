@@ -32,7 +32,7 @@ Adobe strongly recommends that you complete the following checklist before going
 
 >[!CAUTION]
 >
->You must also complete the Security Checklist of your version of AEM before going live. Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html).
+>You must also complete the Security Checklist of your version of AEM before going live. Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-5/sites/administering/using/security-checklist.html).
 
 ## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
