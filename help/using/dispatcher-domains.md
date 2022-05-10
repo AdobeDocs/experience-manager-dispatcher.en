@@ -500,7 +500,7 @@ As usual, the document root of the cache is the same as the document root of the
 
 To rewrite references to files that have extensions other than .html or .htm, create a Sling rewriter transformer component and add it to the default rewriter pipeline.
 
-Rewrite references when resource paths do not resolve correctly in the web server context. For example, a transformer is required when image-generating components create links such as /content/sitea/en/products.navimage.png. The topnav component of the [How to Create a Fully Featured Internet Website](https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/the-basics.html) creates such links.
+Rewrite references when resource paths do not resolve correctly in the web server context. For example, a transformer is required when image-generating components create links such as /content/sitea/en/products.navimage.png. The topnav component of the [How to Create a Fully Featured Internet Website](https://helpx.adobe.com/experience-manager/6-5/sites/developing/using/the-basics.html) creates such links.
 
 The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) is a module that post-processes Sling output. SAX pipeline implementations of the rewriter consist of a generator, one or more transformers, and a serializer:
 
