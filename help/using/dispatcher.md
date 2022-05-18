@@ -1,7 +1,7 @@
 ---
 title: Dispatcher Overview
 seo-title: Adobe AEM Dispatcher Overview
-description: This article provides a general overview of Dispatcher.
+description: Learn to use Dispatcher for improved security, caching, and more on AEM Cloud Services.
 seo-description: This article provides a general overview of Adobe Experience Manager Dispatcher.
 uuid: 71766f86-5e91-446b-a078-061b179d090d
 pageversionid: 1193211344162
