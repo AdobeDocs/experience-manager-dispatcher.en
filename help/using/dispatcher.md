@@ -21,7 +21,7 @@ Dispatcher is Adobe Experience Manager's caching and/or load balancing tool that
 The process for deploying dispatcher is independent of the web server and the OS platform chosen:
 
 1. Learn about Dispatcher (this page). Also, see [frequently asked questions about dispatcher](https://helpx.adobe.com/experience-manager/using/dispatcher-faq.html).
-1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-3/sites/deploying/using/technical-requirements.html) according to the web server documentation.  
+1. Install a [supported web server](https://helpx.adobe.com/experience-manager/6-5/sites/deploying/using/technical-requirements.html) according to the web server documentation.  
 1. [Install the Dispatcher module](dispatcher-install.md) on your web server and configure the web server accordingly.
 1. [Configure Dispatcher](dispatcher-configuration.md) (the dispatcher.any file).  
 1. [Configure AEM](page-invalidate.md) so that content updates invalidate the cache.
