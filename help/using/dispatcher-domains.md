@@ -58,11 +58,9 @@ When Dispatcher Flush replication agents request that Dispatcher invalidates cac
 
 ![](assets/chlimage_1-9.png)
 
-<ol type="a">
-  <li>A page is activated on the AEM author instance and the content is replicated to the publish instance.</li>
-  <li>The Dispatcher Flush Agent calls Dispatcher to invalidate the cache for the replicated content.</li>
-  <li>Dispatcher touches one or more .stat files to invalidate the cached files.</li>
-</ol>
+* a - A page is activated on the AEM author instance and the content is replicated to the publish instance.
+* b - The Dispatcher Flush Agent calls Dispatcher to invalidate the cache for the replicated content.
+* c - Dispatcher touches one or more .stat files to invalidate the cached files.
 
 To use Dispatcher with multiple domains, you need to configure AEM, Dispatcher, and your web server. The solutions described on this page are general and apply to most environments. Due to the complexity of some AEM topologies, your solution can require further custom configurations to resolve particular issues. You will likely need to adapt the examples to satisfy your existing IT infrastructure and management policies.
 
