@@ -95,9 +95,9 @@ The example solutions that are provided apply to an environment with the followi
 ```
   | - /content  
     | - sitea  
-  |    | - content nodes 
+  |    | - content nodes
     | - siteb  
-       | - conent nodes
+       | - content nodes
 ```
 
   **Document root of the web server**
