@@ -61,7 +61,7 @@ Use the following procedure to configure a replication agent on the AEM author i
 1. Configure other parameters as required.  
 1. Click OK to activate the agent.
 
-Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](https://helpx.adobe.com/experience-manager/6-2/sites/deploying/using/replication.html#ConfiguringaDispatcherFlushagent).
+Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html#configuring-a-dispatcher-flush-agent).
 
 For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
