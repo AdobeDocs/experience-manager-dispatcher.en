@@ -155,7 +155,7 @@ AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/
 
 To prevent clickjacking we recommend that you configure your webserver to provide the `X-FRAME-OPTIONS` HTTP header set to `SAMEORIGIN`.  
   
-For more [information on clickjacking please see the OWASP site](https://www.owasp.org/index.php/Clickjacking).
+For more [information on clickjacking please see the OWASP site](https://owasp.org/www-community/attacks/Clickjacking).
 
 ## Perform a Penetration Test {#perform-a-penetration-test}
 
