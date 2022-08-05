@@ -122,7 +122,7 @@ The HTTP request causes Dispatcher to delete specific files from the cache. Opti
 
 ### Delete cached files {#delete-cached-files}
 
-Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files ins this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
+Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files in this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
 
 The HTTP request has the following form:
 
