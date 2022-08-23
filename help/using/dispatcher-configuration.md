@@ -1,6 +1,6 @@
 ---
 title: Configuring Dispatcher
-description: Learn how to configure Dispatcher.
+description: Learn how to configure Dispatcher. Learn about support for IPv4 and IPv6, configuration files, environment variables, naming the instance, defining farms, identifying virtual hosts, and more.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 ---
 # Configuring Dispatcher {#configuring-dispatcher}
