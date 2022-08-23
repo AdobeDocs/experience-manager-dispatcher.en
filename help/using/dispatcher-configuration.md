@@ -1375,7 +1375,11 @@ For additional details, also read the `/invalidate` and `/statfileslevel`section
 
 ### Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-If set, the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control` max-age or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
+If set to 1 (/enableTTL "1"), the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control` max-age or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
+
+>[!NOTE]
+>
+>Keep in mind that TTL-based caching is a superset of header caching and as such the `/headers` property should also be properly configured.
 
 >[!NOTE]
 >
