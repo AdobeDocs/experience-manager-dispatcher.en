@@ -780,9 +780,10 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >When used with Apache, design your filter URL patterns according to the DispatcherUseProcessedURL property of the Dispatcher module. (See [Apache Web Server - Configure your Apache Web Server for Dispatcher](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher).)
 
+<!----
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher.
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
 
 Consider the following recommendations if you do choose to extend access:
 
