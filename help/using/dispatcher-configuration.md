@@ -1282,29 +1282,32 @@ When a parameter is ignored for a page, the page is cached the first time that t
 
 To specify which parameters are ignored, add glob rules to the `ignoreUrlParams` property:
 
-* To ignore a parameter, create a glob property that allows the parameter.
-* To prevent the page to be cached, create a glob property that denies the parameter.
+* To cache a page despite the request containing an URL parameter create a glob property that allows the parameter (to be ignored).
+* To prevent the page to be cached, create a glob property that denies the parameter (to be ignored).
 
-The following example causes Dispatcher to ignores the `q` parameter, so that request URLs that include the q parameter are cached:
+The following example causes Dispatcher to ignores all parameters, except the `nocache` parameter, so that only request URLs that include the q parameter are never cached by the dispatcher:
 
 ```xml
 /ignoreUrlParams
 {
-    /0001 { /glob "*" /type "deny" }
-    /0002 { /glob "q" /type "allow" }
+    # allow-the-url-parameter-nocache-to-bypass-dispatcher-on-every-request
+    /0001 { /glob "nocache" /type "deny" }
+    # all-other-url-parameters-are-ignored-by-dispatcher-and-requests-are-cached
+    /0002 { /glob "*" /type "allow" }
 }
 ```
 
-Using the example `ignoreUrlParams` value, the following HTTP request causes the page to be cached because the `q` parameter is ignored:
+Using the example `ignoreUrlParams` value, the following HTTP request causes the page to be cached because the `willbecached` parameter is  ignored:
 
 ```xml
-GET /mypage.html?q=5
+GET /mypage.html?willbecached=true
 ```
 
-Using the example `ignoreUrlParams` value, the following HTTP request causes the page to **not** be cached because the `p` parameter is not ignored:
+Using the example `ignoreUrlParams` value, the following HTTP request causes the page to **not** be cached because the `nocache` parameter is not ignored (it is denied to be ingored):
 
 ```xml
-GET /mypage.html?q=5&p=4
+GET /mypage.html?nocache=true
+GET /mypage.html?nocache=true&willbecached=true
 
 ```
 
