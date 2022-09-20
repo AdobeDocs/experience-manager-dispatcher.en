@@ -108,6 +108,7 @@ The dispatcher flush is controlled by a replication agent operating on the publi
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtualhost entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.
+1. Log into the publish instance and validate the flush agent configuration. Also, make sure it is enabled.
 1. Repeat for every publish instance affected.
 
 After configuring, when you activate a page from author to publish, this agent initiates a standard replication. The log includes messages indicating requests coming from your publish server, similar to the following example:
