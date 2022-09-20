@@ -1307,7 +1307,7 @@ In the context of the `ignoreUrlParams` configuration example above, the followi
 GET /mypage.html?willbecached=true
 ```
 
-In the context of the `ignoreUrlParams` configuration example, the following HTTP request causes the page to **not** be cached because the `nocache` parameter is not ignored (it is "denied" from being ingored):
+In the context of the `ignoreUrlParams` configuration example, the following HTTP request causes the page to **not** be cached because the `nocache` parameter is not ignored:
 
 ```xml
 GET /mypage.html?nocache=true
