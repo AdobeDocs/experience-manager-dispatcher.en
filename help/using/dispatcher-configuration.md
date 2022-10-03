@@ -401,7 +401,7 @@ Using this example, the following table shows the virtual hosts that are resolve
 
 >[!CAUTION]
 >
->`/allowAuthorized` **must** be set to `"0"` in the `/cache` section in order to enable this feature.
+>`/allowAuthorized` **must** be set to `"0"` in the `/cache` section in order to enable this feature. As detailed in the [Caching When Authentication is used](#caching-when-authentication-is-used) section, when you set `/allowAuthorized 0 ` requests that include authentication information are **not** cached. If permission-sensitive caching is required, see the [Caching Secured Content](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html) page.
 
 Create a secure session for access to the render farm so that users need to log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
