@@ -175,7 +175,7 @@ The default Flush replication agent on the Author instance is configured so that
 
 If your website uses an authentication method, the Flush replication agent must be configured accordingly.
 
-1. Open IIS Manager and select the website that you are using as the Disptcher cache.
+1. Open IIS Manager and select the website that you are using as the Dispatcher cache.
 1. Using Features View mode, in the IIS section double click Authentication.
 1. If Anonymous Authentication is not enabled, select Anonymous Authentication and in the Actions area click Enable.
 
