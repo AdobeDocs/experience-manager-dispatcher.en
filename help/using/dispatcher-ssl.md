@@ -71,7 +71,7 @@ The following example dispatcher.any file shows the property values for connecti
    { 
       /virtualhosts
       {
-         # select this farm for all incoming HTTPS requestss
+         # select this farm for all incoming HTTPS requests
          "https://*"
       }
       /renders
@@ -94,7 +94,7 @@ The following example dispatcher.any file shows the property values for connecti
       /virtualhosts
       {
          # select this farm for all incoming HTTP requests
-         "https://*"
+         "http://*"
       }
       /renders
       {
