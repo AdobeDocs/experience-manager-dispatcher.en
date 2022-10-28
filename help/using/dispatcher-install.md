@@ -340,8 +340,8 @@ Enter the following commands in a terminal window, replacing `[path to the dispa
 
 semanage fcontext -a -t httpd_modules_t [path to the dispatcher.so file]
 setsebool -P httpd_can_network_connect on
-chcon -R --type httpd_sys_content_t [path to the docroot]
-semanage fcontext -a -t httpd_sys_content_t "[path to the docroot](/.*)?"
+chcon -R --type httpd_sys_rw_content_t [path to the docroot]
+semanage fcontext -a -t httpd_sys_rw_content_t "[path to the docroot](/.*)?"
 
 ```
 
