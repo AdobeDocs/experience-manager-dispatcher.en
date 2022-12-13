@@ -623,7 +623,7 @@ If your filters are not triggering in the way you would expect, enable [Trace Lo
 The following example filter section causes Dispatcher to deny requests for all files. You should deny access to all files and then allow access to specific areas.
 
 ```xml
-  /0001  { /glob "*" /type "deny" }
+/0001  { /type "deny" /url "*"  }
 ```
 
 Requests to an explicitly denied area result in a 404 error code (page not found) being returned.
@@ -690,8 +690,8 @@ Below is a rule example that blocks content grabbing from the `/content` path an
 /006 {
         /type "deny"
         /path "/content/*"
-        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy)'
-        /extension '(json|xml|html)'
+        /selectors '(feed|rss|pages|languages|blueprint|infinity|tidy|sysview|docview|query|jcr:content|_jcr_content|search|childrenlist|ext|assets|assetsearch|[0-9-]+)'
+        /extension '(json|xml|html|feed))'
         }
 ```
 
@@ -727,7 +727,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
   /filter
       {
       # Deny everything first and then allow specific entries
-      /0001 { /type "deny" /glob "*" }
+      /0001  { /type "deny" /url "*"  }
 
       # Open consoles
 #     /0011 { /type "allow" /url "/admin/*"  }  # allow servlet engine admin
