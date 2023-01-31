@@ -140,6 +140,10 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 ## Configure Dispatcher for permission-sensitive caching {#configure-dispatcher-for-permission-sensitive-caching}
 
+>[!NOTE]
+>
+>If your requirements permit the caching of authenticated documents, set the `/allowAuthorized` property to `/allowAuthorized 1`. See [Caching When Authentication is Used](/help/using/dispatcher-configuration.md) for more details.
+
 The auth_checker section of the dispatcher.any file controls the behavior of permission-sensitive caching. The auth_checker section includes the following subsections:
 
 * `url`: The value of the `sling.servlet.paths` property of the servlet that performs the security check.
