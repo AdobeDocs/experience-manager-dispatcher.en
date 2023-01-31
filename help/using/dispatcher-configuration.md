@@ -1285,6 +1285,11 @@ To specify which parameters are ignored, add glob rules to the `ignoreUrlParams`
 * To cache a page despite the request containing an URL parameter create a glob property that allows the parameter (to be ignored).
 * To prevent the page from being cached, create a glob property that denies the parameter (to be ignored).
 
+>[!NOTE]
+>
+>When configuring the glob property, please note that it should match the query parameter name. For example, if you want to ignore the "p1" parameter from the following URL `http://example.com/path/test.html?p1=test&p2=v2`, then the glob property should be:
+> `/0002 { /glob "p1" /type "allow" }`
+
 The following example causes Dispatcher to ignore all parameters, except the `nocache` parameter. As such, request URLs that include the `nocache` parameter are never cached by the dispatcher:
 
 ```xml
