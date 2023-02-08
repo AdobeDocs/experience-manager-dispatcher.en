@@ -54,7 +54,6 @@ The following diagrams illustrate the order of events that occur when a web brow
 1. The render calls the AEM authorizer servlet (this is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
-
 ## Implementing permission-sensitive caching {#implementing-permission-sensitive-caching}
 
 To implement permission-sensitive caching, perform the following tasks:
@@ -65,7 +64,11 @@ To implement permission-sensitive caching, perform the following tasks:
 >[!NOTE]
 >
 >Typically, secure resources are stored in a separate folder than unsecure files. For example, /content/secure/
+
+>[!NOTE]
 >
+>When there is a CDN (or any other cache) in front of the dispatcher then you should set the caching headers accordingly so that the CDN does not cache the private content. For example: `Header always set Cache-Control private`.
+>For AEM as a Cloud Service see the [Caching](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) page for more details on how to set private caching headers.
 
 ## Create the Auth Checker servlet {#create-the-auth-checker-servlet}
 
