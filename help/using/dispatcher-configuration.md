@@ -1384,7 +1384,15 @@ For additional details, also read the `/invalidate` and `/statfileslevel`section
 
 ### Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-If set to 1 (`/enableTTL "1"`), the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control` max-age or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
+The invalidation logic is based on the `/enableTTL` property as a global switch and the presence of regular expiration headers of the HTTP standard. If set to 1 (`/enableTTL "1"`), the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control`, `max-age` or `Expires` date, an auxiliary, empty file next to the cache file is created, with modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
+
+Before dispatcher version 4.3.5, the invalidation logic was based only on the configured TTL. With dispatcher version 4.3.5, both the TTL **and** the dispatcher cache invalidation rules are taken into account. As such, for a cached file:
+
+1. First, the file expiration is checked. If the file has expired (accordind to the set TTL) no other checks are performed and the cached file is re-requested from the backend.
+2. If the file has either not expired or `/enableTTL` is not configured then the standard cache invalidation rules are applied. This means that dispatcher can invalidate files for which the TTL has not expired. 
+
+This new logic supports usecases where files have longer TTL (for example, on the CDN) but the files can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the dispatcher.
+
 
 >[!NOTE]
 >
