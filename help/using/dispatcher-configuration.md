@@ -1384,16 +1384,32 @@ For additional details, also read the `/invalidate` and `/statfileslevel`section
 
 ### Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
-The invalidation logic is based on the `/enableTTL` property as a global switch and the presence of regular expiration headers of the HTTP standard. If set to 1 (`/enableTTL "1"`), the `/enableTTL` property will evaluate the response headers from the backend, and if they contain a `Cache-Control`, `max-age` or `Expires` date, an auxiliary, empty file next to the cache file is created, with the modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
+Time based cache invalidation depends on the `/enableTTL` property and the presence of regular expiration headers from the HTTP standard. If you set the property to 1 (`/enableTTL "1"`), it evaluates the response headers from the backend, and if the headers contain a `Cache-Control`, `max-age` or `Expires` date, an auxiliary, empty file next to the cached file is created, with the modification time equal to the expiry date. When the cached file is requested past the modification time it is automatically re-requested from the backend.
 
-Before dispatcher version 4.3.5, the invalidation logic was based only on the configured TTL. With dispatcher version 4.3.5, both the configured TTL **and** the dispatcher cache invalidation rules are taken into account. As such, for a cached file:
+Before dispatcher version 4.3.5, the TTL invalidation logic was based only on the configured TTL value. With dispatcher version 4.3.5, both the set TTL **and** the dispatcher cache invalidation rules are taken into account. As such, for a cached file:
 
-1. First, if `/enableTTL` is set to 1, the file expiration is checked. If the file has expired accordind to the set TTL, no other checks are performed and the cached file is re-requested from the backend.
-2. If the file has either not expired or `/enableTTL` is not configured then the cache invalidation rules are applied such as those set by [/statfileslevel](#invalidating-files-by-folder-level) or [/invalidate](#automatically-invalidating-cached-files). This means that dispatcher can invalidate files for which the TTL has not expired.
+1. If `/enableTTL` is set to 1, the file expiration is checked. If the file has expired accordind to the set TTL, no other checks are performed and the cached file is re-requested from the backend.
+2. If the file has either not expired or `/enableTTL` is not configured then the standard cache invalidation rules are applied such as those set by [/statfileslevel](#invalidating-files-by-folder-level) or [/invalidate](#automatically-invalidating-cached-files). This means that dispatcher can invalidate files for which the TTL has not expired.
 
-This new logic supports cases where files have a longer TTL (for example, on the CDN) but can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the dispatcher.
+This new implementation supports use cases where files have a longer TTL (for example, on the CDN) but can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the dispatcher.
 
-If conversly you want only the expiration logic to be applied to a file, you need to set `/enableTTL` to 1 and exclude the file from the invalidation mechanism. For example, you can configure the [invalidation rules](#automatically-invalidating-cached-files) in the cache section to ignore the file or design the content structure in such a way that you can set a high [/statfilelevel](#invalidating-files-by-folder-level) so the file is not automatically invalidated.
+Conversly, in case you need **only** the expiration logic to be applied to a file then set `/enableTTL` to 1 and exclude that file from the standard cache invalidation mechanism. For example , you can:
+
+* Configure the [invalidation rules](#automatically-invalidating-cached-files) in the cache section to ignore the file. In the snippet below, all files ending in `.example.html` are ignored:
+
+```xml
+  /invalidate
+  {
+   /0000  { /glob "*" /type "deny" }
+   /0001  { /glob "*.html" /type "allow" }
+   /0002  { /glob "*.example.html" /type "deny" }
+  }
+
+```
+
+* Design the content structure in such a way that you can set a high [/statfilelevel](#invalidating-files-by-folder-level) so the file is not automatically invalidated.
+
+This ensures that `.stat` file invalidation is not used and only TTL expiration is active for that file.
 
 >[!NOTE]
 >
