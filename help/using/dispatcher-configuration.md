@@ -1389,7 +1389,7 @@ Time based cache invalidation depends on the `/enableTTL` property and the prese
 Before dispatcher version 4.3.5, the TTL invalidation logic was based only on the configured TTL value. With dispatcher version 4.3.5, both the set TTL **and** the dispatcher cache invalidation rules are taken into account. As such, for a cached file:
 
 1. If `/enableTTL` is set to 1, the file expiration is checked. If the file has expired according to the set TTL, no other checks are performed and the cached file is re-requested from the backend.
-2. If the file has either not expired or `/enableTTL` is not configured then the standard cache invalidation rules are applied such as those set by [/statfileslevel](#invalidating-files-by-folder-level) or [/invalidate](#automatically-invalidating-cached-files). This means that dispatcher can invalidate files for which the TTL has not expired.
+2. If the file has either not expired or `/enableTTL` is not configured then the standard cache invalidation rules are applied such as those set by [/statfileslevel](#invalidating-files-by-folder-level) and [/invalidate](#automatically-invalidating-cached-files). This means that dispatcher can invalidate files for which the TTL has not expired.
 
 This new implementation supports use cases where files have a longer TTL (for example, on the CDN) but can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the dispatcher.
 
