@@ -1393,9 +1393,9 @@ Before dispatcher version 4.3.5, the TTL invalidation logic was based only on th
 
 This new implementation supports use cases where files have a longer TTL (for example, on the CDN) but can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the dispatcher.
 
-Conversly, in case you need **only** the expiration logic to be applied to a file then set `/enableTTL` to 1 and exclude that file from the standard cache invalidation mechanism. For example , you can:
+Conversly, in case you need **only** the expiration logic applied to a file then set `/enableTTL` to 1 and exclude that file from the standard cache invalidation mechanism. For example , you can:
 
-* Configure the [invalidation rules](#automatically-invalidating-cached-files) in the cache section to ignore the file. In the snippet below, all files ending in `.example.html` are ignored:
+* Configure the [invalidation rules](#automatically-invalidating-cached-files) in the cache section to ignore the file. In the snippet below, all files ending in `.example.html` are ignored and will expire only when the set TTL has passed.
 
 ```xml
   /invalidate
@@ -1409,7 +1409,7 @@ Conversly, in case you need **only** the expiration logic to be applied to a fil
 
 * Design the content structure in such a way that you can set a high [/statfilelevel](#invalidating-files-by-folder-level) so the file is not automatically invalidated.
 
-This ensures that `.stat` file invalidation is not used and only TTL expiration is active for that file.
+This ensures that `.stat` file invalidation is not used and only TTL expiration is active for the specified files.
 
 >[!NOTE]
 >
