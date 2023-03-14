@@ -13,23 +13,23 @@ exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 
 ### What is the Dispatcher?
 
-The Dispatcher is Adobe Experience Manager's caching and/or load balancing tool that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache, with the aim of storing (or "caching") as much of the static website content as possible and accessing the website's layout engine as infrequently as possible. In a load balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
+The Dispatcher is Adobe Experience Manager's caching and/or load-balancing tool that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache. It has the aim of storing (or "caching") as much of the static website content as possible and accessing the website's layout engine as infrequently as possible. In a load-balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
 
 For caching, the Dispatcher module uses the Web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the Web server.
 
 ### How does the Dispatcher perform caching?
 
-The Dispatcher uses the web server's ability to serve static content. The Dispatcher stores cached documents in the web server’s document root. The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
+The Dispatcher uses the web server's ability to serve static content. The Dispatcher stores cached documents in the web server's document root. The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
 
-* **Content Updates** remove the pages that have changed, as well as files that are directly associated with them.
+* **Content Updates** remove the pages that have changed, and files that are directly associated with them.
 * **Auto-Invalidation** automatically invalidates those parts of the cache that may be out of date after an update. For example, it effectively flags relevant pages as being out of date, without deleting anything.
 
 ### What are the benefits of load-balancing?
 
-Load Balancing distributes user requests (load) across several AEM instances.The following list describes the advantages for load balancing:
+Load-balancing distributes user requests (load) across several AEM instances. The following list describes the advantages for load-balancing:
 
-* **Increased processing power**: In practice this means that the Dispatcher shares document requests between several instances of AEM. Because each instance has fewer documents to process, you have faster response times. The Dispatcher keeps internal statistics for each document category, so it can estimate the load and distribute the queries efficiently.
-* **Increased fail-safe coverage**: If the Dispatcher does not receive responses from an instance, it will automatically relay requests to one of the other instance(s). Thus, if an instance becomes unavailable, the only effect is a slowdown of the site, proportionate to the computational power lost.
+* **Increased processing power**: In practice, this method means that the Dispatcher shares document requests between several instances of AEM. Because each instance has fewer documents to process, you have faster response times. The Dispatcher keeps internal statistics for each document category, so it can estimate the load and distribute the queries efficiently.
+* **Increased fail-safe coverage**: If the Dispatcher does not receive responses from an instance, it automatically relays requests to one of the other instances. Thus, if an instance becomes unavailable, the only effect is a slowdown of the site, proportionate to the computational power lost.
 
 >[!NOTE]
 >
@@ -99,9 +99,9 @@ Content-Length: 0
 
 Dispatcher deletes the cached files and folders that have names that match the value of the CQ-Handle header. For example, a CQ-Handle of `/content/geomtrixx-outdoors/en` matches the following items:
 
-All files (of any file extension) named en in the geometrixx-outdoors directory
-Any directory named `_jcr_content` below the en directory (which, if it exists, contains cached renderings of sub-nodes of the page)
-The directory en will only be deleted if the `CQ-Action` is `Delete` or `Deactivate`.
+All files (of any file extension) named en in the geometrixx-outdoors directory.
+Any directory named `_jcr_content` below the en directory (which, if it exists, contains cached renderings of subnodes of the page).
+The directory `en` is only be deleted if the `CQ-Action` is `Delete` or `Deactivate`.
 
 For further details on this topic, see [Manually Invalidating the Dispatcher Cache](page-invalidate.md).
 
@@ -111,13 +111,13 @@ See the [Caching Secure Content](permissions-cache.md) page.
 
 ### How do I secure communications between the Dispatcher and CQ instances?
 
-See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Security Checklist](https://helpx.adobe.com/experience-manager/6-4/sites/administering/using/security-checklist.html) pages.
+See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Security Checklist](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=en) pages.
 
 ### Dispatcher issue `jcr:content` changed to `jcr%3acontent`
 
-**Question**: We have recently faced a problem at dispatcher level wherein one of the ajax call which was getting some data form CQ repository had `jcr:content` in it and that got encoded to `jcr%3acontent` resulting in wrong result set.
+**Question**: The business has recently faced a problem at Dispatcher level. One of the AJAX calls which was getting some data form CQ repository had `jcr:content` in it. That got encoded to `jcr%3acontent` resulting in that wrong result set.
 
-**Answer**: Please use `ResourceResolver.map()` method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format.You need to use the map() method to generate the URL that is used in the Ajax call.
+**Answer**: Use `ResourceResolver.map()` method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format. Use the map() method to generate the URL that is used in the Ajax call.
 
 Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
@@ -125,26 +125,22 @@ Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-
 
 ### How do I configure Dispatcher flush agents on a Publish instance?
 
-See the [Replication](https://helpx.adobe.com/content/help/en/experience-manager/6-4/sites/deploying/using/replication.html#ConfiguringyourReplicationAgents) page.
+See the [Replication](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) page.
 
 ### How do I troubleshoot Dispatcher flushing issues?
 
-[Refer to this troubleshooting article](https://helpx.adobe.com/content/help/en/experience-manager/kb/troubleshooting-dispatcher-flushing-issues.html) that answers the following questions:
+[See these troubleshooting articles](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]).
 
-* How should I debug a situation where no content is getting saved in the Dispatcher cache?
-* How do I debug a situation where cache files are not getting updated?
-* How do I debug a situation where nothing related to Dispatcher flushing is working?
-
-If Delete operations are causing the Dispatcher to flush, [use the workaround in this community blog post by Sensei Martin](https://mkalugin-cq.blogspot.in/2012/04/i-have-been-working-on-following.html).
+If Delete operations are causing the Dispatcher to flush, [use the workaround in this community blog post by Sensei Martin](https://mkalugin-cq.blogspot.com/2012/04/i-have-been-working-on-following.html).
 
 ### How do I flush DAM assets from the Dispatcher cache?
 
-You can use the "chain replication" feature.  With this feature enabled, the dispatcher flush agent sends a flush request when a replication is received from author.
+You can use the "chain replication" feature. With this feature enabled, the Dispatcher flush agent sends a flush request when a replication is received from author.
 
 To enable it:
 
 1. [Follow the steps here](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) to create flushing agents on publish
-1. Go to each of those agent's configuration and on the **Triggers** tab check the **On Receive** box.
+1. Go to each agent's configuration and on the **Triggers** tab, check the **On Receive** box.
 
 ## Miscellaneous
 
@@ -160,11 +156,11 @@ You can define whether the Dispatcher caches a document by using the [Dispatcher
 
 The `/rules` property controls which documents are cached according to the document path. Regardless of the `/rules` property, Dispatcher never caches a document in the following circumstances:
 
-* If the request URI contains a question mark `(?)`.
-* This usually indicates a dynamic page, such as a search result that does not need to be cached.
+* The request URI contains a `(?)` question mark.
+* It indicates a dynamic page, such as a search result that does not need to be cached.
 * The file extension is missing.
 * The web server needs the extension to determine the document type (the MIME-type).
-* The authentication header is set (this can be configured)
+* The authentication header is set (configurable).
 * If the AEM instance responds with the following headers: 
   * no-cache
   * no-store
