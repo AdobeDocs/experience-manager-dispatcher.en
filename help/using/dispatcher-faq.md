@@ -125,7 +125,7 @@ Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-
 
 ### How do I configure Dispatcher flush agents on a Publish instance?
 
-See the [Replication](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) page.
+See the [Replication](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) page.
 
 ### How do I troubleshoot Dispatcher flushing issues?
 
