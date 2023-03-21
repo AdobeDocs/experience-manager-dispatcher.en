@@ -20,7 +20,7 @@ Dispatcher is Adobe Experience Manager's caching and load balancing tool that is
 
 The process for deploying Dispatcher is independent of the web server and the OS platform chosen:
 
-1. Learn about Dispatcher (this page). Also, see [frequently asked questions about Dispatcher](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/troubleshooting/dispatcher-faq.html?lang=en).
+1. Learn about Dispatcher (this page). Also, see [frequently asked questions about Dispatcher](/help/using/dispatcher-faq.md).
 1. Install a [supported web server](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en) according to the web server documentation.  
 1. [Install the Dispatcher module](dispatcher-install.md) on your web server and configure the web server accordingly.
 1. [Configure Dispatcher](dispatcher-configuration.md) (the dispatcher.any file).  
@@ -38,7 +38,7 @@ Use the following information as required:
 
 * [The Dispatcher Security Checklist](security-checklist.md)
 * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html)
-* [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/docs/experience-manager-64/deploying/configuring/configuring-performance.html?lang=en)
+* [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/configuring-performance.html)
 * [Using Dispatcher with Multiple Domains](dispatcher-domains.md)
 * [Using SSL with Dispatcher](dispatcher-ssl.md)
 * [Implementing Permission-Sensitive Caching](permissions-cache.md)
