@@ -1413,7 +1413,7 @@ Doing so ensures that `.stat` file invalidation is not used and only TTL expirat
 
 >[!NOTE]
 >
->Keep in mind that TTL-based caching is a superset of header caching and as such the `/headers` property should also be properly configured.
+>Keep in mind that setting `/enableTTL` to 1 enables TTL caching only on the dispatcher side. As such, the TTL information contained in the additional file (see above) is not provided to any other useragent requesting such a file type from the dispatcher. If you want to provide caching headers to downstream systems like a CDN or a browser, you should configure the `/cache/headers` section accordingly.
 
 >[!NOTE]
 >
