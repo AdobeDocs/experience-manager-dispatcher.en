@@ -21,7 +21,7 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 |Type|Minor Release|
 |Date|July 25, 2023|
 |Download URL|<ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul>|
-|Compatibility|AEM 6.1 or higher|                                                                                                                    |
+|Compatibility|AEM 6.1 or higher|
 
 ## System requirements and prerequisites {#system-requirements-and-prerequisites}
 
