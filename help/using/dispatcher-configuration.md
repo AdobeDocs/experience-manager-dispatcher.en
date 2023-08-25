@@ -363,7 +363,7 @@ The following example represents a snippet from a `dispatcher.any` file that def
     {
     /virtualhosts
       {
-      "www.mycompany.com"
+      "www.mycompany.com/products/*"
       }
     /renders
       {
@@ -375,7 +375,7 @@ The following example represents a snippet from a `dispatcher.any` file that def
     {
     /virtualhosts
       {
-      "www.mycompany.com/products/*"
+      "www.mycompany.com"
       }
     /renders
       {
@@ -645,7 +645,7 @@ The following example filter allows submitting form data by the POST method:
 
 #### Example Filter: Allow Access to the Workflow Console {#example-filter-allow-access-to-the-workflow-console}
 
-The following example shows a filter used to deny external access to the Workflow console:
+The following example shows a filter used to allow external access to the Workflow console:
 
 ```xml
 /filter {
