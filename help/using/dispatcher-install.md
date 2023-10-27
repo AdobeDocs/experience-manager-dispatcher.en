@@ -406,6 +406,10 @@ DispatcherKeepAliveTimeout 60
 
 ```
 
+>[!NOTE]
+>
+>Customers upgrading specifically from version 4.3.3 to version 4.3.4 will notice a different behavior in how caching headers are set for uncacheable content. To read more about this change please see the [Release Notes](/help/using/release-notes.md#nov) page.
+
 The individual configuration parameters:
 
 |Parameter|Description|
