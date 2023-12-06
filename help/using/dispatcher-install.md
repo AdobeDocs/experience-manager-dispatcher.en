@@ -454,7 +454,7 @@ After these entries you must add a **SetHandler** statement to the context of yo
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
   
@@ -474,7 +474,7 @@ The following example configures the Dispatcher to handle requests for a virtual
 ServerName www.mycompany.com  
 DocumentRoot _\[cache-path\]_\\docs  
 <Directory _\[cache-path\]_\\docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -491,7 +491,7 @@ AllowOverride None
 ServerName www.mycompany.com  
 DocumentRoot /usr/apachecache/docs  
 <Directory /usr/apachecache/docs>  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 </IfModule>  
 AllowOverride None  
@@ -531,7 +531,7 @@ The following example activates **ModMimeUsePathInfo**:
 ```
 ...  
 <Directory />  
-<IfModule disp\_apache2.c>  
+<IfModule disp_apache2.c>  
 SetHandler dispatcher-handler  
 ModMimeUsePathInfo On  
 </IfModule>  
