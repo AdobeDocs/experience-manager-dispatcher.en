@@ -4,6 +4,7 @@ solution: Experience Manager
 type: Documentation
 git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.en
 index: y
+recommendations: noDisplay
 ---
 
 # Metadata for internal use
