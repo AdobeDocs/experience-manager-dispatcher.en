@@ -38,7 +38,7 @@ The following table lists the web server identifier that is used in file names f
 |Web Server|Installation Kit|
 |--- |--- |
 |Apache 2.4| dispatcher-apache**2.4**-&lt;other parameters&gt;|
-|Microsoft Internet Information Server 7.5, 8, 8.5|dispatcher-**iis**-&lt;other parameters&gt;|
+|Microsoft Internet Information Server 7.5, 8, 8.5, 10 |dispatcher-**iis**-&lt;other parameters&gt;|
 |Sun Java Web Server iPlanet | dispatcher-**ns**-&lt;other parameters&gt;|
 
 >[!CAUTION]
