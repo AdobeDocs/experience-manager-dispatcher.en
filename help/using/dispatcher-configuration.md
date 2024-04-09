@@ -1324,7 +1324,7 @@ For information about glob properties, see [Designing Patterns for glob Properti
 >
 >This feature is available with version **4.1.11** of the Dispatcher.
 
-The `/headers` property allows you to define the HTTP header types that are going to be cached by the Dispatcher. On the first request to an uncached resource, all headers matching one of the configured values (see the configuration sample below) are stored in a separate file, next to the cache file. On subsequent requests to the cached resource, the stored headers are added to the response.
+The `/headers` property allows you to define the HTTP header types that are going to be cached by the Dispatcher. On the first request to an uncached resource, all headers matching one of the configured values (see the configuration sample below) are stored in a separate file, next to the cache file. On subsequent requests to the cached resource the stored headers are added to the response.
 
 Presented below is a sample from the default configuration:
 
