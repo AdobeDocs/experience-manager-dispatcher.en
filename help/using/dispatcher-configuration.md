@@ -13,7 +13,7 @@ The following sections describe how to configure various aspects of the Dispatch
 
 ## Support for IPv4 and IPv6 {#support-for-ipv-and-ipv}
 
-All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/introduction/technical-requirements.html?lang=en#ipv-and-ipv).
+All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
 ## Dispatcher Configuration Files {#dispatcher-configuration-files}
 
@@ -127,7 +127,7 @@ For example, if the dispatcher.any file is in the same directory as the cache di
 /docroot "${PWD}/cache"
 ```
 
-As another example, if you create an environment variable named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](#defining-page-renderers-renders) property can be used:
+As another example, if you create an environment variable that is named `PUBLISH_IP` that stores the hostname of the AEM publish instance, the following configuration of the [/renders](#defining-page-renderers-renders) property can be used:
 
 ```xml
 /renders {
@@ -188,7 +188,7 @@ Each farm property can contain the following child properties:
 |--- |--- |
 |[/homepage](#specify-a-default-page-iis-only-homepage)|Default homepage (optional)(IIS only)|
 |[/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders)|The headers from the client HTTP request to pass through.|
-|[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|The virtual hosts for this farm.|
+|[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|This farm's virtual hosts.|
 |[/sessionmanagement](#enabling-secure-sessions-sessionmanagement)|Support for session management and authentication.|
 |[/renders](#defining-page-renderers-renders)|The servers that provide rendered pages (typically AEM publish instances).|
 |[/filter](#configuring-access-to-content-filter)|Defines the URLs to which Dispatcher enables access.|
@@ -253,7 +253,7 @@ Comment Type: draft
 
 The `/clientheaders` property defines a list of HTTP headers that Dispatcher passes from the client HTTP request to the renderer (AEM instance).
 
-By default Dispatcher forwards the standard HTTP headers to the AEM instance. In some instances, you might want forward additional headers, or remove specific headers:
+By default Dispatcher forwards the standard HTTP headers to the AEM instance. In some instances, you may want to forward other headers, or remove specific headers:
 
 * Add headers, such as custom headers, that your AEM instance expects in the HTTP request.
 * Remove headers, such as authentication headers that are only relevant to the web server.
@@ -397,9 +397,9 @@ Using this example, the following table shows the virtual hosts that are resolve
 
 >[!CAUTION]
 >
->`/allowAuthorized` Set to `"0"` in the `/cache` section to enable this feature. As detailed in the [Caching When Authentication is used](#caching-when-authentication-is-used) section, when you set `/allowAuthorized 0 ` requests that include authentication information are **not** cached. If permission-sensitive caching is required, see the [Caching Secured Content](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/permissions-cache.html) page.
+>`/allowAuthorized` Set to `"0"` in the `/cache` section to enable this feature. As detailed in the [Caching When Authentication is used](#caching-when-authentication-is-used) section, when you set `/allowAuthorized 0 ` requests that include authentication information are **not** cached. If permission-sensitive caching is required, see the [Caching Secured Content](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache) page.
 
-Create a secure session for access to the render farm so that users must log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/cug.html?lang=en#creating-the-user-group-to-be-used) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
+Create a secure session for access to the render farm so that users must log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
 The `/sessionmanagement` property is a subproperty of `/farms`.
 
@@ -407,7 +407,7 @@ The `/sessionmanagement` property is a subproperty of `/farms`.
 >
 >If sections of your website use different access requirements, you must define multiple farms.
 
-**/sessionmanagement** has several sub-parameters:
+**/sessionmanagement** has several subparameters:
 
 **/directory** (mandatory)
 
@@ -415,7 +415,7 @@ The directory that stores the session information. If the directory does not exi
 
 >[!CAUTION]
 >
-> When configuring the directory sub-parameter, **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. Always specify the path to the folder that stores the session information. For example:
+> When configuring the directory subparameter, **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. Always specify the path to the folder that stores the session information. For example:
 
 ```xml
 /sessionmanagement
@@ -511,7 +511,7 @@ Specifies the connection timeout accessing the AEM instance in milliseconds. The
 
 Specifies the time in milliseconds that a response is allowed to take. The default is `"600000"`, causing Dispatcher to wait for 10 Minutes. A setting of `"0"` eliminates the timeout .
 
-If the timeout is reached while parsing response headers, an HTTP Status of 504 (Bad Gateway) is returned. If the timeout is reached while the response body is read, the Dispatcher returns the incomplete response to the client. It also deletes any cache file that might have been written.
+If the timeout is reached while parsing response headers, an HTTP Status of 504 (Bad Gateway) is returned. If the timeout is reached while the response body is read, the Dispatcher returns the incomplete response to the client. It also deletes any cached files that might have been written.
 
 **/ipv4**
 
@@ -523,7 +523,7 @@ Amazon Elastic Load Balancing (ELB) is such a service that responds to getaddrin
 
 **/secure**
 
-If the `/secure` property has a value of `"1"`, Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+If the `/secure` property has a value of `"1"`, Dispatcher uses HTTPS to communicate with the AEM instance. For more details, see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -553,7 +553,7 @@ Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. 
 
 >[!CAUTION]
 >
->See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also, read the [AEM Security Checklist](https://experienceleague.adobe.com/docs/experience-manager-65/administering/security/security-checklist.html?lang=en#security) for additional security details regarding your AEM installation.
+>See the [Dispatcher Security Checklist](security-checklist.md) for further considerations when restricting access using Dispatcher. Also see the [AEM Security Checklist](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist#security) for more security details regarding your AEM installation.
 
 The `/filter` section consists of a series of rules that either deny or allow access to content according to patterns in the request-line part of the HTTP request. Use an allowlist strategy for your `/filter` section:
 
@@ -586,7 +586,7 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 >
 >`/glob "* *.css *"`
 >
->use
+>Use
 >
 >`/url "*.css"`
 
@@ -668,7 +668,7 @@ If you must access single pages within the restricted area, you can allow access
 
 >[!NOTE]
 >
->When multiple filters patterns apply to a request, the last applied filter pattern is effective.
+>When multiple filter patterns apply to a request, the last applied filter pattern is effective.
 
 #### Example filter: Using Regular Expressions {#example-filter-using-regular-expressions}
 
@@ -678,7 +678,7 @@ This filter enables extensions in non-public content directories using a regular
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### Example filter: Filter Additional Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
+#### Example filter: Filter extra Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
 
 Below is a rule example that blocks content grabbing from the `/content` path and its subtree, using filters for path, selectors, and extensions:
 
@@ -795,15 +795,15 @@ Consider the following recommendations if you do choose to extend access:
 
   * `/libs/opensocial/proxy*`
 
-Depending on your installation, there might be additional resources under `/libs`, `/apps` or elsewhere, that must be made available. You can use the `access.log` file as one method of determining resources that are being accessed externally.
+Depending on your installation, there might be more resources under `/libs`, `/apps` or elsewhere, that must be made available. You can use the `access.log` file as one method of determining resources that are being accessed externally.
 
 >[!CAUTION]
 >
->Access to consoles and directories can present a security risk for production environments. Unless you have explicit justifications, they should remain deactivated (commented out).
+>Access to consoles and directories can present a security risk for production environments. Unless you have explicit justification, they should remain deactivated (commented out).
 
 >[!CAUTION]
 >
->If you are [using reports in a publish environment](https://experienceleague.adobe.com/docs/experience-manager-65/administering/operations/reporting.html?lang=en#using-reports-in-a-publish-environment), you should configure Dispatcher to deny access to `/etc/reports` for external visitors.
+>If you are [using reports in a publish environment](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), you should configure Dispatcher to deny access to `/etc/reports` for external visitors.
 
 ### Restricting Query Strings {#restricting-query-strings}
 
@@ -935,7 +935,7 @@ The `/vanity_urls` section contains the following properties:
 
 >[!NOTE]
 >
->If your render is an instance of AEM, you must install the [VanityURLS-Components package from Software Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) to enable the vanity URL service. (See [Software Distribution](https://experienceleague.adobe.com/docs/experience-manager-65/administering/contentmanagement/package-manager.html?lang=en#software-distribution) for more details.)
+>If your render is an instance of AEM, you must install the [VanityURLS-Components package from Software Distribution](https://experience.adobe.com/#/downloads/content/software-distribution/en/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) to enable the vanity URL service. (See [Software Distribution](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) for more details.)
 
 Use the following procedure to enable access to vanity URLs.
 
@@ -952,7 +952,7 @@ If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndicat
 
 ## Configuring the Dispatcher Cache - /cache {#configuring-the-dispatcher-cache-cache}
 
-The `/cache` section controls how Dispatcher caches documents. Configure several sub-properties to implement your caching strategies:
+The `/cache` section controls how Dispatcher caches documents. Configure several subproperties to implement your caching strategies:
 
 * `/docroot`
 * `/statfile`
@@ -1148,7 +1148,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 Use the `/statfileslevel` property to invalidate cached files according to their path:
 
 * Dispatcher creates `.stat`files in each folder from the docroot folder to the level that you specify. The docroot folder is level 0.
-* Files are invalidated by touching the `.stat` file. The `.stat` file's last modification date is compared to the last modification date of a cached document. The document is re-fetched if the `.stat` file is newer.
+* Files are invalidated by touching the `.stat` file. The `.stat` file's last modification date is compared to the last modification date of a cached document. The document is refetched if the `.stat` file is newer.
 
 * When a file at a certain level is invalidated, **all** `.stat` files from the docroot **to** the level of the invalidated file or the configured `statsfilevel` (whichever is smaller) are touched.
 
@@ -1165,7 +1165,7 @@ When a file in `/content/myWebsite/xx` is invalidated, then every `.stat` file f
 
 >[!NOTE]
 >
->Invalidation can be prevented by sending an extra Header `CQ-Action-Scope:ResourceOnly`. This method can be used to flush particular resources without invalidating other parts of the cache. See [this page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) and [Manually Invalidating the Dispatcher Cache](https://experienceleague.adobe.com/docs/experience-manager-dispatcher/using/configuring/page-invalidate.html?lang=en#configuring) for additional details.
+>Invalidation can be prevented by sending an extra Header `CQ-Action-Scope:ResourceOnly`. This method can be used to flush particular resources without invalidating other parts of the cache. See [this page](https://adobe-consulting-services.github.io/acs-aem-commons/features/dispatcher-flush-rules/index.html) and [Manually Invalidating the Dispatcher Cache](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/page-invalidate#configuring) for more details.
 
 >[!NOTE]
 >
@@ -1194,7 +1194,7 @@ This configuration causes the following activity when `/content/wknd/us/en` is a
 
 * All the files with pattern en.* are removed from the `/content/wknd/us` folder.
 * The `/content/wknd/us/en./_jcr_content` folder is removed.
-* All the other files that match the `/invalidate` configuration are not immediately deleted. These files are deleted when the next request occurs. In the example `/content/wknd.html` is not deleted; it is deleted when `/content/wknd.html` is requested.
+* All the other files that match the `/invalidate` configuration are not immediately deleted. These files are deleted when the next request occurs. In the example, `/content/wknd.html` is not deleted. Instead, it is deleted when `/content/wknd.html` is requested.
 
 If you offer automatically generated PDF and ZIP files for download, you might have to automatically invalidate these files, too. A configuration example looks as follows:
 
@@ -1228,7 +1228,7 @@ It is called with the following arguments:
 
 This method can be used to cover several different use cases. For example, invalidating other application-specific caches, or to handle cases where the externalized URL of a page, and its place in the docroot, does not match the content path.
 
-Below example script logs each invalidate request to a file.
+Below example script logs each invalidated request to a file.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1324,7 +1324,7 @@ For information about glob properties, see [Designing Patterns for glob Properti
 >
 >This feature is available with version **4.1.11** of the Dispatcher.
 
-The `/headers` property allows you to define the HTTP header types that are going to be cached by the Dispatcher. On the first request to an uncached resource, all headers matching one of the configured values (see the configuration sample below) are stored in a separate file, next to the cache file. On subsequent requests to the cached resource the stored headers are added to the response.
+The `/headers` property allows you to define the HTTP header types that are going to be cached by the Dispatcher. On the first request to an uncached resource, all headers matching one of the configured values (see the configuration sample below) are stored in a separate file, next to the cache file. On subsequent requests to the cached resource, the stored headers are added to the response.
 
 Presented below is a sample from the default configuration:
 
@@ -1380,7 +1380,7 @@ With the default `/invalidate` property, every activation effectively invalidate
 
 The `/gracePeriod` property defines the number of seconds a stale, auto-invalidated resource may still be served from the cache after the last occurring activation. The property can be used in a setup where a batch of activations would otherwise repeatedly invalidate the entire cache. The recommended value is 2 seconds.
 
-For additional details, also read the `/invalidate` and `/statfileslevel`sections above.
+For more details, see `/invalidate` and `/statfileslevel`earlier.
 
 ### Configuring Time Based Cache Invalidation - /enableTTL {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1413,7 +1413,7 @@ Doing so ensures that `.stat` file invalidation is not used and only TTL expirat
 
 >[!NOTE]
 >
->Keep in mind that setting `/enableTTL` to 1 enables TTL caching only on the dispatcher side. As such, the TTL information contained in the additional file (see above) is not provided to any other useragent requesting such a file type from the dispatcher. If you want to provide caching headers to downstream systems like a CDN or a browser, you should configure the `/cache/headers` section accordingly.
+>Keep in mind that setting `/enableTTL` to 1 enables TTL caching only on the Dispatcher side. As such, the TTL information contained in the additional file (see above) is not provided to any other user agent requesting such a file type from the Dispatcher. If you want to provide caching headers to downstream systems like a CDN or a browser, you should configure the `/cache/headers` section accordingly.
 
 >[!NOTE]
 >
@@ -1521,13 +1521,13 @@ When a page is composed of content from several content nodes, include the `/pat
 }
 ```
 
-### httpOnly {#httponly}
+### `httpOnly` {#httponly}
 
 When sticky connections are enabled, the Dispatcher module sets the `renderid` cookie. This cookie does not have the `httponly` flag, which should be added to enhance security. You add the `httponly` flag by setting the `httpOnly` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either `0` or `1`) defines whether the `renderid` cookie has the `HttpOnly` attribute appended. The default value is `0`, which means the attribute is not added.
 
-For additional information about the `httponly` flag, read [this page](https://www.owasp.org/index.php/HttpOnly).
+For additional information about the `httponly` flag, read [this page](https://owasp.org/www-community/HttpOnly).
 
-### secure {#secure}
+### `secure` {#secure}
 
 When sticky connections are enabled, the Dispatcher module sets the `renderid` cookie. This cookie does not have the `secure` flag, which should be added to enhance security. You add the `secure` flag setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either `0` or `1`) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is `0`, which means the attribute is added **if** the incoming request is secure. If the value is set to `1`, then the secure flag is added regardless of whether the incoming request is secure or not.
 
@@ -1551,7 +1551,7 @@ Use the `/health_check` property to specify a URL that is checked when a 500 sta
 
 The `/retryDelay` property sets the time (in seconds) that Dispatcher waits between rounds of connection attempts with the farm renders. For each round, the maximum number of times Dispatcher attempts a connection to a render is the number of renders in the farm.
 
-Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The default value is appropriate usually.
+Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The default value is appropriate.
 
 ```xml
 /retryDelay "1"
@@ -1620,7 +1620,7 @@ Setting `/ignoreEINTR` to `"1"` causes Dispatcher to continue to attempt to read
 
 ## Designing Patterns for glob Properties {#designing-patterns-for-glob-properties}
 
-Several sections in the Dispatcher configuration file use `glob` properties as selection criteria for client requests. The values of `glob` properties are patterns that Dispatcher compares to an aspect of the request, such as the path of the requested resource, or the IP address of the client. For example, the items in the `/filter` section use `glob` patterns to identify the paths of the pages that Dispatcher acts on or rejects.
+Several sections in the Dispatcher configuration file can use `glob` properties as selection criteria for client requests. The values of `glob` properties are patterns that Dispatcher compares to an aspect of the request, such as the path of the requested resource, or the IP address of the client. For example, the items in the `/filter` section use `glob` patterns to identify the paths of the pages that Dispatcher acts on or rejects.
 
 The `glob` values can include wildcard characters and alphanumeric characters to define the pattern.
 
@@ -1752,7 +1752,7 @@ See the Apache web server documentation on Log Rotation and Piped Logs. For exam
 >
 >After installation, the default log level is high (that is, level 3 = Debug), so that the Dispatcher logs all errors and warnings. This level is useful in the initial stages.
 >
->However, such a level requires additional resources. When the Dispatcher is working smoothly *according to your requirements*, you can lower the log level.
+>However, such a level requires more resources. When the Dispatcher is working smoothly *according to your requirements*, you can lower the log level.
 
 ### Trace Logging {#trace-logging}
 

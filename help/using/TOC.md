@@ -22,7 +22,7 @@ role: Admin
 + Configuring {#configuring}
   + [Configuring Dispatcher](dispatcher-configuration.md)
   + [Invalidating Cached Pages From AEM](page-invalidate.md)
-  + [Optimizing a Website for Cache Performance](https://helpx.adobe.com/experience-manager/6-5/sites/deploying/using/configuring-performance.html)
+  + [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
   + [Caching Secured Content](permissions-cache.md)
   + [Using Dispatcher with Multiple Domains ](dispatcher-domains.md)
   + [Using SSL with Dispatcher](dispatcher-ssl.md)
