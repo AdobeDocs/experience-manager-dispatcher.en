@@ -1,8 +1,6 @@
 ---
-title: Dispatcher top issues
-seo-title: Top issues for AEM Dispatcher
-description: Top issues for AEM Dispatcher
-seo-description: Top issues for Adobe AEM Dispatcher
+title: Top issues for Dispatcher
+description: Top issues for Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 ---
 # AEM Dispatcher Top Issues FAQ
@@ -13,7 +11,7 @@ exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 
 ### What is the Dispatcher?
 
-The Dispatcher is Adobe Experience Manager's caching and/or load-balancing tool that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache. It has the aim of storing (or "caching") as much of the static website content as possible and accessing the website's layout engine as infrequently as possible. In a load-balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
+The Dispatcher is Adobe Experience Manager's caching and/or load-balancing tool that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache. It has the aim of storing (or "caching") as much of the static website content as possible and accessing the layout of the website's engine as infrequently as possible. In a load-balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
 
 For caching, the Dispatcher module uses the Web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the Web server.
 
@@ -76,9 +74,9 @@ For some applications, it can be possible to use both sticky connections and cac
 
 ### Can a Dispatcher and an AEM Publish instance reside on the same physical machine?
 
-Yes, if the machine is sufficiently powerful. However, it is recommended that you set up the Dispatcher and the AEM Publish instance on different machines.
+Yes, if the machine is sufficiently powerful. However, you should set up the Dispatcher and the AEM Publish instance on different computers.
 
-Usually, the Publish instance resides inside the firewall and the Dispatcher resides in the DMZ. If you decide to have both the Publish instance and Dispatcher on the same physical machine, ensure that the firewall settings prohibit direct access to the Publish instance from external networks.
+Usually, the Publishing instance resides inside the firewall and the Dispatcher resides in the DMZ. If you decide to have both the Publishing instance and Dispatcher on the same physical machine, ensure that the firewall settings prohibit direct access to the Publishing instance from external networks.
 
 ### Can I cache only files with specific extensions?
 
@@ -111,7 +109,7 @@ See the [Caching Secure Content](permissions-cache.md) page.
 
 ### How do I secure communications between the Dispatcher and CQ instances?
 
-See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Security Checklist](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=en) pages.
+See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Security Checklist](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist) pages.
 
 ### Dispatcher issue `jcr:content` changed to `jcr%3acontent`
 
@@ -125,7 +123,7 @@ Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-
 
 ### How do I configure Dispatcher flush agents on a Publish instance?
 
-See the [Replication](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=en#configuring-your-replication-agents) page.
+See the [Replication](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents) page.
 
 ### How do I troubleshoot Dispatcher flushing issues?
 
@@ -135,7 +133,7 @@ If Delete operations are causing the Dispatcher to flush, [use the workaround in
 
 ### How do I flush DAM assets from the Dispatcher cache?
 
-You can use the "chain replication" feature. With this feature enabled, the Dispatcher flush agent sends a flush request when a replication is received from author.
+You can use the "chain replication" feature. With this feature enabled, the Dispatcher's flush agent sends a flush request when a replication is received from author.
 
 To enable it:
 
@@ -144,10 +142,10 @@ To enable it:
 
 ## Miscellaneous
 
-How does the Dispatcher determine if a document is up-to-date?
-To determine whether a document is up-to-date, the Dispatcher performs these actions:
+How does the Dispatcher determine if a document is up to date?
+To determine whether a document is up to date, the Dispatcher performs these actions:
 
-It checks whether the document is subject to auto-invalidation. If not, the document is considered up-to-date.
+It checks whether the document is subject to auto-invalidation. If not, the document is considered up to date.
 If the document is configured for auto-invalidation, the Dispatcher checks whether it is older or newer than the last change available. If it is older, the Dispatcher requests the current version from the AEM instance and replaces the version in the cache.
 
 ### How does the Dispatcher return documents?

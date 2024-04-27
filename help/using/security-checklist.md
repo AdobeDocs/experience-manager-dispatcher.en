@@ -1,14 +1,10 @@
 ---
 title: The Dispatcher Security Checklist
-seo-title: The Dispatcher Security Checklist
 description: A security checklist that should be completed before going on production.
-seo-description: A security checklist that should be completed before going on production.
-uuid: 7bfa3202-03f6-48e9-8d2e-2a40e137ecbe
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: fbfafa55-c029-4ed7-ab3e-1bebfde18248
 jcr-lastmodifiedby: remove-legacypath-6-1
 index: y
 internal: n
@@ -28,23 +24,23 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-Adobe strongly recommends that you complete the following checklist before going on production.
+Adobe recommends that you complete the following checklist before going on production.
 
 >[!CAUTION]
 >
->You must also complete the Security Checklist of your version of AEM before going live. Please refer to the corresponding [Adobe Experience Manager documentation](https://helpx.adobe.com/experience-manager/6-5/sites/administering/using/security-checklist.html).
+>Complete the Security Checklist of your version of AEM before going live. See the corresponding [Adobe Experience Manager documentation](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/security-checklist).
 
 ## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
-You should install the latest available version that is available for your platform. You should upgrade your Dispatcher instance to use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](dispatcher-install.md).
+Install the latest version that is available for your platform. Be sure you upgrade your Dispatcher instance so that you use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
->You can check the current version of your dispatcher installation by looking at the dispatcher log file. 
+>Check the current version of your Dispatcher installation by looking at the Dispatcher log file. 
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
->To find the log file, inspect the dispatcher configuration in your `httpd.conf`.
+>To find the log file, inspect the Dispatcher configuration in your `httpd.conf`.
 
 ## Restrict Clients that Can Flush Your Cache {#restrict-clients-that-can-flush-your-cache}
 
@@ -52,7 +48,7 @@ Adobe recommends that you [limit the clients that can flush your cache.](dispatc
 
 ## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
 
-Adobe recommends to enable HTTPS transport layer on both author and publish instances.
+Adobe recommends enabling HTTPS transport layer on both the author and publish instance.
 
 <!-- 
 
@@ -73,23 +69,23 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 ## Restrict Access {#restrict-access}
 
-When configuring the Dispatcher you should restrict external access as much as possible. See [Example /filter Section](dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
+When configuring the Dispatcher, restrict external access as much as possible. See [Example /filter Section](dispatcher-configuration.md#main-pars_184_1_title) in the Dispatcher documentation.
 
 ## Make Sure Access to Administrative URLs is Denied {#make-sure-access-to-administrative-urls-is-denied}
 
 Make sure you use filters to block external access to any administrative URLs, such as the Web Console.
 
-See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
+See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that must be blocked.
 
 ## Use Allowlists Instead Of Blocklists {#use-allowlists-instead-of-blocklists}
 
-Allowlists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the allowlist. This model provides more restrictive control over new requests that might not have been reviewed yet or taken into consideration during a certain configuration stage.
+Allowlists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the allowlist. This model provides more restrictive control over new requests that might not have been reviewed yet or considered during a certain configuration stage.
 
 ## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
-When configuring the Dispatcher you should ensure that the web server is ran by a dedicated user with least privileges. It is recommended to only grant write access to the dispatcher cache folder.
+When configuring the Dispatcher, you should ensure that the web server is ran by a dedicated user with least privileges. It is recommended to only grant write access to the Dispatcher cache folder.
 
-Additionally, IIS users need to configure their website as follows:
+Also, IIS users must configure their website as follows:
 
 1. In the physical path setting for your web site, select **Connect as specific user**.
 1. Set the user.
@@ -98,11 +94,11 @@ Additionally, IIS users need to configure their website as follows:
 
 A denial of service (DoS) attack is an attempt to make a computer resource unavailable to its intended users.
 
-At the dispatcher level, there are two methods of configuring to prevent DoS attacks: [](https://docs.adobe.com/content/docs/en/dispatcher.html#/filter (Filters))
+At the Dispatcher level, there are [two methods of configuring to prevent DoS attacks](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780).
 
 * Use the mod_rewrite module (for example, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).
 
-* Prevent the dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).  
+* Prevent the Dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).  
   For example, change the caching rules to limit caching to the expected mime types, such as:
 
     * `.html`
@@ -128,7 +124,7 @@ Then, configure filters to allow access to the following node paths:
 * `/etc/segmentation.segment.js`
 * `/libs/cq/personalization/components/clickstreamcloud/content/config.json`
 * `/libs/wcm/stats/tracker.js`
-* `/libs/cq/personalization/*` (JS, CSS and JSON)
+* `/libs/cq/personalization/*` (JS, CSS, and JSON)
 * `/libs/cq/security/userinfo.json` (CQ user information)
 * `/libs/granite/security/currentuser.json` (**data must not be cached**)  
 
@@ -146,17 +142,19 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM provides a [framework](https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. In order to properly make use of this framework, you need to allowlist CSRF token support in the dispatcher. You can do this by:
+AEM provides a [framework](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. To properly use this framework, you must allowlist CSRF token support in the Dispatcher.
+<!-- OLD URL ABOVE USED TO BE https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps -->
+You can accomplish this by doing the following:
 
 1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
 1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
 
 ## Prevent Clickjacking {#prevent-clickjacking}
 
-To prevent clickjacking we recommend that you configure your webserver to provide the `X-FRAME-OPTIONS` HTTP header set to `SAMEORIGIN`.  
+To prevent clickjacking, Adobe recommends that you configure your webserver to provide the `X-FRAME-OPTIONS` HTTP header set to `SAMEORIGIN`.  
   
-For more [information on clickjacking please see the OWASP site](https://owasp.org/www-community/attacks/Clickjacking).
+For more information on clickjacking, see the [OWASP site](https://owasp.org/www-community/attacks/Clickjacking).
 
 ## Perform a Penetration Test {#perform-a-penetration-test}
 
-Adobe strongly recommends to perform a penetration test of your AEM infrastructure before going on production.
+Adobe recommends performing a penetration test of your AEM infrastructure before going on production.

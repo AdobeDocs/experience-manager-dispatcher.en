@@ -1,9 +1,6 @@
 ---
 title: Troubleshooting Dispatcher Problems
-seo-title: Troubleshooting AEM Dispatcher Problems
 description: Learn to troubleshoot Dispatcher issues.
-seo-description: Learn to troubleshoot AEM Dispatcher issues.
-uuid: 9c109a48-d921-4b6e-9626-1158cebc41e7
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -11,7 +8,6 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: a612e745-f1e6-43de-b25a-9adcaadab5cf
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 ---
 # Troubleshooting Dispatcher Problems {#troubleshooting-dispatcher-problems}
@@ -24,7 +20,7 @@ exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 
 >[!NOTE]
 >
->Check the [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
+>Check the [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]), and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
 
 ## Check the Basic Configuration {#check-the-basic-configuration}
 
