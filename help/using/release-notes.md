@@ -16,14 +16,14 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 |Version|4.3.7|
 |Type|Minor Release|
 |Date|March 27, 2024|
-|Download URL|<ul><li>[Apache 2.4](#apache)</li><li>[Microsoft Internet Information Services (IIS)](#iis)</li></ul>|
+|Download URL|<ul><li>[Apache 2.4](#apache)</li><li>[Microsoft&reg; Internet Information Services (IIS)](#iis)</li></ul>|
 |Compatibility|AEM 6.1 or higher|
 
 ## System requirements and prerequisites {#system-requirements-and-prerequisites}
 
 See [Supported Platforms](https://experienceleague.adobe.com/en/docs/experience-manager-64/deploying/introduction/technical-requirements) for more information about requirements and prerequisites.
 
-Adobe strongly recommends using the latest version of AEM Dispatcher to benefit from the latest functionality, the most recent bug fixes, and the best possible performance.
+Adobe recommends using the latest version of AEM Dispatcher to benefit from the latest functionality, the most recent bug fixes, and the best possible performance.
 
 ## Installation instructions {#installation-instructions}
 
@@ -44,9 +44,9 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Improvements**:
 
-* DISP-911 AEM‑05 ‑ X‑Edge‑Key can be leaked in disp_apache2.c
-* DISP-937 logging all selectors
-* DISP-998 making loading of vanity urls at startup configurable
+* DISP-911 AEM‑05 ‑ X‑Edge‑Key can be leaked in disp_apache2.c.
+* DISP-937 logging all selectors.
+* DISP-998 making loading of vanity urls at startup configurable.
 
 ### Release 4.3.5 (2022-Apr-04) {#apr}
 
@@ -59,8 +59,8 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Bug Fixes**:
 
-* DISP-833 - X-Forwarded-Host headers may contain a list of comma separated hostnames
-* DISP-835 - DispatcherUseForwardedHost swallows Host header if it comes last
+* DISP-833 - X-Forwarded-Host headers may contain a list of comma-separated hostnames.
+* DISP-835 - DispatcherUseForwardedHost swallows Host header if it comes last.
 
 **Improvements**:
 
@@ -170,7 +170,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ### Apache 2.4 {#apache}
 
-|Platform|Architecture|OpenSSL Support|Download|
+|Platform|Architecture|OpenSSL support|Click to download|
 |---|---|---|---|
 |Linux&reg;|i686 (32-bit)|None| [dispatcher-apache2.4-linux-i686-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-4.3.7.tar.gz)|
 |Linux&reg;|i686 (32-bit)|1.0| [dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-i686-ssl1.0-4.3.7.tar.gz)|
@@ -189,12 +189,12 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 ### IIS {#iis}
 
-|Platform|Architecture|OpenSSL Support|Download|
+|Platform|Architecture|OpenSSL support|Click to download|
 |---|---|---|---|
-|Windows|x86 (32-bit)|None| [dispatcher-iis-windows-x86-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.7.zip)|
-|Windows|x86 (32-bit)|1.0| [dispatcher-iis-windows-x86-ssl1.0-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.7.zip)|
-|Windows|x86 (32-bit)|1.1| [dispatcher-iis-windows-x86-ssl1.1-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.7.zip)|
-|Windows|x64 (64-bit)|None| [dispatcher-iis-windows-x64-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.7.zip)|
-|Windows|x64 (64-bit)|1.0| [dispatcher-iis-windows-x64-ssl1.0-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.7.zip)|
-|Windows|x64 (64-bit)|1.1| [dispatcher-iis-windows-x64-ssl1.1-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.7.zip)|
-|Windows|x64 (64-bit)|3.0| [dispatcher-iis-windows-x64-ssl3.0-4.3.7.zip](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl3.0-4.3.7.zip)|
+|Windows|x86 (32&ndash;bit)|None| [`dispatcher-iis-windows-x86-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-4.3.7.zip)|
+|Windows|x86 (32&ndash;bit)|1.0| [`dispatcher-iis-windows-x86-ssl1.0-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.0-4.3.7.zip)|
+|Windows|x86 (32&ndash;bit)|1.1| [`dispatcher-iis-windows-x86-ssl1.1-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x86-ssl1.1-4.3.7.zip)|
+|Windows|x64 (64&ndash;bit)|None| [`dispatcher-iis-windows-x64-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-4.3.7.zip)|
+|Windows|x64 (64&ndash;bit)|1.0| [`dispatcher-iis-windows-x64-ssl1.0-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.0-4.3.7.zip)|
+|Windows|x64 (64&ndash;bit)|1.1| [`dispatcher-iis-windows-x64-ssl1.1-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl1.1-4.3.7.zip)|
+|Windows|x64 (64&ndash;bit)|3.0| [`dispatcher-iis-windows-x64-ssl3.0-4.3.7.zip`](https://download.macromedia.com/dispatcher/download/dispatcher-iis-windows-x64-ssl3.0-4.3.7.zip)|

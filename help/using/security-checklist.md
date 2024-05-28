@@ -24,7 +24,7 @@ Last Modified Date: 2015-06-05T05:14:35.365-0400
 
  -->
 
-Adobe strongly recommends that you complete the following checklist before going on production.
+Adobe recommends that you complete the following checklist before going on production.
 
 >[!CAUTION]
 >
@@ -75,17 +75,17 @@ When configuring the Dispatcher, restrict external access as much as possible. S
 
 Make sure you use filters to block external access to any administrative URLs, such as the Web Console.
 
-See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that need to be blocked.
+See [Testing Dispatcher Security](dispatcher-configuration.md#testing-dispatcher-security) for a list of URLs that must be blocked.
 
 ## Use Allowlists Instead Of Blocklists {#use-allowlists-instead-of-blocklists}
 
-Allowlists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the allowlist. This model provides more restrictive control over new requests that might not have been reviewed yet or taken into consideration during a certain configuration stage.
+Allowlists are a better way of providing access control since inherently, they assume that all access requests should be denied unless they are explicitly part of the allowlist. This model provides more restrictive control over new requests that might not have been reviewed yet or considered during a certain configuration stage.
 
 ## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
 When configuring the Dispatcher, ensure that the web server is ran by a dedicated user with least privileges. It is recommended that you only grant write access to the Dispatcher cache folder.
 
-Additionally, IIS users need to configure their website as follows:
+Also, IIS users must configure their website as follows:
 
 1. In the physical path setting for your web site, select **Connect as a specific user**.
 1. Set the user.
@@ -124,7 +124,7 @@ Then, configure filters to allow access to the following node paths:
 * `/etc/segmentation.segment.js`
 * `/libs/cq/personalization/components/clickstreamcloud/content/config.json`
 * `/libs/wcm/stats/tracker.js`
-* `/libs/cq/personalization/*` (JS, CSS and JSON)
+* `/libs/cq/personalization/*` (JS, CSS, and JSON)
 * `/libs/cq/security/userinfo.json` (CQ user information)
 * `/libs/granite/security/currentuser.json` (**data must not be cached**)  
 
@@ -156,3 +156,4 @@ For more information on clickjacking, see the [OWASP site](https://owasp.org/www
 ## Perform a Penetration Test {#perform-a-penetration-test}
 
 Adobe strongly recommends performing a penetration test of your AEM infrastructure before going on production.
+

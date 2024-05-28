@@ -1,14 +1,10 @@
 ---
 title: Using SSL with Dispatcher
-seo-title: Using SSL with Dispatcher
 description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
-seo-description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
-uuid: 1a8f448c-d3d8-4798-a5cb-9579171171ed
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 771cfd85-6c26-4ff2-a3fe-dff8d8f7920b
 index: y
 internal: n
 snippet: y
@@ -16,7 +12,7 @@ exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 ---
 # Using SSL with Dispatcher {#using-ssl-with-dispatcher}
 
-Use SSL connections between Dispatcher and the render computer:
+Use SSL connections between Dispatcher and the rendering computer:
 
 * [One-way SSL](#use-ssl-when-dispatcher-connects-to-aem)
 * [Mutual SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -31,9 +27,9 @@ Configure Dispatcher to communicate with the AEM or CQ render instance using SSL
 
 Before you configure Dispatcher, configure AEM or CQ to use SSL:
 
-* AEM 6.2: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en)
-* AEM 6.1: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en)
-* Older AEM versions: see [this page](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en).
+* AEM 6.2: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Older AEM versions: see [this page](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
 
 ### SSL-Related Request Headers {#ssl-related-request-headers}
 
@@ -127,14 +123,14 @@ To configure mutual SSL, you require certificates that are signed by a trusted c
 
 To configure mutual SSL, perform the following steps:
 
-1. [Install](dispatcher-install.md) the latest version of Dispatcher for your platform. Use a Dispatcher binary that supports SSL (SSL is in the file name, such as dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar).
+1. [Install](dispatcher-install.md) the latest version of Dispatcher for your platform. Use a Dispatcher binary that supports SSL (SSL is in the file name, such as `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. [Create or obtain CA-signed certificate](dispatcher-ssl.md#main-pars-title-3) for Dispatcher and the render instance. 
 1. [Create a keystore containing render certificate](dispatcher-ssl.md#main-pars-title-6) and configure the render's HTTP service.
 1. [Configure the Dispatcher web server module](dispatcher-ssl.md#main-pars-title-4) for mutual SSL.
 
 ### Creating or Obtaining CA-Signed Certificates {#creating-or-obtaining-ca-signed-certificates}
 
-Create or obtain the CA-signed certificates that authenticate the publish instance and Dispatcher.
+Create or obtain the CA-signed certificates that authenticate the publishing instance and Dispatcher.
 
 #### Creating Your CA {#creating-your-ca}
 
@@ -155,10 +151,10 @@ If you are acting as the CA, use [OpenSSL](https://www.openssl.org/) to create t
 
 Use OpenSSL to create the certificate requests to send to the third-party CA or to sign with your CA.
 
-When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you are configuring Dispatcher to accept the certificate, and only if it matches the hostname of the Publish instance. (See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) property.)
+When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you configure Dispatcher to accept the certificate. Do this only if it matches the hostname of the Publishing instance. See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) property.
 
 1. Open a terminal and change the current directory to the directory that contains the CH.sh file of your OpenSSL libraries.
-1. Enter the following command and provide values when prompted. If necessary, use the host name of the publish instance as the Common Name. The host name is DNS-resolvable name for the IP address of the render:
+1. Enter the following command and provide values when prompted. If necessary, use the host name of the publishing instance as the Common Name. The host name is DNS-resolvable name for the IP address of the render:
 
    ```shell
    ./CA.sh -newreq
@@ -172,7 +168,7 @@ When you create a certificate, OpenSSL uses the Common Name property to identify
    ./CA.sh -sign
    ```
 
-   Two files named `newcert.pem` and `newkey.pem` are created in the directory that contains your CA management files. These two files are the public certificate and private key for the render computer, respectively.
+   Two files named `newcert.pem` and `newkey.pem` are created in the directory that contains your CA management files. These two files are the public certificate and private key for the rendering computer, respectively.
 
 1. Rename `newcert.pem` to `rendercert.pem`, and rename `newkey.pem` to `renderkey.pem`.
 1. Repeat steps 2 and 3 to create a certificate and a public key for the Dispatcher module. Ensure that you use a Common Name that is specific to the Dispatcher instance.
@@ -245,11 +241,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configuring the Render Instance {#configuring-the-render-instance}
 
-To configure the HTTP service of the render instance to use SSL, use the render certificate with the instructions in the *Enable SSL on the Publish Instance* section:
+To configure the HTTP service of the render instance to use SSL, use the render certificate with the instructions in the *`Enable SSL on the Publish Instance`* section:
 
-* AEM 6.2: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en)
-* AEM 6.1: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en)
-* Older AEM versions: see [this page.](https://experienceleague.adobe.com/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions.html?lang=en)
+* AEM 6.2: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Older AEM versions: see [this page.](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
 ### Configuring SSL for the Dispatcher Module {#configuring-ssl-for-the-dispatcher-module}
 

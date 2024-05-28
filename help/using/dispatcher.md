@@ -4,7 +4,6 @@ description: Learn to use the Adobe Experience Manager Dispatcher for improved s
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 1d449ee2-4cdd-4b7a-8b4e-7e6fc0a1d7ee
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 ---
 # Dispatcher Overview {#dispatcher-overview}
@@ -13,7 +12,7 @@ exl-id: c9266683-6890-4359-96db-054b7e856dd0
 >
 >Dispatcher versions are independent of AEM (Adobe Experience Manager). You may have been redirected to this page if you followed a link to the Dispatcher documentation. That link was embedded in the documentation for a previous version of AEM.
 
-Dispatcher is Adobe Experience Manager's caching and load balancing tool that is used with an enterprise-class web server.
+Dispatcher is Adobe Experience Manager's caching and load-balancing tool that is used with an enterprise-class web server.
 
 The process for deploying the AEM Dispatcher is independent of the web server and the OS platform chosen:
 
@@ -53,7 +52,7 @@ Use the following information as required:
 There are two basic approaches to web publishing:
 
 * **Static Web Servers**: such as Apache or IIS, are simple, but fast.
-* **Content Management Servers**: which provide dynamic, real-time, intelligent content, but require much more computation time and other resources.
+* **Content Management Servers**: which provide dynamic, real-time, intelligent content, but require more computation time and other resources.
 
 The Dispatcher helps realize an environment that is both fast and dynamic. It works as part of a static HTML server, such as Apache, with the aim of:
 
@@ -167,11 +166,11 @@ The Dispatcher stores the cached files on the web server as if they were part of
 * if the document is cached, Dispatcher returns the file.
 * if it is not cached, the Dispatcher requests the document from the AEM instance.
 
-### Determining if a document is up-to-date
+### Determining if a document is up to date
 
 To find out if a document is up to date, the Dispatcher performs two steps:
 
-1. It checks whether the document is subject to auto-invalidation. If not, the document is considered up-to-date.
+1. It checks whether the document is subject to auto-invalidation. If not, the document is considered up to date.
 1. If the document is configured for auto-invalidation, the Dispatcher checks whether it is older or newer than the last change available. If it is older, the Dispatcher requests the current version from the AEM instance and replaces the version in the cache.
 
 >[!NOTE]
@@ -255,7 +254,7 @@ Usually, Dispatcher is the next server that might serve the document from a cach
 
 ## Controlling a CDN cache {#controlling-a-cdn-cache}
 
-There are several ways to control for how long a CDN caches a resource before it re-fetches it from Dispatcher.
+There are several ways to control for how long a CDN caches a resource before it refetches it from Dispatcher.
 
 1. Explicit configuration  
    Configure, how long particular resources are held in the CDN's cache, depending on mime type, extension, request type, and so on.  

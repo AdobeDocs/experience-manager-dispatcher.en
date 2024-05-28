@@ -188,7 +188,7 @@ Each farm property can contain the following child properties:
 |--- |--- |
 |[/homepage](#specify-a-default-page-iis-only-homepage)|Default homepage (optional)(IIS only)|
 |[/clientheaders](#specifying-the-http-headers-to-pass-through-clientheaders)|The headers from the client HTTP request to pass through.|
-|[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|The virtual hosts for this farm.|
+|[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|This farm's virtual hosts.|
 |[/sessionmanagement](#enabling-secure-sessions-sessionmanagement)|Support for session management and authentication.|
 |[/renders](#defining-page-renderers-renders)|The servers that provide rendered pages (typically AEM publish instances).|
 |[/filter](#configuring-access-to-content-filter)|Defines the URLs to which the AEM Dispatcher enables access.|
@@ -407,7 +407,7 @@ The `/sessionmanagement` property is a subproperty of `/farms`.
 >
 >If sections of your website use different access requirements, you must define multiple farms.
 
-**/sessionmanagement** has several sub-parameters:
+**/sessionmanagement** has several subparameters:
 
 **/directory** (mandatory)
 
@@ -415,7 +415,7 @@ The directory that stores the session information. If the directory does not exi
 
 >[!CAUTION]
 >
-> When configuring the directory sub-parameter, **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. Always specify the path to the folder that stores the session information. For example:
+> When configuring the directory subparameter, **do not** point to the root folder (`/directory "/"`) as it can cause serious problems. Always specify the path to the folder that stores the session information. For example:
 
 ```xml
 /sessionmanagement
@@ -511,7 +511,7 @@ Specifies the connection timeout accessing the AEM instance in milliseconds. The
 
 Specifies the time in milliseconds that a response is allowed to take. The default is `"600000"`, causing Dispatcher to wait for 10 Minutes. A setting of `"0"` eliminates the timeout.
 
-If the timeout is reached while parsing response headers, an HTTP Status of 504 (Bad Gateway) is returned. If the timeout is reached while the response body is read, the Dispatcher returns the incomplete response to the client. It also deletes any cache file that might have been written.
+If the timeout is reached while parsing response headers, an HTTP Status of 504 (Bad Gateway) is returned. If the timeout is reached while the response body is read, the Dispatcher returns the incomplete response to the client. It also deletes any cached files that might have been written.
 
 **/ipv4**
 
@@ -523,7 +523,7 @@ Amazon Elastic Load Balancing (ELB) is such a service that responds to getaddrin
 
 **/secure**
 
-If the `/secure` property has a value of `"1"`, Dispatcher uses HTTPS to communicate with the AEM instance. For additional details, also see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
+If the `/secure` property has a value of `"1"`, Dispatcher uses HTTPS to communicate with the AEM instance. For more details, see [Configuring Dispatcher to Use SSL](dispatcher-ssl.md#configuring-dispatcher-to-use-ssl).
 
 **/always-resolve**
 
@@ -668,7 +668,7 @@ If you must access single pages within the restricted area, you can allow access
 
 >[!NOTE]
 >
->When multiple filters patterns apply to a request, the last applied filter pattern is effective.
+>When multiple filter patterns apply to a request, the last applied filter pattern is effective.
 
 #### Example filter: Using Regular Expressions {#example-filter-using-regular-expressions}
 
@@ -678,7 +678,7 @@ This filter enables extensions in non-public content directories using a regular
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### Example filter: Filter Additional Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
+#### Example filter: Filter extra Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
 
 Below is a rule example that blocks content grabbing from the `/content` path and its subtree, using filters for path, selectors, and extensions:
 
@@ -795,11 +795,11 @@ Consider the following recommendations if you do choose to extend access:
 
   * `/libs/opensocial/proxy*`
 
-Depending on your installation, there might be additional resources under `/libs`, `/apps` or elsewhere, that must be made available. You can use the `access.log` file as one method of determining resources that are being accessed externally.
+Depending on your installation, there might be more resources under `/libs`, `/apps` or elsewhere, that must be made available. You can use the `access.log` file as one method of determining resources that are being accessed externally.
 
 >[!CAUTION]
 >
->Access to consoles and directories can present a security risk for production environments. Unless you have explicit justifications, they should remain deactivated (commented out).
+>Access to consoles and directories can present a security risk for production environments. Unless you have explicit justification, they should remain deactivated (commented out).
 
 >[!CAUTION]
 >
@@ -952,7 +952,7 @@ If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndicat
 
 ## Configuring the Dispatcher Cache - `/cache` {#configuring-the-dispatcher-cache-cache}
 
-The `/cache` section controls how Dispatcher caches documents. Configure several sub-properties to implement your caching strategies:
+The `/cache` section controls how Dispatcher caches documents. Configure several subproperties to implement your caching strategies:
 
 * `/docroot`
 * `/statfile`
@@ -1148,7 +1148,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 Use the `/statfileslevel` property to invalidate cached files according to their path:
 
 * Dispatcher creates `.stat`files in each folder from the docroot folder to the level that you specify. The docroot folder is level 0.
-* Files are invalidated by touching the `.stat` file. The `.stat` file's last modification date is compared to the last modification date of a cached document. The document is re-fetched if the `.stat` file is newer.
+* Files are invalidated by touching the `.stat` file. The `.stat` file's last modification date is compared to the last modification date of a cached document. The document is refetched if the `.stat` file is newer.
 
 * When a file at a certain level is invalidated, **all** `.stat` files from the docroot **to** the level of the invalidated file or the configured `statsfilevel` (whichever is smaller) are touched.
 
@@ -1228,7 +1228,7 @@ It is called with the following arguments:
 
 This method can be used to cover several different use cases. For example, invalidating other application-specific caches, or to handle cases where the externalized URL of a page, and its place in the docroot, does not match the content path.
 
-Below example script logs each invalidate request to a file.
+Below example script logs each invalidated request to a file.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1380,7 +1380,7 @@ With the default `/invalidate` property, every activation effectively invalidate
 
 The `/gracePeriod` property defines the number of seconds a stale, auto-invalidated resource may still be served from the cache after the last occurring activation. The property can be used in a setup where a batch of activations would otherwise repeatedly invalidate the entire cache. The recommended value is 2 seconds.
 
-For additional details, also read the `/invalidate` and `/statfileslevel`sections above.
+For more details, see `/invalidate` and `/statfileslevel`earlier.
 
 ### Configuring Time Based Cache Invalidation - `/enableTTL` {#configuring-time-based-cache-invalidation-enablettl}
 
@@ -1752,7 +1752,7 @@ See the Apache Web Server documentation on Log Rotation and Piped Logs. For exam
 >
 >After installation, the default log level is high (that is, level 3 = Debug), so that the Dispatcher logs all errors and warnings. This level is useful in the initial stages.
 >
->However, such a level requires additional resources. When the Dispatcher is working smoothly *according to your requirements*, you can lower the log level.
+>However, such a level requires more resources. When the Dispatcher is working smoothly *according to your requirements*, you can lower the log level.
 
 ### Trace Logging {#trace-logging}
 

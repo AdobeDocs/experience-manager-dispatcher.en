@@ -1,14 +1,10 @@
 ---
 title: Caching Secured Content
-seo-title: Caching Secured Content in AEM Dispatcher
 description: Learn how permission-sensitive caching works in Dispatcher.
-seo-description: Learn how permission-sensitive caching works in AEM Dispatcher.
-uuid: abfed68a-2efe-45f6-bdf7-2284931629d6
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: 4f9b2bc8-a309-47bc-b70d-a1c0da78d464
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 ---
 # Caching Secured Content {#caching-secured-content}
@@ -30,7 +26,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 ![](assets/chlimage_1.png)
 
 1. Dispatcher determines that the requested content is cached and valid.
-1. Dispatcher sends a request message to the render. The HEAD section includes all of the header lines from the browser request.
+1. Dispatcher sends a request message to the render. The HEAD section includes all the header lines from the browser request.
 1. The render calls the auth checker servlet to perform the security check and responds to Dispatcher. The response message includes an HTTP status code of 200 to indicate that the user is authorized.
 1. Dispatcher sends a response message to the browser that consists of the header lines from the render response and the cached content in the body.
 
@@ -67,8 +63,8 @@ To implement permission-sensitive caching, perform the following tasks:
 
 >[!NOTE]
 >
->When there is a CDN (or any other cache) in front of the dispatcher then you should set the caching headers accordingly so that the CDN does not cache the private content. For example: `Header always set Cache-Control private`.
->For AEM as a Cloud Service see the [Caching](https://experienceleague.adobe.com/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching.html) page for more details on how to set private caching headers.
+>When there is a CDN (or any other cache) in front of the Dispatcher, then you should set the caching headers accordingly so that the CDN does not cache the private content. For example: `Header always set Cache-Control private`.
+>For AEM as a Cloud Service, see the [Caching](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) page for more details on how to set private caching headers.
 
 ## Create the Auth Checker servlet {#create-the-auth-checker-servlet}
 
@@ -76,7 +72,7 @@ Create and deploy a servlet that performs the authentication and authorization o
 
 The servlet must be accessible to all users. Therefore, your servlet should extend the `org.apache.sling.api.servlets.SlingSafeMethodsServlet` class, which provides read-only access to the system.
 
-The servlet recieves only HEAD requests from the render, so you only need to implement the `doHead` method.
+The servlet receives only HEAD requests from the render, so you only must implement the `doHead` method.
 
 The render includes the URI of the requested resource as a parameter of the HTTP request. For example, an authorization servlet is accessed via `/bin/permissioncheck`. To perform a security check on the /content/geometrixx-outdoors/en.html page, the render includes the following URL in the HTTP request:
 
@@ -145,7 +141,7 @@ public class AuthcheckerServlet extends SlingSafeMethodsServlet {
 
 >[!NOTE]
 >
->If your requirements permit the caching of authenticated documents, set the /allowAuthorized property under the /cache section to `/allowAuthorized 1`. See [Caching When Authentication is Used](/help/using/dispatcher-configuration.md) for more details.
+>If your requirements permit the caching of authenticated documents, set the /allowAuthorized property under the /cache section to `/allowAuthorized 1`. See the topic [Caching When Authentication is Used](/help/using/dispatcher-configuration.md) for more details.
 
 The auth_checker section of the dispatcher.any file controls the behavior of permission-sensitive caching. The auth_checker section includes the following subsections:
 

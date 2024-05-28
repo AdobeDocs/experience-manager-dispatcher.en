@@ -20,7 +20,7 @@ exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 
 >[!NOTE]
 >
->Check the [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
+>Check the [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]), and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
 
 ## Check the Basic Configuration {#check-the-basic-configuration}
 

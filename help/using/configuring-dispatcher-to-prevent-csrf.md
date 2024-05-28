@@ -17,7 +17,9 @@ AEM (Adobe Experience Manager) provides a framework aimed at preventing Cross-Si
    `CSRF-Token`
 1. In the /filters section of your `author-farm.any` and `publish-farm.any` or `publish-filters.any` file, add the following line to allow requests for `/libs/granite/csrf/token.json` through the Dispatcher.  
    `/0999 { /type "allow" /glob " * /libs/granite/csrf/token.json*" }`
+
 1. Under the `/cache /rules` section of your `publish-farm.any`, add a rule to block the Dispatcher from caching the `token.json` file. Typically authors bypass caching, so you should not need to add the rule into your `author-farm.any`.  
+
    `/0999 { /glob "/libs/granite/csrf/token.json" /type "deny" }`
 
 To validate that the configuration is working, watch the dispatcher.log in DEBUG mode. It can help you to validate that the `token.json` file to ensure that it is not getting cached or blocked by filters. You should see messages similar to:  

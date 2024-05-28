@@ -20,6 +20,8 @@ The default `admin` user account is used to authenticate the replication agents 
 
 For more information, see the [Configure Replication and Transport Users](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) section of the AEM Security Checklist.
 
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+
 ## Invalidating Dispatcher Cache from the Authoring Environment {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 A replication agent on the AEM author instance sends a cache invalidation request to Dispatcher when a page is published. Dispatcher refreshes the file eventually in the cache as new content is published.
@@ -50,16 +52,17 @@ Use the following procedure to configure a replication agent on the AEM author i
 
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
 1. On the Transport tab, access Dispatcher by entering the URI.  
+
    If you are using the standard Dispatcher Flush agent, update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache 
   
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtual host entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.  
-1. Click OK to activate the agent.
+1. Click OK so you can activate the agent.
 
 Alternatively, you can also access and configure the Dispatcher Flush agent from the [AEM Touch UI](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
 
-For additional details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
+For more details on how to enable access to vanity URLs, see [Enabling Access To Vanity URLs](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
 >[!NOTE]
 >
@@ -104,7 +107,7 @@ A replication agent operating on the publish instance controls the Dispatcher fl
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtual host entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
 1. Configure other parameters as required.
-1. Log into the publish instance and validate the flush agent configuration. Also, make sure it is enabled.
+1. Log in to the publishing instance and validate the flush agent configuration. Also, make sure it is enabled.
 1. Repeat for every publish instance affected.
 
 After configuring, when you activate a page from author to publish, this agent initiates a standard replication. The log includes messages indicating requests coming from your publish server, similar to the following example:
@@ -144,7 +147,7 @@ Invalidation (that is, touching of .stat files) can be prevented by sending an a
 
 Issue an HTTP request that causes the AEM Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
 
-**Note:** Deleting and recaching files should be performed on the publish instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they have been published.
+**Note:** Deleting and recaching files should be performed on the publishing instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they have been published.
 
 The HTTP request has the following form:
 
@@ -174,7 +177,7 @@ Content-Length: 36
 
 ### Example flush servlet {#example-flush-servlet}
 
-The following code implements a servlet that sends an invalidate request to Dispatcher. The servlet receives a request message that contains `handle` and `page` parameters. These parameters provide the value of the `CQ-Handle` header and the path of the page to recache, respectively. The servlet uses the values to construct the HTTP request for Dispatcher.
+The following code implements a servlet that sends an invalidation request to Dispatcher. The servlet receives a request message that contains `handle` and `page` parameters. These parameters provide the value of the `CQ-Handle` header and the path of the page to recache, respectively. The servlet uses the values to construct the HTTP request for Dispatcher.
 
 When the servlet is deployed to the publish instance, the following URL causes the AEM Dispatcher to delete the /content/geometrixx-outdoors/en.html page and then cache a new copy.
 
