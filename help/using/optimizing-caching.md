@@ -1,14 +1,10 @@
 ---
 title: Optimizing a Website for Cache Performance
-seo-title: Optimizing a Website for Cache Performance
 description: Learn how to design your web site to maximize the benefits of caching.
-seo-description: Dispatcher offers a number of built-in mechanisms that you can use to optimize performance. Learn how to design your web site to maximize the benefits of caching.
-uuid: 2d4114d1-f464-4e10-b25c-a1b9a9c715d1
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-discoiquuid: ba323503-1494-4048-941d-c1d14f2e85b2
 redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
