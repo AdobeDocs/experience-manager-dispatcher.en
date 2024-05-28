@@ -1,6 +1,6 @@
 ---
 title: Invalidating Cached Pages From AEM
-description: Learn how to configure the interaction between Dispatcher and Adobe Experience Manager to ensure effective cache management.
+description: Learn how to configure the interaction between Dispatcher and AEM to ensure effective cache management.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
 template: /apps/docs/templates/contentpage
@@ -18,13 +18,13 @@ When using Dispatcher with AEM, the interaction must be configured to ensure eff
 
 The default `admin` user account is used to authenticate the replication agents that are installed by default. Create a dedicated user account for use with replication agents.
 
-For more information, see the [Configuration Replication and Transport Users](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) section of the AEM Security Checklist.
+For more information, see the [Configure Replication and Transport Users](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) section of the AEM Security Checklist.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidating Dispatcher Cache from the Authoring Environment {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-A replication agent on the AEM author instance sends a cache invalidation request to Dispatcher when a page is published. The request causes Dispatcher to eventually refresh the file in the cache as new content is published.
+A replication agent on the AEM author instance sends a cache invalidation request to Dispatcher when a page is published. Dispatcher refreshes the file eventually in the cache as new content is published.
 
 <!-- 
 
@@ -44,14 +44,15 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
  -->
 
-Use the following procedure to configure a replication agent on the AEM author instance for invalidating the Dispatcher cache upon page activation:
+Use the following procedure to configure a replication agent on the AEM author instance. The configuration invalidates the Dispatcher cache upon page activation:
 
 1. Open the AEM Tools console. (`https://localhost:4502/miscadmin#/etc`)
 1. Open the required replication agent below Tools/replication/Agents on author. You can use the Dispatcher Flush agent that is installed by default.
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.  
 
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
-1. On the Transport tab, enter the URI needed to access Dispatcher.  
+1. On the Transport tab, access Dispatcher by entering the URI.  
+
    If you are using the standard Dispatcher Flush agent, update the hostname and port; for example, https://&lt;*dispatcherHost*&gt;:&lt;*portApache*&gt;/dispatcher/invalidate.cache 
   
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtual host entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
@@ -65,13 +66,13 @@ For more details on how to enable access to vanity URLs, see [Enabling Access To
 
 >[!NOTE]
 >
->The agent for flushing Dispatcher cache does not have to have a user name and password, but if configured they are sent with basic authentication.
+>The agent for flushing the Dispatcher cache does not need a user name and password, but if configured they are sent with basic authentication.
 
 There are two potential issues with this approach:
 
-* The Dispatcher must be reachable from the authoring instance. If your network (for example, the firewall) is configured such that access between the two is restricted, this may not be the case.
+* The Dispatcher must be reachable from the authoring instance. If your network (for example, the firewall) is configured such that access between the two is restricted, this situation may not be the case.
 
-* Publication and cache invalidation take place at the same time. Depending on the timing, a user may request a page just after it was removed from the cache, and just before the new page is published. AEM now returns the old page, and the Dispatcher caches it again. This is more of an issue for large sites.
+* Publication and cache invalidation take place at the same time. Depending on the timing, a user may request a page just after it was removed from the cache, and just before the new page is published. AEM now returns the old page, and the Dispatcher caches it again. This situation is more of an issue for large sites.
 
 ## Invalidating Dispatcher Cache from a Publishing Instance {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
@@ -87,23 +88,21 @@ Comment Type: draft
 
  -->
 
-* Preventing possible timing conflicts between Dispatcher and the publish instance (see [Invalidating Dispatcher cache from the Authoring Environment](#invalidating-dispatcher-cache-from-the-authoring-environment)).
-* The system includes several publishing instances that reside on high-performance servers, and only one authoring instance.
+* Preventing possible timing conflicts between AEM Dispatcher and the publish instance (see [Invalidating Dispatcher cache from the Authoring Environment](#invalidating-dispatcher-cache-from-the-authoring-environment)).
+* The system includes several publishing instances that reside on high performance servers, and only one authoring instance.
 
 >[!NOTE]
 >
->The decision to use this method should be made by an experienced AEM administrator.
+>An experienced AEM administrator should make the decision to use this method.
 
-The Dispatcher flush is controlled by a replication agent operating on the publish instance. However, the configuration is made on the authoring environment and then transferred by activating the agent:
+A replication agent operating on the publish instance controls the Dispatcher flush. However, the configuration is made in the authoring environment and then transferred by activating the agent:
 
 1. Open the AEM Tools console.
 1. Open the required replication agent below Tools/replication/Agents on publish. You can use the Dispatcher Flush agent that is installed by default.
 1. Click Edit, and in the Settings tab ensure that **Enabled** is selected.
 1. (optional) To enable alias or vanity path invalidation requests select the **Alias update** option.
-1. On the Transport tab, enter the URI needed to access Dispatcher.  
-   If you are using the standard Dispatcher Flush agent, you must update the hostname and port. For example,
-
-   `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
+1. On the Transport tab, access Dispatcher by entering the needed URI.  
+   If you are using the standard Dispatcher Flush agent, update the hostname and port; for example, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache` 
   
    **Note:** For Dispatcher Flush agents, the URI property is used only if you use path-based virtual host entries to differentiate between farms. You use this field to target the farm to invalidate. For example, farm #1 has a virtual host of `www.mysite.com/path1/*` and farm #2 has a virtual host of `www.mysite.com/path2/*`. You can use a URL of `/path1/invalidate.cache` to target the first farm and `/path2/invalidate.cache` to target the second farm. For more information, see [Using Dispatcher with Multiple Domains](dispatcher-domains.md).
 
@@ -119,11 +118,11 @@ After configuring, when you activate a page from author to publish, this agent i
 
 To invalidate (or flush) the Dispatcher cache without activating a page, you can issue an HTTP request to the Dispatcher. For example, you can create an AEM application that enables administrators or other applications to flush the cache.
 
-The HTTP request causes Dispatcher to delete specific files from the cache. Optionally, the Dispatcher then refreshes the cache with a new copy.
+The HTTP request causes the AEM Dispatcher to delete specific files from the cache. Optionally, the Dispatcher then refreshes the cache with a new copy.
 
 ### Delete cached files {#delete-cached-files}
 
-Issue an HTTP request that causes Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files in this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
+Issue an HTTP request that causes the AEM Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files in this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
 
 The HTTP request has the following form:
 
@@ -138,15 +137,15 @@ Dispatcher flushes (deletes) the cached files and folders that have names that m
 
 * All files (of any file extension) named `en` in the `geometrixx-outdoors` directory
 
-* Any directory named " `_jcr_content`" below the en directory (which, if it exists, contains cached renderings of subnodes of the page)
+* Any directory named `_jcr_content` below the `en` directory (which, if it exists, contains cached renderings of sub-nodes of the page)
 
-All other files in the Dispatcher cache (or up to a particular level, depending on the `/statfileslevel` setting) are invalidated by touching the `.stat` file. This file's last modification date is compared to the last modification date of a cached document and the document is refetched if the `.stat` file is newer. See [Invalidating Files by Folder Level](dispatcher-configuration.md#main-pars_title_26) for details.
+All other files in the Dispatcher cache (or up to a particular level, depending on the `/statfileslevel` setting) are invalidated by touching the `.stat` file. This file's last modification date is compared to the last modification date of a cached document and the document is re-fetched if the `.stat` file is newer. See [Invalidating Files by Folder Level](dispatcher-configuration.md#main-pars_title_26) for details.
 
-Invalidation (that is, touching of .stat files) can be prevented by sending an additional Header `CQ-Action-Scope: ResourceOnly`. This can be used to flush particular resources without invalidating other parts of the cache, like JSON data that is dynamically created and requires regular flushing independent of the cache. For example, representing data that is obtained from a third-party system to display news, and stock tickers.
+Invalidation (that is, touching of .stat files) can be prevented by sending an additional Header `CQ-Action-Scope: ResourceOnly`. This functionality can be used to flush particular resources. All without invalidating other parts of the cache, like JSON data. That data is dynamically created and requires regular flushing independent of the cache. For example, representing data that is obtained from a third-party system to display news, stock tickers, and so on.
 
 ### Delete and recache files {#delete-and-recache-files}
 
-Issue an HTTP request that causes Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately recache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
+Issue an HTTP request that causes the AEM Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
 
 **Note:** Deleting and recaching files should be performed on the publishing instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they have been published.
 
@@ -164,7 +163,7 @@ page_path1
 page_pathn
 ```
 
-The page paths to immediately recache are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the `/content/geometrixx-outdoors/en.html page`:
+The page paths to re-cache immediately are listed on separate lines in the message body. The value of `CQ-Handle` is the path of a page that invalidates the pages to recache. (See the `/statfileslevel` parameter of the [Cache](dispatcher-configuration.md#main-pars_146_44_0010) configuration item.) The following example HTTP request message deletes and recaches the `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
@@ -180,7 +179,7 @@ Content-Length: 36
 
 The following code implements a servlet that sends an invalidation request to Dispatcher. The servlet receives a request message that contains `handle` and `page` parameters. These parameters provide the value of the `CQ-Handle` header and the path of the page to recache, respectively. The servlet uses the values to construct the HTTP request for Dispatcher.
 
-When the servlet is deployed to the publish instance, the following URL causes Dispatcher to delete the /content/geometrixx-outdoors/en.html page and then cache a new copy.
+When the servlet is deployed to the publish instance, the following URL causes the AEM Dispatcher to delete the /content/geometrixx-outdoors/en.html page and then cache a new copy.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

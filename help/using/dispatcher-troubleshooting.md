@@ -14,9 +14,9 @@ exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 
 >[!NOTE]
 >
->Dispatcher versions are independent of AEM, however the Dispatcher documentation is embedded in the AEM documentation. Always use the Dispatcher documentation that is embedded in the documentation for the latest version of AEM.
+>Dispatcher versions are independent of AEM. However, the Dispatcher documentation is embedded in the AEM documentation. Always use the Dispatcher documentation that is embedded in the documentation for the latest version of AEM.
 >
->You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
+>You may have been redirected to this page if you followed a link to the Dispatcher documentation. That link is embedded in the documentation for a previous version of AEM.
 
 >[!NOTE]
 >
@@ -24,7 +24,7 @@ exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 
 ## Check the Basic Configuration {#check-the-basic-configuration}
 
-As always the first steps are to check the basics:
+As always, the first steps are to check the basics:
 
 * [Confirm Basic Operation](/help/using/dispatcher-configuration.md#confirming-basic-operation)
 * Check all log files for your web server and Dispatcher. If necessary, increase the `loglevel` used for the Dispatcher [logging](/help/using/dispatcher-configuration.md#logging).
@@ -72,7 +72,7 @@ Problems trying to delete workflow models when accessing an AEM author instance 
 
 1. Click **Yes** to confirm.
 1. An error message box appears that shows the following:  
-   " `ERROR 'Could not delete workflow model!!`".
+   `ERROR 'Could not delete workflow model!!`.
 
 **Resolution**
 

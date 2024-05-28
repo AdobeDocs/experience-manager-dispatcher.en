@@ -1,6 +1,6 @@
 ---
 title: The Dispatcher Security Checklist
-description: A security checklist that should be completed before going on production.
+description: Learn about the Dispatcher Security Checklist that should be completed before going on production.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -32,11 +32,11 @@ Adobe recommends that you complete the following checklist before going on produ
 
 ## Use the Latest Version of Dispatcher {#use-the-latest-version-of-dispatcher}
 
-Install the latest version that is available for your platform. Be sure you upgrade your Dispatcher instance so that you use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](dispatcher-install.md).
+Install the latest available version that is available for your platform. Upgrade your Dispatcher instance to use the latest version to take advantage of product and security enhancements. See [Installing Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
->Check the current version of your Dispatcher installation by looking at the Dispatcher log file. 
+>You can check the current version of your Dispatcher installation by looking at the Dispatcher log file. 
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
@@ -46,9 +46,9 @@ Install the latest version that is available for your platform. Be sure you upgr
 
 Adobe recommends that you [limit the clients that can flush your cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## Enable HTTPS for transport layer security {#enable-https-for-transport-layer-security}
+## Enable the HTTPS for transport layer security {#enable-https-for-transport-layer-security}
 
-Adobe recommends enabling HTTPS transport layer on both the author and publish instance.
+Adobe recommends enabling the HTTPS transport layer on both author and publishing instances.
 
 <!-- 
 
@@ -83,22 +83,22 @@ Allowlists are a better way of providing access control since inherently, they a
 
 ## Run Dispatcher with a Dedicated System User {#run-dispatcher-with-a-dedicated-system-user}
 
-When configuring the Dispatcher, you should ensure that the web server is ran by a dedicated user with least privileges. It is recommended to only grant write access to the Dispatcher cache folder.
+When configuring the Dispatcher, ensure that the web server is ran by a dedicated user with least privileges. It is recommended that you only grant write access to the Dispatcher cache folder.
 
 Also, IIS users must configure their website as follows:
 
-1. In the physical path setting for your web site, select **Connect as specific user**.
+1. In the physical path setting for your web site, select **Connect as a specific user**.
 1. Set the user.
 
 ## Prevent Denial of Service (DoS) Attacks {#prevent-denial-of-service-dos-attacks}
 
 A denial of service (DoS) attack is an attempt to make a computer resource unavailable to its intended users.
 
-At the Dispatcher level, there are [two methods of configuring to prevent DoS attacks](https://experienceleaguecommunities.adobe.com/t5/adobe-experience-manager/configure-aem-dispatcher-to-prevent-dos-attacks-aem-community/m-p/447780).
+At the Dispatcher level, there are two methods of configuring to prevent DoS attacks: [Filters](https://experienceleague.adobe.com/en/docs#/filter)
 
 * Use the mod_rewrite module (for example, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) to perform URL validations (if the URL pattern rules are not too complex).
 
-* Prevent the Dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-conten-tfilter).  
+* Prevent the Dispatcher from caching URLs with spurious extensions by using [filters](dispatcher-configuration.md#configuring-access-to-content-filter).  
   For example, change the caching rules to limit caching to the expected mime types, such as:
 
     * `.html`
@@ -110,9 +110,9 @@ At the Dispatcher level, there are [two methods of configuring to prevent DoS at
     * `.pdf`
     * `.ppt`
 
-  An example configuration file can be seen for [restricting external access](#restrict-access), this includes restrictions for mime types.
+  An example configuration file can be seen for [restricting external access](#restrict-access). It includes restrictions for mime types.
 
-To safely enable full functionality on the publish instances, configure filters to prevent access to the following nodes:
+To enable full functionality on the publish instances, configure filters to prevent access to the following nodes:
 
 * `/etc/`
 * `/libs/`
@@ -142,9 +142,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
 ## Configure Dispatcher to prevent CSRF Attacks {#configure-dispatcher-to-prevent-csrf-attacks}
 
-AEM provides a [framework](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. To properly use this framework, you must allowlist CSRF token support in the Dispatcher.
-<!-- OLD URL ABOVE USED TO BE https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#verification-steps -->
-You can accomplish this by doing the following:
+AEM provides a [framework](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) aimed at preventing Cross-Site Request Forgery attacks. To make proper use of this framework, allowlist CSRF token support in the Dispatcher by doing the following:
 
 1. Creating a filter to allow the `/libs/granite/csrf/token.json` path;
 1. Add the `CSRF-Token` header to the `clientheaders` section of the Dispatcher configuration.
@@ -157,4 +155,5 @@ For more information on clickjacking, see the [OWASP site](https://owasp.org/www
 
 ## Perform a Penetration Test {#perform-a-penetration-test}
 
-Adobe recommends performing a penetration test of your AEM infrastructure before going on production.
+Adobe strongly recommends performing a penetration test of your AEM infrastructure before going on production.
+

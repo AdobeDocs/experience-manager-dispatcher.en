@@ -1,6 +1,6 @@
 ---
 title: Dispatcher Overview
-description: Learn to use Dispatcher for improved security, caching, and more on AEM Cloud Services.
+description: Learn to use the Adobe Experience Manager Dispatcher for improved security, caching, and more on AEM Cloud Services.
 pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
@@ -10,11 +10,11 @@ exl-id: c9266683-6890-4359-96db-054b7e856dd0
 
 >[!NOTE]
 >
->Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
+>Dispatcher versions are independent of AEM (Adobe Experience Manager). You may have been redirected to this page if you followed a link to the Dispatcher documentation. That link was embedded in the documentation for a previous version of AEM.
 
 Dispatcher is Adobe Experience Manager's caching and load-balancing tool that is used with an enterprise-class web server.
 
-The process for deploying Dispatcher is independent of the web server and the OS platform chosen:
+The process for deploying the AEM Dispatcher is independent of the web server and the OS platform chosen:
 
 1. Learn about Dispatcher (this page). Also, see [frequently asked questions about Dispatcher](/help/using/dispatcher-faq.md).
 1. Install a [supported web server](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) according to the web server documentation.  
@@ -24,7 +24,7 @@ The process for deploying Dispatcher is independent of the web server and the OS
 
 >[!NOTE]
 >
->To gain a better understanding of how Dispatcher works with AEM:
+>To gain a better understanding of how the AEM Dispatcher works with AEM:
 >
 >* See [Ask the AEM Community Experts for July 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Access [this repository](https://github.com/adobe/aem-dispatcher-experiments). It contains a collection of experiments in a "take-home" laboratory format.
@@ -35,7 +35,7 @@ Use the following information as required:
 * [The Dispatcher Security Checklist](security-checklist.md)
 * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html)
 * [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Using Dispatcher with Multiple Domains](dispatcher-domains.md)
+* [Using the AEM Dispatcher with Multiple Domains](dispatcher-domains.md)
 * [Using SSL with Dispatcher](dispatcher-ssl.md)
 * [Implementing Permission-Sensitive Caching](permissions-cache.md)
 * [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
@@ -45,7 +45,7 @@ Use the following information as required:
 >
 >**The most common use of Dispatcher** is to cache responses from an AEM **publish instance**, to increase the responsiveness and security of your externally facing published website. Most of the discussion focuses on this case.
 >
->But, the Dispatcher can also be used to increase the responsiveness of your **author instance**, particularly if you have a large number users editing and updating your website. For details specific to this case see [Using a Dispatcher with an Author Server](#using-a-dispatcher-with-an-author-server), below.
+>But, the Dispatcher can also be used to increase the responsiveness of your **author instance**. This fact is true, particularly if you have a large number of users editing and updating your website. For details specific to this case see [Using a Dispatcher with an Author Server](#using-a-dispatcher-with-an-author-server), below.
 
 ## Why use Dispatcher to implement Caching? {#why-use-dispatcher-to-implement-caching}
 
@@ -75,7 +75,7 @@ This section illustrates the principles behind this process.
 
 A static web server, such as Apache or IIS, serves static HTML files to visitors of your website. Static pages are created once, so the same content is delivered for each request.
 
-This process is simple and efficient. If a visitor requests a file such as an HTML page, the file is taken directly from memory; at worst, it is read from the local drive. Static web servers have been available for quite some time, so there are a wide range of tools for administration and security management, and they are well integrated with network infrastructures.
+This process is simple and efficient. If a visitor requests a file such as an HTML page, the file is taken directly from memory; at worst, it is read from the local drive. Static web servers have been available for quite some time. As such, there are a wide range of tools for administration and security management. These tools are well integrated with network infrastructures.
 
 ### Content Management Servers {#content-management-servers}
 
@@ -89,7 +89,7 @@ This workflow lets you create richer, dynamic content, which increases the flexi
 
 ![](assets/chlimage_1-5.png) 
 
-**The Cache Directory** For caching, the Dispatcher module uses the web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the web server. 
+**The Cache Directory** For caching, the Dispatcher module uses the web server's ability to serve static content. The Dispatcher places the cached documents in the root of the Web server. 
 
 >[!NOTE]
 >
@@ -103,7 +103,7 @@ This workflow lets you create richer, dynamic content, which increases the flexi
 >
 >The Dispatcher stores the cached document in a structure equal to the requested URL. 
 >
->There can be OS-level limitations for length of file name. That is, if you have a URL with numerous selectors.
+>There can be OS-level limitations for the length of the file name. That is, if you have a URL with numerous selectors.
 
 ### Methods for Caching
 
@@ -117,13 +117,13 @@ The Dispatcher has two primary methods for updating the cache content when chang
 In a content update, one or more AEM documents change. AEM sends a syndication request to the Dispatcher, which updates the cache accordingly:
 
 1. It deletes the modified files from the cache.
-1. It deletes all files that start with the same handle from the cache. For example, if the file /en/index.html is updated, all the files that start with /en/index. are deleted. This mechanism allows you to design cache-efficient sites, especially about picture navigation.
+1. It deletes all files that start with the same handle from the cache. For example, if the file `/en/index.html` is updated, all the files that start with `/en/index.` are deleted. This mechanism lets you design cache-efficient sites, especially for picture navigation.
 1. It *touches* the so-called **statfile**, which updates the timestamp of the statfile to indicate the date of the last change.
 
 The following points should be noted:
 
-* Content Updates are typically used with an authoring system which "knows" what must be replaced.
-* Files that are affected by a content update are removed, but not replaced immediately. The next time such a file is requested, the Dispatcher fetches the new file from the AEM instance and places it in the cache, overwriting the old content.
+* Content Updates are typically used with an authoring system that "knows" what must be replaced.
+* A content updates that affect files are removed, but not replaced immediately. The next time such a file is requested, then the AEM Dispatcher fetches the new file from the AEM instance and places it in the cache, overwriting the old content.
 * Typically, automatically generated pictures that incorporate text from a page are stored in picture files starting with the same handle - thus ensuring that the association exists for deletion. For example, you may store the title text of the page mypage.html as the picture mypage.titlePicture.gif in the same folder. This way the picture is automatically deleted from the cache each time the page is updated, so you can be sure that the picture always reflects the current version of the page.
 * You may have several statfiles, for example one per language folder. If a page is updated, AEM looks for the next parent folder containing a statfile, and *touches* that file.
 
@@ -151,7 +151,7 @@ You can [define which documents the Dispatcher caches in the configuration file]
 
 The Dispatcher always requests the document directly from the AEM instance in the following cases:
 
-* The request URI contains a question mark "`?`". This scenario usually indicates a dynamic page, such as a search result, which does not need to be cached.
+* The request URI contains a question mark `?`. This scenario usually indicates a dynamic page, such as a search result, which does not need to be cached.
 * The file extension is missing. The web server needs the extension to determine the document type (the MIME-type).
 * The authentication header is set (configurable).
 
@@ -199,7 +199,7 @@ You gain:
 
 >[!CAUTION]
 >
->While a single Dispatcher is able to saturate the capacity of the available Publish instances, for some rare applications it can make sense to also balance the load between two Dispatcher instances. Configurations with multiple Dispatchers must be considered carefully, because an extra Dispatcher can increase the load on the available Publish instances and can easily decrease performance in most applications.
+>While a single Dispatcher is able to saturate the capacity of the available Publish instances, for some rare applications it can also make sense to balance the load between two Dispatcher instances. Configurations with multiple Dispatchers must be considered carefully. The reason is because an extra Dispatcher can increase the load on the available Publish instances and can easily decrease performance in most applications.
 
 ## How the Dispatcher performs Load Balancing {#how-the-dispatcher-performs-load-balancing}
 
@@ -215,7 +215,7 @@ If you use an elaborate search function, you can create a category for search qu
 
 Sticky connections ensure that documents for one user are all composed on the same instance of AEM. This point is important if you use personalized pages and session data. The data is stored on the instance, so subsequent requests from the same user must return to that instance or the data is lost.
 
-Because sticky connections restrict the Dispatcher's ability to optimize the requests, you should use them only when needed. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are composed on the same instance for each user.
+Because sticky connections restrict the Dispatcher's ability to optimize the requests, you should use them only when needed. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are composed in the same instance for each user.
 
 >[!NOTE]
 >
@@ -239,12 +239,12 @@ A content delivery network (CDN), such as Akamai Edge Delivery or Amazon Cloud F
 * speeds up response times for end users
 * takes load off your servers
 
-As an HTTP infrastructure component, a CDN works much like Dispatcher. When a CDN node receives a request, it serves the request from its cache, if possible (the resource is available in the cache and is valid). Otherwise, it reaches out to the next closest server to retrieve the resource and cache it for further requests if appropriate.
+As an HTTP infrastructure component, a CDN works much like a Dispatcher. When a CDN node receives a request, it serves the request from its cache, if possible (the resource is available in the cache and is valid). Otherwise, it reaches out to the next closest server to retrieve the resource and cache it for further requests if appropriate.
 
 The "next closest server" depends on your specific setup. For example, in an Akamai setup the request can take the following path:
 
 * The Akamai Edge Node  
-* The Akamai Midgres Layer
+* The Akamai Midgress Layer
 * Your firewall
 * Your load balancer
 * Dispatcher
@@ -267,9 +267,9 @@ There are several ways to control for how long a CDN caches a resource before it
 1. API-based invalidation  
    Most CDNs also offer a REST and/or SOAP API that allows resources to be removed from the cache.
 
-In a typical AEM setup, configuration by extension, by path, or by both&ndash;which can be achieved through points 1 and 2 above&ndash;offers possibilities to set reasonable caching periods. This is done for often used resources that do not change often. Such examples include design images and client libraries. When new releases are deployed, typically a manual invalidation is required.
+In a typical AEM setup, configuration by extension, by path, or by both &ndash; which can be achieved through points 1 and 2 above &ndash; offers possibilities to set reasonable caching periods. These caching periods are for often-used resources that do not change often, such as design images and client libraries. When new releases are deployed, typically a manual invalidation is required.
 
-If this approach is used to cache managed content, it implies that content changes are only visible to end users once the configured caching period is expired and the document is fetched from Dispatcher again.
+If this approach is used to cache managed content, it implies that content changes are only visible to end users once the configured caching period is expired. And, when the document is fetched from Dispatcher again.
 
 For finer-grained control, API-based invalidation lets you invalidate a CDN's cache as the Dispatcher cache is invalidated. Based on the CDNs API, you can implement your own [ContentBuilder](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/day/cq/replication/ContentBuilder.html) and [TransportHandler](https://developer.adobe.com/experience-manager/reference-materials/6-5/javadoc/com/day/cq/replication/TransportHandler.html) (if the API is not REST-based), and set up a Replication Agent that uses these pieces to invalidate the CDN's cache.
 
@@ -295,7 +295,7 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 
 1. Install a Dispatcher in a web server (an Apache or IIS web server, see [Installing Dispatcher](dispatcher-install.md)).
 1. Test the newly installed Dispatcher against a working AEM publish instance. Doing so ensures that a baseline-correct install was achieved.
-1. Now make sure that the Dispatcher is able to connect via TCP/IP to your author instance.
+1. Ensure that the Dispatcher is able to connect by way of TCP/IP to your author instance.
 1. Replace the sample `dispatcher.any` file with the `author_dispatcher.any` file provided with the [Dispatcher download](release-notes.md#downloads).
 1. Open the `author_dispatcher.any` in a text editor and make the following changes:
 
@@ -303,12 +303,12 @@ A Dispatcher can be used in front of an author instance to improve authoring per
     1. Change the `/docroot` of the `/cache` section so they point to a cache directory. In case you are using [AEM with Touch UI](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), see the warning above.
     1. Save the changes.
 
-1. Delete all existing files in the `/cache` > `/docroot` directory which you configured above.
+1. Delete all existing files in the `/cache` > `/docroot` directory that you configured above.
 1. Restart the web server.
 
 >[!NOTE]
 >
->With the provided `author_dispatcher.any` configuration, when you install a CQ5 feature pack, hotfix, or application code package that affects any content under `/libs` or `/apps`, you must delete the cached files under those directories in your Dispatcher cache. Doing so ensures that the next time they are requested the newly upgraded files are fetched, and not the old cached ones.
+>With the provided `author_dispatcher.any` configuration, when you install a CQ5 feature pack, hotfix, or application code package that affects any content under `/libs` or `/apps`, you must delete the cached files. The files are under those directories in your Dispatcher cache. Doing so ensures that the next time they are requested the newly upgraded files are fetched, and not the old cached ones.
 
 >[!CAUTION]
 >
