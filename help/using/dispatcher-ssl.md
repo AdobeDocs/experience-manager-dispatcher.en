@@ -1,6 +1,6 @@
 ---
 title: Using SSL with Dispatcher
-description: Learn how to configure Dispatcher to communicate with AEM using SSL connections.
+description: Learn how to configure the Dispatcher to communicate with AEM using SSL connections.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -12,7 +12,7 @@ exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 ---
 # Using SSL with Dispatcher {#using-ssl-with-dispatcher}
 
-Use SSL connections between Dispatcher and the rendering computer:
+Use SSL connections between the Dispatcher and the rendering computer:
 
 * [One-way SSL](#use-ssl-when-dispatcher-connects-to-aem)
 * [Mutual SSL](#configuring-mutual-ssl-between-dispatcher-and-aem)
@@ -23,7 +23,7 @@ Use SSL connections between Dispatcher and the rendering computer:
 
 ## Use SSL When Dispatcher Connects to AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
-Configure Dispatcher to communicate with the AEM or CQ render instance using SSL connections.
+Configure the Dispatcher to communicate with the AEM or CQ render instance using SSL connections.
 
 Before you configure Dispatcher, configure AEM or CQ to use SSL:
 
@@ -111,11 +111,11 @@ The following example `dispatcher.any` file shows the property values for connec
 To use Mutual SSL, configure the connections between Dispatcher and the render computer (typically an AEM or CQ publish instance):
 
 * Dispatcher connects to the render instance over SSL.
-* The render instance verifies the validity of Dispatcher's certificate.
+* The render instance verifies the validity of the Dispatcher's certificate.
 * Dispatcher verifies that the CA of the render instance's certificate is trusted.
 * (Optional) Dispatcher verifies that the certificate of the render instance matches the render instance's server address.
 
-To configure mutual SSL, you require certificates that are signed by a trusted certificate authority (CA). Self-signed certificates are not adequate. You can either act as the CA or use the services of a third-party CA to sign your certificates. To configure mutual SSL, you require the following items:
+To configure mutual SSL, you require certificates that are signed with a trusted Certificate Authority (CA). Self-signed certificates are not adequate. You can either act as the CA or use the services of a third-party CA to sign your certificates. To configure mutual SSL, you require the following items:
 
 * Signed certificates for the render instance and Dispatcher
 * The CA certificate (if you are acting as the CA)
@@ -124,8 +124,8 @@ To configure mutual SSL, you require certificates that are signed by a trusted c
 To configure mutual SSL, perform the following steps:
 
 1. [Install](dispatcher-install.md) the latest version of Dispatcher for your platform. Use a Dispatcher binary that supports SSL (SSL is in the file name, such as `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Create or obtain CA-signed certificate](dispatcher-ssl.md#main-pars-title-3) for Dispatcher and the render instance. 
-1. [Create a keystore containing render certificate](dispatcher-ssl.md#main-pars-title-6) and configure the render's HTTP service.
+1. [Create or obtain a CA-signed certificate](dispatcher-ssl.md#main-pars-title-3) for the Dispatcher and the render instance. 
+1. [Create a keystore containing the render certificate](dispatcher-ssl.md#main-pars-title-6) and configure the render's HTTP service.
 1. [Configure the Dispatcher web server module](dispatcher-ssl.md#main-pars-title-4) for mutual SSL.
 
 ### Creating or Obtaining CA-Signed Certificates {#creating-or-obtaining-ca-signed-certificates}
@@ -151,7 +151,7 @@ If you are acting as the CA, use [OpenSSL](https://www.openssl.org/) to create t
 
 Use OpenSSL to create the certificate requests to send to the third-party CA or to sign with your CA.
 
-When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you configure Dispatcher to accept the certificate. Do this only if it matches the hostname of the Publishing instance. See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) property.
+When you create a certificate, OpenSSL uses the Common Name property to identify the certificate holder. For the certificate of the render instance, use the instance computer's host name as the Common Name if you configure Dispatcher to accept the certificate. Do this procedure only if it matches the hostname of the Publishing instance. See the [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) property.
 
 1. Open a terminal and change the current directory to the directory that contains the CH.sh file of your OpenSSL libraries.
 1. Enter the following command and provide values when prompted. If necessary, use the host name of the publishing instance as the Common Name. The host name is DNS-resolvable name for the IP address of the render:
@@ -279,8 +279,8 @@ Combine the Dispatcher certificate and the unencrypted private key into a single
 
 Add the following properties to the [Dispatcher module configuration](dispatcher-install.md#main-pars-55-35-1022) (in `httpd.conf`):
 
-* `DispatcherCertificateFile`: The path to the Dispatcher unified certificate file, containing the public certificate and the unencrypted private key. This file is used when SSL server requests the Dispatcher client certificate.
-* `DispatcherCACertificateFile`: The path to the CA certificate file, used if the SSL server presents a CA that is not trusted by a root authority.
+* `DispatcherCertificateFile`: The path to the Dispatcher unified certificate file, containing the public certificate and the unencrypted private key. This file is used when the SSL server requests the Dispatcher client certificate.
+* `DispatcherCACertificateFile`: The path to the CA certificate file. Used if the SSL server presents a CA that a root authority does not trust.
 * `DispatcherCheckPeerCN`: Whether to enable ( `On`) or disable ( `Off`) host name checking for remote server certificates.
 
 The following code is an example configuration:  

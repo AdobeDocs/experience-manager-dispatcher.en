@@ -11,13 +11,13 @@ exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
 
 ### What is the Dispatcher?
 
-The Dispatcher is Adobe Experience Manager's caching and/or load-balancing tool that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache. It has the aim of storing (or "caching") as much of the static website content as possible and accessing the layout of the website's engine as infrequently as possible. In a load-balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
+The Dispatcher is Adobe Experience Manager's caching too, or load-balancing tool, or both, that helps realize a fast and dynamic Web authoring environment. For caching, the Dispatcher works as part of an HTTP server, such as Apache. It has the aim of storing (or "caching") as much of the static website content as possible. And, accessing the layout of the website's engine as infrequently as possible. In a load-balancing role, the Dispatcher distributes user requests (load) across different AEM instances (renders).
 
-For caching, the Dispatcher module uses the Web server's ability to serve static content. The Dispatcher places the cached documents in the document root of the Web server.
+For caching, the Dispatcher module uses the Web server's ability to serve static content. The Dispatcher places the cached documents at the document root on the Web server.
 
 ### How does the Dispatcher perform caching?
 
-The Dispatcher uses the web server's ability to serve static content. The Dispatcher stores cached documents in the web server's document root. The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
+The Dispatcher uses the web server's ability to serve static content. The Dispatcher stores cached documents at the document root on the Web server. The Dispatcher has two primary methods for updating the cache content when changes are made to the website.
 
 * **Content Updates** remove the pages that have changed, and files that are directly associated with them.
 * **Auto-Invalidation** automatically invalidates those parts of the cache that may be out of date after an update. For example, it effectively flags relevant pages as being out of date, without deleting anything.
@@ -64,7 +64,7 @@ Read [Using Dispatcher with Multiple Domains](dispatcher-domains.md) for further
 
 You can use the [sticky connections](dispatcher-configuration.md#identifying-a-sticky-connection-folder-stickyconnectionsfor) feature, which ensures that all documents for a user are processed on the same instance of AEM. This feature is important if you use personalized pages and session data. The data is stored on the instance. Therefore, subsequent requests from the same user must return to that instance or the data is lost.
 
-Because sticky connections restrict the Dispatcher's ability to optimize requests, you should use this approach only when necessary. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are processed on the same instance for a user.
+Because sticky connections restrict the Dispatcher's ability to optimize requests, you should use this approach only when necessary. You can specify the folder that contains the "sticky" documents, thus ensuring all documents in that folder are processed in the same instance for a user.
 
 ### Can I use sticky connections and caching in tandem?
 
@@ -113,7 +113,7 @@ See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Secu
 
 ### Dispatcher issue `jcr:content` changed to `jcr%3acontent`
 
-**Question**: The business has recently faced a problem at Dispatcher level. One of the AJAX calls which was getting some data form CQ repository had `jcr:content` in it. That got encoded to `jcr%3acontent` resulting in that wrong result set.
+**Question**: The business has recently faced a problem at Dispatcher level. One of the AJAX calls that was getting some data from CQ repository had `jcr:content` in it. That got encoded to `jcr%3acontent` resulting in that wrong result set.
 
 **Answer**: Use `ResourceResolver.map()` method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format. Use the map() method to generate the URL that is used in the Ajax call.
 
@@ -133,12 +133,13 @@ If Delete operations are causing the Dispatcher to flush, [use the workaround in
 
 ### How do I flush DAM assets from the Dispatcher cache?
 
-You can use the "chain replication" feature. With this feature enabled, the Dispatcher's flush agent sends a flush request when a replication is received from author.
+You can use the "chain replication" feature. With this feature enabled, the Dispatcher's flush agent sends a flush request when a replication is received from the Author instance.
 
 To enable it:
 
 1. [Follow the steps here](page-invalidate.md#invalidating-dispatcher-cache-from-a-publishing-instance) to create flushing agents on publish
-1. Go to each agent's configuration and on the **Triggers** tab, check the **On Receive** box.
+1. Go to each agent's configuration.
+1. On the **Triggers** tab, check the **On Receive** box.
 
 ## Miscellaneous
 

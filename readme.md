@@ -1,6 +1,6 @@
-# Adobe Experience Manager Dispatcher Documentation
+# Adobe Experience Manager Pattern Detection
 
-This is the repository for Adobe Experience Manager Dispatcher documentation.
+This repository for Adobe Experience Manager Pattern Detection.
 
 Your contributions to the documentation are welcome. See the following resources:
 

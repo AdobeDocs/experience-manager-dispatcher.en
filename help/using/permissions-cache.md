@@ -9,7 +9,7 @@ exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 ---
 # Caching Secured Content {#caching-secured-content}
 
-Permission-sensitive caching enables you to cache secured pages. Dispatcher checks user's access permissions for a page before delivering the cached page.
+Permission-sensitive caching enables you to cache secured pages. Dispatcher checks the user's access permissions for a page before delivering the cached page.
 
 Dispatcher includes the AuthChecker module that implements permission-sensitive caching. When the module is activated, the Dispatcher calls an AEM servlet to perform user authentication and authorization for the requested content. The servlet response determines whether the content is delivered to the web browser from the cache or not.
 
@@ -36,7 +36,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher determines that the content is not cached or requires updating.
 1. Dispatcher forwards the original request to the render.
-1. The render calls the AEM authorizer servlet (this is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. The render calls the AEM authorizer servlet (this servlet is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
 ## User is not authorized {#user-is-not-authorized}
@@ -45,9 +45,9 @@ The following diagrams illustrate the order of events that occur when a web brow
 
 1. Dispatcher checks the cache.
 1. Dispatcher sends a request message to the render that includes all header lines from the browser's request.
-1. The render calls the Auth Checker servlet to perform a security check which fails, and the render forwards the original request to Dispatcher.
+1. The render calls the Auth Checker servlet to perform a security check, which fails, and the render forwards the original request to Dispatcher.
 1. Dispatcher forwards the original request to the render.
-1. The render calls the AEM authorizer servlet (this is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
+1. The render calls the AEM authorizer servlet (this servlet is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
 ## Implementing permission-sensitive caching {#implementing-permission-sensitive-caching}
@@ -68,7 +68,7 @@ To implement permission-sensitive caching, perform the following tasks:
 
 ## Create the Auth Checker servlet {#create-the-auth-checker-servlet}
 
-Create and deploy a servlet that performs the authentication and authorization of the user who requests the web content. The servlet can use any authentication and authorization method, such as the AEM user account and repository ACLs, or an LDAP lookup service. You deploy the servlet to the AEM instance that Dispatcher uses as the render.
+Create and deploy a servlet that performs the authentication and authorization of the user who requests the web content. The servlet can use any authentication. It can also use any authorization method. For example, it can use the AEM user account and repository ACLs. Or, it can use an LDAP lookup service. You deploy the servlet to the AEM instance that Dispatcher uses as the render.
 
 The servlet must be accessible to all users. Therefore, your servlet should extend the `org.apache.sling.api.servlets.SlingSafeMethodsServlet` class, which provides read-only access to the system.
 
@@ -155,7 +155,7 @@ When Dispatcher starts, the Dispatcher log file includes the following debug-lev
 
 `AuthChecker: initialized with URL 'configured_url'.`
 
-The following example auth_checker section configures Dispatcher to use the servlet of the previous topic. The filter section causes permission checks to be performed only on secure HTML resources.
+The following example auth_checker section configures the Dispatcher to use the servlet of the previous topic. The filter section causes permission checks to be performed only on secure HTML resources.
 
 ### Example configuration {#example-configuration}
 

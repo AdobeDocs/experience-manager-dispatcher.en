@@ -118,11 +118,11 @@ After configuring, when you activate a page from author to publish, this agent i
 
 To invalidate (or flush) the Dispatcher cache without activating a page, you can issue an HTTP request to the Dispatcher. For example, you can create an AEM application that enables administrators or other applications to flush the cache.
 
-The HTTP request causes the AEM Dispatcher to delete specific files from the cache. Optionally, the Dispatcher then refreshes the cache with a new copy.
+The HTTP request causes the Dispatcher to delete specific files from the cache. Optionally, the Dispatcher then refreshes the cache with a new copy.
 
 ### Delete cached files {#delete-cached-files}
 
-Issue an HTTP request that causes the AEM Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files in this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
+Issue an HTTP request that causes the Dispatcher to delete files from the cache. Dispatcher caches the files again only when it receives a client request for the page. Deleting cached files in this manner is appropriate for web sites that are not likely to receive simultaneous requests for the same page.
 
 The HTTP request has the following form:
 
@@ -145,7 +145,7 @@ Invalidation (that is, touching of .stat files) can be prevented by sending an a
 
 ### Delete and recache files {#delete-and-recache-files}
 
-Issue an HTTP request that causes the AEM Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
+Issue an HTTP request that causes the Dispatcher to delete cached files, and immediately retrieve and recache the file. Delete and immediately re-cache files when web sites are likely to receive simultaneous client requests for the same page. Immediate recaching ensures that Dispatcher retrieves and caches the page only once, instead of once for each of the simultaneous client requests.
 
 **Note:** Deleting and recaching files should be performed on the publishing instance only. When performed from the author instance, race conditions occur when attempts to recache resources occur before they have been published.
 
@@ -179,7 +179,7 @@ Content-Length: 36
 
 The following code implements a servlet that sends an invalidation request to Dispatcher. The servlet receives a request message that contains `handle` and `page` parameters. These parameters provide the value of the `CQ-Handle` header and the path of the page to recache, respectively. The servlet uses the values to construct the HTTP request for Dispatcher.
 
-When the servlet is deployed to the publish instance, the following URL causes the AEM Dispatcher to delete the /content/geometrixx-outdoors/en.html page and then cache a new copy.
+When the servlet is deployed to the publish instance, the following URL causes the Dispatcher to delete the /content/geometrixx-outdoors/en.html page and then cache a new copy.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 

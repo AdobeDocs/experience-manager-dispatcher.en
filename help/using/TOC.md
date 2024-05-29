@@ -20,7 +20,7 @@ role: Admin
   + [The Dispatcher Security Checklist](security-checklist.md)
   + [AEM Dispatcher Release Notes](release-notes.md)
 + Configuring {#configuring}
-  + [Configuring the AEM Dispatcher](dispatcher-configuration.md)
+  + [Configuring the Dispatcher](dispatcher-configuration.md)
   + [Invalidating Cached Pages From AEM](page-invalidate.md)
   + [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
   + [Caching Secured Content](permissions-cache.md)
