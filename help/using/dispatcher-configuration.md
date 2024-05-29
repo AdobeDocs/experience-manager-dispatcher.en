@@ -1,6 +1,6 @@
 ---
 title: Configuring AEM Dispatcher
-description: Learn how to configure the AEM Dispatcher. Learn about support for IPv4 and IPv6, configuration files, environment variables, and naming the instance. Read about defining farms, identifying virtual hosts, and more.
+description: Learn how to configure the Dispatcher. Learn about support for IPv4 and IPv6, configuration files, environment variables, and naming the instance. Read about defining farms, identifying virtual hosts, and more.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 ---
 # Configuring Dispatcher {#configuring-dispatcher}
@@ -19,7 +19,7 @@ All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networ
 
 By default the Dispatcher configuration is stored in the `dispatcher.any` text file, though you can change the name and location of this file during installation.
 
-The configuration file contains a series of single-valued or multi-valued properties that control the behavior of the AEM Dispatcher:
+The configuration file contains a series of single-valued or multi-valued properties that control the behavior of the Dispatcher:
 
 * Property names are prefixed with a forward slash `/`.
 * Multi-valued properties enclose child items using braces `{ }`.
@@ -146,7 +146,7 @@ Use the `/name` property to specify a unique name to identify your Dispatcher in
 
 The `/farms` property defines one or more sets of Dispatcher behaviors, where each set is associated with different web sites or URLs. The `/farms` property can include a single farm or multiple farms:
 
-* Use a single farm when you want the AEM Dispatcher to handle all of your web pages or web sites in the same way.
+* Use a single farm when you want the Dispatcher to handle all of your web pages or web sites in the same way.
 * Create multiple farms when different areas of your web site or different web sites require different Dispatcher behavior.
 
 The `/farms` property is a top-level property in the configuration structure. To define a farm, add a child property to the `/farms` property. Use a property name that uniquely identifies the farm within the Dispatcher instance.
@@ -191,7 +191,7 @@ Each farm property can contain the following child properties:
 |[/virtualhosts](#identifying-virtual-hosts-virtualhosts)|This farm's virtual hosts.|
 |[/sessionmanagement](#enabling-secure-sessions-sessionmanagement)|Support for session management and authentication.|
 |[/renders](#defining-page-renderers-renders)|The servers that provide rendered pages (typically AEM publish instances).|
-|[/filter](#configuring-access-to-content-filter)|Defines the URLs to which the AEM Dispatcher enables access.|
+|[/filter](#configuring-access-to-content-filter)|Defines the URLs to which the Dispatcher enables access.|
 |[/vanity_urls](#enabling-access-to-vanity-urls-vanity-urls)|Configures access to vanity URLs.|
 |[/propagateSyndPost](#forwarding-syndication-requests-propagatesyndpost)|Support for the forwarding of syndication requests.|
 |[/cache](#configuring-the-dispatcher-cache-cache)|Configures caching behavior.|
@@ -253,7 +253,7 @@ Comment Type: draft
 
 The `/clientheaders` property defines a list of HTTP headers that Dispatcher passes from the client HTTP request to the renderer (AEM instance).
 
-By default, the AEM Dispatcher forwards the standard HTTP headers to the AEM instance. In some instances, you might want to forward additional headers, or remove specific headers:
+By default, the Dispatcher forwards the standard HTTP headers to the AEM instance. In some instances, you might want to forward additional headers, or remove specific headers:
 
 * Add headers, such as custom headers, that your AEM instance expects in the HTTP request.
 * Remove headers, such as authentication headers that are only relevant to the web server.
@@ -451,7 +451,7 @@ An example configuration looks as follows:
 
 ## Defining Page Renderers {#defining-page-renderers-renders}
 
-The `/renders` property defines the URL to which the AEM Dispatcher sends requests to render a document. The following example `/renders` section identifies a single AEM instance for rendering:
+The `/renders` property defines the URL to which the Dispatcher sends requests to render a document. The following example `/renders` section identifies a single AEM instance for rendering:
 
 ```xml
 /renders
@@ -616,7 +616,7 @@ If your filters are not triggering in the way you would expect, enable [Trace Lo
 
 #### Example Filter: Deny All {#example-filter-deny-all}
 
-The following example filter section causes the AEM Dispatcher to deny requests for all files. Deny access to all files and then allow access to specific areas.
+The following example filter section causes the Dispatcher to deny requests for all files. Deny access to all files and then allow access to specific areas.
 
 ```xml
 /0001  { /type "deny" /url "*"  }
@@ -693,7 +693,7 @@ Below is a rule example that blocks content grabbing from the `/content` path an
 
 ### Example `/filter` section {#example-filter-section}
 
-When configuring the AEM Dispatcher, restrict external access as much as possible. The following example provides minimal access for external visitors:
+When configuring the Dispatcher, restrict external access as much as possible. The following example provides minimal access for external visitors:
 
 * `/content`
 * miscellaneous content such as designs and client libraries. For example:
@@ -912,7 +912,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-Configure the AEM Dispatcher to enable access to vanity URLs that are configured for your AEM pages.
+Configure the Dispatcher to enable access to vanity URLs that are configured for your AEM pages.
 
 When access to vanity URLs is enabled, Dispatcher periodically calls a service that runs on the render instance to obtain a list of vanity URLs. Dispatcher stores this list in a local file. When a request for a page is denied due to a filter in the `/filter` section, Dispatcher consults the list of vanity URLs. If the denied URL is on the list, Dispatcher allows access to the vanity URL.
 
@@ -930,7 +930,7 @@ The `/vanity_urls` section contains the following properties:
 
 * `/url`: The path to the vanity URL service that runs on the render instance. The value of this property must be `"/libs/granite/dispatcher/content/vanityUrls.html"`.
 
-* `/file`: The path to the local file where Dispatcher stores the list of vanity URLs. Make sure that the AEM Dispatcher has write-access to this file.
+* `/file`: The path to the local file where Dispatcher stores the list of vanity URLs. Make sure that the Dispatcher has write-access to this file.
 * `/delay`: (Seconds) The time between calls to the vanity URL service.
 
 >[!NOTE]
@@ -1001,7 +1001,7 @@ The `/docroot` property identifies the directory where cached files are stored.
 
 >[!NOTE]
 >
->The value must be the same path as the document root of the web server so that the AEM Dispatcher and the web server handle the same files.  
+>The value must be the same path as the document root of the web server so that the Dispatcher and the web server handle the same files.  
 >The web server is responsible for delivering the correct status code when the Dispatcher cache file is used, that's why it is important that it can find it as well.
 
 If you use multiple farms, each farm must use a different document root.
@@ -1010,7 +1010,7 @@ If you use multiple farms, each farm must use a different document root.
 
 The `/statfile` property identifies the file to use as the statfile. Dispatcher uses this file to register the time of the most recent content update. The statfile can be any file on the web server.
 
-The statfile has no content. When content is updated, the AEM Dispatcher updates the timestamp. The default statfile is named `.stat` and is stored in the docroot. Dispatcher blocks access to the statfile.
+The statfile has no content. When content is updated, the Dispatcher updates the timestamp. The default statfile is named `.stat` and is stored in the docroot. Dispatcher blocks access to the statfile.
 
 >[!NOTE]
 >
@@ -1018,9 +1018,9 @@ The statfile has no content. When content is updated, the AEM Dispatcher updates
 
 ### Serving Stale Documents When Errors Occur {#serving-stale-documents-when-errors-occur}
 
-The `/serveStaleOnError` property controls whether Dispatcher returns invalidated documents when the render server returns an error. By default, when a statfile is touched and invalidates cached content, the AEM Dispatcher deletes the cached content. This action is done the next time it is requested.
+The `/serveStaleOnError` property controls whether Dispatcher returns invalidated documents when the render server returns an error. By default, when a statfile is touched and invalidates cached content, the Dispatcher deletes the cached content. This action is done the next time it is requested.
 
-If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache. That is, unless the render server returns a successful response. A 5xx response from AEM or a connection timeout causes the AEM Dispatcher to serve the outdated content and respond with and HTTP Status of 111 (Revalidation Failed).
+If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache. That is, unless the render server returns a successful response. A 5xx response from AEM or a connection timeout causes the Dispatcher to serve the outdated content and respond with and HTTP Status of 111 (Revalidation Failed).
 
 ### Caching When Authentication is Used {#caching-when-authentication-is-used}
 
@@ -1349,7 +1349,7 @@ Below is a sample from the default configuration:
 
 >[!NOTE]
 >
->If you need the AEM Dispatcher to store and deliver ETag response headers from AEM, do the following:
+>If you need the Dispatcher to store and deliver ETag response headers from AEM, do the following:
 >
 >* Add the header name in the `/cache/headers`section.
 >* Add the following [Apache directive](https://httpd.apache.org/docs/2.4/mod/core.html#fileetag) in the Dispatcher-related section:
@@ -1389,7 +1389,7 @@ Time-based cache invalidation depends on the `/enableTTL` property and the prese
 Before Dispatcher 4.3.5, the TTL invalidation logic was based only on the configured TTL value. With Dispatcher 4.3.5, both the set TTL **and** the Dispatcher cache invalidation rules are accounted for. As such, for a cached file:
 
 1. If `/enableTTL` is set to 1, the file expiration is checked. If the file has expired according to the set TTL, no other checks are performed and the cached file is re-requested from the backend.
-2. If the file has either not expired, or `/enableTTL` is not configured, then the standard cache invalidation rules are applied such as those rules that [`/statfileslevel`](#invalidating-files-by-folder-level) and [`/invalidate`](#automatically-invalidating-cached-files) set. This flow means that the AEM Dispatcher can invalidate files for which the TTL has not expired.
+2. If the file has either not expired, or `/enableTTL` is not configured, then the standard cache invalidation rules are applied such as those rules that [`/statfileslevel`](#invalidating-files-by-folder-level) and [`/invalidate`](#automatically-invalidating-cached-files) set. This flow means that the Dispatcher can invalidate files for which the TTL has not expired.
 
 This new implementation supports use cases where files have a longer TTL (for example, on the CDN). But those file can still be invalidated even if the TTL has not expired. It favors content freshness over cache-hit ratio on the Dispatcher.
 
@@ -1432,7 +1432,7 @@ Dispatcher supports a maximum of eight statistics categories. If you define more
 
 **Render Selection**
 
-Each time the AEM Dispatcher requires a rendered page, it uses the following algorithm to select the render:
+Each time the Dispatcher requires a rendered page, it uses the following algorithm to select the render:
 
 1. If the request contains the render name in a `renderid` cookie, Dispatcher uses that render.
 1. If the request includes no `renderid` cookie, Dispatcher compares the render statistics:
@@ -1456,7 +1456,7 @@ Define a category for each type of document for which you want to keep statistic
 
 The category `name` must be unique to the farm. The `pattern` is described in the [Designing Patterns for glob Properties](#designing-patterns-for-glob-properties) section.
 
-To determine the category of a URI, the AEM Dispatcher compares the URI with each category pattern until a match is found. Dispatcher begins with the first category in the list and continues in order. Therefore, place categories with more specific patterns first.
+To determine the category of a URI, the Dispatcher compares the URI with each category pattern until a match is found. Dispatcher begins with the first category in the list and continues in order. Therefore, place categories with more specific patterns first.
 
 For example, Dispatcher the default `dispatcher.any` file defines an HTML category and an others category. The HTML category is more specific and so it appears first:
 
@@ -1549,7 +1549,7 @@ Use the `/health_check` property to specify a URL that is checked when a 500 sta
 
 ### Specifying the Page Retry Delay {#specifying-the-page-retry-delay}
 
-The `/retryDelay` property sets the time (in seconds) that Dispatcher waits between rounds of connection attempts with the farm renders. For each round, the maximum number of times the AEM Dispatcher attempts a connection to a render is the number of renders in the farm.
+The `/retryDelay` property sets the time (in seconds) that Dispatcher waits between rounds of connection attempts with the farm renders. For each round, the maximum number of times the Dispatcher attempts a connection to a render is the number of renders in the farm.
 
 Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The default value is usually appropriate.
 
@@ -1561,7 +1561,7 @@ Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The
 
 The `/numberOfRetries` property sets the maximum number of rounds of connection attempts that Dispatcher performs with the renders. If Dispatcher cannot successfully connect to a render after this number of retries, Dispatcher returns a failed response.
 
-For each round, the maximum number of times the AEM Dispatcher attempts a connection to a render is the number of renders in the farm. Therefore, the maximum number of times that the AEM Dispatcher attempts a connection is ( `/numberOfRetries`) x (the number of renders).
+For each round, the maximum number of times the Dispatcher attempts a connection to a render is the number of renders in the farm. Therefore, the maximum number of times that the Dispatcher attempts a connection is ( `/numberOfRetries`) x (the number of renders).
 
 If the value is not explicitly defined, the default value is `5`.
 
@@ -1576,7 +1576,7 @@ To resend requests to different renders when the original request fails, enable 
 * When a request to a render returns HTTP Status 503 (UNAVAILABLE), Dispatcher sends the request to a different render.
 * When a request to a render returns HTTP Status 50x (other than 503), Dispatcher sends a request for the page that is configured for the `health_check` property.
   * If the health check returns 500 (INTERNAL_SERVER_ERROR), Dispatcher sends the original request to a different render.
-  * If the health check returns HTTP Status 200, the AEM Dispatcher returns the initial HTTP 500 error to the client.
+  * If the health check returns HTTP Status 200, the Dispatcher returns the initial HTTP 500 error to the client.
 
 To enable failover, add the following line to the farm (or website):  
 
