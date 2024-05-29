@@ -1228,7 +1228,7 @@ It is called with the following arguments:
 
 This method can be used to cover several different use cases. For example, invalidating other application-specific caches, or to handle cases where the externalized URL of a page, and its place in the docroot, does not match the content path.
 
-Below example script logs each invalidated request to a file.
+The following example script logs each invalidated request to a file.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"

@@ -25,7 +25,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation that is embedded in the documentation for a previous version of AEM.
+>Dispatcher versions are independent of AEM. You may have been redirected to this page if you followed a link to the Dispatcher documentation. That link was embedded in the documentation for a previous version of AEM.
 
 Dispatcher offers several built-in mechanisms that you can use to optimize performance. This section tells you how to design your web site to maximize the benefits of caching.
 
@@ -40,7 +40,7 @@ Dispatcher offers several built-in mechanisms that you can use to optimize perfo
 
 ## Using Consistent Page Encoding {#using-consistent-page-encoding}
 
-HTTP request headers are not cached and so problems can occur if you store page-encoding information in the header. In this situation, when Dispatcher serves a page from the cache the default encoding of the web server is used for the page. There are two ways to avoid this problem:
+HTTP request headers are not cached and so problems can occur if you store page-encoding information in the header. In this situation, when Dispatcher serves a page from the cache, the default encoding of the web server is used for the page. There are two ways to avoid this problem:
 
 * If you use only one encoding, make sure that the encoding used on the web server is the same as the default encoding of the AEM website.
 * To set the encoding, use a `<META>` tag in the HTML `head` section, as in the following example:
@@ -51,7 +51,7 @@ HTTP request headers are not cached and so problems can occur if you store page-
 
 ## Avoid URL Parameters {#avoid-url-parameters}
 
-If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless Dispatcher is [configured accordingly](dispatcher-configuration.md#main-pars_title_24)):
+If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless the AEM Dispatcher is [configured accordingly](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -82,9 +82,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->For most layout aspects, it is also possible to use style sheets and/or client-side scripts. These usually work well with caching.
+>For most layout aspects, it is also possible to use style sheets, or client-side scripts, or both. Either or both work well with caching.
 >
->This is also useful for a print version, where you can use a URL such as:
+>This method is also useful for a print version, where you can use a URL such as:
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -103,15 +103,15 @@ For example, you can store the title of the page myPage.html in the file myPage.
 
 >[!NOTE]
 >
->The image file does not necessarily physically exist on the AEM instance. You can use a script that dynamically creates the image file. Dispatcher then stores the file on the web server.
+>The image file does not necessarily exist on the AEM instance. You can use a script that dynamically creates the image file. Dispatcher then stores the file on the web server.
 
 ## Invalidating Image Files Used For Navigation {#invalidating-image-files-used-for-navigation}
 
 If you use pictures for the navigation entries, the method is basically the same as with titles, just a bit more complex. Store all the navigation images with the target pages. If you use two pictures for normal and active, you can use the following scripts:
 
 * A script that displays the page, as normal.
-* A script that processes ".normal" requests and returns the normal picture.
-* A script that processes ".active" requests and returns the activated picture.
+* A script that processes `.normal` requests and returns the normal picture.
+* A script that processes `.active` requests and returns the activated picture.
 
 It is important that you create these pictures with the same naming handle as the page to ensure that a content update deletes these pictures and the page.
 
@@ -128,7 +128,7 @@ The Dispatcher cannot cache personalized data, so it is recommended that you lim
 >
 >If you personalize each page (for example by putting the user's name into the title bar) you cannot cache it, which can cause a major performance impact.
 >
->However, if you have to do this, you can:
+>However, if you must, you can do the following:
 >
 >* use iFrames to split the page into one part that is the same for all users and one part that is the same for all pages of the user. You can then cache both of these parts.
 >* use client-side JavaScript to display personalized information. However, you have to make sure that the page still displays correctly if a user turns JavaScript off.
@@ -136,7 +136,7 @@ The Dispatcher cannot cache personalized data, so it is recommended that you lim
 
 ## Sticky Connections {#sticky-connections}
 
-[Sticky connections](dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder so it can hold all documents that require sticky connections for the website. Try not to have other documents in it. This impacts load-balancing if you use personalized pages and session data.
+[Sticky connections](dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder so it can hold all documents that require sticky connections for the website. Try not to have other documents in it. Doing so impacts load-balancing if you use personalized pages and session data.
 
 ## MIME Types {#mime-types}
 
@@ -145,17 +145,17 @@ There are two ways in which a browser can determine the type of a file:
 1. By its extension (for example, .html, .gif, and .jpg)
 1. By the MIME-type that the server sends with the file.
 
-For most files, the MIME-type is implied in the file extension. That is:
+For most files, the MIME-type is implied in the file extension:
 
 1. By its extension (for example, .html, .gif, and .jpg)
 1. By the MIME-type that the server sends with the file.
 
 If the file name has no extension, it is displayed as plain text.
 
-The MIME-type is part of the HTTP header, and as such, Dispatcher does not cache it. If your AEM application returns files that do not have a recognized file ending, but rely on the MIME-type instead, these files may be incorrectly displayed.
+The MIME-type is part of the HTTP header, and as such, Dispatcher does not cache it. Your AEM application may return files that do not have a recognized file extension. If the files rely on the MIME-type instead, these files may be displayed incorrectly.
 
 To make sure that files are cached properly, follow these guidelines:
 
 * Make sure that files always have the proper extension.
-* Avoid generic file serve scripts, which have URLs such as download.jsp?file=2214. Rewrite the script so that it uses URLs that contain the file specification. For the previous example, this would be `download.2214.pdf`.
+* Avoid generic file serve scripts, which have URLs such as download.jsp?file=2214. Rewrite the script so that it uses URLs that contain the file specification. For the previous example, it would be `download.2214.pdf`.
 
