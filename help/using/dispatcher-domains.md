@@ -344,7 +344,7 @@ The following example httpd.conf file configures two virtual hosts for an Apache
 
 * The document root of each virtual domain is the directory in the Dispatcher cache that contains the site's pages. (Lines 20 and 33)
 * The URL rewrite rule for each virtual domain is a regular expression. The regular expression prefixes the path of the requested page. It is prefixed with the path to the pages in the cache. (Lines 19 and 35)
-* The `DispatherUseProcessedURL` property is set to `1`. (Line 10)
+* The `DispatcherUseProcessedURL` property is set to `1`. (Line 10)
 
 For example, the web server performs the following actions when it receives a request with the `https://brandA.com/en/products.html` URL:
 
