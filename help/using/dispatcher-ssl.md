@@ -25,11 +25,10 @@ Use SSL connections between the Dispatcher and the rendering computer:
 
 Configure the Dispatcher to communicate with the AEM or CQ render instance using SSL connections.
 
-Before you configure Dispatcher, configure AEM or CQ to use SSL:
+Before you configure Dispatcher, configure AEM or CQ to use SSL. For further information see:
 
-* AEM 6.2: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Enabling HTTP Over SSL](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Older AEM versions: see [this page](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
+* [SSL/TLS By Default ](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/ssl-by-default) 
+* [Use the SSL Wizard in AEM](https://experienceleague.adobe.com/en/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### SSL-Related Request Headers {#ssl-related-request-headers}
 
