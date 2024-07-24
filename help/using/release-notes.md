@@ -21,7 +21,7 @@ exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 
 ## System requirements and prerequisites {#system-requirements-and-prerequisites}
 
-See [Supported Platforms](https://experienceleague.adobe.com/en/docs/experience-manager-64/deploying/introduction/technical-requirements) for more information about requirements and prerequisites.
+See [Supported Platforms](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers) for more information about requirements and prerequisites.
 
 Adobe recommends using the latest version of AEM Dispatcher to benefit from the latest functionality, the most recent bug fixes, and the best possible performance.
 
