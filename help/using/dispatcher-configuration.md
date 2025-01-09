@@ -946,7 +946,7 @@ Use the following procedure to enable access to vanity URLs.
 
 With Dispatcher **version 4.3.6** a new `/loadOnStartup` parameter has been added. By using this parameter, you can configure the loading of vanity URLs at startup, as follows:
 
-By adding `/loadOnStartup 0` to the configuration (see the sample below) you can disable the loading of vanity URLs on startup.
+By adding `/loadOnStartup 0` (see the sample below) you can disable the loading of vanity URLs on startup.
 
 ```
 /vanity_urls {
