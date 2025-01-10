@@ -944,6 +944,22 @@ Use the following procedure to enable access to vanity URLs.
 1. Add the `/vanity_urls` section below `/farms`.
 1. Restart Apache web server.
 
+With Dispatcher **version 4.3.6** a new `/loadOnStartup` parameter has been added. By using this parameter, you can configure the loading of vanity URLs at startup, as follows:
+
+By adding `/loadOnStartup 0` (see the sample below) you can disable the loading of vanity URLs on startup.
+
+```
+/vanity_urls {
+        /url "/libs/granite/dispatcher/content/vanityUrls.html"
+        /file "/tmp/vanity_urls"
+        /loadOnStartup 0
+        /delay 60
+      } 
+
+```
+
+While `/loadOnStartup 1` loads the vanity URLs on startup. Keep in mind that `/loadOnStartup 1` is the current default value for this parameter.
+
 ## Forwarding Syndication Requests - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
 Syndication requests are intended for Dispatcher only, so by default they are not sent to the renderer (for example, an AEM instance).
