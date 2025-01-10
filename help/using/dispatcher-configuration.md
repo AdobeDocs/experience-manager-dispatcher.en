@@ -960,7 +960,6 @@ By adding `/loadOnStartup 0` (see the sample below) you can disable the loading 
 
 While `/loadOnStartup 1` loads the vanity URLs on startup. Keep in mind that `/loadOnStartup 1` is the current default value for this parameter.
 
-
 ## Forwarding Syndication Requests - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
 Syndication requests are intended for Dispatcher only, so by default they are not sent to the renderer (for example, an AEM instance).
