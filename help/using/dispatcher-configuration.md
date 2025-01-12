@@ -350,7 +350,7 @@ Dispatcher finds the best-matching virtual host value in the following manner:
 * If no `virtualhosts` values have `scheme` and `uri` parts that both match the `scheme` and `uri` of the request, the first-encountered virtual host that matches the `host` of the request is used.
 * If no `virtualhosts` values have a host part that matches the host of the request, the topmost virtual host of the topmost farm is used.
 
-Therefore, you should place your default virtual host at the top of the `virtualhosts` property. PLace it in the topmost farm of your `dispatcher.any` file.
+Therefore, you should place your default virtual host at the top of the `virtualhosts` property. Place it in the topmost farm of your `dispatcher.any` file.
 
 ### Example Virtual Host Resolution {#example-virtual-host-resolution}
 
