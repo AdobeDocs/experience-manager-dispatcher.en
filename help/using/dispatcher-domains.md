@@ -192,6 +192,8 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 
 Virtual hosts inherit the [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) property value that is configured in the main server section. Virtual hosts can include their own DispatcherConfig property to override the main server configuration.
 
+On AEM as a Cloud Service, a separate vhost configuration will need to be used with a DocumentRoot at a higher-level than each of the sub-pages. This is handled by default in the archetype, but when multiple DocumentRoots are used, a higher priority vhost configuration must be used so that cache invalidation can be handled for the whole cache as it can not be configured separately for each site. The ServerAlias of this new configuration must accept the host header "localhost".
+
 ### Configure Dispatcher to Handle Multiple Domains {#configure-dispatcher-to-handle-multiple-domains}
 
 To support URLs that include domain names and their corresponding virtual hosts, define the following Dispatcher farms:
