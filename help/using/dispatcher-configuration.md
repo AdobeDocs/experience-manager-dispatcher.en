@@ -1036,7 +1036,7 @@ The statfile has no content. When content is updated, the Dispatcher updates the
 
 The `/serveStaleOnError` property controls whether Dispatcher returns invalidated documents when the render server returns an error. By default, when a statfile is touched and invalidates cached content, the Dispatcher deletes the cached content. This action is done the next time it is requested.
 
-If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache. That is, unless the render server returns a successful response. A 5xx response from AEM or a connection timeout causes the Dispatcher to serve the outdated content and respond with and HTTP Status of 111 (Revalidation Failed).
+If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache. That is, unless the render server returns a successful response. A 502, 503 or 504 response from AEM or a connection timeout causes the Dispatcher to serve the outdated content and respond with and HTTP Status of 111 (Revalidation Failed).
 
 ### Caching When Authentication is Used {#caching-when-authentication-is-used}
 
