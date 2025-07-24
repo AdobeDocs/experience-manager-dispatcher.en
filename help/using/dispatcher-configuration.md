@@ -1,9 +1,9 @@
 ---
-title: Configuring AEM Dispatcher
+title: Configure AEM Dispatcher
 description: Learn how to configure the Dispatcher. Learn about support for IPv4 and IPv6, configuration files, environment variables, and naming the instance. Read about defining farms, identifying virtual hosts, and more.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 ---
-# Configuring Dispatcher {#configuring-dispatcher}
+# Configure Dispatcher {#configuring-dispatcher}
 
 >[!NOTE]
 >
@@ -15,7 +15,7 @@ The following sections describe how to configure various aspects of the Dispatch
 
 All elements of AEM and Dispatcher can be installed in both IPv4 and IPv6 networks. See [IPV4 and IPV6](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#ipv-and-ipv).
 
-## Dispatcher Configuration Files {#dispatcher-configuration-files}
+## Dispatcher configuration files {#dispatcher-configuration-files}
 
 By default the Dispatcher configuration is stored in the `dispatcher.any` text file, though you can change the name and location of this file during installation.
 
@@ -117,7 +117,7 @@ For example, if the files `farm_1.any` through to `farm_5.any` contain the confi
   }
 ```
 
-## Using Environment Variables {#using-environment-variables}
+## Use environment variables {#using-environment-variables}
 
 You can use environment variables in string-valued properties in the dispatcher.any file instead of hard-coding the values. To include the value of an environment variable, use the format `${variable_name}`.
 
@@ -138,11 +138,11 @@ As another example, if you create an environment variable named `PUBLISH_IP` tha
 }
 ```
 
-## Naming the Dispatcher Instance {#naming-the-dispatcher-instance-name}
+## Naming the Dispatcher instance {#naming-the-dispatcher-instance-name}
 
 Use the `/name` property to specify a unique name to identify your Dispatcher instance. The `/name` property is a top-level property in the configuration structure.
 
-## Defining Farms {#defining-farms-farms}
+## Define farms {#defining-farms-farms}
 
 The `/farms` property defines one or more sets of Dispatcher behaviors, where each set is associated with different web sites or URLs. The `/farms` property can include a single farm or multiple farms:
 
@@ -203,7 +203,7 @@ Each farm property can contain the following child properties:
 |[/failover](#using-the-failover-mechanism)|Resend requests to different renders when the original request fails.|
 |[/auth_checker](permissions-cache.md)|For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md).|
 
-## Specify a Default Page (IIS Only) - `/homepage` {#specify-a-default-page-iis-only-homepage}
+## Specify a default page (IIS Only) - `/homepage` {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
@@ -249,7 +249,7 @@ Comment Type: draft
 
  -->
 
-## Specifying the HTTP Headers to Pass Through {#specifying-the-http-headers-to-pass-through-clientheaders}
+## Specify the HTTP headers to pass through {#specifying-the-http-headers-to-pass-through-clientheaders}
 
 The `/clientheaders` property defines a list of HTTP headers that Dispatcher passes from the client HTTP request to the renderer (AEM instance).
 
@@ -305,7 +305,7 @@ The following code is an example configuration for `/clientheaders`:
 
 ```
 
-## Identifying Virtual Hosts {#identifying-virtual-hosts-virtualhosts}
+## Identify virtual hosts {#identifying-virtual-hosts-virtualhosts}
 
 The `/virtualhosts` property defines a list of all hostname and URI combinations that Dispatcher accepts for this farm. You can use the asterisk (`*`) character as a wildcard. Values for the /`virtualhosts` property use the following format:
 
@@ -337,7 +337,7 @@ The following configuration handles *all* requests:
     }
 ```
 
-### Resolving the Virtual Host {#resolving-the-virtual-host}
+### Resolve the virtual host {#resolving-the-virtual-host}
 
 When Dispatcher receives an HTTP or HTTPS request, it finds the virtual host value that best-matches the `host,` `uri`, and `scheme` headers of the request. Dispatcher evaluates the values in the `virtualhosts` properties in the following order:
 
@@ -352,7 +352,7 @@ Dispatcher finds the best-matching virtual host value in the following manner:
 
 Therefore, you should place your default virtual host at the top of the `virtualhosts` property. Place it in the topmost farm of your `dispatcher.any` file.
 
-### Example Virtual Host Resolution {#example-virtual-host-resolution}
+### Example virtual host resolution {#example-virtual-host-resolution}
 
 The following example represents a snippet from a `dispatcher.any` file that defines two Dispatcher farms, and each farm defines a `virtualhosts` property.
 
@@ -393,11 +393,11 @@ Using this example, the following table shows the virtual hosts that are resolve
 | `https://www.mycompany.com/products/gloves.html`|`www.mycompany.com/products/`|
 | `https://www.mycompany.com/about.html` |`www.mycompany.com` |
 
-## Enabling Secure Sessions - `/sessionmanagement` {#enabling-secure-sessions-sessionmanagement}
+## Enable secure sessions - `/sessionmanagement` {#enabling-secure-sessions-sessionmanagement}
 
 >[!CAUTION]
 >
->`/allowAuthorized` Set to `"0"` in the `/cache` section to enable this feature. As detailed in the [Caching When Authentication is used](#caching-when-authentication-is-used) section, when you set `/allowAuthorized 0 ` requests that include authentication information are **not** cached. If permission-sensitive caching is required, see the [Caching Secured Content](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache) page.
+>`/allowAuthorized` Set to `"0"` in the `/cache` section to enable this feature. As detailed in the section ["Caching when authentication is used"](#caching-when-authentication-is-used) section, when you set `/allowAuthorized 0 ` requests that include authentication information are **not** cached. If permission-sensitive caching is required, see the [Caching Secured Content](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/permissions-cache) page.
 
 Create a secure session for access to the render farm so that users must log in to access any page in the farm. After logging in, users can access pages in the farm. See [Creating a Closed User Group](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) for information about using this feature with CUGs. Also, see the Dispatcher [Security Checklist](/help/using/security-checklist.md) before going live.
 
@@ -449,7 +449,7 @@ An example configuration looks as follows:
 
 ```
 
-## Defining Page Renderers {#defining-page-renderers-renders}
+## Define page renderers {#defining-page-renderers-renders}
 
 The `/renders` property defines the URL to which the Dispatcher sends requests to render a document. The following example `/renders` section identifies a single AEM instance for rendering:
 
@@ -545,7 +545,7 @@ Also, this property can be used in case you run into dynamic IP resolution issue
   }
 ```
 
-## Configuring Access to Content {#configuring-access-to-content-filter}
+## Configure access to content {#configuring-access-to-content-filter}
 
 Use the `/filter` section to specify the HTTP requests that Dispatcher accepts. All other requests are sent back to the web server with a 404 error code (page not found). If no `/filter` section exists, all requests are accepted.
 
@@ -564,7 +564,7 @@ The `/filter` section consists of a series of rules that either deny or allow ac
 >
 >Purge the cache whenever there is any change in the filter rules.
 
-### Defining a Filter {#defining-a-filter}
+### Define a filter {#defining-a-filter}
 
 Each item in the `/filter` section includes a type and a pattern that is matched with a specific element of the request line or the entire request line. Each filter can contain the following items:
 
@@ -590,7 +590,7 @@ Each item in the `/filter` section includes a type and a pattern that is matched
 >
 >`/url "*.css"`
 
-#### The request-line Part of HTTP Requests {#the-request-line-part-of-http-requests}
+#### The request-line part of HTTP Requests {#the-request-line-part-of-http-requests}
 
 HTTP/1.1 defines the [request-line](https://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html) as follows:
 
@@ -602,19 +602,19 @@ The `<CRLF>` characters represent a carriage return followed by a line feed. The
 
 Your patterns must account for the space characters in the request-line and the `<CRLF>` characters.
 
-#### Double-quotes vs Single-quotes {#double-quotes-vs-single-quotes}
+#### Double-quotes versus single-quotes {#double-quotes-vs-single-quotes}
 
 When creating your filter rules, use double quotation marks `"pattern"` for simple patterns. If you are using Dispatcher 4.2.0 or later and your pattern includes a regular expression, you must enclose the regex pattern `'(pattern1|pattern2)'` within single quotation marks.
 
-#### Regular Expressions {#regular-expressions}
+#### Regular expressions {#regular-expressions}
 
 In Dispatcher versions later than 4.2.0, you can include POSIX Extended Regular Expressions in your filter patterns.
 
-#### Troubleshooting Filters {#troubleshooting-filters}
+#### Troubleshooting filters {#troubleshooting-filters}
 
 If your filters are not triggering in the way you would expect, enable [Trace Logging](#trace-logging) on Dispatcher so you can see which filter is intercepting the request.
 
-#### Example Filter: Deny All {#example-filter-deny-all}
+#### Example filter: Deny all {#example-filter-deny-all}
 
 The following example filter section causes the Dispatcher to deny requests for all files. Deny access to all files and then allow access to specific areas.
 
@@ -624,7 +624,7 @@ The following example filter section causes the Dispatcher to deny requests for 
 
 Requests to an explicitly denied area result in a 404 error code (page not found) being returned.
 
-#### Example Filter: Deny Access to Specific Areas {#example-filter-deny-access-to-specific-areas}
+#### Example filter: Deny access to specific areas {#example-filter-deny-access-to-specific-areas}
 
 Filters also let you deny access to various elements, for example, ASP pages and sensitive areas within a publish instance. The following filter denies access to ASP pages:
 
@@ -632,7 +632,7 @@ Filters also let you deny access to various elements, for example, ASP pages and
 /0002  { /type "deny" /url "*.asp"  }
 ```
 
-#### Example Filter: Enable POST Requests {#example-filter-enable-post-requests}
+#### Example filter: Enable POST requests {#example-filter-enable-post-requests}
 
 The following example filter allows submitting form data by the POST method:
 
@@ -643,7 +643,7 @@ The following example filter allows submitting form data by the POST method:
 }
 ```
 
-#### Example Filter: Allow Access to the Workflow Console {#example-filter-allow-access-to-the-workflow-console}
+#### Example filter: Allow access to the Workflow console {#example-filter-allow-access-to-the-workflow-console}
 
 The following example shows a filter used to allow external access to the Workflow console:
 
@@ -670,7 +670,7 @@ If you must access single pages within the restricted area, you can allow access
 >
 >When multiple filter patterns apply to a request, the last applied filter pattern is effective.
 
-#### Example filter: Using Regular Expressions {#example-filter-using-regular-expressions}
+#### Example filter: Use regular expressions {#example-filter-using-regular-expressions}
 
 This filter enables extensions in non-public content directories using a regular expression, defined here between single quotes:
 
@@ -678,7 +678,7 @@ This filter enables extensions in non-public content directories using a regular
 /005  {  /type "allow" /extension '(css|gif|ico|js|png|swf|jpe?g)' }
 ```
 
-#### Example filter: Filter extra Elements of a Request URL {#example-filter-filter-additional-elements-of-a-request-url}
+#### Example filter: Filter extra elements of a request URL {#example-filter-filter-additional-elements-of-a-request-url}
 
 Below is a rule example that blocks content grabbing from the `/content` path and its subtree, using filters for path, selectors, and extensions:
 
@@ -696,7 +696,7 @@ Below is a rule example that blocks content grabbing from the `/content` path an
 When configuring the Dispatcher, restrict external access as much as possible. The following example provides minimal access for external visitors:
 
 * `/content`
-* miscellaneous content such as designs and client libraries. For example:
+* miscellaneous content, such as designs and client libraries. For example:
 
   * `/etc/designs/default*`
   * `/etc/designs/mydesign*`
@@ -805,7 +805,7 @@ Depending on your installation, there might be more resources under `/libs`, `/a
 >
 >If you are [using reports in a publish environment](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/sites/administering/operations/reporting#using-reports-in-a-publish-environment), you should configure Dispatcher to deny access to `/etc/reports` for external visitors.
 
-### Restricting Query Strings {#restricting-query-strings}
+### Restrict query strings {#restricting-query-strings}
 
 Since Dispatcher version 4.1.5, use the `/filter` section to restrict query strings. It is recommended that you explicitly allow query strings and exclude generic allowance through `allow` filter elements.
 
@@ -834,7 +834,7 @@ A single entry can have either `glob` or some combination of `method`, `url`, `q
 }  
 ```
 
-### Testing Dispatcher Security {#testing-dispatcher-security}
+### Test Dispatcher security {#testing-dispatcher-security}
 
 Dispatcher filters should block access to the following pages and scripts on AEM publish instances. Use a web browser to attempt to open the following pages as a site visitor would and verify that a code 404 is returned. If any other result is obtained, adjust your filters.
 
@@ -900,7 +900,7 @@ To attempt to invalidate the Dispatcher cache and ensure that you receive a code
 
 `curl -H "CQ-Handle: /content" -H "CQ-Path: /content" https://yourhostname/dispatcher/invalidate.cache`
 
-## Enabling Access to Vanity URLs {#enabling-access-to-vanity-urls-vanity-urls}
+## Enable access to vanity URLs {#enabling-access-to-vanity-urls-vanity-urls}
 
 <!-- 
 
@@ -944,9 +944,9 @@ Use the following procedure to enable access to vanity URLs.
 1. Add the `/vanity_urls` section below `/farms`.
 1. Restart Apache web server.
 
-With Dispatcher **version 4.3.6** a new `/loadOnStartup` parameter has been added. By using this parameter, you can configure the loading of vanity URLs at startup, as follows:
+With Dispatcher **version 4.3.6**, a new `/loadOnStartup` parameter has been added. By using this parameter, you can configure the loading of vanity URLs at startup, as follows:
 
-By adding `/loadOnStartup 0` (see the sample below) you can disable the loading of vanity URLs on startup.
+By adding `/loadOnStartup 0` (see the sample below), you can disable the loading of vanity URLs on startup.
 
 ```
 /vanity_urls {
@@ -958,15 +958,15 @@ By adding `/loadOnStartup 0` (see the sample below) you can disable the loading 
 
 ```
 
-While `/loadOnStartup 1` loads the vanity URLs on startup. Keep in mind that `/loadOnStartup 1` is the current default value for this parameter.
+While `/loadOnStartup 1` loads the vanity URLs on startup, keep in mind that `/loadOnStartup 1` is the current default value for this parameter.
 
-## Forwarding Syndication Requests - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
+## Forward syndication requests - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
 Syndication requests are intended for Dispatcher only, so by default they are not sent to the renderer (for example, an AEM instance).
 
 If necessary, set the `/propagateSyndPost` property to `"1"` to forward syndication requests to Dispatcher. If set, you must make sure that POST requests are not denied in the filter section.
 
-## Configuring the Dispatcher Cache - `/cache` {#configuring-the-dispatcher-cache-cache}
+## Configure the Dispatcher cache - `/cache` {#configuring-the-dispatcher-cache-cache}
 
 The `/cache` section controls how Dispatcher caches documents. Configure several subproperties to implement your caching strategies:
 
@@ -1011,7 +1011,7 @@ An example cache section might look as follows:
 >
 >For permission-sensitive caching, read [Caching Secured Content](permissions-cache.md).
 
-### Specifying the Cache Directory {#specifying-the-cache-directory}
+### Specify the cache directory {#specifying-the-cache-directory}
 
 The `/docroot` property identifies the directory where cached files are stored.
 
@@ -1022,7 +1022,7 @@ The `/docroot` property identifies the directory where cached files are stored.
 
 If you use multiple farms, each farm must use a different document root.
 
-### Naming the Statfile {#naming-the-statfile}
+### Name the statfile {#naming-the-statfile}
 
 The `/statfile` property identifies the file to use as the statfile. Dispatcher uses this file to register the time of the most recent content update. The statfile can be any file on the web server.
 
@@ -1032,13 +1032,13 @@ The statfile has no content. When content is updated, the Dispatcher updates the
 >
 >If `/statfileslevel` is configured, Dispatcher ignores the `/statfile` property and uses `.stat` as the name.
 
-### Serving Stale Documents When Errors Occur {#serving-stale-documents-when-errors-occur}
+### Serve stale documents when errors occur {#serving-stale-documents-when-errors-occur}
 
 The `/serveStaleOnError` property controls whether Dispatcher returns invalidated documents when the render server returns an error. By default, when a statfile is touched and invalidates cached content, the Dispatcher deletes the cached content. This action is done the next time it is requested.
 
 If `/serveStaleOnError` is set to `"1"`, Dispatcher does not delete invalidated content from the cache. That is, unless the render server returns a successful response. A 502, 503 or 504 response from AEM or a connection timeout causes the Dispatcher to serve the outdated content and respond with and HTTP Status of 111 (Revalidation Failed).
 
-### Caching When Authentication is Used {#caching-when-authentication-is-used}
+### Cache when authentication is used {#caching-when-authentication-is-used}
 
 The `/allowAuthorized` property controls whether requests that contain any of the following authentication information are cached:
 
@@ -1056,7 +1056,7 @@ However, if your requirements permit the caching of authenticated documents, set
 >
 >To enable session management (using the `/sessionmanagement` property), the `/allowAuthorized` property must be set to `"0"`.
 
-### Specifying the Documents to Cache {#specifying-the-documents-to-cache}
+### Specify the documents to cache {#specifying-the-documents-to-cache}
 
 The `/rules` property controls which documents are cached according to the document path. Regardless of the `/rules` property, Dispatcher never caches a document in the following circumstances:
 
@@ -1159,7 +1159,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
  -->
 
-### Invalidating Files by Folder Level {#invalidating-files-by-folder-level}
+### Invalidate files by folder level {#invalidating-files-by-folder-level}
 
 Use the `/statfileslevel` property to invalidate cached files according to their path:
 
@@ -1187,7 +1187,7 @@ When a file in `/content/myWebsite/xx` is invalidated, then every `.stat` file f
 >
 >If you specify a value for the `/statfileslevel` property, the `/statfile` property is ignored.
 
-### Automatically Invalidating Cached Files {#automatically-invalidating-cached-files}
+### Automatically invalidating cached files {#automatically-invalidating-cached-files}
 
 The `/invalidate` property defines the documents that are automatically invalidated when content is updated.
 
@@ -1258,7 +1258,7 @@ The following example script logs each invalidated request to a file.
 printf "%-15s: %s %s" $1 $2 $3>> /opt/dispatcher/logs/invalidate.log
 ```
 
-### Limiting the Clients That Can Flush the Cache {#limiting-the-clients-that-can-flush-the-cache}
+### Limit the clients that can flush the cache {#limiting-the-clients-that-can-flush-the-cache}
 
 The `/allowedClients` property defines specific clients that are allowed to flush the cache. The globbing patterns are matched against the IP.
 
@@ -1283,7 +1283,7 @@ For information about Glob properties, see [Designing Patterns for Glob Properti
 >
 >If it is not done, any client can issue a call to clear the cache. If done repeatedly, it can severely impact the site performance.
 
-### Ignoring URL Parameters {#ignoring-url-parameters}
+### Ignore URL parameters {#ignoring-url-parameters}
 
 The `ignoreUrlParams` section defines which URL parameters are ignored when determining whether a page is cached or delivered from cache:
 
@@ -1334,7 +1334,7 @@ GET /mypage.html?nocache=true&willbecached=true
 
 For information about Glob properties, see [Designing Patterns for Glob Properties](#designing-patterns-for-glob-properties).
 
-### Caching HTTP Response Headers {#caching-http-response-headers}
+### Caching HTTP response headers {#caching-http-response-headers}
 
 >[!NOTE]
 >
@@ -1374,7 +1374,7 @@ Below is a sample from the default configuration:
 >FileETag none
 >```
 
-### Dispatcher Cache File Permissions {#dispatcher-cache-file-permissions}
+### Dispatcher cache file permissions {#dispatcher-cache-file-permissions}
 
 The `mode` property specifies what file permissions are applied to new directories and files in the cache. The `umask` of the calling process restricts this setting. It is an octal number constructed from the sum of one or more of the following values:
 
@@ -1390,7 +1390,7 @@ The `mode` property specifies what file permissions are applied to new directori
 
 The default value is `0755`, which allows the owner to read, write, or search and the group and others to read or search.
 
-### Throttling .stat file touching {#throttling-stat-file-touching}
+### Throttle .stat file touching {#throttling-stat-file-touching}
 
 With the default `/invalidate` property, every activation effectively invalidates all `.html` files (when their path matches the `/invalidate` section). On a website with considerable traffic, multiple, subsequent activations increase the cpu load on the backend. In such a scenario, it is desirable to "throttle" `.stat` file touching to keep the website responsive. You can accomplish this action by using the `/gracePeriod` property.
 
@@ -1398,7 +1398,7 @@ The `/gracePeriod` property defines the number of seconds a stale, auto-invalida
 
 For more details, see `/invalidate` and `/statfileslevel`earlier.
 
-### Configuring Time Based Cache Invalidation - `/enableTTL` {#configuring-time-based-cache-invalidation-enablettl}
+### Configure time based cache invalidation - `/enableTTL` {#configuring-time-based-cache-invalidation-enablettl}
 
 Time-based cache invalidation depends on the `/enableTTL` property and the presence of regular expiration headers from the HTTP standard. If you set the property to 1 (`/enableTTL "1"`), it evaluates the response headers from the backend. If the headers contain a `Cache-Control`, `max-age` or `Expires` date, an auxiliary, empty file next to the cached file is created, with the modification time equal to the expiry date. When the cached file is requested past the modification time, it is automatically re-requested from the backend.
 
@@ -1435,7 +1435,7 @@ Doing so ensures that `.stat` file invalidation is not used and only TTL expirat
 >
 >This feature is available in version **4.1.11** or later of the Dispatcher.
 
-## Configuring Load Balancing - `/statistics` {#configuring-load-balancing-statistics}
+## Configure load balancing - `/statistics` {#configuring-load-balancing-statistics}
 
 The `/statistics` section defines categories of files for which Dispatcher scores the responsiveness of each render. Dispatcher uses the scores to determine which render to send a request.
 
@@ -1464,7 +1464,7 @@ The score for a render's category is based on previous response times, and previ
 >
 >If you do not use load balancing, you can omit this section.
 
-### Defining Statistics Categories {#defining-statistics-categories}
+### Define statistics categories {#defining-statistics-categories}
 
 Define a category for each type of document for which you want to keep statistics for render selection. The `/statistics` section contains a `/categories` section. To define a category, add a line below the `/categories` section that has the following format:
 
@@ -1501,7 +1501,7 @@ The following example also includes a category for search pages:
   }
 ```
 
-### Reflecting Server Unavailability in Dispatcher Statistics {#reflecting-server-unavailability-in-dispatcher-statistics}
+### Reflect server unavailability in Dispatcher statistics {#reflecting-server-unavailability-in-dispatcher-statistics}
 
 The `/unavailablePenalty` property sets the time (in tenths of a second) that is applied to the render statistics when a connection to the render fails. Dispatcher adds the time to the statistics category that matches the requested URI.
 
@@ -1515,7 +1515,7 @@ If no `/unavailablePenalty` property exists, a value of `"1"` is used.
 /unavailablePenalty "1"
 ```
 
-## Identifying a Sticky Connection Folder - `/stickyConnectionsFor` {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
+## Identify a sticky connection folder - `/stickyConnectionsFor` {#identifying-a-sticky-connection-folder-stickyconnectionsfor}
 
 The `/stickyConnectionsFor` property defines one folder that contains sticky documents. This property is accessed using the URL. Dispatcher sends all requests, from a single user that are in this folder, to the same render instance. Sticky connections ensure that session data is present and consistent for all documents. This mechanism uses the `renderid` cookie.
 
@@ -1547,11 +1547,11 @@ For additional information about the `httponly` flag, read [this page](https://o
 
 When sticky connections are enabled, the Dispatcher module sets the `renderid` cookie. This cookie does not have the `secure` flag, which should be added to enhance security. You add the `secure` flag setting the `secure` property in the `/stickyConnections` node of a `dispatcher.any` configuration file. The property's value (either `0` or `1`) defines whether the `renderid` cookie has the `secure` attribute appended. The default value is `0`, which means the attribute is added **if** the incoming request is secure. If the value is set to `1`, then the secure flag is added regardless of whether the incoming request is secure or not.
 
-## Handling Render Connection Errors {#handling-render-connection-errors}
+## Handle render connection errors {#handling-render-connection-errors}
 
 Configure Dispatcher behavior when the render server returns a 500 error, or is unavailable.
 
-### Specifying a Health Check Page {#specifying-a-health-check-page}
+### Specify a health check page {#specifying-a-health-check-page}
 
 Use the `/health_check` property to specify a URL that is checked when a 500 status code occurs. If this page also returns a 500 status code, the instance is considered to be unavailable and a configurable time penalty ( `/unavailablePenalty`) is applied to the render before retrying.
 
@@ -1563,7 +1563,7 @@ Use the `/health_check` property to specify a URL that is checked when a 500 sta
   }
 ```
 
-### Specifying the Page Retry Delay {#specifying-the-page-retry-delay}
+### Specify the page retry delay {#specifying-the-page-retry-delay}
 
 The `/retryDelay` property sets the time (in seconds) that Dispatcher waits between rounds of connection attempts with the farm renders. For each round, the maximum number of times the Dispatcher attempts a connection to a render is the number of renders in the farm.
 
@@ -1573,7 +1573,7 @@ Dispatcher uses a value of `"1"` if `/retryDelay` is not explicitly defined. The
 /retryDelay "1"
 ```
 
-### Configuring the Number of Retries {#configuring-the-number-of-retries}
+### Configure the number of retries {#configuring-the-number-of-retries}
 
 The `/numberOfRetries` property sets the maximum number of rounds of connection attempts that Dispatcher performs with the renders. If Dispatcher cannot successfully connect to a render after this number of retries, Dispatcher returns a failed response.
 
@@ -1585,7 +1585,7 @@ If the value is not explicitly defined, the default value is `5`.
 /numberOfRetries "5"
 ```
 
-### Using the Failover Mechanism {#using-the-failover-mechanism}
+### Use the failover mechanism {#using-the-failover-mechanism}
 
 To resend requests to different renders when the original request fails, enable the failover mechanism on your Dispatcher farm. When failover is enabled, Dispatcher has the following behavior:
 
@@ -1604,7 +1604,7 @@ To enable failover, add the following line to the farm (or website):
 >
 >To retry HTTP requests that contain a body, Dispatcher sends a `Expect: 100-continue` request header to the render before spooling the actual contents. CQ 5.5 with CQSE then immediately answers with either 100 (CONTINUE) or an error code. Other servlet containers are supported as well.
 
-## Ignoring Interruption Errors - `/ignoreEINTR` {#ignoring-interruption-errors-ignoreeintr}
+## Ignore interruption errors - `/ignoreEINTR` {#ignoring-interruption-errors-ignoreeintr}
 
 >[!CAUTION]
 >
@@ -1612,7 +1612,7 @@ To enable failover, add the following line to the farm (or website):
 >
 >`Error while reading response: Interrupted system call`
 
-Any file system-oriented system call can be interrupted `EINTR` if the object of the system call is on a remote system accessed by way of NFS. Whether these system calls can time out or be interrupted is based on how the underlying file system was mounted on the local machine.
+Any file system-oriented system call can be interrupted `EINTR` if the object of the system call is on a remote system accessed by way of NFS. Whether these system calls can time out or be interrupted is based on how the underlying file system is mounted on the local machine.
 
 Use the `/ignoreEINTR` parameter if your instance has such a configuration and the log contains the following message:
 
@@ -1626,7 +1626,7 @@ read more data
 }
 ```
 
-Such messages can be generated when the `EINTR` occurs in the `read more data` section. And, the reception of a signal before any data was received is the cause.
+Such messages can be generated when the `EINTR` occurs in the `read more data` section. The issue occurs because a signal arrives before any data.
 
 To ignore such interrupts, you can add the following parameter to `dispatcher.any` (before `/farms`):
 
@@ -1634,7 +1634,7 @@ To ignore such interrupts, you can add the following parameter to `dispatcher.an
 
 Setting `/ignoreEINTR` to `"1"` causes Dispatcher to continue to attempt to read data until the complete response is read. The default value is `0` and deactivates the option.
 
-## Designing Patterns for Glob Properties {#designing-patterns-for-glob-properties}
+## Design patterns for glob properties {#designing-patterns-for-glob-properties}
 
 Several sections in the Dispatcher configuration file use the `glob` properties as selection criteria for client requests. The values of `glob` properties are patterns that Dispatcher compares to an aspect of the request, such as the path of the requested resource, or the IP address of the client. For example, the items in the `/filter` section use `glob` patterns to identify the paths of the pages that Dispatcher acts on or rejects.
 
@@ -1742,7 +1742,7 @@ The following table describes the wildcard characters.
 </table>
 -->
 
-## Logging {#logging}
+## Logs {#logging}
 
 In the Web server configuration, you can set:
 
@@ -1751,7 +1751,7 @@ In the Web server configuration, you can set:
 
 Refer to the web server documentation and the readme file of your Dispatcher instance for more information.
 
-**Apache Rotated or Piped Logs**
+**Apache rotated or piped logs**
 
 If using an **Apache** web server, you can use the standard functionality for Log Rotations, or Piped Logs, or both. For example, using Piped Logs:
 
@@ -1770,14 +1770,14 @@ See the Apache Web Server documentation on Log Rotation and Piped Logs. For exam
 >
 >However, such a level requires more resources. When the Dispatcher is working smoothly *according to your requirements*, you can lower the log level.
 
-### Trace Logging {#trace-logging}
+### Trace logging {#trace-logging}
 
 Among other enhancements for the Dispatcher, version 4.2.0 also introduces Trace Logging.
 
 This ability is a higher level than Debug logging that shows additional information in the logs. It adds logging for:
 
 * The values of the forwarded headers;
-* The rule that is being applied for a certain action.
+* The rule that is applied for a certain action.
 
 You can enable Trace Logging by setting the log level to `4` in your web server.
 
@@ -1803,7 +1803,7 @@ And an event is logged when a file that matches a blocking rule is requested:
 [Thu Mar 03 14:42:45 2016] [T] [11831] 'GET /content.infinity.json HTTP/1.1' was blocked because of /0082
 ```
 
-## Confirming Basic Operation {#confirming-basic-operation}
+## Confirm basic operation {#confirming-basic-operation}
 
 To confirm basic operation and interaction of the web server, Dispatcher and AEM instance you can use the following steps:
 
@@ -1826,7 +1826,7 @@ To confirm basic operation and interaction of the web server, Dispatcher and AEM
 1. To check that the cache is being flushed correctly, activate a page.
 1. If everything is operating correctly, you can reduce the `loglevel` to `0`.
 
-## Using Multiple Dispatchers {#using-multiple-dispatchers}
+## Use multiple Dispatchers {#using-multiple-dispatchers}
 
 In complex setups, you may use multiple Dispatchers. For example, you may use:
 
@@ -1835,7 +1835,7 @@ In complex setups, you may use multiple Dispatchers. For example, you may use:
 
 In such a case, make sure that each request goes through only one Dispatcher. A Dispatcher does not handle requests that come from another Dispatcher. Therefore, make sure that both Dispatchers access the AEM website directly.
 
-## Debugging {#debugging}
+## Debug {#debugging}
 
 When adding the header `X-Dispatcher-Info` to a request, Dispatcher answers whether the target was cached, returned from cached, or not cacheable at all. The response header `X-Cache-Info` contains this information in a readable form. You can use these response headers to debug issues involving responses cached by the Dispatcher.
 

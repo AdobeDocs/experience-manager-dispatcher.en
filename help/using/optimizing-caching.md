@@ -1,5 +1,5 @@
 ---
-title: Optimizing a Website for Cache Performance
+title: Optimize a Website for Cache Performance
 description: Learn how to design your web site to maximize the benefits of caching.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -11,7 +11,7 @@ internal: n
 snippet: y
 ---
 
-# Optimizing a Website for Cache Performance {#optimizing-a-website-for-cache-performance}
+# Optimize a Website for cache performance {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -38,7 +38,7 @@ Dispatcher offers several built-in mechanisms that you can use to optimize perfo
 >
 >In general, many caching strategies involve selecting good URLs and not relying on this additional data.
 
-## Using Consistent Page Encoding {#using-consistent-page-encoding}
+## Use consistent page encoding {#using-consistent-page-encoding}
 
 HTTP request headers are not cached and so problems can occur if you store page-encoding information in the header. In this situation, when Dispatcher serves a page from the cache, the default encoding of the web server is used for the page. There are two ways to avoid this problem:
 
@@ -49,7 +49,7 @@ HTTP request headers are not cached and so problems can occur if you store page-
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
 ```
 
-## Avoid URL Parameters {#avoid-url-parameters}
+## Avoid URL parameters {#avoid-url-parameters}
 
 If possible, avoid URL parameters for pages that you want to cache. For example, if you have a picture gallery, the following URL is never cached (unless the Dispatcher is [configured accordingly](dispatcher-configuration.md#main-pars_title_24)):
 
@@ -90,7 +90,7 @@ www.myCompany.com/news/main.large.html
 >
 >Using the script globbing of the template definition, you can specify a separate script that renders the print pages.
 
-## Invalidating Image Files Used As Titles {#invalidating-image-files-used-as-titles}
+## Invalidate image files used as titles {#invalidating-image-files-used-as-titles}
 
 If you rendered page titles or other text as pictures, store the files so that they are deleted upon a content update on the page:
 
@@ -105,7 +105,7 @@ For example, you can store the title of the page myPage.html in the file myPage.
 >
 >The image file does not necessarily exist on the AEM instance. You can use a script that dynamically creates the image file. Dispatcher then stores the file on the web server.
 
-## Invalidating Image Files Used For Navigation {#invalidating-image-files-used-for-navigation}
+## Invalidate image files used for navigation {#invalidating-image-files-used-for-navigation}
 
 If you use pictures for the navigation entries, the method is basically the same as with titles, just a bit more complex. Store all the navigation images with the target pages. If you use two pictures for normal and active, you can use the following scripts:
 
@@ -134,11 +134,11 @@ The Dispatcher cannot cache personalized data, so it is recommended that you lim
 >* use client-side JavaScript to display personalized information. However, you have to make sure that the page still displays correctly if a user turns JavaScript off.
 >
 
-## Sticky Connections {#sticky-connections}
+## Sticky connections {#sticky-connections}
 
 [Sticky connections](dispatcher.md#TheBenefitsofLoadBalancing) ensure that the documents for one user are all composed on the same server. If a user leaves this folder and later returns to it, the connection still sticks. Define one folder so it can hold all documents that require sticky connections for the website. Try not to have other documents in it. Doing so impacts load-balancing if you use personalized pages and session data.
 
-## MIME Types {#mime-types}
+## MIME types {#mime-types}
 
 There are two ways in which a browser can determine the type of a file:
 

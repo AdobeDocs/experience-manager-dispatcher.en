@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting Dispatcher Problems
+title: Troubleshoot Dispatcher Problems
 description: Learn to troubleshoot Dispatcher issues.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,7 +10,7 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 ---
-# Troubleshooting Dispatcher Problems {#troubleshooting-dispatcher-problems}
+# Troubleshoot Dispatcher problems {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -20,9 +20,9 @@ exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 
 >[!NOTE]
 >
->Check the [Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), [Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]), and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for further information.
+>Check the <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Troubleshooting Dispatcher Flushing Issues](https://experienceleague.adobe.com/search.html?lang=en#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]), and the [Dispatcher Top Issues FAQ](dispatcher-faq.md) for more information.
 
-## Check the Basic Configuration {#check-the-basic-configuration}
+## Check the basic configuration {#check-the-basic-configuration}
 
 As always, the first steps are to check the basics:
 
@@ -39,7 +39,7 @@ As always, the first steps are to check the basics:
 
         * Are these filters impacting the matter that you are investigating?
 
-## IIS Diagnostic Tools {#iis-diagnostic-tools}
+## IIS Diagnostic tools {#iis-diagnostic-tools}
 
 IIS provides various trace tools, dependent on the actual version:
 
@@ -48,6 +48,7 @@ IIS provides various trace tools, dependent on the actual version:
 
 These tools can help you monitor activity.
 
+<!-- Both URLs in this topic 404! >
 ## IIS and 404 Not Found {#iis-and-not-found}
 
 When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
@@ -55,9 +56,9 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Also check that the Dispatcher cache root and the IIS document root are set to the same directory.
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
 
-## Problems Deleting Workflow Models {#problems-deleting-workflow-models}
+## Problems deleting workflow models {#problems-deleting-workflow-models}
 
 **Symptoms**
 

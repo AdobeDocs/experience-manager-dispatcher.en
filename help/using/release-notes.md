@@ -6,9 +6,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 ---
-# AEM Dispatcher Release Notes{#aem-dispatcher-release-notes}
+# AEM Dispatcher release notes{#aem-dispatcher-release-notes}
 
-## Release Information {#release-information}
+## Release information {#release-information}
 
 |||
 |--- |--- |
@@ -29,7 +29,7 @@ Adobe recommends using the latest version of AEM Dispatcher to benefit from the 
 
 For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
-## Release History {#release-history}
+## Release history {#release-history}
 
 ### Release 4.3.7 (2024-March-27) {#march}
 
