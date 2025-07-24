@@ -1,5 +1,5 @@
 ---
-title: Invalidating Cached Pages From AEM
+title: Invalidate Cached Pages From AEM
 description: Learn how to configure the interaction between Dispatcher and AEM to ensure effective cache management.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,19 +10,19 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 ---
-# Invalidating Cached Pages From AEM {#invalidating-cached-pages-from-aem}
+# Invalidate cached pages From AEM {#invalidating-cached-pages-from-aem}
 
 When using Dispatcher with AEM, the interaction must be configured to ensure effective cache management. Depending on your environment, the configuration can also increase performance.
 
-## Setting up AEM User Accounts {#setting-up-aem-user-accounts}
+## Set up AEM user accounts {#setting-up-aem-user-accounts}
 
 The default `admin` user account is used to authenticate the replication agents that are installed by default. Create a dedicated user account for use with replication agents.
 
-For more information, see the [Configure Replication and Transport Users](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) section of the AEM Security Checklist.
+For more information, see the section [Configure replication and transport users](https://experienceleague.adobe.com/en/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) of the AEM Security Checklist.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## Invalidating Dispatcher Cache from the Authoring Environment {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## Invalidate Dispatcher cache from the Author environment {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 A replication agent on the AEM author instance sends a cache invalidation request to Dispatcher when a page is published. Dispatcher refreshes the file eventually in the cache as new content is published.
 
@@ -74,7 +74,7 @@ There are two potential issues with this approach:
 
 * Publication and cache invalidation take place at the same time. Depending on the timing, a user may request a page just after it was removed from the cache, and just before the new page is published. AEM now returns the old page, and the Dispatcher caches it again. This situation is more of an issue for large sites.
 
-## Invalidating Dispatcher Cache from a Publishing Instance {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Invalidate Dispatcher cache from a Publish instance {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 Under certain circumstances, performance gains can be made by transferring cache management from the authoring environment to a publishing instance. It is then the publishing environment (not the AEM authoring environment) that sends a cache invalidation request to Dispatcher when a published page is received.
 
@@ -114,7 +114,7 @@ After configuring, when you activate a page from author to publish, this agent i
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## Manually Invalidating the Dispatcher Cache {#manually-invalidating-the-dispatcher-cache}
+## Manually invalidate the Dispatcher cache {#manually-invalidating-the-dispatcher-cache}
 
 To invalidate (or flush) the Dispatcher cache without activating a page, you can issue an HTTP request to the Dispatcher. For example, you can create an AEM application that enables administrators or other applications to flush the cache.
 

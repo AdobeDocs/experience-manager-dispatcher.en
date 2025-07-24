@@ -16,17 +16,17 @@ role: Admin
 
 + [Overview](dispatcher.md)
 + Getting Started {#getting-started}
-  + [Installing Dispatcher](dispatcher-install.md)
-  + [The Dispatcher Security Checklist](security-checklist.md)
+  + [Install Dispatcher](dispatcher-install.md)
+  + [Dispatcher Security Checklist](security-checklist.md)
   + [AEM Dispatcher Release Notes](release-notes.md)
 + Configuring {#configuring}
-  + [Configuring the Dispatcher](dispatcher-configuration.md)
-  + [Invalidating Cached Pages From AEM](page-invalidate.md)
-  + [Optimizing a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-  + [Caching Secured Content](permissions-cache.md)
-  + [Using AEM Dispatcher with Multiple Domains ](dispatcher-domains.md)
-  + [Using SSL with AEM Dispatcher](dispatcher-ssl.md)
-  + [Configuring AEM Dispatcher to Prevent CSRF Attacks](configuring-dispatcher-to-prevent-csrf.md)
+  + [Configure the Dispatcher](dispatcher-configuration.md)
+  + [Invalidate Cached Pages From AEM](page-invalidate.md)
+  + [Optimize a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+  + [Cache Secured Content](permissions-cache.md)
+  + [Use AEM Dispatcher with Multiple Domains ](dispatcher-domains.md)
+  + [Use SSL with AEM Dispatcher](dispatcher-ssl.md)
+  + [Configure AEM Dispatcher to Prevent CSRF Attacks](configuring-dispatcher-to-prevent-csrf.md)
 + Troubleshooting {#troubleshooting}
-  + [Troubleshooting Dispatcher Problems](dispatcher-troubleshooting.md)
+  + [Troubleshoot Dispatcher Problems](dispatcher-troubleshooting.md)
   + [Dispatcher Top Issues FAQ](dispatcher-faq.md)

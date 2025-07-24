@@ -1,5 +1,5 @@
 ---
-title: Using the Dispatcher with Multiple Domains 
+title: Use Dispatcher with Multiple Domains 
 description: Learn how to use the Dispatcher to process page requests in multiple web domains.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -8,7 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 ---
-# Using Dispatcher with Multiple Domains {#using-dispatcher-with-multiple-domains}
+# Use Dispatcher with multiple domains {#using-dispatcher-with-multiple-domains}
+
+<!-- This article is missing required metadata image ALT tags throughout -->
 
 >[!NOTE]
 >
@@ -48,19 +50,19 @@ When clients send HTTP requests to the web server, the URL of the requested page
 1. Dispatcher determines whether the cached files are valid. If valid, the cached files are served to the client.
 1. If cached files are not valid, Dispatcher requests newly rendered pages from the AEM publish instance.
 
-## Cache Invalidation
+## Cache invalidation
 
-When Dispatcher Flush replication agents request that Dispatcher invalidates cached files, the path of the content in the repository must resolve to the content in the cache.
+When `Dispatcher Flush` replication agents request that Dispatcher invalidates cached files, the path of the content in the repository must resolve to the content in the cache.
 
 ![](assets/chlimage_1-9.png)
 
 * a - A page is activated on the AEM author instance and the content is replicated to the publishing instance.
-* b - The Dispatcher Flush Agent calls Dispatcher to invalidate the cache for the replicated content.
+* b - The `Dispatcher Flush` Agent calls Dispatcher to invalidate the cache for the replicated content.
 * c - Dispatcher touches one or more .stat files to invalidate the cached files.
 
 To use Dispatcher with multiple domains, you must configure AEM, Dispatcher, and your web server. The solutions described on this page are general and apply to most environments. Due to the complexity of some AEM topologies, your solution can require further custom configurations to resolve particular issues. You likely must adapt the examples to satisfy your existing IT infrastructure and management policies.
 
-## URL Mapping {#url-mapping}
+## URL mapping {#url-mapping}
 
 To enable domain URLs and content paths to resolve to cached files, a file path or page URL must be translated during the process. Descriptions of the following common strategies are provided, where path or URL translations occur at different points in the process:
 
@@ -69,7 +71,7 @@ To enable domain URLs and content paths to resolve to cached files, a file path 
 
 It is desirable to use short URLs for web pages. Typically, page URLs mirror the structure of the repository folders that contain the web content. However, the URLs do not reveal the topmost repository nodes, such as `/content`. The client is not necessarily aware of the structure of the AEM repository.
 
-## General Requirements {#general-requirements}
+## General requirements {#general-requirements}
 
 Your environment must implement the following configurations to support Dispatcher working with multiple domains:
 
@@ -78,7 +80,7 @@ Your environment must implement the following configurations to support Dispatch
 * The domain name system resolves the domain names to the IP address of the web server.
 * The Dispatcher cache mirrors the directory structure of the AEM content repository. The file paths below the document root of the web server are the same as the paths of the files in the repository.
 
-## Environment for the Provided Examples {#environment-for-the-provided-examples}
+## Environment for the provided examples {#environment-for-the-provided-examples}
 
 The example solutions that are provided apply to an environment with the following characteristics:
 
@@ -111,7 +113,7 @@ The example solutions that are provided apply to an environment with the followi
                  | - content nodes
 ```
 
-## AEM Rewrites Incoming URLs {#aem-rewrites-incoming-urls}
+## AEM rewrites incoming URLs {#aem-rewrites-incoming-urls}
 
 Sling mapping for resource resolution enables you to associate incoming URLs with AEM content paths. Create mappings on the AEM publish instance so that render requests from Dispatcher resolve to the correct content in the repository.
 
@@ -194,9 +196,9 @@ Virtual hosts inherit the [DispatcherConfig](dispatcher-install.md#main-pars-67-
 
 >[!NOTE]
 >
->On AEM as a Cloud Service, a separate vhost configuration must be used with a DocumentRoot at a higher-level than each of the sub-pages. This is handled by default in the archetype, but when multiple DocumentRoots are used, a higher priority vhost configuration must be used so that cache invalidation can be handled for the whole cache as it can not be configured separately for each site. The ServerAlias of this new configuration must accept the host header "localhost".
+>On AEM as a Cloud Service, a separate vhost configuration must be used with a DocumentRoot at a higher level than each of the sub-pages. This process is handled by default in the archetype. However, when multiple DocumentRoots are used, a higher-priority vhost configuration is required to handle cache invalidation for the entire cache, because it cannot be configured separately for each site. The ServerAlias of this new configuration must accept the host header "localhost."
 
-### Configure Dispatcher to Handle Multiple Domains {#configure-dispatcher-to-handle-multiple-domains}
+### Configure Dispatcher to handle multiple domains {#configure-dispatcher-to-handle-multiple-domains}
 
 To support URLs that include domain names and their corresponding virtual hosts, define the following Dispatcher farms:
 
@@ -278,11 +280,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### Configure Sling Mapping for Resource Resolution {#configure-sling-mapping-for-resource-resolution}
+### Configure Sling mapping for resource resolution {#configure-sling-mapping-for-resource-resolution}
 
-Use Sling mapping for resource resolution so that domain-based URLs resolve to content on the AEM publish instance. The resource mapping translates the incoming URLs from Dispatcher (originally from client HTTP requests) to content nodes.
+Use `Sling` mapping for resource resolution so that domain-based URLs resolve to content on the AEM publish instance. The resource mapping translates the incoming URLs from Dispatcher (originally from client HTTP requests) to content nodes.
 
-To learn about Sling resource mapping, see [Mappings for Resource Resolution](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) in the Sling documentation.
+To learn about `Sling` resource mapping, see [Mappings for Resource Resolution](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) in the `Sling` documentation.
 
 Typically, mappings are required for the following resources, although other mappings can be necessary:
 
@@ -298,7 +300,7 @@ After you create the mapping for the content page, to discover more required map
 
 >[!NOTE]
 >
->The Linkchecker transformer of the default Apache Sling rewriter automatically modifies hyperlinks in the page to prevent broken links. However, link rewriting is performed only when the link target is an HTML or HTM file. To update links to other file types, create a transformer component and add it to an HTML rewriter pipeline.
+>The Linkchecker transformer of the default Apache `Sling` rewriter automatically modifies hyperlinks in the page to prevent broken links. However, link rewriting is performed only when the link target is an HTML or HTM file. To update links to other file types, create a transformer component and add it to an HTML rewriter pipeline.
 
 ### Example resource-mapping nodes
 
@@ -312,9 +314,9 @@ The following table lists the nodes that implement resource mapping for the bran
 |`/etc/map/http/branda.com/etc/designs`| `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs`|
 |`/etc/map/http/branda.com/etc/clientlibs`| `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
-## Configuring the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
+## Configure the Dispatcher Flush replication agent {#configuring-the-dispatcher-flush-replication-agent}
 
-The Dispatcher Flush replication agent on the AEM publish instance must send invalidation requests to the correct Dispatcher farm. To target a farm, use the URI property of the Dispatcher Flush replication agent (on the Transport tab). Include the value of the `/virtualhost` property for the Dispatcher farm that is configured for invalidating the cache:
+The `Dispatcher Flush` replication agent on the AEM publish instance must send invalidation requests to the correct Dispatcher farm. To target a farm, use the URI property of the `Dispatcher Flush` replication agent (on the Transport tab). Include the value of the `/virtualhost` property for the Dispatcher farm that is configured for invalidating the cache:
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -322,7 +324,7 @@ For example, to use the `farm_flush` farm of the previous example, the URI is `h
 
 ![](assets/chlimage_1-12.png) 
 
-## The Web Server Rewrites Incoming URLs {#the-web-server-rewrites-incoming-urls}
+## The Web Server rewrites incoming URLs {#the-web-server-rewrites-incoming-urls}
 
 To translate domain-based URLs to file paths in the Dispatcher cache, use the internal URL rewriting feature of your web server. For example, client requests for the `https://brandA.com/en.html` page are translated to the `content/sitea/en.html`file in the document root of the web server.
 
@@ -408,7 +410,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-### Configure a Dispatcher Farm {#configure-a-dispatcher-farm}
+### Configure a Dispatcher farm {#configure-a-dispatcher-farm}
 
 When the web server rewrites URLs, Dispatcher requires a single farm defined according to [Configuring Dispatcher](dispatcher-configuration.md). The following configurations are required to support the web server virtual hosts and URL renaming rules:
 
@@ -494,23 +496,23 @@ As usual, the document root of the cache is the same as the document root of the
 
 >[!NOTE]
 >
->Because a single Dispatcher farm is defined, the Dispatcher Flush replication agent on the AEM publish instance requires no special configurations.
+>Because a single Dispatcher farm is defined, the `Dispatcher Flush` replication agent on the AEM publish instance requires no special configurations.
 
-## Rewriting Links to Non-HTML Files {#rewriting-links-to-non-html-files}
+## Rewrite links to non-HTML files {#rewriting-links-to-non-html-files}
 
 To rewrite references to files that have extensions other than .html or .htm, create a Sling rewriter transformer component and add it to the default rewriter pipeline.
 
 Rewrite references when resource paths do not resolve correctly in the web server context. For example, a transformer is required when image-generating components create links such as /content/sitea/en/products.navimage.png. The `topnav` component of the [How to Create a Fully Featured Internet Website](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) creates such links.
 
-The [Sling rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) is a module that post-processes Sling output. SAX pipeline implementations of the rewriter consist of a generator, one or more transformers, and a serializer:
+The [`Sling` rewriter](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) is a module that post-processes `Sling` output. SAX pipeline implementations of the rewriter consist of a generator, one or more transformers, and a serializer:
 
-* **Generator:** Parses the Sling output stream (HTML document) and generates SAX events when it encounters specific element types. 
+* **Generator:** Parses the `Sling` output stream (HTML document) and generates SAX events when it encounters specific element types. 
 * **Transformer:** Listens for SAX events and therefore modifies the event target (an HTML element). A rewriter pipeline contains zero or more transformers. Transformers are executed in sequence, passing the SAX events to the next transformer in the sequence.
 * **Serializer:** Serializes the output, including the modifications from each transformer.
 
 ![](assets/chlimage_1-15.png) 
 
-### The AEM Default Rewriter Pipeline {#the-aem-default-rewriter-pipeline}
+### The AEM Default rewriter pipeline {#the-aem-default-rewriter-pipeline}
 
 AEM uses a default pipeline rewriter that processes documents of the type text/html:
 
@@ -520,7 +522,7 @@ AEM uses a default pipeline rewriter that processes documents of the type text/h
 
 The `/libs/cq/config/rewriter/default` node defines the pipeline.
 
-### Creating a Transformer {#creating-a-transformer}
+### Create a transformer {#creating-a-transformer}
 
 To create a transformer component and use it in a pipeline, perform the following tasks:
 
@@ -573,7 +575,7 @@ public class MyRewriterTransformerFactory implements TransformerFactory {
 }
 ```
 
-### Example Transformer implementation {#example-transformer-implementation}
+### Example transformer implementation {#example-transformer-implementation}
 
 ```java
 package com.adobe.example;
@@ -641,7 +643,7 @@ public class MyRewriterTransformer extends AbstractSAXPipe implements Transforme
 }
 ```
 
-### Adding the Transformer to a Rewriter Pipeline {#adding-the-transformer-to-a-rewriter-pipeline}
+### Add the transformer to a rewriter pipeline {#adding-the-transformer-to-a-rewriter-pipeline}
 
 Create a JCR node that defines a pipeline that uses your transformer. The following node definition creates a pipeline that processes text/html files. The default AEM generator and parser for HTML are used.
 

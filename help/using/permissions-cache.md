@@ -1,5 +1,5 @@
 ---
-title: Caching Secured Content
+title: Cache Secured Content
 description: Learn how permission-sensitive caching works in Dispatcher.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -7,7 +7,7 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 ---
-# Caching Secured Content {#caching-secured-content}
+# Cache secured content {#caching-secured-content}
 
 Permission-sensitive caching enables you to cache secured pages. Dispatcher checks the user's access permissions for a page before delivering the cached page.
 
@@ -50,7 +50,7 @@ The following diagrams illustrate the order of events that occur when a web brow
 1. The render calls the AEM authorizer servlet (this servlet is not the Dispatcher AuthChcker servlet) to perform a security check. When the user is authorized, the render includes the rendered page in the body of the response message.
 1. Dispatcher forwards the response to the browser. Dispatcher adds the body of the render's response message to the cache.
 
-## Implementing permission-sensitive caching {#implementing-permission-sensitive-caching}
+## Implement permission-sensitive caching {#implementing-permission-sensitive-caching}
 
 To implement permission-sensitive caching, perform the following tasks:
 
@@ -86,7 +86,7 @@ The following example servlet obtains the URL of the requested resource from the
 
 >[!NOTE]
 >
->The value of the sling.servlet.paths property must be enabled in the Sling Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver) service.
+>The value of the sling.servlet.paths property must be enabled in the `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver) service.
 
 ### Example servlet {#example-servlet}
 

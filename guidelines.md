@@ -24,7 +24,7 @@ AEM documentation covers standard use cases. Use cases beyond the scope of stand
 
 AEM documentation covers standard use cases. For this reason, bugs, effects caused by bugs, and workarounds for bugs are not documented.
 
-Exceptions to this rule apply to the release notes where known issues can be listed with possible solutions that Product Management have approved.
+Exceptions to this rule apply to the release notes where known issues can be listed with possible solutions that Product Management has approved.
 
 ### Documentation contributions are not for answering technical questions.
 

@@ -115,7 +115,7 @@ See the [Dispatcher Security Checklist](security-checklist.md) and the [AEM Secu
 
 **Question**: The business has recently faced a problem at Dispatcher level. One of the AJAX calls that was getting some data from CQ repository had `jcr:content` in it. That got encoded to `jcr%3acontent` resulting in that wrong result set.
 
-**Answer**: Use `ResourceResolver.map()` method to get a 'Friendly' URL to be used / issued get requests from and also to solve the caching issue with Dispatcher. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format. Use the map() method to generate the URL that is used in the Ajax call.
+**Answer**: Call `ResourceResolver.map()` to generate a friendly URL for GET requests and resolve Dispatcher caching issues. The map() method encodes the `:` colon to underscores and the resolve() method decodes them back to SLING JCR readable format. Use the map() method to generate the URL that is used in the Ajax call.
 
 Further read: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
