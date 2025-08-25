@@ -203,7 +203,7 @@ Each farm property can contain the following child properties:
 |[/failover](#using-the-failover-mechanism)|Resend requests to different renders when the original request fails.|
 |[/auth_checker](permissions-cache.md)|For permission-sensitive caching, see [Caching Secured Content](permissions-cache.md).|
 
-## Specify a default page (IIS Only) - `/homepage` {#specify-a-default-page-iis-only-homepage}
+## Specify a default page (IIS Only) - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
