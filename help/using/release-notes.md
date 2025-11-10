@@ -194,7 +194,6 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 |Linux&reg;|aarch64 (64-bit)|1.1| [`dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.8.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.8.tar.gz)|
 |Linux&reg;|aarch64 (64-bit)|3.0| [`dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.8.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.8.tar.gz)|
 |macOS|arm64 (64-bit)|None| [`dispatcher-apache2.4-darwin-arm64-4.3.8.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-arm64-4.3.8.tar.gz)|
-|macOS|x86_64 (64-bit)|None| [`dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz`](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz)|
 
 ### IIS {#iis}
 
