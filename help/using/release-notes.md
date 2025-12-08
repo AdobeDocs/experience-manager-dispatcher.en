@@ -35,7 +35,7 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Improvements**:
 
-* DISP-1040 - fixing for customer who are rewriting urls
+* DISP-1040 - fixing for customer who is rewriting urls
 * DISP-1046 - stale-while-error should also handle 429 responses from AEM
 * DISP-1041 - making invalidate uri configurable (#179)
 * SKYOPS-107219 - Optimize the current implementation of loading vanityUrls
