@@ -123,7 +123,7 @@ In a content update, one or more AEM documents change. AEM sends a syndication r
 The following points should be noted:
 
 * Content Updates are typically used with an authoring system that "knows" what must be replaced.
-* Files that are affected by a content update are removed, but not replaced immediately. The next time such a file is requested, the Dispatcher fetches the new file from the AEM instance and places it in the cache, thereby overwriting the old content.
+* Files affected by a content update are removed, but not replaced immediately. The next time that file is requested, Dispatcher retrieves the updated version from the AEM instance and replaces the cached copy.
 * Typically, automatically generated pictures that incorporate text from a page are stored in picture files starting with the same handle - thus ensuring that the association exists for deletion. For example, you may store the title text of the page mypage.html as the picture mypage.titlePicture.gif in the same folder. This way the picture is automatically deleted from the cache each time the page is updated, so you can be sure that the picture always reflects the current version of the page.
 * You may have several statfiles, for example one per language folder. If a page is updated, AEM looks for the next parent folder containing a statfile, and *touches* that file.
 
@@ -275,7 +275,7 @@ For finer-grained control, API-based invalidation lets you invalidate a CDN's ca
 
 >[!NOTE]
 >
->See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) and recorded presentation on [Dispatcher Caching](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>See also [AEM (CQ) Dispatcher Security and CDN+Browser Caching](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) and recorded presentation on [Dispatcher Caching](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Use a Dispatcher with an Author server {#using-a-dispatcher-with-an-author-server}
 
