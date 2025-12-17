@@ -35,9 +35,8 @@ For detailed instructions, see [Installing Dispatcher](dispatcher-install.md).
 
 **Improvements**:
 
-* DISP-1040 - fixing for customer who is rewriting urls
+* DISP-1040 - Implement `/allowedClients` in dispatcher configuration to control which IPs can perform cache invalidations and block or remove headers (`handle`, `cq-handle`, etc.) unless explicitly needed
 * DISP-1046 - stale-while-error should also handle 429 responses from AEM
-* DISP-1041 - making invalidate uri configurable (#179)
 * SKYOPS-107219 - Optimize the current implementation of loading vanityUrls
 
 ### Release 4.3.7 (2024-March-27) {#march}
