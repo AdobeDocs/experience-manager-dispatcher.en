@@ -4,5 +4,17 @@
 settings.json
 .history
 Thumbs.db
+.vscode/
 .gitignore
 desktop.ini
+experience-manager-cloud-service.en.code-workspace
+.idea
+*.iml
+.cursor/mcp.json
+.cursor-agents/
+.cursor-agents
+usage-agents.log
+setup-agent.md
+.cursor/
+.cursorrules
+.gitmodules
