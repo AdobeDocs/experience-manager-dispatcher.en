@@ -1,6 +1,7 @@
 ---
 title: Dispatcher ETag Enhancement for CDN Revalidation
 description: Availability, support status, and behavior of INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT in AEM as a Cloud Service.
+exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
 ---
 # Dispatcher ETag Enhancement for CDN Revalidation
 
