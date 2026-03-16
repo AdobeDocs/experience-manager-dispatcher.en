@@ -22,6 +22,7 @@ role: Admin
 + Configuring {#configuring}
   + [Configure the Dispatcher](dispatcher-configuration.md)
   + [Invalidate Cached Pages From AEM](page-invalidate.md)
+  + [Dispatcher ETag Enhancement for CDN Revalidation](dispatcher-etag-enhancement.md)
   + [Optimize a Website for Cache Performance](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
   + [Cache Secured Content](permissions-cache.md)
   + [Use AEM Dispatcher with Multiple Domains ](dispatcher-domains.md)
