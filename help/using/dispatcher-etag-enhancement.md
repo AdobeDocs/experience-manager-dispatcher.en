@@ -12,7 +12,6 @@ This behavior is designed to reduce unnecessary payload transfer between CDN and
 
 ## Availability
 
-- Backing change: `SKYOPS-120269`
 - Dispatcher version: `2.0.264`
 - AEM SDK build: `aem-sdk-2026.2.24464.20260214T050318Z-260100`
 
