@@ -58,20 +58,10 @@ After enabling the environment variable and deploying config changes:
 1. Request again with `If-None-Match: <etag-value>`.
 1. Confirm Dispatcher returns `304 Not Modified` for cache-hit revalidation flows.
 
-## Current documentation status
-
-There is no public product documentation for this feature at this time. Treat this as a supported feature that is not yet publicly documented.
-
-Use this page as an interim internal reference until public documentation is published.
-
 ## Public reference (related behavior)
 
 For customer-facing baseline guidance on header caching and `ETag` handling in Dispatcher, reference:
 
 - [Configure Dispatcher - Caching HTTP response headers](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
-
-This public page covers caching the `ETag` header and using `FileETag none`. It does not currently document the `INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT` feature flag itself.
-
-## Suggested customer-facing wording
 
 "This capability is available in Dispatcher `2.0.264` (AEM SDK `2026.2.24464`). When enabled, Dispatcher can validate `If-None-Match` against cached `ETag` values and return `304 Not Modified` on cache hits. In AEM as a Cloud Service, this is supported and can be enabled through Cloud Manager environment configuration."
