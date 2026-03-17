@@ -48,7 +48,8 @@ IIS provides various trace tools, dependent on the actual version:
 
 These tools can help you monitor activity.
 
-<!-- Both URLs in this topic 404! >
+<!-- 
+Both URLs in this topic 404! >
 ## IIS and 404 Not Found {#iis-and-not-found}
 
 When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
@@ -56,7 +57,8 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. 
+-->
 
 ## Problems deleting workflow models {#problems-deleting-workflow-models}
 
