@@ -3,7 +3,7 @@ cloud: Experience Cloud
 solution: Experience Manager
 type: Documentation
 git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.en
-index: y
+index: true
 recommendations: noDisplay
 ---
 

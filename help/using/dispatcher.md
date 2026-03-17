@@ -306,13 +306,13 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 1. Delete all existing files in the `/cache` > `/docroot` directory that you configured above.
 1. Restart the web server.
 
->[!NOTE]
->
->With the provided `author_dispatcher.any` configuration, when you install a CQ5 feature pack, hotfix, or application code package that affects any content under `/libs` or `/apps`, you must delete the cached files. The files are under those directories in your Dispatcher cache. Doing so ensures that the next time they are requested the newly upgraded files are fetched, and not the old cached ones.
+   >[!NOTE]
+   >
+   >With the provided `author_dispatcher.any` configuration, when you install a CQ5 feature pack, hotfix, or application code package that affects any content under `/libs` or `/apps`, you must delete the cached files. The files are under those directories in your Dispatcher cache. Doing so ensures that the next time they are requested the newly upgraded files are fetched, and not the old cached ones.
 
->[!CAUTION]
->
->If you have used the previously configured author Dispatcher and enabled a *Dispatcher flushing agent*, do the following:
+   >[!CAUTION]
+   >
+   >If you have used the previously configured author Dispatcher and enabled a *Dispatcher flushing agent*, do the following:
 
 1. Delete or disable the **author Dispatcher's** flushing agent on your AEM author instance.
 1. Redo the author Dispatcher configuration by following the new instructions above.
@@ -320,7 +320,9 @@ A Dispatcher can be used in front of an author instance to improve authoring per
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
-<!--[!NOTE]
+
+<!--
+>[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)

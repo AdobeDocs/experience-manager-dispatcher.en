@@ -6,7 +6,7 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 jcr-lastmodifiedby: remove-legacypath-6-1
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
