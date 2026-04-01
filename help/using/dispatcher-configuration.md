@@ -2,6 +2,31 @@
 title: Configure AEM Dispatcher
 description: Learn how to configure the Dispatcher. Learn about support for IPv4 and IPv6, configuration files, environment variables, and naming the instance. Read about defining farms, identifying virtual hosts, and more.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
+TQID: https://experienceleague.adobe.com/WO5uTj8LfJmEXNS7Sk-oW9Du0JR0jsUdHjhcHEuV4tA
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
+feature_v2:
+  - id: eb3ad9f8-54a2-45f3-abb1-d3976415a718
+    internal-label: Personalization
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+topic_v2:
+  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+    internal-label: Reporting
+  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+    internal-label: Implementation
+  - id: c1579802-ddd4-4214-8a91-97b2066abe11
+    internal-label: Troubleshooting
+  - id: ce44533e-8ec8-4e11-a9e9-78b0fe561832
+    internal-label: Content structure
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+    internal-label: Security
+  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
+    internal-label: Personalization
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+    internal-label: Administration
 ---
 # Configure Dispatcher {#configuring-dispatcher}
 
