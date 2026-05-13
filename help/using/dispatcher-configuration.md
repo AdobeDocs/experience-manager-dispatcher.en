@@ -146,7 +146,7 @@ For example, if the files `farm_1.any` through to `farm_5.any` contain the confi
 
 You can use environment variables in string-valued properties in the dispatcher.any file instead of hard-coding the values. To include the value of an environment variable, use the format `${variable_name}`.
 
-For example, if the dispatcher.any file is in the same directory as the cache directory, the following value for the [docroot](#specifying-the-cache-directory) property can be used:
+For example, if the `dispatcher.any` file is in the same directory as the cache directory, the following value for the [docroot](#specifying-the-cache-directory) property can be used:
 
 ```xml
 /docroot "${PWD}/cache"
