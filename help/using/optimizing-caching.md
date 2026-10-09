@@ -7,8 +7,11 @@ topic-tags: dispatcher
 content-type: reference
 redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: true
-internal: n
-snippet: y
+internal: 'n'
+snippet: 'y'
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+    internal-label: Experience Manager
 ---
 
 # Optimize a Website for cache performance {#optimizing-a-website-for-cache-performance}
